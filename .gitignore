@@ -5,6 +5,7 @@
 /.pnp
 .pnp.js
 .idea
+.idea/workspace.xml
 
 # testing
 /coverage
@@ -36,4 +37,5 @@ yarn-error.log*
 
 # vercel
 .vercel
-.idea/workspace.xml
+
+.idea
