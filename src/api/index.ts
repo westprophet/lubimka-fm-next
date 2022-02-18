@@ -1,2 +1,8 @@
-import { Axios } from './globalApi';
-export default Axios;
+import * as channels from './channels';
+
+const api = {
+  channels,
+};
+
+// export { api };
+export default api;

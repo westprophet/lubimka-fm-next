@@ -1,0 +1,3 @@
+[submodule "lubimka-fm-backend"]
+	path = lubimka-fm-backend
+	url = git@bitbucket.org:redwest-studio/lubimka-fm-backend.git

@@ -1,4 +1,4 @@
-import Axios from '../';
+import Axios from '../globalApi';
 import IChannel from 'src/interfaces/IChannel';
 
 export default async function getChannels(): Promise<IChannel[]> {

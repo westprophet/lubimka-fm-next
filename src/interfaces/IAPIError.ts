@@ -1,6 +1,6 @@
 export default interface IAPIError {
-  status: 404 | number;
-  name: 'NotFoundError';
-  message: 'Not Found';
-  details: {};
+  status: 404 | 500;
+  name: 'NotFoundError' | 'InternalServerError';
+  message: 'Not Found' | 'Internal Server Error';
+  details?: any;
 }

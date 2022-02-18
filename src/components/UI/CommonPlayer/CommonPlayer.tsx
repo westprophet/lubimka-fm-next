@@ -9,7 +9,7 @@ import cn from 'classnames';
 export default function CommonPlayer({ className }: ICommonPlayerProps) {
   return (
     <div className={cn(s.CommonPlayer, className)}>
-      <div></div>
+      <div />
     </div>
   );
 }

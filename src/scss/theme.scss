@@ -1,0 +1,5 @@
+@import "src/scss/colors";
+
+@mixin DefaultTheme {
+  --default-text-color: #010101; // основной цвет текста
+}
