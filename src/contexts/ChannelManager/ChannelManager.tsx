@@ -8,7 +8,7 @@ import IChannelManagerValues from './types/IChannelManagerState';
 import useChannelState from './hooks/useChannelState';
 
 export const ChannelManagerContext = createContext<IChannelManagerValues>(INITIAL_VALUES);
-//Менеджер
+//Менеджер каналов
 export default function ChannelManager({ children }: IChannelManagerProps) {
   const { current, setChannel, channels } = useChannelState();
   const value: IChannelManagerValues = {
