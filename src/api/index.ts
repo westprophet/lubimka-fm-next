@@ -1,8 +1,9 @@
-import * as channels from './channels';
+import * as channels from './strapi/routes/channels';
+import * as companies from './strapi/routes/companies';
 
-const api = {
+const strapi = {
   channels,
+  companies,
 };
 
-// export { api };
-export default api;
+export default strapi;
