@@ -1,5 +1,5 @@
 import IChannel from '../../../interfaces/IChannel';
-import { LOCAL_KEY } from '../constants';
+import { FIELD_KEY, LOCAL_KEY } from '../constants';
 import ls from 'universal-localstorage';
 import isEmptyArray from '../../../utils/isEmptyArray';
 
@@ -11,7 +11,7 @@ const getLocalChannel = (channels: IChannel[]): IChannel | null => {
   const localID = ls.get(LOCAL_KEY); // Вытягиваем ключ
   let foundedLocal: IChannel | null = null;
   //Ищем канал по локальному ключу
-  if (localID) foundedLocal = channels.find((c: IChannel) => c.title === localID);
+  if (localID) foundedLocal = channels.find((c: IChannel) => c[FIELD_KEY] === localID);
   return foundedLocal;
 };
 export default getLocalChannel;
