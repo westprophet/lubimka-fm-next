@@ -1,7 +1,7 @@
 import IStream from './IStream';
+import TStrapiResponseContainer from '../api/strapi/types/TStrapiResponseContainer';
 
-export default interface IChannel {
-  id: number;
+export interface IChannelInner {
   order: number;
   name: string;
   title: string;
@@ -9,3 +9,7 @@ export default interface IChannel {
   description: string;
   stream: IStream;
 }
+
+export type IChannel = TStrapiResponseContainer<IChannelInner>;
+
+export default IChannel;

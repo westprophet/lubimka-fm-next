@@ -1,7 +1,10 @@
+import TStrapiResponseContainer from 'src/api/strapi/types/TStrapiResponseContainer';
 import ITrack from './ITrack';
 
-export default interface IAlbum {
+export interface IAlbumInner {
   title: string;
   description: string;
   tracks: ITrack[];
 }
+
+export type IAlbum = TStrapiResponseContainer<IAlbumInner>;

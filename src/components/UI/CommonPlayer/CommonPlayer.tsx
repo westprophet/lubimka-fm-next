@@ -7,6 +7,7 @@ import s from './CommonPlayer.module.scss';
 import cn from 'classnames';
 
 export default function CommonPlayer({ className }: ICommonPlayerProps) {
+  const ACTX = new Audio();
   return (
     <div className={cn(s.CommonPlayer, className)}>
       <div />

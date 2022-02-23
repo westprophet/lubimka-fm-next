@@ -3,11 +3,14 @@ import 'src/scss/index.scss'; //Коренной файл стилей (общи
 
 import type { AppProps } from 'next/app';
 import ChannelManager from '../src/contexts/ChannelManager';
+import RadioPlayerManager from '../src/contexts/RadioPlayerManager';
 
 function App({ Component, pageProps }: AppProps) {
   return (
     <ChannelManager>
-      <Component {...pageProps} />
+      <RadioPlayerManager>
+        <Component {...pageProps} />
+      </RadioPlayerManager>
     </ChannelManager>
   );
 }

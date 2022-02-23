@@ -11,6 +11,7 @@
   "dependencies": {
     "@emotion/react": "^11.7.1",
     "@emotion/styled": "^11.6.0",
+    "@foobar404/wave": "^1.2.7",
     "@mui/icons-material": "^5.4.1",
     "@mui/material": "^5.4.1",
     "@reduxjs/toolkit": "^1.7.2",
@@ -18,10 +19,9 @@
     "classnames": "^2.3.1",
     "next": "12.0.10",
     "react": "17.0.2",
+    "react-audio-spectrum": "^0.1.0",
     "react-dom": "17.0.2",
     "react-redux": "^7.2.6",
-    "universal-cookie": "^4.0.4",
-    "universal-localstorage": "^1.0.2",
     "webp-loader": "^0.6.0"
   },
   "devDependencies": {

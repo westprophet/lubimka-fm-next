@@ -1,5 +1,5 @@
 import ICompany from 'src/interfaces/ICompany';
-import Axios from '../../../../globalApi';
+import StrapiAxios from '../../../global';
 import isValidGetCompaniesResponse from './validators/isValidGetCompaniesResponse';
 import { TGetCompaniesResponse } from './types/IGetCompaniesResponse';
 import normalizeGetCompanies from './utils/normalizeGetCompanies';
@@ -13,7 +13,7 @@ https://docs.strapi.io/developer-docs/latest/developer-resources/database-apis-r
  */
 export default async function getCompanies(): Promise<IStrapiReturn<ICompany[]> | null> {
   try {
-    const { data }: { data: TGetCompaniesResponse } = await Axios.get('/companies', {
+    const { data }: { data: TGetCompaniesResponse } = await StrapiAxios.get('/companies', {
       params: {
         'populate[Emails]': '*',
         'populate[Socials][populate][icon][populate]': '*',

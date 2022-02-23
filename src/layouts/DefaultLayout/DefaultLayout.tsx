@@ -5,12 +5,12 @@
 import React, { useEffect } from 'react';
 import s from './DefaultLayout.module.scss';
 import cn from 'classnames';
-import api from 'src/api';
+import { strapi } from 'src/api';
 import IChannel from 'src/interfaces/IChannel';
 
 export default function DefaultLayout({ className, children }: IDefaultLayoutProps) {
   useEffect(() => {
-    api.channels
+    strapi.channels
       .getChannels()
       .then((r: IChannel[]) => {
         console.log(r);

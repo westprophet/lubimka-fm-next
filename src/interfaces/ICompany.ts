@@ -1,7 +1,8 @@
 import TLanguages from '../types/TLanguages';
 import ISocial from './ISocial';
+import TStrapiResponseContainer from '../api/strapi/types/TStrapiResponseContainer';
 
-export default interface ICompany {
+export interface ICompanyInner {
   id?: number;
   locale: TLanguages;
   Title: string;
@@ -12,3 +13,7 @@ export default interface ICompany {
   updatedAt?: string;
   publishedAt?: string;
 }
+
+export type ICompany = TStrapiResponseContainer<ICompanyInner>;
+
+export default ICompany;

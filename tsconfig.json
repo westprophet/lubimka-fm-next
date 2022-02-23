@@ -11,7 +11,8 @@
     },
     "target": "es5",
     "lib": [
-      "esnext"
+      "esnext",
+      "dom"
     ],
     "allowJs": true,
     "skipLibCheck": true,
