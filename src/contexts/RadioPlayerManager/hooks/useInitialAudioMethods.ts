@@ -1,44 +1,53 @@
-import { createRef, useEffect, useState } from 'react';
+import { createRef, useCallback, useState } from 'react';
 import IChannel from 'src/interfaces/IChannel';
-// import useFetchStream from './useFetchStream';
+import { useSnackbar } from 'notistack';
+import { TAudioManagerStatus } from '../../../types/TAudioManagerStatus';
+import useCreateDataStream from './useCreateDataStream';
 
-let play, pause, load;
+let play, load, onCanPlay, stop, onError;
 export default function useInitialAudioMethods(channel: IChannel) {
-  const [loading, setLoad] = useState<boolean>(false);
+  const [status, setStatus] = useState<TAudioManagerStatus>('paused'); // Статус плеера
   const audioRef = createRef<HTMLMediaElement>(); //Тег плеера
-  // const fetchStream = useFetchStream(channel);
+  const { enqueueSnackbar } = useSnackbar();
+  const data = useCreateDataStream(channel);
 
-  const Play = (at: HTMLMediaElement) => {
-    console.log('play');
-    at.play()
-      .then(() => {
-        console.log('play');
-        setLoad(true);
-      })
-      .catch(() => setLoad(false));
-  };
+  //Подгружаем трек
+  load = useCallback(() => {
+    setStatus('loading');
+    audioRef.current?.load();
+  }, [setStatus, audioRef]);
 
-  const Pause = (at: HTMLMediaElement) => {
-    at.pause();
-  };
+  //Играть
+  play = useCallback(() => {
+    if (status === 'paused' && audioRef.current.paused) load();
+  }, [audioRef, status]);
 
-  const Load = (at: HTMLMediaElement) => {
-    at.load();
-  };
+  //Стоп
+  stop = useCallback(() => {
+    setStatus('paused');
+    audioRef.current?.pause();
+  }, [setStatus, audioRef]);
 
-  useEffect(() => {
-    if (audioRef.current) {
-      load = () => Load(audioRef.current);
-      pause = () => Pause(audioRef.current);
-      play = () => Play(audioRef.current);
-    }
-  }, [audioRef]);
+  //Как только трек будет загружен
+  onCanPlay = useCallback(() => {
+    audioRef.current?.play().finally(() => setStatus('played'));
+  }, [setStatus, audioRef]);
+
+  //При ошибках загрузки
+  onError = useCallback(() => {
+    setStatus('error');
+    enqueueSnackbar(`Something then wrong`, {
+      variant: 'error',
+      autoHideDuration: 5000,
+    });
+  }, [setStatus, enqueueSnackbar]);
 
   return {
     audioRef,
     play,
-    pause,
-    load,
-    loading,
+    stop,
+    status,
+    onCanPlay,
+    onError,
   };
 }
