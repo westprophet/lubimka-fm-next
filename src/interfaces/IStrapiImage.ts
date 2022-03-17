@@ -17,5 +17,4 @@ export default interface IStrapiImage {
   provider_metadata: null;
   createdAt: string;
   updatedAt: string;
-  isAbsoluteLink?: boolean;
 }

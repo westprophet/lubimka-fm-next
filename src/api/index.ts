@@ -12,3 +12,5 @@ const radio = {
 };
 
 export { strapi, radio };
+
+export default { strapi, radio };

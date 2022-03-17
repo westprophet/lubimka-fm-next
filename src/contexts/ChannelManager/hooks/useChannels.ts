@@ -1,10 +1,23 @@
 import IChannel from 'src/interfaces/IChannel';
-import { Dispatch, SetStateAction, useEffect, useState } from 'react';
 import { CHANNELS } from '../constants';
+import { useQuery } from 'react-query';
+import api from '../../../api';
+import isEmptyArray from '../../../utils/isEmptyArray';
 
-export default function useChannels(): [IChannel[], Dispatch<SetStateAction<IChannel[]>>] {
-  //Каналы и канал по умолчанию
-  const [channels, setChannels] = useState<IChannel[]>(CHANNELS);
-  useEffect(() => {}, []);
-  return [channels, setChannels];
+//Получаем каналы по умолчанию и пробуем подгружать каналы от сервера
+export default function useChannels(): {
+  channels: IChannel[];
+  isLoading: boolean;
+} {
+  const { isLoading, error, data } = useQuery('getAllChannels', () =>
+    api.strapi.channels.getChannels().catch(() => {
+      console.error('getChannels error');
+    })
+  );
+
+  return {
+    // @ts-ignore
+    channels: !isEmptyArray(data) ? data : CHANNELS,
+    isLoading,
+  };
 }

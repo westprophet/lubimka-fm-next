@@ -7,7 +7,7 @@ const getLocalChannel = (channels: IChannel[]): IChannel | null => {
   if (typeof window === 'undefined') return null;
 
   if (isEmptyArray(channels)) {
-    console.error('ChannelManager: getLocalChannel', 'channels: isEmptyArray');
+    //console.error('ChannelManager: getLocalChannel', 'channels: isEmptyArray');
     return null;
   }
   const localID = window.localStorage.getItem(LOCAL_KEY); // Вытягиваем ключ

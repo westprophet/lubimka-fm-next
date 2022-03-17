@@ -9,12 +9,13 @@ export default function useInitialAudioMethods(channel: IChannel) {
   const [status, setStatus] = useState<TAudioManagerStatus>('paused'); // Статус плеера
   const audioRef = createRef<HTMLMediaElement>(); //Тег плеера
   const { enqueueSnackbar } = useSnackbar();
-  const data = useCreateDataStream(channel);
+  const { data, startStream, stopStream } = useCreateDataStream(channel);
 
   //Подгружаем трек
   load = useCallback(() => {
     setStatus('loading');
     audioRef.current?.load();
+    startStream();
   }, [setStatus, audioRef]);
 
   //Играть
@@ -26,6 +27,7 @@ export default function useInitialAudioMethods(channel: IChannel) {
   stop = useCallback(() => {
     setStatus('paused');
     audioRef.current?.pause();
+    stopStream();
   }, [setStatus, audioRef]);
 
   //Как только трек будет загружен
@@ -36,6 +38,7 @@ export default function useInitialAudioMethods(channel: IChannel) {
   //При ошибках загрузки
   onError = useCallback(() => {
     setStatus('error');
+    stopStream();
     enqueueSnackbar(`Something then wrong`, {
       variant: 'error',
       autoHideDuration: 5000,
@@ -49,5 +52,6 @@ export default function useInitialAudioMethods(channel: IChannel) {
     status,
     onCanPlay,
     onError,
+    data,
   };
 }

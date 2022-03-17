@@ -10,11 +10,12 @@ import useChannelState from './hooks/useChannelState';
 export const ChannelManagerContext = createContext<IChannelManagerValues>(INITIAL_VALUES);
 //Менеджер каналов
 export default function ChannelManager({ children }: IChannelManagerProps) {
-  const { current, setChannel, channels } = useChannelState();
+  const { current, setChannel, channels, isLoadingChannels } = useChannelState();
   const value: IChannelManagerValues = {
     current,
     setChannel,
     channels,
+    isLoadingChannels,
   };
   return <ChannelManagerContext.Provider value={value}>{children}</ChannelManagerContext.Provider>;
 }
