@@ -1,0 +1,16 @@
+.CommonPlayerCover {
+  $xs-max-size: 45px;
+  $lg-max-size: 60px;
+  max-width: $xs-max-size;
+  max-height: $xs-max-size;
+  width: 100%;
+  height: 100%;
+  @include for-sm{
+    max-width: $lg-max-size;
+    max-height: $lg-max-size;
+  }
+  .cover{
+    max-width: $lg-max-size;
+    max-height: $lg-max-size;
+  }
+}

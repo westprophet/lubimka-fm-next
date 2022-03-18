@@ -1,0 +1,13 @@
+//Контейнеры
+@mixin with-screen-lg-padding{
+  padding-left: $screen-lg-padding;
+  padding-right: $screen-lg-padding;
+}
+@mixin with-screen-sm-padding{
+  padding-left: $screen-sm-padding;
+  padding-right: $screen-sm-padding;
+}
+@mixin with-screen-xs-padding{
+  padding-left: $screen-xs-padding;
+  padding-right: $screen-xs-padding;
+}

@@ -1,3 +1,27 @@
+@import './data';
+
+//
 .CommonPlayer {
+  width: $width;
+  padding-top: 3px;
+  padding-bottom: 3px;
+  background: var(--bg-color);
+  box-shadow: 0 0 21px #000;
+  color: white;
+  align-items: center;
+  height: $sm-height;
+  display: flex;
+  gap: 10px;
+  @include for-sm{
+    padding-top: 10px;
+    padding-bottom: 10px;
+    height: $height;
+    gap: 25px;
+  }
+  &.fixed{
+    position: fixed;
+    bottom:0;
+  }
+
 
 }

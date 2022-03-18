@@ -52,6 +52,7 @@ export default function useInitialAudioMethods(channel: IChannel) {
     status,
     onCanPlay,
     onError,
+    // data: data ? data.mounts[0] : null, //Отдаем данние которие будут использоваться в приложении
     data,
   };
 }

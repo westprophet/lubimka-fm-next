@@ -4,21 +4,24 @@ import { SnackbarProvider } from 'notistack';
 import type { AppProps } from 'next/app';
 import ChannelManager from '../src/contexts/ChannelManager';
 import RadioPlayerManager from '../src/contexts/RadioPlayerManager';
-
+import theme from '../mui-theme';
 import { QueryClient, QueryClientProvider } from 'react-query';
+import { ThemeProvider } from '@mui/material';
 const queryClient = new QueryClient();
 
 function App({ Component, pageProps }: AppProps) {
   return (
-    <QueryClientProvider client={queryClient}>
-      <SnackbarProvider maxSnack={3} preventDuplicate>
-        <ChannelManager>
-          <RadioPlayerManager>
-            <Component {...pageProps} />
-          </RadioPlayerManager>
-        </ChannelManager>
-      </SnackbarProvider>
-    </QueryClientProvider>
+    <ThemeProvider theme={theme}>
+      <QueryClientProvider client={queryClient}>
+        <SnackbarProvider maxSnack={3} preventDuplicate>
+          <ChannelManager>
+            <RadioPlayerManager>
+              <Component {...pageProps} />
+            </RadioPlayerManager>
+          </ChannelManager>
+        </SnackbarProvider>
+      </QueryClientProvider>
+    </ThemeProvider>
   );
 }
 

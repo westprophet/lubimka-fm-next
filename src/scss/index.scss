@@ -1,9 +1,14 @@
+@import './_utils-classes.scss';
+@import './theme.scss';
 
-
+:root{
+  @include DefaultTheme();
+}
 html,
 body {
     padding: 0;
     margin: 0;
+    position: relative;
 }
 
 a {

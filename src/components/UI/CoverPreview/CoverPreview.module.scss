@@ -1,0 +1,25 @@
+.CoverPreview {
+  border-radius: 5px;
+  overflow: hidden;
+  position:relative;
+  .loader{
+    width: 100% !important;
+    height: 100% !important;
+  }
+  &.adaptive{
+    width: 45px;
+    height: 45px;
+    @include for-sm{
+      width: 60px;
+      height: 60px;
+    }
+    @include for-md{
+      width: 120px;
+      height: 120px;
+    }
+    @include for-lg{
+      width: 150px;
+      height: 150px;
+    }
+  }
+}

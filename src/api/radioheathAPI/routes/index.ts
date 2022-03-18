@@ -1,2 +1,3 @@
 import * as stream from './stream';
-export { stream };
+import * as image from './image';
+export { stream, image };

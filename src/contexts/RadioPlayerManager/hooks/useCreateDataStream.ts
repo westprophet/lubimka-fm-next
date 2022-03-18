@@ -6,20 +6,24 @@ import { useCallback, useEffect, useRef, useState } from 'react';
 import FETCH_STREAM_TIMOUT from '../constants/FETCH_STREAM_TIMOUT';
 
 export default function useCreateDataStream(c: IChannel) {
-  const timer = useRef();
-  const [data, setData] = useState<IRadioHearthStreamData | null>();
+  const timer = useRef(); //Таймер
+  const [data, setData] = useState<IRadioHearthStreamData | null>(); //Состояние данных
 
+  //При ошибке
   const onError = useCallback((e) => {
     console.error('Something went wrong', e);
   }, []);
 
+  //При удачной итерации
   const onSuccess = useCallback((r) => setData(r), [setData]);
 
+  //Остановить поток
   const stopStream = useCallback(() => {
     setData(null);
     clearInterval(timer.current);
   }, [setData]);
 
+  //Начать поток
   const startStream = useCallback(() => {
     radio.stream
       .fetchRadioStreamData(c)
