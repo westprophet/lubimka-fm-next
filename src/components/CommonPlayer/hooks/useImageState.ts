@@ -1,10 +1,13 @@
-import TAudioTitle from '../../../../types/TAudioTitle';
+import TAudioTitle from '../../../types/TAudioTitle';
 
 import { useQuery } from 'react-query';
-import api from '../../../../api';
+import api from '../../../api';
+import isEmptyString from '../../../utils/isEmptyString';
 
 //Получение картинки и запись ее в состояние
 export default function useGetImage(title: TAudioTitle | null) {
+  const lock = !!title || isEmptyString(title?.artist) || isEmptyString(title?.title);
+
   const { isLoading, error, data } = useQuery(
     ['image-fetch', title],
     () =>
@@ -14,7 +17,7 @@ export default function useGetImage(title: TAudioTitle | null) {
     {
       retry: 5,
       retryDelay: 2000,
-      enabled: !!title,
+      enabled: lock,
     }
   );
   return {

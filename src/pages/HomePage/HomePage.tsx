@@ -2,16 +2,16 @@
  * Created by westp on 18.02.2022
  */
 
-import React, { useContext } from 'react';
+import React from 'react';
 import s from './HomePage.module.scss';
 import cn from 'classnames';
 import DefaultLayout from '../../layouts/DefaultLayout';
 import { useRouter } from 'next/router';
-import { RadioPlayerContext } from '../../contexts/RadioPlayerManager/RadioPlayerManager';
+// import { RadioPlayerContext } from '../../contexts/RadioPlayerManager';
 
 export default function HomePage({ className }: IHomePageProps) {
   const r = useRouter();
-  const { play, stop, status } = useContext(RadioPlayerContext);
+  // const { play, stop, status } = useContext(RadioPlayerContext);
 
   return (
     <DefaultLayout>
@@ -31,11 +31,6 @@ export default function HomePage({ className }: IHomePageProps) {
         >
           index
         </button>
-      </div>
-
-      <div>
-        <button onClick={play}>{status === 'loading' ? 'loading' : 'play'}</button>
-        <button onClick={stop}>stop</button>
       </div>
     </DefaultLayout>
   );

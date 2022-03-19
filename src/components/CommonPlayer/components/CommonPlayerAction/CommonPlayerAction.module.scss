@@ -1,0 +1,18 @@
+.CommonPlayerAction {
+  margin: auto 0 auto auto;
+  display: flex;
+  & > button{
+    color: var(--text-color);
+  }
+  .mobileMenuButton{
+    @include for-sm{
+      display: none;
+    }
+  }
+  .channelButton{
+    visibility: hidden;
+    @include for-sm{
+      visibility: visible;
+    }
+  }
+}

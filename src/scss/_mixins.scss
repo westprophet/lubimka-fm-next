@@ -1,3 +1,4 @@
+@import './fonts/font-mixins';
 //Контейнеры
 @mixin with-screen-lg-padding{
   padding-left: $screen-lg-padding;

@@ -1,11 +1,14 @@
 @import './_utils-classes.scss';
+@import './fonts/fonts.scss';
 @import './theme.scss';
+//@import './utils/index';
 
 :root{
   @include DefaultTheme();
 }
 html,
 body {
+    font-family: Montserrat, sans-serif;
     padding: 0;
     margin: 0;
     position: relative;

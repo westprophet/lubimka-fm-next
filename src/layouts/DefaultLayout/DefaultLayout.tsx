@@ -5,7 +5,7 @@
 import React from 'react';
 import s from './DefaultLayout.module.scss';
 import cn from 'classnames';
-import CommonPlayer from 'components/UI/CommonPlayer';
+import CommonPlayer from 'components/CommonPlayer';
 
 export default function DefaultLayout({ className, children }: IDefaultLayoutProps) {
   return (

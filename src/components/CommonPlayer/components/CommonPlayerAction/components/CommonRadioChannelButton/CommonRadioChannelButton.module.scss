@@ -1,0 +1,16 @@
+.CommonRadioChannelButton {
+  @include fsm();
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  button{
+    color: white;
+  }
+  .arrow{
+    transition: .3s;
+    &.open{
+      transition: .3s;
+      transform: rotate(180deg);
+    }
+  }
+}

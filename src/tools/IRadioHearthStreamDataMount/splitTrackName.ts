@@ -10,6 +10,6 @@ export default function splitTrackName(d: IRadioHearthStreamDataMount): TAudioTi
     .split(/ - /);
   return {
     artist: temp[0],
-    title: temp[1] ?? temp[0],
+    title: temp[1],
   };
 }

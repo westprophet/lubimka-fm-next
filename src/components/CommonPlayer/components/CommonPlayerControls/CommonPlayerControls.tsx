@@ -8,7 +8,7 @@ import cn from 'classnames';
 
 import { PlayArrow, Pause } from '@mui/icons-material/';
 import { CircularProgress, IconButton } from '@mui/material';
-import { TAudioManagerStatus } from '../../../../../types/TAudioManagerStatus';
+import { TAudioManagerStatus } from '../../../../types/TAudioManagerStatus';
 
 export default function CommonPlayerControls({
   className,
