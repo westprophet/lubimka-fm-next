@@ -1,0 +1,10 @@
+.SlickControlArrow {
+  .leftButton,.rightButton{
+    transition: .25s;
+    opacity: 1;
+    &.block{
+      transition: .25s;
+      opacity: .4;
+    }
+  }
+}

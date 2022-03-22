@@ -1,0 +1,11 @@
+.ControlArrows {
+  max-width: 90px;
+  width: 100%;
+  height: 35px;
+  display: flex;
+  justify-content: space-between;
+  flex-shrink: 0;
+  button{
+    color: currentColor;
+  }
+}

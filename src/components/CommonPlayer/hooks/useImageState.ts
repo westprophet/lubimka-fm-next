@@ -11,7 +11,7 @@ export default function useGetImage(title: TAudioTitle | null) {
   const { isLoading, error, data } = useQuery(
     ['image-fetch', title],
     () =>
-      api.radio.image.getImageByArtist(title.artist, title.title).catch(() => {
+      api.radio.image.getImageByArtist(title?.artist, title?.title).catch(() => {
         console.error('useGetImage error');
       }),
     {

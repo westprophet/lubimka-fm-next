@@ -14,9 +14,9 @@ import TAudioTitle from '../../types/TAudioTitle';
 import useImageState from './hooks/useImageState';
 import rTools from '../../api/radioheathAPI/tools';
 import CommonPlayerCover from './components/CommonPlayerCover';
-import CommonPlayerControls from 'components/CommonPlayer/components/CommonPlayerControls';
 import CommonPlayerAction from './components/CommonPlayerAction';
 import ChannelMenuSelector from 'components/CommonPlayer/sections/ChannelMenuSelector';
+import PlayerControlComponent from 'components/UI/PlayerControlComponent';
 
 //плеер
 export default function CommonPlayer({ className }: ICommonPlayerProps) {
@@ -28,9 +28,18 @@ export default function CommonPlayer({ className }: ICommonPlayerProps) {
   const [openChannelMenu, setOpenChannelMenu] = useState<boolean>(false);
 
   return (
-    <div className={cn(s.CommonPlayer, 'with-screen-padding', s.fixed, className)}>
+    <div
+      className={cn(
+        s.CommonPlayer,
+        'with-screen-padding',
+        { [s.openChannelMenu]: openChannelMenu },
+        s.fixed,
+        className
+      )}
+    >
       <CommonPlayerCover className={cn(s.cover)} image={image} isLoading={isLoading} />
-      <CommonPlayerControls className={cn(s.controls)} status={status} play={play} stop={stop} />
+      <PlayerControlComponent className={cn(s.controls)} status={status} play={play} stop={stop} />
+      {/*<CommonPlayerControls className={cn(s.controls)} status={status} play={play} stop={stop} />*/}
       <CommonPlayerTitle className={cn(s.title)} ft={title} />
       <CommonPlayerAction
         channel={channel}

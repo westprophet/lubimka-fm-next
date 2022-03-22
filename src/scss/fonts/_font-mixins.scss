@@ -24,3 +24,20 @@
   letter-spacing: 0.14em;
   @content;
 }
+
+
+//24
+@mixin flg{
+  //font-weight: 700;
+  font-size: 24px;
+  line-height: 29px;
+  @content;
+}
+
+//30
+@mixin fh2{
+  font-weight: 700;
+  font-size: 30px;
+  line-height: 37px;
+  @content;
+}

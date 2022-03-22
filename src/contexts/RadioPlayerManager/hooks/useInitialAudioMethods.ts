@@ -1,10 +1,10 @@
-import { createRef, useCallback, useState } from 'react';
+import { createRef, useCallback, useEffect, useState } from 'react';
 import IChannel from 'src/interfaces/IChannel';
 import { useSnackbar } from 'notistack';
 import { TAudioManagerStatus } from '../../../types/TAudioManagerStatus';
 import useCreateDataStream from './useCreateDataStream';
 
-let play, load, onCanPlay, stop, onError;
+let play, load, onCanPlay, stop, onError, reload;
 export default function useInitialAudioMethods(channel: IChannel) {
   const [status, setStatus] = useState<TAudioManagerStatus>('paused'); // Статус плеера
   const audioRef = createRef<HTMLMediaElement>(); //Тег плеера
@@ -44,6 +44,10 @@ export default function useInitialAudioMethods(channel: IChannel) {
       autoHideDuration: 5000,
     });
   }, [setStatus, enqueueSnackbar]);
+
+  useEffect(() => {
+    load();
+  }, [channel]);
 
   return {
     audioRef,

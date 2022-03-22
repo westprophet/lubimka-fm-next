@@ -8,7 +8,7 @@ export default async function getChannels(): Promise<IChannel[]> {
         populate: '*',
       },
     });
-    return data;
+    return data.data;
   } catch (e) {
     return [];
   }

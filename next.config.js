@@ -31,7 +31,12 @@ const nextConfig = {
 //Image next config
 const imagesPluginSetting = {
   images: {
-    domains: ['lubimka-fm.redw.me', 'localhost', 'image-fetcher.radioheart.ru'],
+    domains: [
+      'lubimka-fm.redw.me',
+      'localhost',
+      'image-fetcher.radioheart.ru',
+      'lubimka-media.s3.eu-central-1.amazonaws.com',
+    ],
   },
 };
 

@@ -1,0 +1,31 @@
+.PlayerControlComponent {
+  $size: 40px;
+  $md-size: 45px;
+  height:$size;
+  width:$size;
+  min-width: $size;
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-shrink: 0;
+  @include for-sm{
+    height:$md-size;
+    width:$md-size;
+    min-width: $md-size;
+  }
+  .circular{
+    position: absolute;
+    color: var(--primary-color);
+    width:100% !important;
+    height:100% !important;
+    svg{
+      circle{
+        stroke-width: 3;
+      }
+    }
+  }
+  button{
+    color: var(--primary-color);
+  }
+}

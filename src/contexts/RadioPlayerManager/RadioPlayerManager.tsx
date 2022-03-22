@@ -9,6 +9,7 @@ import { INITIAL_VALUES, RADIO_PLAYER_ID } from './constants';
 
 import useInitialAudioMethods from './hooks/useInitialAudioMethods';
 import { ChannelManagerContext } from '../ChannelManager';
+import tools from '../../tools';
 
 export const RadioPlayerContext = createContext<IPlayerManagerValues>(INITIAL_VALUES);
 
@@ -25,6 +26,7 @@ export default function RadioPlayerManager({ children }: IPlayerManagerProps) {
     channel,
     data,
   };
+  const sourceURL = tools.IChannel.getAudioSourceLink(channel);
   return (
     <RadioPlayerContext.Provider value={values}>
       <audio
@@ -35,7 +37,8 @@ export default function RadioPlayerManager({ children }: IPlayerManagerProps) {
         onError={onError}
         id={RADIO_PLAYER_ID}
         crossOrigin="anonymous"
-        src={'https://a6.radioheart.ru:9021/RH16706'}
+        // src={'https://a6.radioheart.ru:9021/RH16706'}
+        src={sourceURL}
       />
       {children}
     </RadioPlayerContext.Provider>

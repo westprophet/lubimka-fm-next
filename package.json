@@ -25,7 +25,9 @@
     "react-double-marquee": "^1.1.0",
     "react-query": "^3.34.16",
     "react-redux": "^7.2.6",
+    "react-slick": "^0.28.1",
     "react-svg": "^14.1.14",
+    "slick-carousel": "^1.8.1",
     "webp-loader": "^0.6.0"
   },
   "devDependencies": {

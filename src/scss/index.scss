@@ -17,8 +17,20 @@ body {
 a {
     color: inherit;
     text-decoration: none;
+    cursor: pointer;
 }
 
 * {
     box-sizing: border-box;
+    min-height: 0;
+    min-width: 0;
+}
+
+::selection {
+  background: var(--primary-color);
+  color: grey;
+}
+
+.zoom-effect {
+  @include zoom-effect();
 }

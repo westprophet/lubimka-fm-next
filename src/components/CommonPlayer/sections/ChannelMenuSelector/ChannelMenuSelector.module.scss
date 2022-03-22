@@ -2,12 +2,45 @@
   background: var(--bg-color);
   $height: 240px;
   width: 100%;
-  height:0;
-  transition: .3s;
-  transform: translateY(-100%);
-  &.open{
-    transition: .3s;
-    height:$height;
+  height: 0;
+  transition: .25s;
+  border-bottom: 1px solid var(--primary-color);
+  display: grid;
+  grid-gap: 10px;
+  align-items: center;
+  overflow: hidden;
+  //opacity: .5;
+  .header {
+    display: flex;
+    justify-content: space-between;
+    min-height: 50px;
+    align-items: center;
+    z-index: 3;
+    background-color: var(--bg-color);
+    .arrows{
+      color: var(--border-color);
+    }
+    .title {
+      @include flg {
+        font-weight: 700;
+      }
+    }
+  }
+
+  .inner {
+    width: 100%;
+
+    .slider {
+      .slide {
+        margin-right: 20px;
+      }
+    }
+  }
+
+  &.open {
+    transition: .25s;
+    top: -$height !important;
+    height: $height;
     border-bottom: 1px solid var(--border-color);
   }
 }
