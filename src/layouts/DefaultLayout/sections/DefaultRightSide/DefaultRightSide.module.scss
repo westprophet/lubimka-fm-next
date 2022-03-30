@@ -1,0 +1,6 @@
+.DefaultRightSide {
+  @include with-screen-padding(true, false);
+  div{
+    color: white
+  }
+}

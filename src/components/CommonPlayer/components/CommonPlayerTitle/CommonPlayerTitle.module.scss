@@ -1,5 +1,5 @@
 .CommonPlayerTitle {
-  @include fxs();
+  @include f8();
   display: flex;
   align-items: center;
   overflow: hidden;
@@ -16,5 +16,8 @@
     .title{
       font-weight: 300;
     }
+  }
+  @include for-sm(){
+   @include f5()
   }
 }

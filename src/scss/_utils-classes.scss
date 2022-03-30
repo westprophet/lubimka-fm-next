@@ -1,10 +1,4 @@
 //Сужающийся контейнер
 .with-screen-padding{
-  @include with-screen-xs-padding();
-  @include for-sm{
-    @include with-screen-sm-padding();
-  }
-  @include for-lg{
-    @include with-screen-lg-padding();
-  }
+  @include with-screen-padding();
 }

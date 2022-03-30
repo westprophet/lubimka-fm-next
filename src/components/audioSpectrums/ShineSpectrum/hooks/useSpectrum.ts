@@ -1,18 +1,29 @@
 import { useEffect, useRef } from 'react';
-import Wave from '@foobar404/wave';
+import { Wave } from '@foobar404/wave';
 
-export default function useSpectrum(audioTagID: string, canvasID: string, options) {
-  const _wave = useRef();
-
-  useEffect(() => {
-    if (audioTagID && canvasID) _wave.current = new Wave();
-  }, [audioTagID, canvasID]);
+export default function useSpectrum(audioID: string, canvasID: string, options) {
+  const _wave = useRef<Wave>();
+  const isNotEmpty = audioID && canvasID;
 
   useEffect(() => {
-    if (_wave && audioTagID && canvasID) {
-      // @ts-ignore
-      _wave.current.fromElement(audioTagID, canvasID, options);
+    if (isNotEmpty && document) {
+      const audioElement: HTMLMediaElement = document.querySelector(`#${audioID}`);
+      const canvasElement: HTMLCanvasElement = document.querySelector(`#${canvasID}`);
+      if (canvasElement && audioElement) {
+        _wave.current = new Wave(audioElement, canvasElement);
+        _wave.current.addAnimation(
+          new _wave.current.animations.Shine({
+            lineWidth: 3,
+            lineColor: 'white',
+            count: 120,
+            diameter: 250,
+            frequencyBand: 'mids',
+            rounded: true,
+          })
+        );
+      }
     }
-  }, [_wave?.current]);
+  }, [audioID, canvasID, isNotEmpty]);
+
   return _wave.current;
 }

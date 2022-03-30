@@ -1,0 +1,25 @@
+.ToTopSection {
+  color: var(--text-color);
+  display: grid;
+  align-items: center;
+  grid-gap: 50px;
+  @include with-screen-padding(false, true);
+  .label {
+    cursor: pointer;
+    @include f5_16 {
+      writing-mode: vertical-rl;
+      transform: rotate(180deg);
+      text-orientation: mixed;
+    }
+  }
+  .lineContainer{
+    $line-height: 80px;
+    height: $line-height;
+    .line{
+      width: $line-height;
+      height: 4px;
+      transform-origin: top center;
+      transform: rotate(-90deg) translateX(-100%);
+    }
+  }
+}

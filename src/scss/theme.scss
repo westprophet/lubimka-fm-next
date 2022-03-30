@@ -3,7 +3,12 @@
 //Главная тема
 @mixin DefaultTheme {
   --text-color: #fff; // основной цвет текста
+  --grey-light-color: #FBFBFB;
   --primary-color: #99D3FB;
-  --bg-color: #2B2C32;
+  --third-color: #256BFE;
+
+  --bg-panel-color: #2B2C32;
+  --bg-deep-color: #1E1F23;
   --border-color: #4F4F4F;
+  --acсent-color:#fff;
 }

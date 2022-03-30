@@ -1,0 +1,8 @@
+.SocialIcon {
+  transition: .25s;
+  transform: scale(1);
+  &:hover {
+    transition: .25s;
+    transform: scale(1.5);
+  }
+}

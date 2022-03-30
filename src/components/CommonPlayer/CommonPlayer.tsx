@@ -39,7 +39,6 @@ export default function CommonPlayer({ className }: ICommonPlayerProps) {
     >
       <CommonPlayerCover className={cn(s.cover)} image={image} isLoading={isLoading} />
       <PlayerControlComponent className={cn(s.controls)} status={status} play={play} stop={stop} />
-      {/*<CommonPlayerControls className={cn(s.controls)} status={status} play={play} stop={stop} />*/}
       <CommonPlayerTitle className={cn(s.title)} ft={title} />
       <CommonPlayerAction
         channel={channel}

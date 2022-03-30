@@ -4,8 +4,7 @@
   width: $width;
   padding-top: 3px;
   padding-bottom: 3px;
-  background: var(--bg-color);
-  //box-shadow: 0 0 21px #000;
+  background: var(--bg-panel-color);
   color: var(--text-color);
   align-items: center;
   height: $sm-height;
@@ -33,7 +32,6 @@
   }
   .title{
     width: 100%;
-    //margin: auto auto auto 0;
   }
   .controls{
     //margin: auto auto auto 0;

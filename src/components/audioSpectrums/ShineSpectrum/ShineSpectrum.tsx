@@ -7,12 +7,12 @@ import s from './ShineSpectrum.module.scss';
 import cn from 'classnames';
 import useSpectrum from './hooks/useSpectrum';
 
-export default function ShineSpectrum({ audioTagID, id, className }: IAudioSpectrumProps) {
+export default function ShineSpectrum({ audioID, id, className }: IAudioSpectrumProps) {
   const options = { type: 'shine' };
-  const wave = useSpectrum(audioTagID, id, options);
+  const wave = useSpectrum(audioID, id, options);
   return (
     <div className={cn(s.AudioSpectrum, className)}>
-      <canvas width={300} height={300} id={id} />
+      <canvas width={800} height={800} id={id} />
     </div>
   );
 }
@@ -25,6 +25,7 @@ ShineSpectrum.defaultProps = {
 
 interface IAudioSpectrumProps {
   className?: string;
-  audioTagID: string;
+  audioID: string;
   id: string;
+  // canvasRef: RefObject<HTMLCanvasElement>;
 }

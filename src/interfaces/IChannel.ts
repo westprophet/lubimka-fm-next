@@ -11,6 +11,9 @@ export interface IChannelInner {
   subtitle: string;
   description: string;
   stream: IStream;
+  createdAt: string;
+  updatedAt: string;
+  publishedAt: string;
   cover: {
     data: TStrapiResponseContainer<IStrapiImage>;
   } | null;

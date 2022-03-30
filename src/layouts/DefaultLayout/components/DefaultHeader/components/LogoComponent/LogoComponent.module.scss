@@ -1,0 +1,35 @@
+@import 'data';
+.LogoComponent {
+    display: flex;
+    grid-gap: 7px;
+    color: var(--text-color);
+    @include for-sm{
+      grid-gap: 11px;
+    }
+    .logoImg{
+      width: $logo-size;
+      height: $logo-size;
+      @include for-sm{
+        width: $logo-size-sm;
+        height: $logo-size-sm;
+      }
+      @include for-md{
+        width: $logo-size-md;
+        height: $logo-size-md;
+      }
+    }
+    .logoTitle{
+      @include f8(){
+        font-weight: 700;
+        line-height: 13px;
+      }
+      @include for-sm{
+        @include f7();
+      }
+
+      @include for-md{
+        @include f4();
+      }
+
+    }
+}

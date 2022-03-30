@@ -1,0 +1,70 @@
+$line-height: 25px;
+$bg-color: white;
+$bg-color-active: var(--primary-color);
+
+.SocialsSection {
+  display: grid;
+  align-items: center;
+  justify-content: center;
+  grid-gap: 50px;
+
+  .inner {
+    display: grid;
+    grid-gap: 30px;
+    align-items: center;
+    justify-content: right;
+
+    .socialItem {
+      @include f4;
+    }
+  }
+
+  .labelContainer {
+    cursor: pointer;
+    display: flex;
+    flex-direction: column;
+    gap: 50px;
+    justify-content: space-between;
+    align-items: center;
+    .label {
+      @include f5_16 {
+        writing-mode: vertical-rl;
+        transform: rotate(180deg);
+        text-orientation: mixed;
+      }
+    }
+    .line{
+
+      height: $line-height;
+      background-color: $bg-color;
+      width: 2px;
+      display: block;
+      transition: .25s;
+    }
+    &:hover{
+      :local(.line){
+        transition: .25s;
+        animation: line 1s ease-in-out;
+      }
+    }
+  }
+}
+
+@keyframes line{
+  0%{
+    transform: translateY(0);
+    background-color: $bg-color;
+  }
+  30%{
+    transform: translateY($line-height / 2);
+    background-color: $bg-color;
+  }
+  70% {
+    transform: translateY(-$line-height);
+    background-color: $bg-color-active;
+  }
+  100% {
+    transform: translateY(0);
+    background-color: $bg-color;
+  }
+}

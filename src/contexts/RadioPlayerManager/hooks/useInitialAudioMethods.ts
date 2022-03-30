@@ -16,7 +16,7 @@ export default function useInitialAudioMethods(channel: IChannel) {
     setStatus('loading');
     audioRef.current?.load();
     startStream();
-  }, [setStatus, audioRef]);
+  }, [audioRef, startStream]);
 
   //Играть
   play = useCallback(() => {
@@ -28,12 +28,19 @@ export default function useInitialAudioMethods(channel: IChannel) {
     setStatus('paused');
     audioRef.current?.pause();
     stopStream();
-  }, [setStatus, audioRef]);
+  }, [audioRef, stopStream]);
+
+  //перезагрузить
+  reload = useCallback(() => {
+    audioRef.current?.pause();
+    stopStream();
+    load();
+  }, [audioRef, stopStream]);
 
   //Как только трек будет загружен
   onCanPlay = useCallback(() => {
-    audioRef.current?.play().finally(() => setStatus('played'));
-  }, [setStatus, audioRef]);
+    if (audioRef.current) audioRef.current?.play().finally(() => setStatus('played'));
+  }, [setStatus, audioRef, channel]);
 
   //При ошибках загрузки
   onError = useCallback(() => {
@@ -45,10 +52,10 @@ export default function useInitialAudioMethods(channel: IChannel) {
     });
   }, [setStatus, enqueueSnackbar]);
 
+  //Если играет радио и переключили канал то перезагрузить радио
   useEffect(() => {
-    load();
+    if (status === 'played' && channel) reload();
   }, [channel]);
-
   return {
     audioRef,
     play,
@@ -56,6 +63,7 @@ export default function useInitialAudioMethods(channel: IChannel) {
     status,
     onCanPlay,
     onError,
+    reload,
     // data: data ? data.mounts[0] : null, //Отдаем данние которие будут использоваться в приложении
     data,
   };

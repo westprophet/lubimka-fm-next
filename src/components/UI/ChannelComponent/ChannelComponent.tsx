@@ -9,9 +9,9 @@ import IChannel from '../../../interfaces/IChannel';
 
 import Image from 'next/image';
 import IStrapiImage from '../../../interfaces/IStrapiImage';
-import CommonPlayerControls from 'components/CommonPlayer/components/CommonPlayerControls';
 import { TAudioManagerStatus } from '../../../types/TAudioManagerStatus';
 import { TChannelComponentType } from './types';
+import PlayerControlComponent from 'components/UI/PlayerControlComponent';
 
 export default function ChannelComponent({
   className,
@@ -22,6 +22,7 @@ export default function ChannelComponent({
   onPlay,
   onStop,
   status,
+  disabled,
 }: IChannelProps) {
   if (!channel) return null;
   const img: IStrapiImage = channel.attributes.cover?.data.attributes;
@@ -35,25 +36,25 @@ export default function ChannelComponent({
           [s.lg]: type === 'lg',
         },
         { [s.active]: active },
+        { [s.disabled]: disabled },
         className
       )}
     >
       <div className={cn(s.description)}>
         <div className={cn(s.control)}>
-          <CommonPlayerControls play={onPlay} stop={onStop} status={!active ? 'paused' : status} />
+          <PlayerControlComponent
+            play={onPlay}
+            stop={onStop}
+            status={!active ? 'paused' : status}
+            type={2}
+            disable={disabled}
+          />
         </div>
         <div className={cn(s.title)}>{channel.attributes.title}</div>
-        <div className={cn(s.status)}>Online</div>
+        <div className={cn(s.status)}>{!disabled ? 'Online' : 'Offline'}</div>
       </div>
       {!img || !img.url ? null : (
-        <Image
-          className={cn(s.cover)}
-          src={img.url}
-          // width={img.width}
-          // height={img.height}
-          layout="fill"
-          objectFit="cover"
-        />
+        <Image className={cn(s.cover)} src={img.url} layout="fill" objectFit="cover" />
       )}
     </div>
   );
@@ -64,6 +65,7 @@ ChannelComponent.defaultProps = {
   type: 'adaptive',
   active: false,
   isNew: false,
+  disabled: false,
 };
 
 export interface IChannelProps {
@@ -75,4 +77,5 @@ export interface IChannelProps {
   status: TAudioManagerStatus;
   type?: TChannelComponentType;
   isNew?: boolean;
+  disabled?: boolean;
 }

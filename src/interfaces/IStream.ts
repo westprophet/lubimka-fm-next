@@ -1,5 +1,6 @@
 export default interface reIStream {
-  port: number;
+  id: number;
+  port: number | string;
   code: string;
   user: string;
   baseURL: string;

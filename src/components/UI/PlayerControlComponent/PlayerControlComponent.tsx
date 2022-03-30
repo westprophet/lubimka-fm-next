@@ -14,15 +14,30 @@ export default function PlayerControlComponent({
   status,
   play,
   stop,
+  type,
+  disable,
 }: IPlayerControlComponentProps) {
   return (
-    <div className={cn(s.PlayerControlComponent, className)}>
+    <div
+      className={cn(
+        s.PlayerControlComponent,
+        {
+          [s.type1]: type === 1,
+          [s.type2]: type === 2,
+        },
+        {
+          [s.disable]: disable,
+        },
+        className
+      )}
+    >
       <CircularProgress
         className={cn(s.circular)}
         variant={status === 'loading' ? 'indeterminate' : 'determinate'}
         value={100}
       />
       <IconButton
+        disabled={disable}
         onClick={() => {
           if (status === 'paused') play();
           else stop();
@@ -36,11 +51,15 @@ export default function PlayerControlComponent({
 
 PlayerControlComponent.defaultProps = {
   className: '',
+  type: 1,
+  disable: false,
 };
 
 interface IPlayerControlComponentProps {
   className?: string;
   status: TAudioManagerStatus;
+  disable?: boolean;
+  type?: 1 | 2;
   play(): any;
   stop(): any;
 }

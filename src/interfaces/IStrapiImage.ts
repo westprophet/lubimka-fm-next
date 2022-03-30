@@ -9,11 +9,11 @@ export default interface IStrapiImage {
   formats: any; //**;
   hash: string;
   ext: TImageExtension;
-  mime: 'image/png';
+  mime: 'image/png' | 'image/jpeg';
   size: number;
   url: string;
   previewUrl: string;
-  provider: 'local';
+  provider: 'local' | 'aws-s3';
   provider_metadata: null;
   createdAt: string;
   updatedAt: string;

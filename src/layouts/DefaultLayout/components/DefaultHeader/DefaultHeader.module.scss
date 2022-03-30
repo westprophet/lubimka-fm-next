@@ -1,3 +1,29 @@
+@import './data';
 .DefaultHeader {
+  background-color: var(--bg-panel-color);
+  width: 100%;
+  height: $height;
+  align-items: center;
+  display: flex;
+  justify-content: space-between;
+  z-index: 2;
+  position: fixed;
+  @include for-sm{
+    height: $height-sm;
+  }
+  @include for-md{
+    height: $height-md;
+  }
+  .mobile{
+    @include for-lg{
+      display: none;
+    }
+  }
+  .desktop{
+    display: none;
+    @include for-lg{
+      display: block;
+    }
+  }
 
 }
