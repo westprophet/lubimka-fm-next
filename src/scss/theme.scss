@@ -2,13 +2,13 @@
 
 //Главная тема
 @mixin DefaultTheme {
-  --text-color: #fff; // основной цвет текста
-  --grey-light-color: #FBFBFB;
-  --primary-color: #99D3FB;
-  --third-color: #256BFE;
+  --text-color: #{$text-color}; // основной цвет текста
+  --grey-light-color: #{$grey-light-color};
+  --primary-color: #{$primary-color};
+  --third-color: #{$third-color};
 
-  --bg-panel-color: #2B2C32;
-  --bg-deep-color: #1E1F23;
-  --border-color: #4F4F4F;
-  --acсent-color:#fff;
+  --bg-panel-color: #{$bg-panel-color};
+  --bg-deep-color: #{$bg-deep-color};
+  --border-color: #{$border-color};
+  --acсent-color:#{$acсent-color};
 }

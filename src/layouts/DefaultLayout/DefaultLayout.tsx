@@ -5,10 +5,11 @@
 import React from 'react';
 import s from './DefaultLayout.module.scss';
 import cn from 'classnames';
-import CommonPlayer from 'components/CommonPlayer';
+
 import DefaultHeader from './components/DefaultHeader';
 import DefaultLeftSide from './sections/DefaultLeftSide';
 import DefaultRightSide from './sections/DefaultRightSide';
+import CommonPlayer from './components/CommonPlayer';
 
 export default function DefaultLayout({ className, children }: IDefaultLayoutProps) {
   return (

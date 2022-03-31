@@ -5,16 +5,22 @@
 import React from 'react';
 import s from './ToTopSection.module.scss';
 import cn from 'classnames';
-import LinearProgress from '@mui/material/LinearProgress';
+import CustomVerticalProgress from './components/CustomVerticalProgress';
+import useScrollPercentage from './hooks/useScrollPercentage';
+import { Button } from '@mui/material';
+import animateScrollTo from 'animated-scroll-to';
 
 export default function ToTopSection({ className }: IToTopSectionProps) {
+  const scrollPercent = useScrollPercentage();
+  const onToTopHandler = () => {
+    animateScrollTo(0);
+  };
   return (
     <div className={cn(s.ToTopSection, className)}>
-      <span className={cn(s.label)}>На верх</span>
-      {/*<div className={cn(s.line)} />*/}
-      <div className={cn(s.lineContainer)}>
-        <LinearProgress value={50} className={cn(s.line)} variant="determinate" />
-      </div>
+      <Button onClick={onToTopHandler} className={cn(s.button)} variant="text" size="small">
+        <span className={cn(s.label)}>Наверх</span>
+      </Button>
+      <CustomVerticalProgress p={scrollPercent} className={cn(s.line)} />
     </div>
   );
 }

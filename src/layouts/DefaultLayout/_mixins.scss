@@ -1,0 +1,77 @@
+@import "./data";
+
+//Отступы по вертикали
+@mixin full-page-padding-xs($t: true, $r: true,$b: true, $l: true  ){
+  @if $t {
+    padding-top: $header-height-xs;
+  }
+  @if $r {
+    padding-right: $aside-width-xs;
+  }
+  @if $b {
+    padding-bottom: $player-height-xs;
+  }
+  @if $l {
+    padding-left: $aside-width-xs;
+  }
+}
+
+@mixin full-page-padding-sm($t: true, $r: true,$b: true, $l: true){
+  @if $t {
+    padding-top: $header-height-sm;
+  }
+  @if $r {
+    padding-right: $aside-width-xs;
+  }
+  @if $b {
+    padding-bottom: $player-height-sm;
+  }
+  @if $l {
+    padding-left: $aside-width-xs;
+  }
+}
+
+@mixin full-page-padding-md($t: true, $r: true,$b: true, $l: true){
+  @if $t {
+    padding-top: $header-height-md;
+  }
+  @if $r {
+    padding-right: $aside-width-xs;
+  }
+  @if $b {
+    padding-bottom: $player-height-sm;
+  }
+  @if $l {
+    padding-left: $aside-width-xs;
+  }
+}
+
+@mixin full-page-padding-lg($t: true, $r: true,$b: true, $l: true){
+  @if $t {
+    padding-top: $header-height-md;
+  }
+  @if $r {
+    padding-right: $aside-width-lg;
+  }
+  @if $b {
+    padding-bottom: $player-height-sm;
+  }
+  @if $l {
+    padding-left: $aside-width-lg;
+  }
+}
+
+@mixin full-page-padding($t: true, $r: true, $b: true, $l: true){
+  @include full-page-padding-xs($t,$r,$b,$l);
+  @include for-sm{
+    @include full-page-padding-sm($t,$r,$b,$l);
+  }
+  @include for-md{
+    @include full-page-padding-md($t,$r,$b,$l);
+  }
+  @include for-lg{
+    @include full-page-padding-lg($t,$r,$b,$l);
+  }
+}
+
+

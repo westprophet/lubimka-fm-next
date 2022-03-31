@@ -4,22 +4,27 @@
   align-items: center;
   grid-gap: 50px;
   @include with-screen-padding(false, true);
-  .label {
+
+  button {
     cursor: pointer;
-    @include f5_16 {
-      writing-mode: vertical-rl;
-      transform: rotate(180deg);
-      text-orientation: mixed;
+    margin: auto;
+    min-width: 30px;
+    padding: 5px 0;
+    color: white;
+    .label {
+      @include f5_16 {
+        font-weight: 600;
+        writing-mode: vertical-rl;
+        transform: rotate(180deg);
+        text-orientation: mixed;
+      }
     }
   }
-  .lineContainer{
-    $line-height: 80px;
-    height: $line-height;
-    .line{
-      width: $line-height;
-      height: 4px;
-      transform-origin: top center;
-      transform: rotate(-90deg) translateX(-100%);
-    }
+
+  .line {
+    margin: auto;
+  }
+
+  .lineContainer {
   }
 }

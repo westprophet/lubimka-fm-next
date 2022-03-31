@@ -1,0 +1,5 @@
+@import "../../mixins";
+.FullPageSectionWrapper {
+  height: 100vh;
+  @include full-page-padding();
+}

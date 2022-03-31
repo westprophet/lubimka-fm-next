@@ -9,5 +9,11 @@ import DefaultLayout from '../../layouts/DefaultLayout';
 import BannerSection from './sections/BannerSection';
 
 export default function HomePage() {
-  return <DefaultLayout className={cn(s.HomePage)}>{/*<BannerSection />*/}</DefaultLayout>;
+  return (
+    <DefaultLayout className={cn(s.HomePage)}>
+      <BannerSection />
+      <BannerSection />
+      <BannerSection />
+    </DefaultLayout>
+  );
 }

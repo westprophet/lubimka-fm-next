@@ -1,15 +1,4 @@
-@import '../../components/DefaultHeader/data';
+@import '../../data';
 
-
-$padding-top: $height;
-$padding-top-sm: $height-sm;
-$padding-top-md: $height-md;
-
-@import '../../../../components/CommonPlayer/data';
-
-$padding-bottom:  $sm-height;
-$padding-bottom-sm: $height;
-
-
-$width: 35px;
-$width-lg: 60px;
+$width: $aside-width-xs;
+$width-lg: $aside-width-lg;

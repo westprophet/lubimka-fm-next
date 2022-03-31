@@ -1,16 +1,16 @@
 $line-height: 25px;
 $bg-color: white;
 $bg-color-active: var(--primary-color);
-
+$gap: 4vh;
 .SocialsSection {
   display: grid;
   align-items: center;
   justify-content: center;
-  grid-gap: 50px;
+  grid-gap:$gap;
 
   .inner {
     display: grid;
-    grid-gap: 30px;
+    height: 120px;
     align-items: center;
     justify-content: right;
 
@@ -23,9 +23,10 @@ $bg-color-active: var(--primary-color);
     cursor: pointer;
     display: flex;
     flex-direction: column;
-    gap: 50px;
+    gap: $gap;
     justify-content: space-between;
     align-items: center;
+    height: 175px;
     .label {
       @include f5_16 {
         writing-mode: vertical-rl;

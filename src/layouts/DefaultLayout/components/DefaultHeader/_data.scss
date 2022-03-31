@@ -1,6 +1,10 @@
-$height: 40px;
-$height-sm: 60px;
-$height-md: 80px;
+@import '../../data';
+
+$height: $header-height-xs;
+$height-sm: $header-height-sm;
+$height-md: $header-height-md;
+
+
 
 
 

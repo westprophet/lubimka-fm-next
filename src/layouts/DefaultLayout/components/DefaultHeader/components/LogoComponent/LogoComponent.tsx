@@ -9,14 +9,14 @@ import logo from 'assets/logo.svg';
 
 export default function LogoComponent({ className }: ILogoComponentProps) {
   return (
-    <div className={cn(s.LogoComponent, className)}>
+    <a href="/" className={cn(s.LogoComponent, className)}>
       <img className={cn(s.logoImg)} src={logo} alt={'header logo lubimka'} />
       <div className={cn(s.logoTitle)}>
         Radio
         <br />
         Lubimka
       </div>
-    </div>
+    </a>
   );
 }
 

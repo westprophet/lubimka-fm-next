@@ -8,6 +8,9 @@
   justify-content: space-between;
   z-index: 2;
   position: fixed;
+  @include before-lg{
+    //padding-right: 0px!important;
+  }
   @include for-sm{
     height: $height-sm;
   }
@@ -15,6 +18,9 @@
     height: $height-md;
   }
   .mobile{
+      margin: -7px;
+    //&>button{
+    //}
     @include for-lg{
       display: none;
     }

@@ -8,7 +8,7 @@ import cn from 'classnames';
 
 export default function AsideBar({ className, fixed, children, position }: IAsideBarProps) {
   return (
-    <div
+    <aside
       className={cn(
         s.AsideBar,
         { [s.fixed]: fixed },
@@ -16,8 +16,8 @@ export default function AsideBar({ className, fixed, children, position }: IAsid
         className
       )}
     >
-      <div>{children}</div>
-    </div>
+      {children}
+    </aside>
   );
 }
 

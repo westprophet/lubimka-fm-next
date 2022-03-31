@@ -1,0 +1,14 @@
+.CustomVerticalProgress {
+  $width: 3px;
+  height: 60px;
+  width: $width;
+  background-color: rgba($grey-light-color, .5);
+  position: relative;
+  .fill{
+    position: absolute;
+    top: 0;
+    left: 0;
+    background-color: rgba($text-color, .5);
+    width: 100%;
+  }
+}
