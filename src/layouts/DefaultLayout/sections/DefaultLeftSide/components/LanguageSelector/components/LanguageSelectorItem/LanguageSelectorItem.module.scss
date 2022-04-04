@@ -1,6 +1,7 @@
 .LanguageSelectorItem {
   $border-width: 5px;
   $horizontal-padding: 10px;
+
   width: 100%;
   border-left: $border-width solid transparent;
   color: transparent;
@@ -9,18 +10,11 @@
   padding-bottom:$horizontal-padding;
   cursor: pointer;
   transition: .25s;
-  text-align: right;
-  padding-left: $screen-xs-padding - $border-width;
+  text-align: center;
   -webkit-text-stroke: .4px var(--grey-light-color);
   @include f5(){
     font-weight: 700;
     text-transform: uppercase;
-  }
-  @include for-sm{
-    padding-left: $screen-sm-padding - $border-width;
-  }
-  @include for-lg{
-    padding-left: $screen-lg-padding - $border-width;
   }
   &.active,
   &:hover{

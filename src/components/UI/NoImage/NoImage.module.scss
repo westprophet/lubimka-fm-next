@@ -1,0 +1,9 @@
+.NoImage {
+  background-color: var(--bg-panel-color);
+  overflow: hidden;
+  padding: 20%;
+  img{
+    width: 100%;
+    height: 100%;
+  }
+}

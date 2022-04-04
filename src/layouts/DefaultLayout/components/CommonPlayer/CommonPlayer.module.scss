@@ -17,7 +17,10 @@
     padding-top: 10px;
     padding-bottom: 10px;
     height: $height-sm;
-    gap: 25px;
+    gap: 15px;
+  }
+  @include for-md{
+    gap: 30px;
   }
   &.fixed{
     position: fixed;

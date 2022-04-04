@@ -1,4 +1,4 @@
-import IStream from './IStream';
+import IStream from './others/IStream';
 import TStrapiResponseContainer from '../api/strapi/types/TStrapiResponseContainer';
 import TLanguages from 'src/types/TLanguages';
 import IStrapiImage from './IStrapiImage';

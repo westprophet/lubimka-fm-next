@@ -1,0 +1,67 @@
+@import '../../scss/data';
+@import '../../scss/mixins';
+
+.SectionSliderWrapper {
+  width: 100%;
+  position: relative;
+  .title{
+    @include inner-section-padding(false, true, false, true);
+  }
+  .arrow{
+    position: absolute;
+    top: 0;
+    @include for-sm{
+      width: $inner-section-h-padding-sm;
+    }
+    @include for-md{
+      width: $inner-section-h-padding-md;
+    }
+    @include for-lg{
+      width: $inner-section-h-padding-lg;
+    }
+    &.leftArrow{
+      left: 0;
+    }
+    &.rightArrow{
+      right: 0;
+    }
+  }
+  .slider {
+    :global {
+      .slick-list {
+        padding: 0 30px;
+      }
+    }
+    @include for-sm {
+      :global {
+        .slick-list {
+          margin-right: -$inner-section-h-padding-sm;
+          margin-left: -$inner-section-h-padding-sm;
+          padding: 0 $inner-section-h-padding-sm;
+        }
+      }
+    }
+    @include for-md {
+      :global {
+        .slick-list {
+          margin-right: -$inner-section-h-padding-md;
+          margin-left: -$inner-section-h-padding-md;
+          padding: 0 $inner-section-h-padding-md;
+        }
+      }
+    }
+    @include for-lg {
+      :global {
+        .slick-list {
+          margin-right: -$inner-section-h-padding-lg;
+          margin-left: -$inner-section-h-padding-lg;
+          padding: 0 $inner-section-h-padding-lg;
+        }
+      }
+    }
+  }
+  .inner{
+    padding-top: 0!important;
+  }
+}
+

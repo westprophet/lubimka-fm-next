@@ -4,7 +4,7 @@
 
 import React from 'react';
 
-import ISocial from '../../../interfaces/ISocial';
+import ISocial from '../../../interfaces/others/ISocial';
 import { IIcon } from '../../../interfaces';
 import IconMaterial from 'components/icons/IconMaterial';
 import cn from 'classnames';

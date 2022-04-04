@@ -1,0 +1,41 @@
+@import '../fonts/font-mixins';
+//Контейнеры
+@mixin with-screen-lg-padding($r: true, $l: true){
+  @if $l {
+    padding-left: $screen-lg-padding;
+  }
+  @if $r {
+    padding-right: $screen-lg-padding;
+  }
+}
+
+@mixin with-screen-sm-padding($r: true, $l: true){
+  @if $l {
+    padding-left: $screen-sm-padding;
+  }
+  @if $r {
+    padding-right: $screen-sm-padding;
+  }
+}
+
+@mixin with-screen-xs-padding($r: true, $l: true){
+  @if $l {
+    padding-left: $screen-xs-padding;
+  }
+  @if $r {
+    padding-right: $screen-xs-padding;
+  }
+}
+
+@mixin with-screen-padding($r: true, $l: true){
+  @include with-screen-xs-padding($r,$l);
+  @include for-sm{
+    @include with-screen-sm-padding($r,$l);
+  }
+  @include for-lg{
+    @include with-screen-lg-padding($r,$l);
+  }
+}
+
+
+

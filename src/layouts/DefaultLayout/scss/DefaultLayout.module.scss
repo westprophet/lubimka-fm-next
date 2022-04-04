@@ -1,0 +1,7 @@
+@import 'mixins/index';
+.DefaultLayout {
+  background-color: var(--bg-deep-color);
+  width: 100%;
+  height: 100%;
+  @include layout-padding(false, false, true, false);
+}

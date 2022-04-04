@@ -23,7 +23,7 @@ export default async function getCompanies(): Promise<IStrapiReturn<ICompany[]> 
     //Проверяем входящие данные
     if (isValidGetCompaniesResponse(data)) {
       return {
-        data: normalizeGetCompanies(data.data), //Делаем нормализацию
+        data: data.data, //Делаем нормализацию
         meta: data.meta,
       };
     } else throw '';

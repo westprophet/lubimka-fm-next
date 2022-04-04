@@ -1,0 +1,85 @@
+@import 'data';
+
+.PlayButton {
+  height: $size-xs;
+  width: $size-xs;
+  min-width: $size-xs;
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-shrink: 0;
+
+  &:global {
+    &.sm {
+      @include for-sm {
+        height: $size-sm;
+        width: $size-sm;
+        min-width: $size-sm;
+      }
+    }
+
+    &.md {
+      @include for-md {
+        height: $size-md;
+        width: $size-md;
+        min-width: $size-md;
+        button svg {
+          font-size: 2rem;
+        }
+      }
+    }
+
+    &.lg {
+      @include for-lg {
+        height: $size-lg;
+        width: $size-lg;
+        min-width: $size-lg;
+        button svg {
+          font-size: 3rem;
+        }
+      }
+    }
+  }
+
+  button {
+    width: calc(100% - #{$stroke-width-xs}px);
+    height: calc(100% - #{$stroke-width-xs}px);
+    color: var(--primary-color);
+  }
+
+  .circular {
+    position: absolute;
+    color: var(--primary-color);
+    width: 100% !important;
+    height: 100% !important;
+    //z-index: 2;
+    svg {
+      circle {
+        stroke-width: $stroke-width-xs;
+      }
+    }
+  }
+
+  &.type2 {
+    button {
+      background-color: var(--acсent-color);
+      color: var(--primary-color);
+    }
+
+    :local(.circular) {
+      color: var(--acсent-color);
+
+      &:global(.MuiCircularProgress-indeterminate) {
+        color: var(--third-color);
+      }
+    }
+
+    &:local(&.disable) {
+      button {
+        color: var(--border-color);
+      }
+    }
+  }
+
+}

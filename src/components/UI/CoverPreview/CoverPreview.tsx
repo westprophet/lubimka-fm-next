@@ -15,9 +15,10 @@ import { CircularProgress } from '@mui/material';
 export default function CoverPreview({ className, image, type, isLoading }: ICoverPreviewProps) {
   const isAdaptive = type === 'adaptive';
   let url = logo;
+
   if (image) url = typeof image === 'string' ? image : image.url;
   const size = useSizeByType(type);
-  const settings = !isAdaptive ? size : { layout: 'fill' }; //Если адаптивний размер то делаем
+  const settings = !isAdaptive ? size : { layout: 'fill' };
   return (
     <div className={cn(s.CoverPreview, { [s.adaptive]: isAdaptive }, className)}>
       {isLoading ? (
@@ -38,7 +39,7 @@ CoverPreview.defaultProps = {
 
 interface ICoverPreviewProps {
   className?: string;
-  isLoading: boolean;
+  isLoading?: boolean;
   image: IStrapiImage | string;
   type?: TType;
 }

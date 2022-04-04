@@ -1,6 +1,7 @@
 import TLanguages from '../types/TLanguages';
-import ISocial from './ISocial';
+import ISocial from './others/ISocial';
 import TStrapiResponseContainer from '../api/strapi/types/TStrapiResponseContainer';
+import IPhone from './others/IPhone';
 
 export interface ICompanyInner {
   id?: number;
@@ -8,7 +9,7 @@ export interface ICompanyInner {
   Title: string;
   Subtitle: string;
   Socials: ISocial[];
-  Phones: any; //*
+  Phones: IPhone[];
   createdAt?: string;
   updatedAt?: string;
   publishedAt?: string;

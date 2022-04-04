@@ -9,6 +9,7 @@ import cn from 'classnames';
 import ArrowBackIosNewIcon from '@mui/icons-material/ArrowBackIosNew';
 import ArrowForwardIosIcon from '@mui/icons-material/ArrowForwardIos';
 import { IconButton } from '@mui/material';
+import ArrowButton from 'components/UI/buttons/ArrowButton';
 
 export default function ControlArrows({
   className,
@@ -19,12 +20,8 @@ export default function ControlArrows({
 }: IControlArrowsProps) {
   return (
     <div className={cn(s.ControlArrows, className)}>
-      <IconButton onClick={onClickLeft} className={cn(s.leftButton, classNameL)}>
-        <ArrowBackIosNewIcon />
-      </IconButton>
-      <IconButton onClick={onClickRight} className={cn(s.rightButton, classNameR)}>
-        <ArrowForwardIosIcon />
-      </IconButton>
+      <ArrowButton onClick={onClickLeft} className={cn(s.leftButton, classNameL)} side="left" />
+      <ArrowButton onClick={onClickRight} className={cn(s.rightButton, classNameR)} side="right" />
     </div>
   );
 }

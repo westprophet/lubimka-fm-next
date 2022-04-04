@@ -1,18 +1,22 @@
 @import 'data';
-@import '../../mixins';
+@import '../../scss/mixins';
 
 .AsideBar {
-  width: $width;
+  width: $width-sm;
   height: 100vh;
   z-index: 1;
   top: 0;
   bottom: 0;
   display: none;
-  @include full-page-padding(true, false, true, false);
-  @include for-md{
+  justify-content: space-evenly;
+  flex-direction: column;
+  @include layout-padding(true,false,true,false);
+  @include for-sm{
     display: flex;
-    justify-content: space-evenly;
-    flex-direction: column;
+    width: $width-sm;
+  }
+  @include for-md{
+    width: $width-md;
   }
   @include for-lg{
     width: $width-lg;

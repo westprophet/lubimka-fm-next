@@ -3,8 +3,6 @@
   display: grid;
   align-items: center;
   grid-gap: 50px;
-  @include with-screen-padding(false, true);
-
   button {
     cursor: pointer;
     margin: auto;

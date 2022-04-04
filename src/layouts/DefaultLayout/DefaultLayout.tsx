@@ -3,7 +3,7 @@
  */
 
 import React from 'react';
-import s from './DefaultLayout.module.scss';
+import s from './scss/DefaultLayout.module.scss';
 import cn from 'classnames';
 
 import DefaultHeader from './components/DefaultHeader';

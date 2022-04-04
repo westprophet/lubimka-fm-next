@@ -1,0 +1,12 @@
+.ArrowButton {
+  color: var(--border-color);
+  padding:0;
+  svg{
+    font-size: .8em;
+  }
+  @include for-lg{
+    svg{
+      font-size: 1.5em;
+    }
+  }
+}

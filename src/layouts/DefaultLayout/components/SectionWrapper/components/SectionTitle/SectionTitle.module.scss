@@ -1,0 +1,14 @@
+.SectionTitle {
+  font-weight: 700;
+  line-height: 17px;
+  font-size: 14px;
+  color: var(--text-color);
+  margin-bottom: 25px;
+  @include for-md{
+    margin-bottom: 60px;
+    @include f2{
+      font-size: 30px;
+      line-height: 37px;
+    }
+  }
+}

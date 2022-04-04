@@ -1,0 +1,20 @@
+//-------------------------------------------------------------------
+//Эффект увеличения картинки (присваивать нужно картинке этот миксин)
+@mixin zoom-effect(){
+  @include zoom-effect-on-leave();
+  &:hover {
+    @include zoom-effect-on-hover();
+  }
+}
+//При покидании
+@mixin zoom-effect-on-leave(){
+  transition: .3s ease-out;
+  cursor: pointer;
+}
+//При наведении
+@mixin zoom-effect-on-hover(){
+  transform: scale(1.1) !important;
+  transition: .3s ease-out;
+}
+
+//-------------------------------------------------------------------

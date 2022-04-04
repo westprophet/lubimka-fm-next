@@ -16,7 +16,6 @@ import Channel from 'components/Channel';
 //Селектор каналов в плеере
 export default function ChannelMenuSelector({ className, isOpen }: IChannelMenuSelectorProps) {
   const { channels, current } = useContext(ChannelManagerContext);
-  // const { status, play, stop } = useContext(RadioPlayerContext);
   const isMobile = useIsMobile();
 
   //Прячем настройки и прочую штуку сюда

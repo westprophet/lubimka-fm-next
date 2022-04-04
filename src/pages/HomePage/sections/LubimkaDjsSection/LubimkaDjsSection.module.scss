@@ -1,3 +1,18 @@
-.LubimkaDjsSection {
+@import '../../../../components/SliderWrapper/mixins';
 
+.LubimkaDjsSection {
+  width: 100%;
+  position: relative;
+  .arrow{
+    position: absolute;
+    &.leftArrow{
+      left: 0;
+    }
+    &.rightArrow{
+      right: 0;
+    }
+  }
+  .slider{
+    //@include set-slick-gap();
+  }
 }

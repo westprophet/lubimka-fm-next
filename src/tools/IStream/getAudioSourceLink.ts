@@ -1,4 +1,4 @@
-import IStream from 'src/interfaces/IStream';
+import IStream from 'src/interfaces/others/IStream';
 
 //Получаем ссылку на поток
 export default function getAudioSourceLink(s: IStream): null | string {

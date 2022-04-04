@@ -10,7 +10,7 @@ export default function BannerSection() {
       <div className={cn(s.inner)}>
         <ShineBannerSpectrum />
         <div className={cn(s.description)}>
-          <h1>Lubimka FM</h1>
+          {/*<h1>Lubimka FM</h1>*/}
           <h2>Мир любимой музыки в твоём кармане</h2>
           <p></p>
         </div>

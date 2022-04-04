@@ -1,0 +1,4 @@
+@import "../../scss/mixins";
+.SectionWrapper {
+  @include layout-padding(false, true, false, true);
+}

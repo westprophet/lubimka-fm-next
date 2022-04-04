@@ -1,0 +1,77 @@
+@import "../data";
+
+//Отступы внутри секции
+@mixin inner-section-padding-xs($t: true, $r: true,$b: true, $l: true  ){
+  @if $t {
+    padding-top: $inner-section-v-padding-xs;
+  }
+  @if $r {
+    padding-right: $inner-section-h-padding-xs;
+  }
+  @if $b {
+    padding-bottom: $inner-section-v-padding-xs;
+  }
+  @if $l {
+    padding-left: $inner-section-h-padding-xs;
+  }
+}
+
+@mixin inner-section-padding-sm($t: true, $r: true,$b: true, $l: true){
+  @if $t {
+    padding-top: $inner-section-v-padding-sm;
+  }
+  @if $r {
+    padding-right: $inner-section-h-padding-sm;
+  }
+  @if $b {
+    padding-bottom: $inner-section-v-padding-sm;
+  }
+  @if $l {
+    padding-left: $inner-section-h-padding-sm;
+  }
+}
+
+@mixin inner-section-padding-md($t: true, $r: true,$b: true, $l: true){
+  @if $t {
+    padding-top: $inner-section-v-padding-md;
+  }
+  @if $r {
+    padding-right: $inner-section-h-padding-md;
+  }
+  @if $b {
+    padding-bottom: $inner-section-v-padding-md;
+  }
+  @if $l {
+    padding-left: $inner-section-h-padding-md;
+  }
+}
+
+@mixin inner-section-padding-lg($t: true, $r: true,$b: true, $l: true){
+  @if $t {
+    padding-top: $inner-section-v-padding-lg;
+  }
+  @if $r {
+    padding-right: $inner-section-h-padding-lg;
+  }
+  @if $b {
+    padding-bottom: $inner-section-v-padding-lg;
+  }
+  @if $l {
+    padding-left: $inner-section-h-padding-lg;
+  }
+}
+
+@mixin inner-section-padding($t: true, $r: true, $b: true, $l: true){
+  @include inner-section-padding-xs($t,$r,$b,$l);
+  @include for-sm{
+    @include inner-section-padding-sm($t,$r,$b,$l);
+  }
+  @include for-md{
+    @include inner-section-padding-md($t,$r,$b,$l);
+  }
+  @include for-lg{
+    @include inner-section-padding-lg($t,$r,$b,$l);
+  }
+}
+
+

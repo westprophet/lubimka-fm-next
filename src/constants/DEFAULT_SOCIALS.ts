@@ -1,4 +1,4 @@
-import ISocial from '../interfaces/ISocial';
+import ISocial from '../interfaces/others/ISocial';
 
 const DEFAULT_SOCIALS: ISocial[] = [
   {

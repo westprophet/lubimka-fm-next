@@ -16,7 +16,7 @@ import rTools from '../../../../api/radioheathAPI/tools';
 import CommonPlayerCover from './components/CommonPlayerCover';
 import CommonPlayerAction from './components/CommonPlayerAction';
 import ChannelMenuSelector from './sections/ChannelMenuSelector';
-import PlayerControlComponent from 'components/UI/PlayerControlComponent';
+import PlayerControlComponent from 'components/UI/buttons/PlayerControlComponent';
 
 //плеер
 export default function CommonPlayer({ className }: ICommonPlayerProps) {
@@ -38,7 +38,14 @@ export default function CommonPlayer({ className }: ICommonPlayerProps) {
       )}
     >
       <CommonPlayerCover className={cn(s.cover)} image={image} isLoading={isLoading} />
-      <PlayerControlComponent className={cn(s.controls)} status={status} play={play} stop={stop} />
+      <PlayerControlComponent
+        className={cn(s.controls)}
+        status={status}
+        play={play}
+        stop={stop}
+        lg={false}
+        md={false}
+      />
       <CommonPlayerTitle className={cn(s.title)} ft={title} />
       <CommonPlayerAction
         channel={channel}

@@ -11,7 +11,7 @@ import Image from 'next/image';
 import IStrapiImage from '../../../interfaces/IStrapiImage';
 import { TAudioManagerStatus } from '../../../types/TAudioManagerStatus';
 import { TChannelComponentType } from './types';
-import PlayerControlComponent from 'components/UI/PlayerControlComponent';
+import PlayerControlComponent from 'components/UI/buttons/PlayerControlComponent';
 
 export default function ChannelComponent({
   className,
@@ -46,8 +46,10 @@ export default function ChannelComponent({
             play={onPlay}
             stop={onStop}
             status={!active ? 'paused' : status}
-            type={2}
+            // type={2}
             disable={disabled}
+            lg={false}
+            md={false}
           />
         </div>
         <div className={cn(s.title)}>{channel.attributes.title}</div>

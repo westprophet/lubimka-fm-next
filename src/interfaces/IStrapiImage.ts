@@ -1,4 +1,5 @@
 import TImageExtension from 'src/types/TImageExtension';
+import TStrapiResponseContainer from '../api/strapi/types/TStrapiResponseContainer';
 
 export default interface IStrapiImage {
   name: string;
@@ -18,3 +19,7 @@ export default interface IStrapiImage {
   createdAt: string;
   updatedAt: string;
 }
+
+export type IWrappedStrapiImage = {
+  data: TStrapiResponseContainer<IStrapiImage> | TStrapiResponseContainer<IStrapiImage>[];
+};

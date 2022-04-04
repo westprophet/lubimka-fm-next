@@ -1,0 +1,15 @@
+@mixin set-slick-gap($gap: 15px){
+  :global{
+    .slick-list {margin: 0 -$gap;}
+    .slick-slide>div {padding: 0 $gap;}
+  }
+}
+@mixin slick-gap(){
+  @include set-slick-gap(5px);
+  @include for-sm{
+    @include set-slick-gap(15px);
+  }
+  @include for-lg{
+    @include set-slick-gap(30px);
+  }
+}
