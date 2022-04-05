@@ -1,9 +1,6 @@
 .Slide {
   //padding-left: 30px;
-  margin-right: 5px;
-  @include for-md{
-    margin-right: 15px;
-  }
+  margin-right: 15px;
   @include for-lg{
     margin-right: 30px;
   }

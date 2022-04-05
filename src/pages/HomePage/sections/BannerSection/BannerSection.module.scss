@@ -1,35 +1,53 @@
 .BannerSection {
   background-color: var(--bg-deep-color);
   color: var(--text-color);
-  .inner {
-    display: grid;
-    grid-template-columns: 3fr 5fr;
+  .inner{
+    width: 100%;
     height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
     align-items: center;
-
-    .spectrumContainer {
-      height: 60vh;
+    text-align: center;
+    h1{
+      text-transform: uppercase;
+      letter-spacing: 0.2em;
+      font-weight: 900;
+      font-size: 140px;
+      margin-bottom: 30px;
+    }
+    h2{
+      font-weight: 700;
+      font-size: 24px;
+      line-height: 23px;
+      letter-spacing: 0.05em;
     }
   }
-
-  .description {
-
-    h1 {
-      @include f1() {
-        margin-bottom: 20px;
-        letter-spacing: 0.05em;
-      }
-    }
-
-    h2 {
-      @include f3() {
-        font-weight: 700;
-      }
-    }
-    p{
-      @include f3() {
-        font-weight: 700;
-      }
-    }
-  }
+  //.inner {
+  //  display: grid;
+  //  grid-template-columns: 3fr 5fr;
+  //  height: 100%;
+  //  align-items: center;
+  //}
+  //
+  //.description {
+  //
+  //  h1 {
+  //    @include f1() {
+  //      margin-bottom: 20px;
+  //      letter-spacing: 0.05em;
+  //    }
+  //  }
+  //
+  //  h2 {
+  //    @include f3() {
+  //      font-weight: 700;
+  //    }
+  //  }
+  //  p{
+  //    @include f3() {
+  //      font-weight: 700;
+  //    }
+  //  }
+  //}
 }

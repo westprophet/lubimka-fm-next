@@ -21,5 +21,9 @@ export default interface IStrapiImage {
 }
 
 export type IWrappedStrapiImage = {
-  data: TStrapiResponseContainer<IStrapiImage> | TStrapiResponseContainer<IStrapiImage>[];
+  data: TStrapiResponseContainer<IStrapiImage>;
+};
+
+export type IWrappedStrapiImages = {
+  data: TStrapiResponseContainer<IStrapiImage>[];
 };

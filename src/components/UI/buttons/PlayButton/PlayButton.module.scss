@@ -16,6 +16,9 @@
         height: $size-sm;
         width: $size-sm;
         min-width: $size-sm;
+        button svg {
+          font-size: 1.5rem;
+        }
       }
     }
 

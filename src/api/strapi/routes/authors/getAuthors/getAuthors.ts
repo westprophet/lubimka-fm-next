@@ -4,7 +4,7 @@ import IStrapiReturn from '../../../types/IStrapiReturn';
 import isValidGetAuthorsResponse from './validators/isValidGetAuthorResponse';
 import { TGetAuthorsResponse } from './types/IGetAuthorsResponse';
 
-export default async function getAuthors(): Promise<IStrapiReturn<IAuthor[]> | []> {
+export default async function getAuthors(): Promise<IGetAuthorsReturn> {
   try {
     const { data }: { data: TGetAuthorsResponse } = await StrapiAxios.get('/authors', {
       params: {
@@ -24,3 +24,4 @@ export default async function getAuthors(): Promise<IStrapiReturn<IAuthor[]> | [
     return [];
   }
 }
+export type IGetAuthorsReturn = IStrapiReturn<IAuthor[]> | [];

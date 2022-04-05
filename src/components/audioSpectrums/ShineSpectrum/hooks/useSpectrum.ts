@@ -1,7 +1,7 @@
 import { useEffect, useRef } from 'react';
 import { Wave } from '@foobar404/wave';
 
-export default function useSpectrum(audioID: string, canvasID: string, options) {
+export default function useSpectrum(audioID: string, canvasID: string) {
   const _wave = useRef<Wave>();
   const isNotEmpty = audioID && canvasID;
 

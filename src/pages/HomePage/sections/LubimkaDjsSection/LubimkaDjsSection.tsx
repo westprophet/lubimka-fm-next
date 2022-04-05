@@ -8,63 +8,37 @@ import cn from 'classnames';
 import AuthorComponent from 'components/UI/AuthorComponent';
 import Slider from '../../../../components/SliderWrapper';
 import SectionSliderWrapper from '../../../../layouts/DefaultLayout/components/SectionSliderWrapper';
+import useLastAuthors from './hooks/useLastAuthors';
+import { IAuthor } from '../../../../interfaces';
+import isEmptyArray from 'src/utils/isEmptyArray';
 
 export default function LubimkaDjsSection() {
+  const { authors, isLoading } = useLastAuthors(); //Получаем авторов
+  if (isLoading) return 'loading';
+  if (isEmptyArray(authors) && !isLoading) return null;
   return (
     <SectionSliderWrapper className={cn(s.LubimkaDjsSection)} title="Любимка DJ’s">
-      <Slider.Slide>
-        <AuthorComponent />
-      </Slider.Slide>
-      <Slider.Slide>
-        <AuthorComponent />
-      </Slider.Slide>
-      <Slider.Slide>
-        <AuthorComponent />
-      </Slider.Slide>
-      <Slider.Slide>
-        <AuthorComponent />
-      </Slider.Slide>
-      <Slider.Slide>
-        <AuthorComponent />
-      </Slider.Slide>
-      <Slider.Slide>
-        <AuthorComponent />
-      </Slider.Slide>
-      <Slider.Slide>
-        <AuthorComponent />
-      </Slider.Slide>
+      {authors?.map((a: IAuthor) => {
+        return (
+          <Slider.Slide key={`author-${a.attributes.name}`}>
+            <AuthorComponent author={a} />
+          </Slider.Slide>
+        );
+      })}
+      {authors?.map((a: IAuthor) => {
+        return (
+          <Slider.Slide key={`author-${a.attributes.name}`}>
+            <AuthorComponent author={a} />
+          </Slider.Slide>
+        );
+      })}
+      {authors?.map((a: IAuthor) => {
+        return (
+          <Slider.Slide key={`author-${a.attributes.name}`}>
+            <AuthorComponent author={a} />
+          </Slider.Slide>
+        );
+      })}
     </SectionSliderWrapper>
-
-    // <SectionWrapper.Wrapper >
-    //   {/*<Slider.SideBar side="left" onClick={() => {}} />*/}
-    //   {/*<ArrowButton className={cn(s.arrow, s.leftArrow)} onClick={() => {}} side="left" />*/}
-    //   <SectionWrapper.Inner>
-    //     <SectionWrapper.Title>Любимка DJ’s</SectionWrapper.Title>
-    //     <Slider.Wrapper swipe className={cn(s.slider)}>
-    //       <Slider.Slide>
-    //         <AuthorComponent />
-    //       </Slider.Slide>
-    //       <Slider.Slide>
-    //         <AuthorComponent />
-    //       </Slider.Slide>
-    //       <Slider.Slide>
-    //         <AuthorComponent />
-    //       </Slider.Slide>
-    //       <Slider.Slide>
-    //         <AuthorComponent />
-    //       </Slider.Slide>
-    //       <Slider.Slide>
-    //         <AuthorComponent />
-    //       </Slider.Slide>
-    //       <Slider.Slide>
-    //         <AuthorComponent />
-    //       </Slider.Slide>
-    //       <Slider.Slide>
-    //         <AuthorComponent />
-    //       </Slider.Slide>
-    //     </Slider.Wrapper>
-    //   </SectionWrapper.Inner>
-    //   {/*<ArrowButton onClick={() => {}} side="right" />*/}
-    // </SectionWrapper.Wrapper>
   );
 }

@@ -8,8 +8,7 @@ import cn from 'classnames';
 import useSpectrum from './hooks/useSpectrum';
 
 export default function ShineSpectrum({ audioID, id, className }: IAudioSpectrumProps) {
-  const options = { type: 'shine' };
-  const wave = useSpectrum(audioID, id, options);
+  const wave = useSpectrum(audioID, id);
   return (
     <div className={cn(s.AudioSpectrum, className)}>
       <canvas width={800} height={800} id={id} />

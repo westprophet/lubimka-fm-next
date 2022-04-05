@@ -40,6 +40,10 @@
       }
     }
   }
+  .title{
+    width: 100%;
+    white-space: nowrap;
+  }
   &:global {
     &.sm {
       @include for-sm {

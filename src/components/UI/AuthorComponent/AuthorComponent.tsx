@@ -6,15 +6,18 @@ import React from 'react';
 import s from './AuthorComponent.module.scss';
 import cn from 'classnames';
 import NoCover from 'assets/no-photo-heath.svg';
-import IStrapiImage from '../../../interfaces/IStrapiImage';
 import Image from 'next/image';
 import NoImage from 'components/UI/NoImage';
 import PlayButton from 'components/UI/buttons/PlayButton';
+import { IAuthor } from 'src/interfaces';
+import Marquee from 'react-double-marquee';
+import tools from '../../../tools';
+import DATA_FOR_BLUR from '../../../constants/DATA_FOR_BLUR';
 
-export default function AuthorComponent({ className, cover, sm, md, lg }: IAuthorComponentProps) {
-  let url = NoCover;
-  if (cover) url = typeof cover === 'string' ? cover : cover.url;
-
+export default function AuthorComponent({ className, author, sm, md, lg }: IAuthorComponentProps) {
+  const cover = author.attributes.avatar; // получаем данные о картинке
+  let url: string | null = tools.IWrappedStrapiImage.getImageUrl(cover); //Получаем картинку
+  if (!url) url = NoCover; //ставим заглушку если нет картинки
   return (
     <div
       className={cn(s.AuthorComponent, className, {
@@ -25,7 +28,14 @@ export default function AuthorComponent({ className, cover, sm, md, lg }: IAutho
     >
       <div className={cn(s.inner)}>
         {cover ? (
-          <Image src={url} className={cn(s.cover, 'zoom-effect')} layout="fill" />
+          <Image
+            src={url}
+            className={cn(s.cover, 'zoom-effect')}
+            layout="fill"
+            objectFit="cover"
+            placeholder="blur"
+            blurDataURL={DATA_FOR_BLUR}
+          />
         ) : (
           <NoImage className={cn(s.cover, 'zoom-effect')} />
         )}
@@ -33,7 +43,11 @@ export default function AuthorComponent({ className, cover, sm, md, lg }: IAutho
           <PlayButton className={cn(s.button)} onClick={() => {}} status="paused" type={2} />
         </div>
       </div>
-      <div>Исполнитель</div>
+      <div className={cn(s.title)}>
+        <Marquee speed={0.02} direction="left">
+          {author.attributes.name}
+        </Marquee>
+      </div>
     </div>
   );
 }
@@ -48,7 +62,7 @@ AuthorComponent.defaultProps = {
 
 interface IAuthorComponentProps {
   className?: string;
-  cover?: IStrapiImage | string;
+  author: IAuthor;
   sm?: boolean;
   md?: boolean;
   lg?: boolean;
