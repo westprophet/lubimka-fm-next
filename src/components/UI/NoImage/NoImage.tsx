@@ -9,7 +9,7 @@ import logo from 'assets/logo.svg';
 export default function NoImage({ className }: INoImageProps) {
   return (
     <div className={cn(s.NoImage, className)}>
-      <img src={logo} alt="no image logo lubimka" />
+      <img src="/logo.svg" alt="no image logo lubimka" />
     </div>
   );
 }

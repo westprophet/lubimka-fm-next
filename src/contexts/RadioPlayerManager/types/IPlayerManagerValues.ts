@@ -7,6 +7,7 @@ export default interface IPlayerManagerValues {
   status: TAudioManagerStatus;
   play(): any;
   stop(): any;
+  toggle(): any;
   channel: IChannel | null;
   audioRef: MutableRefObject<HTMLAudioElement> | null;
   id: string;

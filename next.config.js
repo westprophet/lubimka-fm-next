@@ -1,5 +1,6 @@
 const withPlugins = require('next-compose-plugins');
 const withOptimizedImages = require('next-optimized-images');
+const withImages = require('next-images');
 const path = require('path');
 
 const isProduction =
@@ -24,6 +25,11 @@ const nextConfig = {
   },
   webpack: (config, { buildId, dev, isServer, defaultLoaders, webpack }) => {
     config.resolve.modules.push(path.resolve('./src/'));
+    config.module.rules.push({
+      test: /\.svg$/i,
+      issuer: /\.[jt]sx?$/,
+      use: ['@svgr/webpack'],
+    });
     return config;
   },
 };
@@ -31,6 +37,10 @@ const nextConfig = {
 //Image next config
 const imagesPluginSetting = {
   images: {
+    // disableStaticImages: true,
+    formats: ['image/avif', 'image/webp'],
+    dangerouslyAllowSVG: true,
+    contentSecurityPolicy: "default-src 'self'; script-src 'none'; sandbox;",
     domains: [
       'lubimka-fm.redw.me',
       'localhost',
@@ -56,12 +66,12 @@ const imagesOptimizePluginSettings = [
     inlineImageLimit: 1024, // если размер картинки будет больше чем это значение тогда будет вставлятся ссылка, если меньше то бинарник
     imagesFolder: 'images',
     imagesName: '[name]-[hash].[ext]',
-    handleImages: ['jpeg', 'png', 'svg', 'webp', 'ico', 'gif'],
+    handleImages: ['jpeg', 'png', 'svg', 'webp', 'ico', 'gif', 'jpg'],
     removeOriginalExtension: true,
-    optimizeImages: true,
-    optimizeImagesInDev: true,
+    optimizeImages: false,
+    optimizeImagesInDev: false,
     svgo: {
-      plugins: [{ removeComments: false }],
+      plugins: [{ removeComments: true }],
     },
     mozjpeg: {
       quality: 70,
@@ -78,7 +88,4 @@ const imagesOptimizePluginSettings = [
 ];
 
 //обьеденяем плагины и конфигурацию
-module.exports = withPlugins(
-  [imagesPluginSetting, sassPluginSetting, imagesOptimizePluginSettings],
-  nextConfig
-);
+module.exports = withPlugins([imagesPluginSetting, sassPluginSetting], nextConfig);

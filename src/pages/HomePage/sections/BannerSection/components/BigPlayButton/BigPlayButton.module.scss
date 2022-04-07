@@ -1,0 +1,58 @@
+.BigPlayButton {
+  $color: rgba(255, 255, 255, 0.1);
+  $border: 7;
+  position: relative;
+  transition: .25s;
+  &:hover{
+    button{
+      transform: scale(1.1);
+      transition: .25s;
+    }
+  }
+  .inner {
+    color: $color;
+    border: #{$border}px solid $color;
+    border-radius: 50%;
+    width: 180px;
+    height: 180px;
+    flex-shrink: 0;
+    margin: auto;
+    button {
+      z-index: 2;
+      padding: 0;
+      width: 100%;
+      height: 100%;
+      font-size: 100px;
+      color: currentColor;
+      transition: .25s;
+      svg {
+        font-size: 8rem;
+      }
+    }
+
+
+    .circular {
+      position: absolute;
+      color: #B63CCD;
+      //color: linear-gradient(100.98deg, #2841B7 -6.43%, #B63CCD 25.05%, #CF4CBA 58.23%, #9A43F0 92.22%);
+      width: 100% !important;
+      height: 100% !important;
+      left: 0;
+      top: 0;
+      z-index: 1;
+      opacity: 0;
+      transition: .3s;
+      svg circle {
+        stroke-width: 2px;
+      }
+      &.loadingCirc{
+        opacity: 1;
+        transition: .3s;
+      }
+    }
+
+    &.loading {
+
+    }
+  }
+}

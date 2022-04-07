@@ -7,14 +7,14 @@ import s from './CoverPreview.module.scss';
 import cn from 'classnames';
 import IStrapiImage from 'src/interfaces/IStrapiImage';
 import Image from 'next/image';
-import logo from 'assets/logo.svg';
+// import logo from 'assets/logo.svg';
 import useSizeByType from 'components/UI/CoverPreview/hooks/useSizeByType';
 import TType from './types/TType';
 import { CircularProgress } from '@mui/material';
 
 export default function CoverPreview({ className, image, type, isLoading }: ICoverPreviewProps) {
   const isAdaptive = type === 'adaptive';
-  let url = logo;
+  let url = 'logo.svg';
 
   if (image) url = typeof image === 'string' ? image : image.url;
   const size = useSizeByType(type);

@@ -1,7 +1,8 @@
 .BannerSection {
-  background-color: var(--bg-deep-color);
+  background-color: #000;
   color: var(--text-color);
-  .inner{
+
+  .inner {
     width: 100%;
     height: 100%;
     display: flex;
@@ -9,45 +10,48 @@
     justify-content: center;
     align-items: center;
     text-align: center;
-    h1{
-      text-transform: uppercase;
-      letter-spacing: 0.2em;
-      font-weight: 900;
-      font-size: 140px;
-      margin-bottom: 30px;
+
+    .titleContainer {
+      //background: url('../../../../assets/title-bg.jpg');
+      //background: url('../../../../assets/test/dancing-people-club.jpg');
+      //background: url('../../../../assets/test/title-bg-2.jpg');
+      //background: url('../../../../assets/test/title-bg-3.jpg');
+      background: url('../../../../assets/test/title-bg-3-smoth.jpg');
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      animation: bg-swim 25s linear infinite;
+      h1 {
+        text-transform: uppercase;
+        letter-spacing: 0.2em;
+        font-weight: 900;
+        font-size: 140px;
+        margin-bottom: 30px;
+      }
     }
-    h2{
+
+    h2 {
       font-weight: 700;
       font-size: 24px;
       line-height: 23px;
       letter-spacing: 0.05em;
     }
   }
-  //.inner {
-  //  display: grid;
-  //  grid-template-columns: 3fr 5fr;
-  //  height: 100%;
-  //  align-items: center;
-  //}
-  //
-  //.description {
-  //
-  //  h1 {
-  //    @include f1() {
-  //      margin-bottom: 20px;
-  //      letter-spacing: 0.05em;
-  //    }
-  //  }
-  //
-  //  h2 {
-  //    @include f3() {
-  //      font-weight: 700;
-  //    }
-  //  }
-  //  p{
-  //    @include f3() {
-  //      font-weight: 700;
-  //    }
-  //  }
-  //}
+}
+
+@keyframes bg-swim {
+  0% {
+    background-position: 10% 10%;
+  }
+  30% {
+    background-position: 30% 50%;
+  }
+  50% {
+    background-position: 90% 0;
+  }
+  80% {
+    background-position: 90% 90%;
+  }
+  100% {
+    background-position: 10% 10%;
+  }
 }

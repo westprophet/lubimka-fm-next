@@ -1,12 +1,13 @@
 import IPlayerManagerValues from '../types/IPlayerManagerValues';
 
-export const INITIAL_VALUES: IPlayerManagerValues = {
+const INITIAL_VALUES: IPlayerManagerValues = {
   status: 'paused',
   audioRef: null,
   play: () => {},
   stop: () => {},
   channel: null,
   id: '',
+  data: null,
 };
 
 export default INITIAL_VALUES;

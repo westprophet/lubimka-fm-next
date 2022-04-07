@@ -3,6 +3,7 @@ import IChannel from '../../../interfaces/IChannel';
 import useCurrentChannel from './useCurrentChannel';
 import { setLocalChannel } from '../utils';
 import useChannels from './useChannels';
+import useChannelsMethods from './useChannelsMethods';
 
 export default function useChannelState() {
   const { channels, isLoading } = useChannels(); //Получаем каналы
@@ -12,5 +13,14 @@ export default function useChannelState() {
     setLocalChannel(c);
     setChannel(c);
   };
-  return { current, setChannel: _setChannel, channels, isLoadingChannels: isLoading };
+  const { nextChannel, prevChannel } = useChannelsMethods(setChannel, current, channels);
+
+  return {
+    current,
+    setChannel: _setChannel,
+    channels,
+    isLoadingChannels: isLoading,
+    prevChannel,
+    nextChannel,
+  };
 }

@@ -4,7 +4,7 @@ import { useSnackbar } from 'notistack';
 import { TAudioManagerStatus } from '../../../types/TAudioManagerStatus';
 import useCreateDataStream from './useCreateDataStream';
 
-let play, load, onCanPlay, stop, onError, reload;
+let play, load, onCanPlay, stop, onError, reload, toggle;
 export default function useInitialAudioMethods(channel: IChannel) {
   const [status, setStatus] = useState<TAudioManagerStatus>('paused'); // Статус плеера
   const audioRef = createRef<HTMLMediaElement>(); //Тег плеера
@@ -29,6 +29,11 @@ export default function useInitialAudioMethods(channel: IChannel) {
     audioRef.current?.pause();
     stopStream();
   }, [audioRef, stopStream]);
+
+  toggle = useCallback(() => {
+    if (status == 'paused') play();
+    else stop();
+  }, [status]);
 
   //перезагрузить
   reload = useCallback(() => {
@@ -64,6 +69,7 @@ export default function useInitialAudioMethods(channel: IChannel) {
     onCanPlay,
     onError,
     reload,
+    toggle,
     // data: data ? data.mounts[0] : null, //Отдаем данние которие будут использоваться в приложении
     data,
   };

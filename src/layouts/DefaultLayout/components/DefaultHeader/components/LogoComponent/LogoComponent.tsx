@@ -5,12 +5,13 @@
 import React from 'react';
 import s from './LogoComponent.module.scss';
 import cn from 'classnames';
-import logo from 'assets/logo.svg';
+// import Logo from 'assets/logo.svg';
 
 export default function LogoComponent({ className }: ILogoComponentProps) {
   return (
     <a href="/" className={cn(s.LogoComponent, className)}>
-      <img className={cn(s.logoImg)} src={logo} alt={'header logo lubimka'} />
+      {/*<Logo className={cn(s.logoImg)} />*/}
+      <img className={cn(s.logoImg)} src={'/logo.svg'} alt={'header logo lubimka'} />
       <div className={cn(s.logoTitle)}>
         Radio
         <br />

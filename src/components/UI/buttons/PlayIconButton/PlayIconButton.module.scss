@@ -1,0 +1,30 @@
+.PlayIconButton {
+  animation: press-play-button .25s;
+  &.paused > * {
+    animation: unpress-play-button .25s;
+  }
+  &.played > * {
+    animation: press-play-button .25s;
+  }
+}
+
+
+
+@keyframes press-play-button {
+  from {
+    transform: scale(1.5);
+  }
+  to {
+    transform: scale(1);
+  }
+}
+@keyframes unpress-play-button {
+  from {
+    transform: scale(.5);
+  }
+  to {
+    transform: scale(1);
+  }
+}
+
+

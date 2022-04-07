@@ -1,6 +1,12 @@
 .ArrowButton {
   color: var(--border-color);
   padding:0;
+  transition: .25s;
+  &:hover{
+    transform: scale(1.2);
+    transition: .25s;
+    color: var(--primary-color);
+  }
   svg{
     font-size: .8em;
   }

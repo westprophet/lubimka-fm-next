@@ -8,6 +8,7 @@ import cn from 'classnames';
 import { TAudioManagerStatus } from '../../../../types/TAudioManagerStatus';
 import { CircularProgress, IconButton } from '@mui/material';
 import { Pause, PlayArrow } from '@mui/icons-material';
+import PlayIconButton from 'components/UI/buttons/PlayIconButton';
 
 export default function PlayButton({
   className,
@@ -39,13 +40,11 @@ export default function PlayButton({
       )}
     >
       <CircularProgress
-        className={cn(s.circular)}
+        className={cn(s.circular, { [s.loadingCirc]: status === 'loading' })}
         variant={status === 'loading' ? 'indeterminate' : 'determinate'}
         value={100}
       />
-      <IconButton disabled={disable} onClick={onClick}>
-        {status === 'paused' ? <PlayArrow /> : <Pause />}
-      </IconButton>
+      <PlayIconButton status={status} onClick={onClick} disabled={disable} />
     </div>
   );
 }

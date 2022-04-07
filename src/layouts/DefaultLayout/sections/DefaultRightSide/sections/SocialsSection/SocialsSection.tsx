@@ -14,7 +14,7 @@ export default function SocialsSection({ className }: ISocialsSectionProps) {
     <div className={cn(s.SocialsSection, className)}>
       <div className={cn(s.inner)}>
         {DEFAULT_SOCIALS.map((soc: ISocial) => (
-          <SocialIcon key={soc.key ?? s.title} social={soc} className={cn(s.socialItem)} />
+          <SocialIcon key={soc.key ?? soc.title} social={soc} className={cn(s.socialItem)} />
         ))}
       </div>
       <div className={cn(s.labelContainer)}>

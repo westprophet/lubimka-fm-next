@@ -16,7 +16,7 @@ export const RadioPlayerContext = createContext<IPlayerManagerValues>(INITIAL_VA
 //Глобальный контекст радио плеера
 export default function RadioPlayerManager({ children }: IPlayerManagerProps) {
   const { current: channel, setChannel } = useContext(ChannelManagerContext); // Получаем текущий канал
-  const { play, status, onCanPlay, audioRef, stop, data, onError, reload } =
+  const { play, status, onCanPlay, audioRef, stop, data, onError, reload, toggle } =
     useInitialAudioMethods(channel);
 
   const values: IPlayerManagerValues = {
@@ -24,6 +24,7 @@ export default function RadioPlayerManager({ children }: IPlayerManagerProps) {
     audioRef,
     stop,
     play,
+    toggle,
     status,
     channel,
     data,

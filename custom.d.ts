@@ -11,3 +11,9 @@ declare module '@mui/material/styles' {
     };
   }
 }
+
+declare module '*.svg' {
+  const content: StaticImageData;
+
+  export default content;
+}
