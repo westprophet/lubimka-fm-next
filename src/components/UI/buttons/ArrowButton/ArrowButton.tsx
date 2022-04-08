@@ -9,9 +9,9 @@ import { IconButton } from '@mui/material';
 import ArrowBackIosNewIcon from '@mui/icons-material/ArrowBackIosNew';
 import ArrowForwardIosIcon from '@mui/icons-material/ArrowForwardIos';
 
-export default function ArrowButton({ className, onClick, side }: IArrowButtonProps) {
+export default function ArrowButton({ className, onClick, side, disabled }: IArrowButtonProps) {
   return (
-    <IconButton onClick={onClick} className={cn(s.ArrowButton, className)}>
+    <IconButton onClick={onClick} className={cn(s.ArrowButton, className)} disabled={disabled}>
       {side === 'left' ? <ArrowBackIosNewIcon /> : <ArrowForwardIosIcon />}
     </IconButton>
   );
@@ -19,12 +19,14 @@ export default function ArrowButton({ className, onClick, side }: IArrowButtonPr
 
 ArrowButton.defaultProps = {
   className: '',
+  disabled: false,
   side: 'left',
   onClick: () => {},
 };
 
-interface IArrowButtonProps {
+export interface IArrowButtonProps {
   className?: string;
   side?: 'left' | 'right';
   onClick?(): any;
+  disabled?: boolean;
 }

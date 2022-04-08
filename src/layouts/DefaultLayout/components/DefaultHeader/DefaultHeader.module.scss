@@ -6,7 +6,7 @@
   align-items: center;
   display: flex;
   justify-content: space-between;
-  z-index: 2;
+  z-index: 10;
   position: fixed;
   @include before-sm{
     padding-right: 0!important;

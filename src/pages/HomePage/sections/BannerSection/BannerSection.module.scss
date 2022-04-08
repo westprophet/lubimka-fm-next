@@ -10,7 +10,7 @@
     justify-content: center;
     align-items: center;
     text-align: center;
-
+    gap: 30px;
     .titleContainer {
       //background: url('../../../../assets/title-bg.jpg');
       //background: url('../../../../assets/test/dancing-people-club.jpg');
@@ -24,16 +24,29 @@
         text-transform: uppercase;
         letter-spacing: 0.2em;
         font-weight: 900;
-        font-size: 140px;
-        margin-bottom: 30px;
+        font-size: 48px;
+        display: table-caption;
+        @include for-lg{
+          font-size: 100px;
+        }
+        @include for-xxxl{
+          display: block;
+          font-size: 140px;
+        }
       }
     }
 
     h2 {
       font-weight: 700;
-      font-size: 24px;
+      font-size: 18px;
       line-height: 23px;
       letter-spacing: 0.05em;
+      @include for-lg{
+        font-size: 18px;
+      }
+      @include for-xxxl{
+        font-size: 24px;
+      }
     }
   }
 }

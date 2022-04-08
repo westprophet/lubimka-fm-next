@@ -1,6 +1,6 @@
+@import './data';
+
 .BigPlayButton {
-  $color: rgba(255, 255, 255, 0.1);
-  $border: 7;
   position: relative;
   transition: .25s;
   &:hover{
@@ -11,22 +11,39 @@
   }
   .inner {
     color: $color;
-    border: #{$border}px solid $color;
+    border: #{$border}px solid transparent;
+    width: $size-xs;
+    height: $size-xs;
     border-radius: 50%;
-    width: 180px;
-    height: 180px;
     flex-shrink: 0;
     margin: auto;
+    @include for-md{
+      width: $size-xxl;
+      height: $size-xxl;
+    }
+    @include for-lg{
+      width: $size-lg;
+      height: $size-lg;
+    }
+    @include for-xxxl{
+      width: $size-xxl;
+      height: $size-xxl;
+    }
     button {
       z-index: 2;
       padding: 0;
       width: 100%;
       height: 100%;
-      font-size: 100px;
       color: currentColor;
       transition: .25s;
       svg {
-        font-size: 8rem;
+        font-size: 4rem;
+        @include for-md{
+          font-size: 5rem;
+        }
+        @include for-xxxl{
+          font-size: 8rem;
+        }
       }
     }
 

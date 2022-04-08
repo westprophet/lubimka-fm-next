@@ -8,8 +8,10 @@ import cn from 'classnames';
 import LogoComponent from './components/LogoComponent';
 import HamburgerButtonMenu from './sections/HamburgerButtonMenu';
 import HeaderDesktopMenu from './sections/HeaderDesktopMenu';
+import useScrolling from './hooks/useScrollingForHeader';
 
 export default function DefaultHeader({ className }: IDefaultHeaderProps) {
+  const {} = useScrolling();
   return (
     <div className={cn(s.DefaultHeader, 'with-screen-padding', className)}>
       <LogoComponent />
