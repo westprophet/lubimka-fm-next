@@ -11,7 +11,7 @@ export default function ShineSpectrum({ audioID, id, className }: IAudioSpectrum
   const wave = useSpectrum(audioID, id);
   return (
     <div className={cn(s.AudioSpectrum, className)}>
-      <canvas width={800} height={800} id={id} />
+      <canvas width={400} height={200} id={id} />
     </div>
   );
 }

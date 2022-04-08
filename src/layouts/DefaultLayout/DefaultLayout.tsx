@@ -10,15 +10,21 @@ import DefaultHeader from './components/DefaultHeader';
 import DefaultLeftSide from './sections/DefaultLeftSide';
 import DefaultRightSide from './sections/DefaultRightSide';
 import CommonPlayer from './components/CommonPlayer';
+import useScrolling from './hooks/useScrolling';
 
 export default function DefaultLayout({ className, children }: IDefaultLayoutProps) {
+  const { position, direction } = useScrolling();
   return (
     <main className={cn(s.DefaultLayout, className)}>
-      <DefaultHeader />
+      <DefaultHeader
+        show={direction === 'Up'}
+        transparent={position === 'top'}
+        fixed={position !== 'top'}
+      />
       <DefaultLeftSide />
       {children}
       <DefaultRightSide />
-      <CommonPlayer />
+      <CommonPlayer fixed={true} show={true} transparent={position === 'top'} />
     </main>
   );
 }

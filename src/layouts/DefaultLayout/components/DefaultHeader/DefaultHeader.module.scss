@@ -7,7 +7,19 @@
   display: flex;
   justify-content: space-between;
   z-index: 10;
-  position: fixed;
+  position: absolute;
+  transform: translateY(-100%);
+  transition: .25s;
+  &.fixed{
+    position: fixed;
+  }
+  &.show{
+    transform: translateY(0);
+    transition: .25s;
+  }
+  &.transparent{
+    background-color: transparent;
+  }
   @include before-sm{
     padding-right: 0!important;
   }
@@ -28,5 +40,5 @@
       display: block;
     }
   }
-
 }
+

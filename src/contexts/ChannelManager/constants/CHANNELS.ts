@@ -4,12 +4,12 @@ const CHANNELS: IChannel[] = [
   {
     id: 1,
     attributes: {
-      title: 'Lubimka',
+      title: 'FM',
       order: 1,
       description:
         'Утро. Lubimka.\nДень. Lubimka.\nВечер. Lubimka.\nПри всём богатстве выбора, альтернативы нет. Lubimka. 24\\7 -Lubimka',
       subtitle: null,
-      name: 'lubimka',
+      name: 'FM',
       createdAt: '2022-03-17T15:36:53.908Z',
       updatedAt: '2022-03-17T16:06:30.232Z',
       publishedAt: '2022-03-17T16:06:30.222Z',

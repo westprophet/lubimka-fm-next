@@ -13,6 +13,7 @@
   z-index: 2;
   transition: .2s;
   border-top: 1px solid transparent;
+  transform: translateY(+100%);
   @include for-sm{
     padding-top: 10px;
     padding-bottom: 10px;
@@ -23,13 +24,26 @@
     gap: 30px;
   }
   &.fixed{
-    position: fixed;
     bottom:0;
+    position: fixed;
+  }
+  &.show{
+    transition: .25s;
+    transform: translateY(0);
   }
   &.openChannelMenu{
     transition: .2s;
     border-top: 1px solid var(--border-color);
   }
+  &.transparent{
+    background-color: transparent;
+    :local{
+      .openChannelMenu{
+        background-color: transparent!important;
+      }
+    }
+  }
+
   .cover{
     flex-shrink: 0;
   }

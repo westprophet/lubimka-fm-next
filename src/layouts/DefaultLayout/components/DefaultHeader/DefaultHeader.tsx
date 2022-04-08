@@ -8,12 +8,19 @@ import cn from 'classnames';
 import LogoComponent from './components/LogoComponent';
 import HamburgerButtonMenu from './sections/HamburgerButtonMenu';
 import HeaderDesktopMenu from './sections/HeaderDesktopMenu';
-import useScrolling from './hooks/useScrollingForHeader';
 
-export default function DefaultHeader({ className }: IDefaultHeaderProps) {
-  const {} = useScrolling();
+function DefaultHeader({ className, show, transparent, fixed }: IDefaultHeaderProps) {
   return (
-    <div className={cn(s.DefaultHeader, 'with-screen-padding', className)}>
+    <div
+      className={cn(
+        s.DefaultHeader,
+        'with-screen-padding',
+        { [s.show]: show },
+        { [s.transparent]: transparent },
+        { [s.fixed]: fixed },
+        className
+      )}
+    >
       <LogoComponent />
       <HamburgerButtonMenu className={cn(s.mobile)} />
       <HeaderDesktopMenu className={cn(s.desktop)} />
@@ -23,8 +30,15 @@ export default function DefaultHeader({ className }: IDefaultHeaderProps) {
 
 DefaultHeader.defaultProps = {
   className: '',
+  show: true,
+  transparent: false,
+  fixed: false,
 };
 
 interface IDefaultHeaderProps {
   className?: string;
+  fixed?: boolean;
+  show?: boolean;
+  transparent?: boolean;
 }
+export default DefaultHeader;

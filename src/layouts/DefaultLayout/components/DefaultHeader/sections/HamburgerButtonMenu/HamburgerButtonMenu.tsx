@@ -13,7 +13,7 @@ import IHeaderMenuItem from '../../interfaces/IHeaderMenuItem';
 import MobileHeaderMenuItem from './components/MobileHeaderMenuItem';
 
 export default function HamburgerButtonMenu({ className }: IHamburgerButtonMenuProps) {
-  const [open, setOpen] = useState<boolean>(true);
+  const [open, setOpen] = useState<boolean>(false);
   return (
     <div className={cn(s.HamburgerButtonMenu, className)}>
       <IconButton className={cn(s.button)} onClick={() => setOpen(true)}>

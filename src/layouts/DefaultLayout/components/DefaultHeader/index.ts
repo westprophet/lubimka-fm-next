@@ -1,3 +1,4 @@
+import React from 'react';
 import DefaultHeader from './DefaultHeader';
 
-export default DefaultHeader;
+export default React.memo(DefaultHeader);

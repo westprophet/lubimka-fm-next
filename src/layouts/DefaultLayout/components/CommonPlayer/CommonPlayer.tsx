@@ -19,7 +19,7 @@ import ChannelMenuSelector from './sections/ChannelMenuSelector';
 import PlayerControlComponent from 'components/UI/buttons/PlayerControlComponent';
 
 //плеер
-export default function CommonPlayer({ className }: ICommonPlayerProps) {
+export default function CommonPlayer({ className, show, transparent, fixed }: ICommonPlayerProps) {
   const { data, status, play, stop, channel } = useContext(RadioPlayerContext);
   const _data: IRadioHearthStreamDataMount | null = rTools.getMount(data); //Получаем более точные данные
   const title: TAudioTitle = splitTrackName(_data); //Разделяем имя и название трека
@@ -33,7 +33,9 @@ export default function CommonPlayer({ className }: ICommonPlayerProps) {
         s.CommonPlayer,
         'with-screen-padding',
         { [s.openChannelMenu]: openChannelMenu },
-        s.fixed,
+        { [s.show]: show },
+        { [s.transparent]: transparent },
+        { [s.fixed]: fixed },
         className
       )}
     >
@@ -60,8 +62,14 @@ export default function CommonPlayer({ className }: ICommonPlayerProps) {
 
 CommonPlayer.defaultProps = {
   className: '',
+  show: true,
+  transparent: false,
+  fixed: true,
 };
 
 interface ICommonPlayerProps {
   className?: string;
+  fixed?: boolean;
+  show?: boolean;
+  transparent?: boolean;
 }

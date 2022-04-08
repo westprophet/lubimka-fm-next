@@ -1,6 +1,6 @@
 import { useCallback, useEffect, useState } from 'react';
 import isFrontendEnvironment from '../../../../../../../utils/isFrontendEnvironment';
-import getScrollPercent from '../../../../../../../utils/getScrollPercent';
+import getScrollPercent from '../../../../../../../utils/scrolling/getScrollPercent';
 
 export default function useScrollPercentage(): number {
   const [percentage, setPercentage] = useState(0);

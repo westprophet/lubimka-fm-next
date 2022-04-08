@@ -12,11 +12,11 @@ export default function useSpectrum(audioID: string, canvasID: string) {
       if (canvasElement && audioElement) {
         _wave.current = new Wave(audioElement, canvasElement);
         _wave.current.addAnimation(
-          new _wave.current.animations.Lines({
+          new _wave.current.animations.Shine({
             lineWidth: 3,
             lineColor: 'white',
-            count: 50,
-            // diameter: 250,
+            count: 120,
+            diameter: 250,
             frequencyBand: 'mids',
             rounded: true,
           })

@@ -14,7 +14,7 @@ import isEmptyArray from 'src/utils/isEmptyArray';
 
 export default function LubimkaDjsSection() {
   const { authors, isLoading } = useLastAuthors(); //Получаем авторов
-  if (isLoading) return 'loading';
+  if (isLoading) return <div>loading</div>;
   if (isEmptyArray(authors) && !isLoading) return null;
   return (
     <SectionSliderWrapper className={cn(s.LubimkaDjsSection)} title="Любимка DJ’s">

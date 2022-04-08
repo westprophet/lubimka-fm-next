@@ -1,3 +1,4 @@
+import React from 'react';
 import DefaultRightSide from './DefaultRightSide';
 
-export default DefaultRightSide;
+export default React.memo(DefaultRightSide);

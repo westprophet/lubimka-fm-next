@@ -15,6 +15,12 @@ export default function HomePage() {
     <DefaultLayout className={cn(s.HomePage)}>
       <BannerSection />
       <LubimkaDjsSection />
+      <LubimkaDjsSection />
+      <LubimkaDjsSection />
+      <LubimkaDjsSection />
+      <LubimkaDjsSection />
+      <LubimkaDjsSection />
+      <LubimkaDjsSection />
     </DefaultLayout>
   );
 }

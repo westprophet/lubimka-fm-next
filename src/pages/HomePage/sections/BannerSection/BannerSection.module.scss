@@ -1,6 +1,7 @@
 .BannerSection {
   background-color: #000;
   color: var(--text-color);
+  position: relative;
 
   .inner {
     width: 100%;
@@ -11,60 +12,22 @@
     align-items: center;
     text-align: center;
     gap: 30px;
-    .titleContainer {
-      //background: url('../../../../assets/title-bg.jpg');
-      //background: url('../../../../assets/test/dancing-people-club.jpg');
-      //background: url('../../../../assets/test/title-bg-2.jpg');
-      //background: url('../../../../assets/test/title-bg-3.jpg');
-      background: url('../../../../assets/test/title-bg-3-smoth.jpg');
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-      animation: bg-swim 25s linear infinite;
-      h1 {
-        text-transform: uppercase;
-        letter-spacing: 0.2em;
-        font-weight: 900;
-        font-size: 48px;
-        display: table-caption;
-        @include for-lg{
-          font-size: 100px;
-        }
-        @include for-xxxl{
-          display: block;
-          font-size: 140px;
-        }
-      }
+    .spectrum{
+      position: absolute;
+      bottom: 0;
     }
-
     h2 {
       font-weight: 700;
       font-size: 18px;
       line-height: 23px;
       letter-spacing: 0.05em;
-      @include for-lg{
+      @include for-lg {
         font-size: 18px;
       }
-      @include for-xxxl{
+      @include for-xxxl {
         font-size: 24px;
       }
     }
   }
 }
 
-@keyframes bg-swim {
-  0% {
-    background-position: 10% 10%;
-  }
-  30% {
-    background-position: 30% 50%;
-  }
-  50% {
-    background-position: 90% 0;
-  }
-  80% {
-    background-position: 90% 90%;
-  }
-  100% {
-    background-position: 10% 10%;
-  }
-}

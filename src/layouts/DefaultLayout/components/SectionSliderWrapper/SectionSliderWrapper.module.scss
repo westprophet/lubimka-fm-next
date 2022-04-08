@@ -5,7 +5,7 @@
   width: 100%;
   position: relative;
   .title{
-    @include inner-section-padding(false, true, false, true);
+    @include inner-section-padding(true, true, false, true);
   }
   .arrow{
     position: absolute;
