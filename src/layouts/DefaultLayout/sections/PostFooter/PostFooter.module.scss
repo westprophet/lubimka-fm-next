@@ -1,0 +1,12 @@
+.PostFooter {
+  text-align: center;
+  border-top: 1px solid var(--bg-deep-color);
+  //border-bottom: 3px solid var(--bg-deep-color);
+  color: var(--text-color);
+  background-color: var(--bg-panel-color);
+  height: 35px;
+  @include f7(){
+    line-height: 30px;
+    font-weight: 400;
+  };
+}

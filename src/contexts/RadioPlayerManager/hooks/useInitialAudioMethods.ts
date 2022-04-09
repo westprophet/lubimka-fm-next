@@ -57,6 +57,12 @@ export default function useInitialAudioMethods(channel: IChannel) {
     });
   }, [setStatus, enqueueSnackbar]);
 
+  useEffect(() => {
+    if (audioRef.current) {
+      // @ts-ignore
+      audioRef.current.value = 0.2;
+    }
+  }, []);
   //Если играет радио и переключили канал то перезагрузить радио
   useEffect(() => {
     if (status === 'played' && channel) reload();

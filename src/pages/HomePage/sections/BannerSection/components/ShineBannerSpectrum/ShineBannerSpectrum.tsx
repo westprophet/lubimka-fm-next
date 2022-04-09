@@ -13,7 +13,7 @@ export default function ShineBannerSpectrum({ className }: IShineBannerSpectrumP
   const wave = useSpectrum(id, 'banner-spectrum-id');
   return (
     <div className={cn(s.ShineBannerSpectrum, className)}>
-      <canvas width={1000} height={100} id={'banner-spectrum-id'} />
+      <canvas width={1200} height={400} id={'banner-spectrum-id'} />
     </div>
   );
 }

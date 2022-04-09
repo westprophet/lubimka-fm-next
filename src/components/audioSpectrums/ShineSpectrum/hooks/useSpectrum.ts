@@ -13,12 +13,44 @@ export default function useSpectrum(audioID: string, canvasID: string) {
         _wave.current = new Wave(audioElement, canvasElement);
         _wave.current.addAnimation(
           new _wave.current.animations.Lines({
-            lineWidth: 3,
-            lineColor: 'white',
+            lineWidth: 1,
+            lineColor: '#111',
             count: 50,
-            // diameter: 250,
+            // top: true,
+            // left: true,
+            // right: true,
+            center: true,
+            mirroredY: true,
+            frequencyBand: 'lows',
+            // rounded: true,
+          })
+        );
+        _wave.current.addAnimation(
+          new _wave.current.animations.Lines({
+            lineWidth: 1,
+            lineColor: '#222',
+            count: 50,
+            // top: true,
+            // left: true,
+            // right: true,
+            center: true,
+            mirroredY: true,
             frequencyBand: 'mids',
-            rounded: true,
+            // rounded: true,
+          })
+        );
+        _wave.current.addAnimation(
+          new _wave.current.animations.Lines({
+            lineWidth: 1,
+            lineColor: '#333',
+            count: 50,
+            // top: true,
+            // left: true,
+            // right: true,
+            center: true,
+            mirroredY: true,
+            frequencyBand: 'highs',
+            // rounded: true,
           })
         );
       }

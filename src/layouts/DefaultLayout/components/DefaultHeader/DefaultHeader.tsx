@@ -5,13 +5,13 @@
 import React from 'react';
 import s from './DefaultHeader.module.scss';
 import cn from 'classnames';
-import LogoComponent from './components/LogoComponent';
+import LogoComponent from '../LogoComponent';
 import HamburgerButtonMenu from './sections/HamburgerButtonMenu';
 import HeaderDesktopMenu from './sections/HeaderDesktopMenu';
 
 function DefaultHeader({ className, show, transparent, fixed }: IDefaultHeaderProps) {
   return (
-    <div
+    <header
       className={cn(
         s.DefaultHeader,
         'with-screen-padding',
@@ -24,7 +24,7 @@ function DefaultHeader({ className, show, transparent, fixed }: IDefaultHeaderPr
       <LogoComponent />
       <HamburgerButtonMenu className={cn(s.mobile)} />
       <HeaderDesktopMenu className={cn(s.desktop)} />
-    </div>
+    </header>
   );
 }
 

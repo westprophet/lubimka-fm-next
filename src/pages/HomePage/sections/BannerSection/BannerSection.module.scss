@@ -1,7 +1,6 @@
 .BannerSection {
   background-color: #000;
   color: var(--text-color);
-  position: relative;
 
   .inner {
     width: 100%;
@@ -12,10 +11,7 @@
     align-items: center;
     text-align: center;
     gap: 30px;
-    .spectrum{
-      position: absolute;
-      bottom: 0;
-    }
+    position: relative;
     h2 {
       font-weight: 700;
       font-size: 18px;
@@ -31,3 +27,14 @@
   }
 }
 
+.spectrum {
+  width: 100%;
+  margin: auto;
+  height: 100px;
+  position: absolute;
+  bottom: 10%;
+  canvas{
+    width: 100%;
+    height: 100px;
+  }
+}

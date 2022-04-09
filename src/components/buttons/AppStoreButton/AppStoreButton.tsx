@@ -5,13 +5,10 @@
 import React from 'react';
 import s from './AppStoreButton.module.scss';
 import cn from 'classnames';
+import GetApplicationButton from 'components/buttons/GetApplicationButton';
 
 export default function AppStoreButton({ className }: IAppStoreButtonProps) {
-  return (
-    <div className={cn(s.AppStoreButton, className)}>
-      <div></div>
-    </div>
-  );
+  return <GetApplicationButton className={cn(s.AppStoreButton, className)} type="app-store" />;
 }
 
 AppStoreButton.defaultProps = {

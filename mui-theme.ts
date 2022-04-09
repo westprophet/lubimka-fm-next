@@ -16,5 +16,36 @@ const theme = createTheme({
       main: '#99D3FB',
     },
   },
+  components: {
+    MuiOutlinedInput: {
+      styleOverrides: {
+        root: {
+          color: '#99D3FB',
+          '&:hover': {
+            '& .MuiOutlinedInput-notchedOutline': {
+              borderColor: '#99D3FB',
+            },
+          },
+        },
+        adornedEnd: {
+          color: 'currentColor',
+        },
+        input: {
+          color: '#99D3FB',
+        },
+        notchedOutline: {
+          borderColor: '#4F4F4F',
+          color: '#4F4F4F',
+        },
+      },
+    },
+    MuiInputLabel: {
+      styleOverrides: {
+        root: {
+          color: 'currentColor',
+        },
+      },
+    },
+  },
 });
 export default theme;

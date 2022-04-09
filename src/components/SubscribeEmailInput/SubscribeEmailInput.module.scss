@@ -1,0 +1,16 @@
+.SubscribeEmailInput {
+  color: var(--border-color);
+  & > span {
+    @include f5 {
+      color: #FFF;
+      opacity: 0.4;
+
+    }
+  }
+  .input{
+    margin-top: 20px;
+  }
+}
+.icon{
+  color: var(--text-color);
+}
