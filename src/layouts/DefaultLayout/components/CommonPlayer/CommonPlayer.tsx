@@ -24,8 +24,8 @@ export default function CommonPlayer({ className, show, transparent, fixed }: IC
   const _data: IRadioHearthStreamDataMount | null = rTools.getMount(data); //Получаем более точные данные
   const title: TAudioTitle = splitTrackName(_data); //Разделяем имя и название трека
   const { image, isLoading } = useImageState(title); // Запрашиваем картинку для трека
-
   const [openChannelMenu, setOpenChannelMenu] = useState<boolean>(false);
+  const [pinned, setPinned] = useState<boolean>(true);
 
   return (
     <div
@@ -33,7 +33,7 @@ export default function CommonPlayer({ className, show, transparent, fixed }: IC
         s.CommonPlayer,
         'with-screen-padding',
         { [s.openChannelMenu]: openChannelMenu },
-        { [s.show]: show },
+        { [s.show]: show && pinned },
         { [s.transparent]: transparent },
         { [s.fixed]: fixed },
         className
@@ -54,6 +54,8 @@ export default function CommonPlayer({ className, show, transparent, fixed }: IC
         className={cn(s.actions)}
         isOpenChannelMenu={openChannelMenu}
         setOpenChannelMenu={setOpenChannelMenu}
+        pinned={pinned}
+        setPinned={setPinned}
       />
       <ChannelMenuSelector isOpen={openChannelMenu} className={cn(s.channelMenuSelector)} />
     </div>

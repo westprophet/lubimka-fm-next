@@ -7,7 +7,9 @@
 
   &:hover {
     img {
-      animation: heartbeat ease-in 2s 2;
+      &:global{
+        animation: heartbeat ease-in 2s 2;
+      }
     }
   }
 
@@ -43,42 +45,5 @@
       @include f4();
     }
 
-  }
-}
-
-
-@keyframes heartbeat {
-  0%{
-    transform: scale(1);
-  }
-  5%{
-    transform: scale(1.2);
-  }
-  10% {
-    transform: scale(1);
-  }
-  20%{
-    transform: scale(1.2);
-  }
-  25% {
-    transform: scale(1);
-  }
-  40% {
-    transform: scale(1)
-  }
-  45%{
-    transform: scale(1.2);
-  }
-  50%{
-    transform: scale(1)
-  }
-  60%{
-    transform: scale(1.2);
-  }
-  70%{
-    transform: scale(1);
-  }
-  100%{
-    transform: scale(1);
   }
 }

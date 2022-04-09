@@ -1,6 +1,18 @@
 .CommonPlayerAction {
   margin: auto 0 auto auto;
   display: flex;
+  .pinned{
+    visibility: hidden;
+    @include for-sm{
+      visibility: visible;
+    }
+    &.isPinned{
+      background-color: var(--primary-color);
+      position: absolute;
+      top: -10px;
+      transform: translateY(-100%);
+    }
+  }
   & > button{
     color: var(--text-color);
   }
