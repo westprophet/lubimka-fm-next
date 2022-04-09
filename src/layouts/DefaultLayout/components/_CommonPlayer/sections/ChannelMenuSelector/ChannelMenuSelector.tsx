@@ -2,10 +2,11 @@
  * Created by westp on 19.03.2022
  */
 
-import React from 'react';
+import React, { useContext } from 'react';
 import s from './ChannelMenuSelector.module.scss';
 import cn from 'classnames';
 import Slider from 'react-slick';
+import { ChannelManagerContext } from '../../../../../../contexts/ChannelManager';
 import SlickControlArrow from 'components/SlickControlArrow';
 import IChannel from '../../../../../../interfaces/IChannel';
 import useIsMobile from 'src/hooks/useIsMobile';
@@ -13,12 +14,8 @@ import useChannelMenuSliderSetting from './hooks/useChannelMenuSliderSetting';
 import Channel from 'components/Channel';
 
 //Селектор каналов в плеере
-export default function ChannelMenuSelector({
-  className,
-  isOpen,
-  channels,
-  channel,
-}: IChannelMenuSelectorProps) {
+export default function ChannelMenuSelector({ className, isOpen }: IChannelMenuSelectorProps) {
+  const { channels, current } = useContext(ChannelManagerContext);
   const isMobile = useIsMobile();
 
   //Прячем настройки и прочую штуку сюда
@@ -52,6 +49,4 @@ ChannelMenuSelector.defaultProps = {
 interface IChannelMenuSelectorProps {
   className?: string;
   isOpen: boolean;
-  channels: IChannel[];
-  channel: IChannel;
 }

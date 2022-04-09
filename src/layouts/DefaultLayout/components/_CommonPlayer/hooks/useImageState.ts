@@ -5,10 +5,7 @@ import api from '../../../../../api';
 import isEmptyString from '../../../../../utils/isEmptyString';
 
 //Получение картинки и запись ее в состояние
-export default function useGetImage(title: TAudioTitle | null): {
-  isLoading: boolean;
-  image: string;
-} {
+export default function useGetImage(title: TAudioTitle | null) {
   const lock = !!title || isEmptyString(title?.artist) || isEmptyString(title?.title);
 
   const { isLoading, error, data } = useQuery(

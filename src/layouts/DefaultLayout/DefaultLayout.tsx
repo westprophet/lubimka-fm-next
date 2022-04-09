@@ -7,15 +7,15 @@ import s from './scss/DefaultLayout.module.scss';
 import cn from 'classnames';
 
 import DefaultHeader from './components/DefaultHeader';
-import CommonPlayer from './components/CommonPlayer';
 import useScrolling from './hooks/useScrolling';
 import DefaultFooter from './components/DefaultFooter';
 
 import DefaultLeftSide from './sections/DefaultLeftSide';
 import DefaultRightSide from './sections/DefaultRightSide';
 import PostFooter from './sections/PostFooter';
+import CommonPlayerManager from './contexts/CommonPlayerManager';
 
-export default function DefaultLayout({ className, children }: IDefaultLayoutProps) {
+export default function DefaultLayout({ className, children, disablePlayer }: IDefaultLayoutProps) {
   const { position, direction } = useScrolling();
   return (
     <main className={cn(s.DefaultLayout, className)}>
@@ -25,9 +25,10 @@ export default function DefaultLayout({ className, children }: IDefaultLayoutPro
         fixed={position !== 'top'}
       />
       <DefaultLeftSide />
-      {children}
+      <CommonPlayerManager show={true} transparent={position === 'top'}>
+        {children}
+      </CommonPlayerManager>
       <DefaultRightSide />
-      <CommonPlayer fixed={true} show={true} transparent={position === 'top'} />
       <DefaultFooter />
       <PostFooter />
     </main>
@@ -36,9 +37,11 @@ export default function DefaultLayout({ className, children }: IDefaultLayoutPro
 
 DefaultLayout.defaultProps = {
   className: '',
+  disablePlayer: false,
 };
 
 interface IDefaultLayoutProps {
   className?: string;
   children: any;
+  disablePlayer?: boolean;
 }

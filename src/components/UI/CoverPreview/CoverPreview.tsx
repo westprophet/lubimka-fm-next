@@ -11,21 +11,22 @@ import Image from 'next/image';
 import useSizeByType from 'components/UI/CoverPreview/hooks/useSizeByType';
 import TType from './types/TType';
 import { CircularProgress } from '@mui/material';
+import DATA_FOR_BLUR from '../../../constants/DATA_FOR_BLUR';
 
 export default function CoverPreview({ className, image, type, isLoading }: ICoverPreviewProps) {
   const isAdaptive = type === 'adaptive';
   let url = 'logo.svg';
-
   if (image) url = typeof image === 'string' ? image : image.url;
   const size = useSizeByType(type);
   const settings = !isAdaptive ? size : { layout: 'fill' };
+
   return (
     <div className={cn(s.CoverPreview, { [s.adaptive]: isAdaptive }, className)}>
       {isLoading ? (
         <CircularProgress color={'primary'} className={cn(s.loader)} />
       ) : (
         // @ts-ignore
-        <Image src={url} {...settings} />
+        <Image src={url} {...settings} blurDataURL={DATA_FOR_BLUR} placeholder="blur" />
       )}
     </div>
   );
