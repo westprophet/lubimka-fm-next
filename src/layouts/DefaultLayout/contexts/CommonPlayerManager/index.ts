@@ -1,3 +1,4 @@
+import React from 'react';
 import CommonPlayerManager from './CommonPlayerManager';
 
-export default CommonPlayerManager;
+export default React.memo(CommonPlayerManager);

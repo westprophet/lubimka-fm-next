@@ -1,0 +1,3 @@
+@mixin lubimka-bg-gradient($deg: 90deg, $prop: background){
+  #{$prop}:linear-gradient($deg, #2841B7 0.17%, #B63CCD 32.07%, #CF4CBA 65.69%, #9A43F0 100.15%);
+}

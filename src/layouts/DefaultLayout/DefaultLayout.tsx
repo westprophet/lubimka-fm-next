@@ -2,7 +2,7 @@
  * Created by westp on 18.02.2022
  */
 
-import React from 'react';
+import React, { useState } from 'react';
 import s from './scss/DefaultLayout.module.scss';
 import cn from 'classnames';
 
@@ -17,20 +17,26 @@ import CommonPlayerManager from './contexts/CommonPlayerManager';
 
 export default function DefaultLayout({ className, children, disablePlayer }: IDefaultLayoutProps) {
   const { position, direction } = useScrolling();
+  const [pinned, setPinned] = useState(true);
   return (
     <main className={cn(s.DefaultLayout, className)}>
-      <DefaultHeader
-        show={direction === 'Up'}
+      <CommonPlayerManager
+        show={true}
         transparent={position === 'top'}
-        fixed={position !== 'top'}
-      />
-      <DefaultLeftSide />
-      <CommonPlayerManager show={true} transparent={position === 'top'}>
+        disabled={disablePlayer}
+        onPinned={setPinned}
+      >
+        <DefaultHeader
+          show={direction === 'Up'}
+          transparent={position === 'top'}
+          fixed={position !== 'top'}
+        />
         {children}
+        <DefaultLeftSide showPlayer={!pinned} />
+        <DefaultRightSide />
+        <DefaultFooter />
+        <PostFooter />
       </CommonPlayerManager>
-      <DefaultRightSide />
-      <DefaultFooter />
-      <PostFooter />
     </main>
   );
 }

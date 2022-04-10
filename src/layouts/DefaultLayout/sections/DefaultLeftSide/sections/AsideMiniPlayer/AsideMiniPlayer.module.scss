@@ -1,0 +1,9 @@
+.AsideMiniPlayer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: var(--primary-color);
+  button{
+    color: currentColor;
+  }
+}

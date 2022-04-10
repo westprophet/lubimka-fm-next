@@ -2,7 +2,7 @@
  * Created by westprophet on 09.04.2022
  */
 
-import React, { createContext } from 'react';
+import React, { createContext, useEffect } from 'react';
 
 import CommonPlayer from '../../components/CommonPlayer';
 import ICommonPlayerManagerValues from './types/ICommonPlayerManagerValues';
@@ -18,7 +18,8 @@ export default function CommonPlayerManager({
   transparent,
   children,
   show,
-  disable,
+  disabled,
+  onPinned,
 }: ICommonPlayerManagerProps) {
   const {
     isOpenChannelMenu,
@@ -35,7 +36,11 @@ export default function CommonPlayerManager({
     channel,
   } = useCommonPlayerData();
 
-  if (disable) return children;
+  useEffect(() => {
+    if (onPinned) onPinned(pinned);
+  }, [onPinned, pinned]);
+
+  if (disabled) return children;
   return (
     <CommonPlayerUIManagerContext.Provider value={INITIAL_VALUES}>
       {children}
@@ -76,9 +81,10 @@ CommonPlayerManager.defaultProps = {
 };
 
 interface ICommonPlayerManagerProps {
-  disable?: boolean;
+  disabled?: boolean;
   children: any;
   fixed?: boolean;
   show?: boolean;
   transparent?: boolean;
+  onPinned?(pinned: boolean): void;
 }

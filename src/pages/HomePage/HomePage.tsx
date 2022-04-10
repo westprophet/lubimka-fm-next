@@ -10,6 +10,7 @@ import DefaultLayout from '../../layouts/DefaultLayout';
 import BannerSection from './sections/BannerSection';
 import LubimkaDjsSection from './sections/LubimkaDjsSection';
 import AppSection from './sections/AppSection';
+import PromoOrderMusicSection from './sections/PromoOrderMusicSection';
 
 export default function HomePage() {
   return (
@@ -17,6 +18,7 @@ export default function HomePage() {
       <BannerSection />
       <AppSection />
       <LubimkaDjsSection />
+      <PromoOrderMusicSection />
       <LubimkaDjsSection />
       <LubimkaDjsSection />
       <LubimkaDjsSection />

@@ -1,0 +1,41 @@
+.PromoOrderMusicSection {
+  @include lubimka-bg-gradient(180deg);
+  position: relative;
+  display: flex;
+  flex-direction: column-reverse;
+  height: 175px;
+  @include for-md {
+    height: 450px;
+  }
+
+  .description {
+    .title {
+      @include f3();
+      margin-bottom: 10px;
+      @include for-md {
+        @include f1();
+        margin-bottom: 30px;
+      }
+    }
+
+    p {
+      @include f7();
+      @include for-md {
+        @include f3();
+      }
+    }
+  }
+
+  .disk {
+    position: absolute;
+    right: 0;
+    height: 100%;
+    width: 100%;
+    max-width: 230px;
+    @include for-md {
+      max-width: 550px;
+    }
+    top: 0;
+    z-index: 0;
+  }
+}

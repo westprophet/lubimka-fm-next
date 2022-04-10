@@ -1,4 +1,14 @@
 .DefaultLeftSide {
-  justify-content: center!important;
+  justify-content: center !important;
   gap: 4vh;
+
+  .player {
+    transform: translateX(-100%);
+    justify-self: flex-start;
+    transition: 0.25s;
+    &.show {
+      transition: 0.25s;
+      transform: translateX(0);
+    }
+  }
 }
