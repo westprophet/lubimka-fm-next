@@ -2,7 +2,7 @@
  * Created by westp on 28.03.2022
  */
 
-import React from 'react';
+import React, { useContext } from 'react';
 import s from './ToTopSection.module.scss';
 import cn from 'classnames';
 import CustomVerticalProgress from './components/CustomVerticalProgress';
@@ -13,7 +13,15 @@ import animateScrollTo from 'animated-scroll-to';
 export default function ToTopSection({ className }: IToTopSectionProps) {
   const scrollPercent = useScrollPercentage();
   const onToTopHandler = () => {
-    animateScrollTo(0);
+    // eslint-disable-next-line promise/catch-or-return
+    animateScrollTo(0).then(() => {
+      if (window) {
+        const event = new WheelEvent('wheel', {
+          deltaY: 120,
+        });
+        window.dispatchEvent(event);
+      }
+    });
   };
   return (
     <div className={cn(s.ToTopSection, className)}>

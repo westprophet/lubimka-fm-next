@@ -23,13 +23,14 @@
     "notistack": "^2.0.3",
     "react": "^18.0.0",
     "react-audio-spectrum": "^0.1.0",
+    "react-cookie": "^4.1.1",
     "react-dom": "^18.0.0",
     "react-double-marquee": "^1.1.0",
     "react-query": "^3.34.19",
     "react-redux": "^7.2.8",
     "react-slick": "^0.28.1",
-    "react-svg": "^14.1.17",
     "slick-carousel": "^1.8.1",
+    "use-local-storage": "^2.3.6",
     "webp-loader": "^0.6.0"
   },
   "devDependencies": {

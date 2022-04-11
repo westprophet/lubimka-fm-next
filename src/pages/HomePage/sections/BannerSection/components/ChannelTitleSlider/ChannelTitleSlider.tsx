@@ -13,13 +13,13 @@ import useGetSliderSettings from './hooks/useGetSliderSettings';
 
 export default function ChannelTitleSlider({ className }: IChannelTitleSliderProps) {
   const { current: channel, channels } = useContext(ChannelManagerContext); // Получаем текущий канал
-  const currentSlide = useGetCurrentSlideByChannels(channel, channels);
+  const currentSlideIndex = useGetCurrentSlideByChannels(channel, channels);
   const { sliderRef, settings } = useGetSliderSettings();
   useEffect(() => {
     if (sliderRef.current)
       // @ts-ignore
-      sliderRef.current?.slickGoTo(currentSlide);
-  }, [currentSlide, channels]);
+      sliderRef.current?.slickGoTo(currentSlideIndex);
+  }, [currentSlideIndex, channels, sliderRef]);
 
   return (
     <div className={cn(s.ChannelTitleSlider, className)}>

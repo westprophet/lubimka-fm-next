@@ -1,0 +1,18 @@
+.NoCover {
+  padding: 7px;
+  border-radius: 5px;
+  border: 1px solid var(--border-color);
+  height: 100%;
+  width: 100%;
+  display: flex;
+  svg{
+    margin:auto;
+  }
+  //& > div > div{
+  // display: flex;
+  //}
+  //div,svg{
+  //  width: 100%;
+  //  height: 100%;
+  //}
+}

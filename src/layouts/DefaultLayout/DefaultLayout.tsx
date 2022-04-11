@@ -2,7 +2,7 @@
  * Created by westp on 18.02.2022
  */
 
-import React, { useState } from 'react';
+import React, { createContext } from 'react';
 import s from './scss/DefaultLayout.module.scss';
 import cn from 'classnames';
 
@@ -13,30 +13,42 @@ import DefaultFooter from './components/DefaultFooter';
 import DefaultLeftSide from './sections/DefaultLeftSide';
 import DefaultRightSide from './sections/DefaultRightSide';
 import PostFooter from './sections/PostFooter';
-import CommonPlayerManager from './contexts/CommonPlayerManager';
+import BottomPlayer from './components/BottomPlayer';
 
-export default function DefaultLayout({ className, children, disablePlayer }: IDefaultLayoutProps) {
+import { IDefaultManagerValues } from './types';
+import INITIAL_VALUES from './constants/INITIAL_VALUES';
+import useProviderData from './hooks/useProviderData';
+
+export const DefaultLayoutManagerContext = createContext<IDefaultManagerValues>(INITIAL_VALUES);
+
+function DefaultLayout({ className, children, disablePlayer }: IDefaultLayoutProps) {
   const { position, direction } = useScrolling();
-  const [pinned, setPinned] = useState(true);
+  const value = useProviderData(); //Получаем данные для провайдера
+  const { player, header } = value;
   return (
     <main className={cn(s.DefaultLayout, className)}>
-      <CommonPlayerManager
-        show={true}
-        transparent={position === 'top'}
-        disabled={disablePlayer}
-        onPinned={setPinned}
-      >
+      <DefaultLayoutManagerContext.Provider value={value}>
         <DefaultHeader
-          show={direction === 'Up'}
-          transparent={position === 'top'}
-          fixed={position !== 'top'}
+          show={header.state.isShow || direction === 'Up' || header.state.isFixedShow}
+          transparent={header.state.isTransparent || position === 'top'}
+          fixed={true}
         />
         {children}
-        <DefaultLeftSide showPlayer={!pinned} />
-        <DefaultRightSide />
+        <DefaultLeftSide showArrow={true} />
+        {!disablePlayer && (
+          <BottomPlayer
+            show={player.state.isShow}
+            transparent={player.state.isTransparent || position === 'top'}
+            pinned={player.state.isPinned}
+            setPinned={player.pin}
+            isOpenChannelMenu={player.state.isOpenChannelMenu}
+            setIsOpenChannelMenu={player.openChannelMenu}
+          />
+        )}
+        <DefaultRightSide showPlayer={!player.state.isPinned} />
         <DefaultFooter />
         <PostFooter />
-      </CommonPlayerManager>
+      </DefaultLayoutManagerContext.Provider>
     </main>
   );
 }
@@ -51,3 +63,5 @@ interface IDefaultLayoutProps {
   children: any;
   disablePlayer?: boolean;
 }
+
+export default DefaultLayout;

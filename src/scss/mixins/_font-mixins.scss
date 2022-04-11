@@ -1,0 +1,65 @@
+//10
+@mixin f8{
+  font-size: 10px;
+  font-style: normal;
+  line-height: 12px;
+  letter-spacing: 0.14em;
+  @content;
+}
+
+//12
+@mixin f7{
+  font-size: 12px;
+  font-style: normal;
+  line-height: 14px;
+  letter-spacing: 0.14em;
+  @content;
+}
+
+//14
+@mixin f5{
+  font-size: 14px;
+  font-style: normal;
+  line-height: 18px;
+  letter-spacing: 0.14em;
+  @content;
+}
+
+//16
+@mixin f5_16{
+  font-size: 16px;
+  font-style: normal;
+  line-height: 20px;
+  @content;
+}
+
+//18
+@mixin f4{
+  font-size: 18px;
+  line-height: 22px;
+  @content;
+}
+
+//24
+@mixin f3{
+  font-size: 24px;
+  line-height: 29px;
+  @content;
+}
+
+
+//30
+@mixin f2{
+  font-weight: 700;
+  font-size: 30px;
+  line-height: 37px;
+  @content;
+}
+
+//80
+@mixin f1{
+  font-weight: 900;
+  font-size: 80px;
+  line-height: 50px;
+  @content;
+}

@@ -1,0 +1,25 @@
+.ToPageArrow {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: var(--border-color);
+  transition: .25s;
+  &:hover{
+    transition: .25s;
+    color: var(--text-color);
+  }
+  justify-self: flex-start;
+  button{
+    color: currentColor;
+  }
+  &.left {
+    transform: translateX(-100%);
+  }
+  &.right {
+    transform: translateX(+100%);
+  }
+  &.show {
+    transition: .25s;
+    transform: translateX(0);
+  }
+}

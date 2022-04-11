@@ -1,67 +1,67 @@
 @import "../data";
 
 //Отступы шаблона
-@mixin layout-padding-xs($t: true, $r: true,$b: true, $l: true  ){
+@mixin layout-padding-xs($t: true, $r: true,$b: true, $l: true, $property: padding){
   @if $t {
-    padding-top: $header-height-xs;
+    #{$property}-top: $header-height-xs;
   }
   @if $r {
-    padding-right: $aside-width-xs;
+    #{$property}-right: $aside-width-xs;
   }
   @if $b {
-    padding-bottom: $player-height-xs;
+    #{$property}-bottom: $player-height-xs;
   }
   @if $l {
-    padding-left: $aside-width-xs;
+    #{$property}-left: $aside-width-xs;
   }
 }
 
-@mixin layout-padding-sm($t: true, $r: true,$b: true, $l: true){
+@mixin layout-padding-sm($t: true, $r: true,$b: true, $l: true, $property: padding){
   @if $t {
-    padding-top: $header-height-sm;
+    #{$property}-top: $header-height-sm;
   }
   @if $r {
-    padding-right: $aside-width-sm;
+    #{$property}-right: $aside-width-sm;
   }
   @if $b {
-    padding-bottom: $player-height-sm;
+    #{$property}-bottom: $player-height-sm;
   }
   @if $l {
-    padding-left: $aside-width-sm;
+    #{$property}-left: $aside-width-sm;
   }
 }
 
-@mixin layout-padding-md($t: true, $r: true,$b: true, $l: true){
+@mixin layout-padding-md($t: true, $r: true,$b: true, $l: true, $property: padding){
   @if $t {
-    padding-top: $header-height-md;
+    #{$property}-top: $header-height-md;
   }
   @if $r {
-    padding-right: $aside-width-md;
+    #{$property}-right: $aside-width-md;
   }
   @if $b {
-    padding-bottom: $player-height-sm;
+    #{$property}-bottom: $player-height-sm;
   }
   @if $l {
-    padding-left: $aside-width-md;
+    #{$property}-left: $aside-width-md;
   }
 }
 
-@mixin layout-padding-lg($t: true, $r: true,$b: true, $l: true){
+@mixin layout-padding-lg($t: true, $r: true,$b: true, $l: true, $property: padding){
   @if $t {
-    padding-top: $header-height-md;
+    #{$property}-top: $header-height-md;
   }
   @if $r {
-    padding-right: $aside-width-lg;
+    #{$property}-right: $aside-width-lg;
   }
   @if $b {
-    padding-bottom: $player-height-sm;
+    #{$property}-bottom: $player-height-sm;
   }
   @if $l {
-    padding-left: $aside-width-lg;
+    #{$property}-left: $aside-width-lg;
   }
 }
 
-@mixin layout-padding($t: true, $r: true, $b: true, $l: true){
+@mixin layout-padding($t: true, $r: true, $b: true, $l: true, $property: padding){
   @include layout-padding-xs($t,$r,$b,$l);
   @include for-sm{
     @include layout-padding-sm($t,$r,$b,$l);

@@ -7,12 +7,10 @@
   z-index: 1;
   top: 0;
   bottom: 0;
-  display: none;
-  justify-content: space-evenly;
-  flex-direction: column;
+
   @include layout-padding(true,false,true,false);
   @include for-sm{
-    display: flex;
+    display: block;
     width: $width-sm;
   }
   @include for-md{
@@ -20,6 +18,11 @@
   }
   @include for-lg{
     width: $width-lg;
+  }
+
+
+  @include before-sm{
+    display: none;
   }
 
   &.fixed{

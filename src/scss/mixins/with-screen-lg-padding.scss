@@ -1,4 +1,4 @@
-@import '../fonts/font-mixins';
+@import 'font-mixins';
 //Контейнеры
 @mixin with-screen-lg-padding($r: true, $l: true){
   @if $l {

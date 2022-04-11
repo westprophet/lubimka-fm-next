@@ -8,25 +8,42 @@ import cn from 'classnames';
 import LanguageSelector from './components/LanguageSelector';
 import AsideBar from '../../components/AsideBar';
 import ToTopSection from './sections/ToTopSection';
-import AsideMiniPlayer from './sections/AsideMiniPlayer';
+import ToBackArrow from '../../components/AsideBar/components/ToPageArrow';
 
 //Левое бар
-export default function DefaultLeftSide({ className, showPlayer }: IDefaultLeftSideProps) {
+export default function DefaultLeftSide({
+  className,
+  showArrow,
+  backLink,
+  onClickArrow,
+}: IDefaultLeftSideProps) {
   return (
-    <AsideBar position="left" fixed className={cn(s.DefaultLeftSide, className)}>
-      <AsideMiniPlayer className={cn(s.player, { [s.show]: showPlayer })} />
-      <LanguageSelector />
-      <ToTopSection />
-    </AsideBar>
+    <AsideBar.Wrapper position="left" fixed className={cn(s.DefaultLeftSide, className)}>
+      <AsideBar.Top>
+        <ToBackArrow
+          className={cn(s.arrow)}
+          show={showArrow}
+          link={backLink}
+          onClick={onClickArrow}
+        />
+      </AsideBar.Top>
+      <AsideBar.Inner className={cn(s.inner)}>
+        <LanguageSelector />
+        <ToTopSection />
+      </AsideBar.Inner>
+    </AsideBar.Wrapper>
   );
 }
 
 DefaultLeftSide.defaultProps = {
   className: '',
-  showPlayer: false,
+  showArrow: false,
+  onClickArrow: () => {},
 };
 
 interface IDefaultLeftSideProps {
   className?: string;
-  showPlayer?: boolean;
+  showArrow: boolean;
+  backLink?: string;
+  onClickArrow?(): any;
 }

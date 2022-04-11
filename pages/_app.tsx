@@ -13,6 +13,7 @@ import 'slick-carousel/slick/slick.css';
 import 'slick-carousel/slick/slick-theme.css';
 
 import 'src/scss/index.scss'; //Коренной файл стилей (общий)
+import { CookiesProvider } from 'react-cookie';
 
 const queryClient = new QueryClient();
 
@@ -21,11 +22,13 @@ function App({ Component, pageProps }: AppProps) {
     <ThemeProvider theme={theme}>
       <QueryClientProvider client={queryClient}>
         <SnackbarProvider maxSnack={3} preventDuplicate>
-          <ChannelManager>
-            <RadioPlayerManager>
-              <Component {...pageProps} />
-            </RadioPlayerManager>
-          </ChannelManager>
+          <CookiesProvider>
+            <ChannelManager>
+              <RadioPlayerManager>
+                <Component {...pageProps} />
+              </RadioPlayerManager>
+            </ChannelManager>
+          </CookiesProvider>
         </SnackbarProvider>
       </QueryClientProvider>
     </ThemeProvider>

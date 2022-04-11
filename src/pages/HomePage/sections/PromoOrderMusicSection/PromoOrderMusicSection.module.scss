@@ -1,5 +1,5 @@
 .PromoOrderMusicSection {
-  @include lubimka-bg-gradient(180deg);
+  @include lubimka-bg-gradient-2(180deg);
   position: relative;
   display: flex;
   flex-direction: column-reverse;
@@ -10,16 +10,21 @@
 
   .description {
     .title {
-      @include f3();
       margin-bottom: 10px;
+      font-family: 'Copyright House Industries', Montserrat, sans-serif;
+      font-weight: 400;
+      @include f3();
       @include for-md {
         @include f1();
+        font-weight: 400;
         margin-bottom: 30px;
       }
     }
 
     p {
-      @include f7();
+      @include f7(){
+        letter-spacing: 0.05em;
+      }
       @include for-md {
         @include f3();
       }

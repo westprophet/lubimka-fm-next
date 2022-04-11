@@ -1,0 +1,7 @@
+@import '../../../../scss/mixins/index';
+.TopContainerWrapper {
+  display: flex;
+  width: 100%;
+  justify-content: center;
+  @include layout-padding(true,false,false,false);
+}

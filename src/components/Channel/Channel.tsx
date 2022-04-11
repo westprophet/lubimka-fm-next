@@ -7,11 +7,14 @@ import ChannelComponent, { TChannelComponentType } from 'components/UI/ChannelCo
 import IChannel from '../../interfaces/IChannel';
 import { RadioPlayerContext } from '../../contexts/RadioPlayerManager';
 import { ChannelManagerContext } from '../../contexts/ChannelManager';
+import { compareIChannels } from 'src/tools/IChannel';
 
 export default function Channel({ className, channel, type, isNew }: ISimpleChannelProps) {
   const { setChannel, current } = useContext(ChannelManagerContext);
   const { status, play, stop }: any = useContext(RadioPlayerContext);
-  const isActive = current.attributes.name === channel.attributes.name;
+  const isActive = compareIChannels(current, channel);
+  // current.attributes.name.toLocaleLowerCase() === channel.attributes.name.toLocaleLowerCase();
+  // console.log(current.attributes.name, channel.attributes.name);
   return (
     <ChannelComponent
       className={className}
