@@ -4,34 +4,50 @@
 .SectionSliderWrapper {
   width: 100%;
   position: relative;
-  .title{
+
+
+  .title {
     @include inner-section-padding(true, true, false, true);
   }
-  .arrow{
+
+  .arrow {
     position: absolute;
     top: 0;
-    @include for-sm{
+    @include for-sm {
       width: $inner-section-h-padding-sm;
     }
-    @include for-md{
+    @include for-md {
       width: $inner-section-h-padding-md;
     }
-    @include for-lg{
+    @include for-lg {
       width: $inner-section-h-padding-lg;
     }
-    &.leftArrow{
+
+    &.leftArrow {
       left: 0;
+
+      :local {
+        .hidden {
+          background-color: red;
+        }
+      }
+
     }
-    &.rightArrow{
+
+
+
+    &.rightArrow {
       right: 0;
     }
   }
+
   .slider {
     :global {
       .slick-list {
         padding: 0 30px;
       }
     }
+
     @include for-sm {
       :global {
         .slick-list {
@@ -60,8 +76,9 @@
       }
     }
   }
-  .inner{
-    padding-top: 0!important;
+
+  .inner {
+    padding-top: 0 !important;
   }
 }
 

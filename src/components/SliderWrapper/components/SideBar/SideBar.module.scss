@@ -1,17 +1,48 @@
 //@import '../../scss/data';
 .SideBar {
+  $hidden-width: 100%;
   position: absolute;
   height: 100%;
   display: flex;
   align-items: center;
   z-index: 1;
+  cursor: pointer;
+  .arrow {
+    opacity: 1;
+    transition: .25s;
+  }
+  &:hover{
+    :local{
+      .arrow {
+        transform: scale(1.2);
+        color: var(--primary-color);
+      }
+    }
+  }
+
   &.right {
     justify-content: right;
     background: linear-gradient(270deg, #1E1F23 9.31%, rgba(30, 31, 35, 0.94) 43.4%, rgba(30, 31, 35, 0.76) 87.74%, rgba(30, 31, 35, 0) 131.14%);
+
+    &:local {
+      &.hidden .arrow {
+        transition: .25s;
+        transform: translateX($hidden-width);
+        opacity: 0;
+      }
+    }
   }
 
   &.left {
     justify-content: left;
     background: linear-gradient(90deg, #1E1F23 9.31%, rgba(30, 31, 35, 0.94) 43.4%, rgba(30, 31, 35, 0.76) 87.74%, rgba(30, 31, 35, 0) 131.14%);
+
+    &:local {
+      &.hidden .arrow {
+        transition: .25s;
+        transform: translateX(-$hidden-width);
+        opacity: 0;
+      }
+    }
   }
 }

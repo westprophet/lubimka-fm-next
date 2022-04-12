@@ -1,20 +1,24 @@
-import { useRef, useState } from 'react';
+import { useContext, useEffect } from 'react';
+import { SliderWrapperManagerContext } from 'components/SliderWrapper/contexts/SliderWrapperManager/SliderWrapperManager';
 
-export default function useSliderData(swipe = false) {
-  const [curSlide, setCurSlide] = useState(1);
-  const sliderRef = useRef();
-  const length = 8;
+export default function useSliderData(count: number, swipe = false) {
+  const sm = useContext(SliderWrapperManagerContext);
+
+  useEffect(() => {
+    sm.setCount(count);
+  }, [count]);
+
   const settings = {
-    speed: 250,
+    speed: 300,
     variableWidth: true,
     initialSlide: 0,
-    slidesToScroll: 2,
+    slidesToScroll: 1,
     infinite: false,
     dots: false,
     arrows: false,
     swipe: swipe,
     allowTouchMove: swipe,
-    afterChange: (cs) => setCurSlide(Number(cs) + 1),
+    afterChange: (cs) => sm.setCurrentSlideIndex(Number(cs) + 1),
     responsive: [
       {
         breakpoint: 576,
@@ -28,9 +32,6 @@ export default function useSliderData(swipe = false) {
   };
   return {
     settings,
-    length,
-    curSlide,
-    setCurSlide,
-    sliderRef,
+    ref: sm.ref,
   };
 }

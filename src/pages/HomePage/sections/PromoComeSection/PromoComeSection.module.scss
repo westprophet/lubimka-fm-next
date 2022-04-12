@@ -1,0 +1,26 @@
+.PromoComeSection {
+  position: relative;
+  height: 175px;
+  display: flex;
+  flex-direction: column-reverse;
+  @include for-md {
+    height: 450px;
+  }
+  .bg{
+    position: absolute;
+  }
+  .description{
+    text-align: right;
+    .title{
+      margin-bottom: 10px;
+      font-family: 'Copyright House Industries', Montserrat, sans-serif;
+      font-weight: 400;
+      @include f3();
+      @include for-md {
+        @include f1();
+        font-weight: 400;
+        margin-bottom: 30px;
+      }
+    }
+  }
+}
