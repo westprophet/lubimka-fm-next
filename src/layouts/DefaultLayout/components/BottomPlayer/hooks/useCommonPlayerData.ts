@@ -10,8 +10,8 @@ import useImageState from '../../../hooks/useImageState';
 
 //Получение данных для плеера хук для упрощения
 export default function useCommonPlayerData() {
-  const { data, status, play, stop, channel } = useContext(RadioPlayerContext);
-  const { channels } = useContext(ChannelManagerContext);
+  const { data, status, play, stop } = useContext(RadioPlayerContext);
+  const { channels, current: channel } = useContext(ChannelManagerContext);
 
   const _data: IRadioHearthStreamDataMount | null = rTools.getMount(data); //Получаем более точные данные
   const title: TAudioTitle = splitTrackName(_data); //Разделяем имя и название трека

@@ -6,7 +6,7 @@ import s from './PromoComeSection.module.scss';
 import cn from 'classnames';
 import SectionWrapper from 'src/layouts/DefaultLayout/components/SectionWrapper';
 import Image from 'next/image';
-import bg from './images/1.webp';
+import bg from './images/1-1.webp';
 
 export default function PromoComeSection() {
   return (

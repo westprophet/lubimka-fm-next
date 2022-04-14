@@ -1,10 +1,10 @@
 import IChannel from 'src/interfaces/IChannel';
-import { CHANNELS } from '../constants';
+// import { CHANNELS } from '../constants';
 import { useQuery } from 'react-query';
 import api from '../../../api';
 
 //Получаем каналы по умолчанию и пробуем подгружать каналы от сервера
-export default function useChannels(): {
+export default function useChannels(channels: IChannel[] = []): {
   channels: IChannel[];
   isLoading: boolean;
 } {
@@ -15,7 +15,7 @@ export default function useChannels(): {
         console.error('getChannels error');
       }),
     {
-      initialData: CHANNELS,
+      initialData: channels,
       refetchOnWindowFocus: false,
     }
   );

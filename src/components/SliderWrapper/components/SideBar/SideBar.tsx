@@ -5,9 +5,10 @@
 import React, { useContext } from 'react';
 import s from './SideBar.module.scss';
 import cn from 'classnames';
-import ArrowButton from 'components/UI/buttons/ArrowButton';
 import { SliderWrapperManagerContext } from 'components/SliderWrapper/contexts/SliderWrapperManager/SliderWrapperManager';
 import { Button } from '@mui/material';
+import ArrowBackIosNewIcon from '@mui/icons-material/ArrowBackIosNew';
+import ArrowForwardIosIcon from '@mui/icons-material/ArrowForwardIos';
 
 export default function SideBar({ className, onClick, side }: ISideBarProps) {
   const { prev, next, currentSlideIndex, count } = useContext(SliderWrapperManagerContext);
@@ -27,7 +28,12 @@ export default function SideBar({ className, onClick, side }: ISideBarProps) {
       )}
       onClick={onClickHandler}
     >
-      <ArrowButton className={cn(s.arrow, s.leftArrow)} side={side} />
+      {side === 'left' ? (
+        <ArrowBackIosNewIcon className={cn(s.arrow)} />
+      ) : (
+        <ArrowForwardIosIcon className={cn(s.arrow)} />
+      )}
+      {/*<ArrowButton className={cn(s.arrow, s.leftArrow)} side={side} />*/}
     </Button>
   );
 }

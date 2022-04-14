@@ -43,11 +43,11 @@ export default function AuthorComponent({ className, author, sm, md, lg }: IAuth
           <PlayButton className={cn(s.button)} onClick={() => {}} status="paused" type={2} />
         </div>
       </div>
-      <div className={cn(s.title)}>
+      <h3>
         <Marquee speed={0.02} direction="left">
           {author.attributes.name}
         </Marquee>
-      </div>
+      </h3>
     </div>
   );
 }

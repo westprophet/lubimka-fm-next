@@ -5,21 +5,21 @@
 import React from 'react';
 import s from './CommonRadioChannelButton.module.scss';
 import cn from 'classnames';
-import IChannel from '../../../../../../../interfaces/IChannel';
 import ExpandLessIcon from '@mui/icons-material/ExpandLess';
 import { Button } from '@mui/material';
 
 export default function CommonRadioChannelButton({
   className,
-  channel,
+  title,
   onClick,
   isOpen,
 }: ICommonRadioChannelButtonProps) {
+  if (!title) return null;
   return (
     <div className={cn(s.CommonRadioChannelButton, className)}>
-      <Button variant="text" onClick={onClick}>
+      <Button key={title} variant="text" onClick={onClick}>
         <ExpandLessIcon className={cn(s.arrow, { [s.open]: isOpen })} />
-        <span>{channel.attributes.title}</span>
+        <span suppressHydrationWarning>{title}</span>
       </Button>
     </div>
   );
@@ -31,7 +31,7 @@ CommonRadioChannelButton.defaultProps = {
 
 interface ICommonRadioChannelButtonProps {
   className?: string;
-  channel: IChannel;
+  title: string;
   isOpen: boolean;
   onClick(): any;
 }

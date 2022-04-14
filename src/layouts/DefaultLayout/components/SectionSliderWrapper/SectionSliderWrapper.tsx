@@ -9,6 +9,10 @@ import SectionWrapper from '../SectionWrapper';
 import Slider, { withSliderWrapperManager } from '../../../../components/SliderWrapper';
 
 function SectionSliderWrapper({ className, title, children }: ISectionSliderWrapperProps) {
+  if (!children) {
+    console.warn('SectionSliderWrapper: slide none', title);
+    return null;
+  }
   return (
     <SectionWrapper.Wrapper className={cn(s.SectionSliderWrapper, className)}>
       {title && <SectionWrapper.Title className={cn(s.title)}>{title}</SectionWrapper.Title>}

@@ -21,7 +21,10 @@ export default async function getAuthors(): Promise<IGetAuthorsReturn> {
     } else throw '';
   } catch (e) {
     console.error('STRAPI: getAuthors:', e);
-    return [];
+    return {
+      data: null,
+      meta: null,
+    };
   }
 }
-export type IGetAuthorsReturn = IStrapiReturn<IAuthor[]> | [];
+export type IGetAuthorsReturn = IStrapiReturn<IAuthor[]>;

@@ -5,3 +5,11 @@
 @mixin lubimka-bg-gradient-2($deg: 90deg, $prop: background){
   #{$prop}:linear-gradient($deg, #00AFD0 0%, #BD0BC6 100%);
 }
+
+@mixin bg-gradient-3($prop: background){
+  #{$prop}:conic-gradient(from 94.2deg at 50.04% 44.65%, #744478 -16.98deg, #5D61AB 35.13deg, #665698 67.22deg, #605EA5 91.7deg, #8D7EA1 116.36deg, #B0939A 130.78deg, #E3B190 154.65deg, #CC9E88 187.03deg, #AF867E 220.95deg, #674966 267.64deg, #4D335C 285.09deg, #4E2A69 301.28deg, #44275E 320.05deg, #744478 343.02deg, #5D61AB 395.13deg);
+}
+
+@mixin bg-gradient-4($deg: 107deg,$prop: background){
+  #{$prop}:linear-gradient($deg, rgba(120, 117, 199, 0.42) 11.92%, rgba(144, 194, 247, 0.42) 36.43%, rgba(136, 152, 221, 0.42) 95.59%), linear-gradient(180deg, #80BDFC 0%, #FF9AF4 100%);
+}

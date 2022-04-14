@@ -1,3 +1,7 @@
 import SectionSliderWrapper from './SectionSliderWrapper';
+import Slider from '../../../../components/SliderWrapper';
 
-export default SectionSliderWrapper;
+export default {
+  Wrapper: SectionSliderWrapper,
+  Slide: Slider.Slide,
+};

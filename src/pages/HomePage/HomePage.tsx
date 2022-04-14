@@ -12,21 +12,24 @@ import LubimkaDjsSection from './sections/LubimkaDjsSection';
 import AppSection from './sections/AppSection';
 import PromoOrderMusicSection from './sections/PromoOrderMusicSection';
 import PromoComeSection from './sections/PromoComeSection';
+import { IAuthor, IClub, IEvent } from 'src/interfaces';
+import ClubLifeSection from './sections/ClubLifeSection/ClubLifeSection';
+import { IDefaultLayoutAttributes } from '../../layouts/DefaultLayout/DefaultLayout';
 
-export default function HomePage() {
+export default function HomePage({ events, clubs, authors }: IHomePageProps) {
   return (
     <DefaultLayout className={cn(s.HomePage)}>
       <BannerSection />
       <AppSection />
-      <LubimkaDjsSection />
+      <LubimkaDjsSection authors={authors} />
       <PromoOrderMusicSection />
-      <LubimkaDjsSection />
+      <ClubLifeSection clubs={clubs} />
       <PromoComeSection />
-      <LubimkaDjsSection />
-      <LubimkaDjsSection />
-      <LubimkaDjsSection />
-      <LubimkaDjsSection />
-      <LubimkaDjsSection />
     </DefaultLayout>
   );
+}
+interface IHomePageProps extends IDefaultLayoutAttributes {
+  events: IEvent[];
+  clubs: IClub[];
+  authors: IAuthor[];
 }

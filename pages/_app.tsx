@@ -23,7 +23,7 @@ function App({ Component, pageProps }: AppProps) {
       <QueryClientProvider client={queryClient}>
         <SnackbarProvider maxSnack={3} preventDuplicate>
           <CookiesProvider>
-            <ChannelManager>
+            <ChannelManager channels={pageProps.channels}>
               <RadioPlayerManager>
                 <Component {...pageProps} />
               </RadioPlayerManager>

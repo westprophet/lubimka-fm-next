@@ -14,6 +14,9 @@ export interface IChannelInner {
   createdAt: string;
   updatedAt: string;
   publishedAt: string;
+  localizations?: {
+    data: [];
+  };
   cover: {
     data: TStrapiResponseContainer<IStrapiImage>;
   } | null;

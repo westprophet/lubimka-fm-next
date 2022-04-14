@@ -1,8 +1,19 @@
 import type { NextPage } from 'next';
 import HomePage from '../src/pages/HomePage';
 
-const Home: NextPage = () => {
-  return <HomePage />;
+import { getStaticProps } from './home';
+import { IAuthor, IClub, IEvent } from '../src/interfaces';
+
+const RadioBroadcast: NextPage<IRadioBroadcastProps> = ({ events, clubs, authors }) => {
+  return <HomePage events={events} clubs={clubs} authors={authors} />;
 };
 
-export default Home;
+export { getStaticProps };
+
+interface IRadioBroadcastProps {
+  events: IEvent[];
+  clubs: IClub[];
+  authors: IAuthor[];
+}
+
+export default RadioBroadcast;

@@ -58,10 +58,13 @@ DefaultLayout.defaultProps = {
   disablePlayer: false,
 };
 
-interface IDefaultLayoutProps {
+export interface IDefaultLayoutAttributes {
+  disablePlayer?: boolean;
+}
+
+interface IDefaultLayoutProps extends IDefaultLayoutAttributes {
   className?: string;
   children: any;
-  disablePlayer?: boolean;
 }
 
 export default DefaultLayout;

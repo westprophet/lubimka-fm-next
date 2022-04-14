@@ -34,7 +34,7 @@ export default function CommonPlayerAction({
       <CommonRadioChannelButton
         isOpen={isOpenChannelMenu}
         onClick={() => setOpenChannelMenu(!isOpenChannelMenu)}
-        channel={channel}
+        title={channel?.attributes?.title}
         className={cn(s.channelButton)}
       />
       <IconButton className={cn(s.mobileMenuButton)}>

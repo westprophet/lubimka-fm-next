@@ -2,7 +2,7 @@
  * Created by westprophet on 19.02.2022
  */
 
-import React, { createContext, useCallback, useContext } from 'react';
+import React, { createContext, useContext } from 'react';
 
 import { IPlayerManagerValues } from './types';
 import { INITIAL_VALUES, RADIO_PLAYER_ID } from './constants';
@@ -15,7 +15,7 @@ export const RadioPlayerContext = createContext<IPlayerManagerValues>(INITIAL_VA
 
 //Глобальный контекст радио плеера
 export default function RadioPlayerManager({ children }: IPlayerManagerProps) {
-  const { current: channel, setChannel } = useContext(ChannelManagerContext); // Получаем текущий канал
+  const { current: channel } = useContext(ChannelManagerContext); // Получаем текущий канал
   const { play, status, onCanPlay, audioRef, stop, data, onError, reload, toggle } =
     useInitialAudioMethods(channel);
 

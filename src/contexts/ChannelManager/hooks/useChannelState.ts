@@ -1,17 +1,13 @@
-// import { useState } from 'react';
 import IChannel from '../../../interfaces/IChannel';
-// import useCurrentChannel from './useCurrentChannel';
-// import { setLocalChannel } from '../utils';
+
 import useChannels from './useChannels';
 import useChannelsMethods from './useChannelsMethods';
 import useLocalStorage from 'use-local-storage';
-import { CHANNELS } from '../constants';
 
-export default function useChannelState() {
-  const { channels, isLoading } = useChannels(); //Получаем каналы
-  // const channel = useCurrentChannel(channels); // Получаем канал по умолчанию или выбранный пользователем канал
-  const [current, setChannel] = useLocalStorage<IChannel>('channel', CHANNELS[0], {
-    syncData: process.env.NODE_ENV === 'production',
+export default function useChannelState(_channels: IChannel[]) {
+  const { channels, isLoading } = useChannels(_channels); //Получаем каналы
+  const [current, setChannel] = useLocalStorage<IChannel>('channel', channels[0], {
+    syncData: false,
   }); //Каналы и канал по умолчанию
 
   const { nextChannel, prevChannel } = useChannelsMethods(setChannel, current, channels);
