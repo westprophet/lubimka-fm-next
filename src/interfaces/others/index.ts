@@ -4,4 +4,5 @@ import IEmail from './IEmail';
 import IStream from './IStream';
 import ISchedule from './ISchedule';
 import IIcon from './IIcon';
-export type { ISocial, IPhone, IEmail, IStream, ISchedule, IIcon };
+import ISite from './ISite';
+export type { ISocial, IPhone, IEmail, IStream, ISchedule, IIcon, ISite };

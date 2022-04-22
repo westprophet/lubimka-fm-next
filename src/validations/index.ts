@@ -4,6 +4,7 @@ import isValidIIcon from './isValidIIcon';
 import isValidISocial from './isValidISocial';
 import isValidIEvent from './isValidIEvent';
 import isValidIClub from './isValidIClub';
+import isValidIPartner from './isValidIPartner';
 
 export {
   isValidICompany,
@@ -12,4 +13,5 @@ export {
   isValidISocial,
   isValidIEvent,
   isValidIClub,
+  isValidIPartner,
 };

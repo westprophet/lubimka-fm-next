@@ -45,8 +45,10 @@ export default function CommonPlayer({
         status={control.status}
         play={control.play}
         stop={control.stop}
-        lg={false}
-        md={false}
+        sizes={{
+          xs: 'small',
+          md: 'middle',
+        }}
       />
       <CommonPlayerTitle className={cn(s.title)} ft={title} />
       <CommonPlayerAction

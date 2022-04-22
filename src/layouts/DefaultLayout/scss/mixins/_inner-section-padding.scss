@@ -61,6 +61,21 @@
   }
 }
 
+@mixin inner-section-padding-xl($t: true, $r: true,$b: true, $l: true){
+  @if $t {
+    padding-top: $inner-section-v-padding-xl;
+  }
+  @if $r {
+    padding-right: $inner-section-h-padding-xl;
+  }
+  @if $b {
+    padding-bottom: $inner-section-v-padding-xl;
+  }
+  @if $l {
+    padding-left: $inner-section-h-padding-xl;
+  }
+}
+
 @mixin inner-section-padding($t: true, $r: true, $b: true, $l: true){
   @include inner-section-padding-xs($t,$r,$b,$l);
   @include for-sm{
@@ -71,6 +86,9 @@
   }
   @include for-lg{
     @include inner-section-padding-lg($t,$r,$b,$l);
+  }
+  @include for-xl{
+    @include inner-section-padding-xl($t,$r,$b,$l);
   }
 }
 

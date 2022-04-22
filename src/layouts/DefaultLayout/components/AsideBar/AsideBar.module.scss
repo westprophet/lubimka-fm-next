@@ -19,19 +19,22 @@
   @include for-lg{
     width: $width-lg;
   }
+  @include for-xl{
+    width: $width-xl;
+  }
 
 
   @include before-sm{
     display: none;
   }
 
-  &.fixed{
+  &:global(.fixed){
     position: fixed;
   }
-  &.left{
+  &:global(.left){
     left: 0;
   }
-  &.right{
+  &:global(.right){
     right: 0;
   }
 }

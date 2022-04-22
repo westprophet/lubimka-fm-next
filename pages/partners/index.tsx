@@ -1,8 +1,8 @@
 import type { NextPage } from 'next';
-import HomePage from '../src/pages/HomePage';
+import HomePage from '../../src/pages/HomePage';
 import { GetStaticProps } from 'next';
 import { GetStaticPropsContext } from 'next/types';
-import api from '../src/api';
+import api from '../../src/api';
 import { IAuthor, IClub, IEvent, IPartner } from 'src/interfaces';
 
 const Home: NextPage<IHomeProps> = ({ events, clubs, authors, partners }) => {

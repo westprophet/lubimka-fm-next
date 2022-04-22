@@ -46,18 +46,18 @@
   }
 }
 
-@mixin layout-padding-lg($t: true, $r: true,$b: true, $l: true, $property: padding){
+@mixin layout-padding-xl($t: true, $r: true,$b: true, $l: true, $property: padding){
   @if $t {
     #{$property}-top: $header-height-md;
   }
   @if $r {
-    #{$property}-right: $aside-width-lg;
+    #{$property}-right: $aside-width-xl;
   }
   @if $b {
     #{$property}-bottom: $player-height-sm;
   }
   @if $l {
-    #{$property}-left: $aside-width-lg;
+    #{$property}-left: $aside-width-xl;
   }
 }
 
@@ -69,8 +69,8 @@
   @include for-md{
     @include layout-padding-md($t,$r,$b,$l);
   }
-  @include for-lg{
-    @include layout-padding-lg($t,$r,$b,$l);
+  @include for-xl{
+    @include layout-padding-xl($t,$r,$b,$l);
   }
 }
 

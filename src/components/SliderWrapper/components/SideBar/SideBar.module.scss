@@ -13,6 +13,7 @@
     transition: .25s;
     font-size: 1em;
     color: var(--border-color);
+    padding: 0;
     @include for-md{
       font-size: 1.5em;
     }

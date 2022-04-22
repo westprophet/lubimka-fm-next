@@ -20,14 +20,9 @@ export default function DefaultLeftSide({
   return (
     <AsideBar.Wrapper position="left" fixed className={cn(s.DefaultLeftSide, className)}>
       <AsideBar.Top>
-        <ToBackArrow
-          className={cn(s.arrow)}
-          show={showArrow}
-          link={backLink}
-          onClick={onClickArrow}
-        />
+        <ToBackArrow show={showArrow} link={backLink} onClick={onClickArrow} />
       </AsideBar.Top>
-      <AsideBar.Inner className={cn(s.inner)}>
+      <AsideBar.Inner className="inner">
         <LanguageSelector />
         <ToTopSection />
       </AsideBar.Inner>

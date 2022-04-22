@@ -3,6 +3,7 @@ import * as companies from './strapi/routes/companies';
 import * as authors from './strapi/routes/authors';
 import * as events from './strapi/routes/events';
 import * as clubs from './strapi/routes/clubs';
+import * as partners from './strapi/routes/partners';
 
 import * as stream from './radioheathAPI/routes/stream';
 import * as image from './radioheathAPI/routes/image';
@@ -13,6 +14,7 @@ const strapi = {
   authors,
   events,
   clubs,
+  partners,
 };
 
 const radio = {

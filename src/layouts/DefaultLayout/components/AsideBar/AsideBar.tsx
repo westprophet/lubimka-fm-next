@@ -11,8 +11,8 @@ export default function AsideBar({ className, fixed, children, position }: IAsid
     <aside
       className={cn(
         s.AsideBar,
-        { [s.fixed]: fixed },
-        { [s.left]: position === 'left', [s.right]: position === 'right' },
+        { fixed: fixed },
+        { left: position === 'left', right: position === 'right' },
         className
       )}
     >

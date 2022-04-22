@@ -5,6 +5,8 @@ import PromoComeSection from './PromoComeSection';
 import LubimkaDjsSection from './LubimkaDjsSection';
 import ClubLifeSection from './ClubLifeSection';
 import PromoOrderMusicSection from './PromoOrderMusicSection';
+import PromoDownloadSection from './PromoDownloadSection';
+import PartnersSection from './PartnersSection';
 export {
   AppSection,
   PromoComeSection,
@@ -13,4 +15,6 @@ export {
   ClubLifeSection,
   LubimkaDjsSection,
   PromoOrderMusicSection,
+  PromoDownloadSection,
+  PartnersSection,
 };

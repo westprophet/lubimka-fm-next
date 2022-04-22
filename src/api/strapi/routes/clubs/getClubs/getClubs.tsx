@@ -16,7 +16,7 @@ import { IClub } from '../../../../../interfaces';
 
 export default async function getClubs(): Promise<IGetClubsReturn> {
   try {
-    const { data }: { data: IGetClubsResponse } = await StrapiAxios.get('/clubs', {
+    const { data }: { data: IGetClubsResponse } = await StrapiAxios.get(`/clubs`, {
       params: {
         'populate[Emails]': '*',
         'populate[Socials][populate][icon][populate]': '*',

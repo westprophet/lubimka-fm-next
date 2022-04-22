@@ -22,6 +22,9 @@
     @include for-lg {
       width: $inner-section-h-padding-lg;
     }
+    @include for-xl {
+      width: $inner-section-h-padding-xl;
+    }
 
     &.leftArrow {
       left: 0;
@@ -72,6 +75,15 @@
           margin-right: -$inner-section-h-padding-lg;
           margin-left: -$inner-section-h-padding-lg;
           padding: 0 $inner-section-h-padding-lg;
+        }
+      }
+    }
+    @include for-xl {
+      :global {
+        .slick-list {
+          margin-right: -$inner-section-h-padding-xl;
+          margin-left: -$inner-section-h-padding-xl;
+          padding: 0 $inner-section-h-padding-xl;
         }
       }
     }

@@ -7,8 +7,8 @@ import s from './ClubComponent.module.scss';
 import cn from 'classnames';
 import Image from 'next/image';
 import Marquee from 'react-double-marquee';
-import NoImage from 'components/UI/NoImage';
 import DATA_FOR_BLUR from '../../../constants/DATA_FOR_BLUR';
+import NoImage from 'components/UI/NoImage';
 import PlaceIcon from '@mui/icons-material/Place';
 
 export default function ClubComponent({

@@ -14,7 +14,7 @@ export default function ClubLifeSection({ clubs }: IClubLifeSectionProps) {
     <SectionSlider.Wrapper className={cn(s.ClubLifeSection)} title="Club Life">
       {clubs?.map((club: IClub) => {
         return (
-          <SectionSlider.Slide key={`events-${club.id}`}>
+          <SectionSlider.Slide key={`club-${club.id}`}>
             <Club club={club} />
           </SectionSlider.Slide>
         );
@@ -23,9 +23,9 @@ export default function ClubLifeSection({ clubs }: IClubLifeSectionProps) {
   );
 }
 
-ClubLifeSection.defaultProps = {
-  className: '',
-};
+// ClubLifeSection.defaultProps = {
+//   className: '',
+// };
 
 interface IClubLifeSectionProps {
   clubs: IClub[];

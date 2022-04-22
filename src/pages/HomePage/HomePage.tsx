@@ -6,7 +6,7 @@ import React from 'react';
 import s from './HomePage.module.scss';
 import cn from 'classnames';
 import { IDefaultLayoutAttributes } from '../../layouts/DefaultLayout/DefaultLayout';
-import { IAuthor, IClub, IEvent } from '../../interfaces';
+import { IAuthor, IChannel, IClub, IEvent, IPartner } from '../../interfaces';
 
 import DefaultLayout from '../../layouts/DefaultLayout';
 import {
@@ -16,10 +16,12 @@ import {
   ClubLifeSection,
   LubimkaDjsSection,
   PromoComeSection,
+  PromoDownloadSection,
   PromoOrderMusicSection,
+  PartnersSection,
 } from './sections';
 
-export default function HomePage({ events, clubs, authors }: IHomePageProps) {
+export default function HomePage({ events, clubs, authors, partners, channels }: IHomePageProps) {
   return (
     <DefaultLayout className={cn(s.HomePage)}>
       <BannerSection />
@@ -29,6 +31,8 @@ export default function HomePage({ events, clubs, authors }: IHomePageProps) {
       <ClubLifeSection clubs={clubs} />
       <PromoComeSection />
       <ChannelsSection />
+      <PromoDownloadSection />
+      <PartnersSection partners={partners} />
     </DefaultLayout>
   );
 }
@@ -36,4 +40,6 @@ interface IHomePageProps extends IDefaultLayoutAttributes {
   events: IEvent[];
   clubs: IClub[];
   authors: IAuthor[];
+  partners: IPartner[];
+  channels?: IChannel[];
 }

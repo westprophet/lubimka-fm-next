@@ -1,0 +1,78 @@
+.PromoDownloadSection {
+  position: relative;
+  height: 260px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  overflow: hidden;
+  @include for-md{
+    height: 350px;
+  }
+  @include for-xl{
+    height: 470px;
+  }
+  :global(.bg) {
+    position: absolute;
+  }
+
+  .phoneContainer {
+    position: absolute;
+    width: 280px;
+    height: 140%;
+    left: -15%;
+    top: -10%;
+    @include for-md{
+      height: 125%;
+      width: 330px;
+      left: 10%;
+    }
+    @include for-xl {
+      height: 120%;
+      width: 450px;
+    }
+  }
+
+  .description {
+    display: grid;
+    gap: 20px;
+    & > h2 {
+      font-family: 'Copyright House Industries', Montserrat, sans-serif;
+      letter-spacing: 0.05em;
+      @include f2();
+      @include for-md {
+      }
+      @include for-lg {
+        font-size: 72px;
+      }
+    }
+
+    & > p {
+      max-width: 305px;
+      text-align: left;
+      justify-self: right;
+      font-weight: 500;
+      @include f7();
+      @include for-lg{
+        @include f4();
+      }
+
+      span {
+        @include f3(){
+          font-weight: 400;
+          font-family: 'Copyright House Industries', Montserrat, sans-serif;
+        }
+        @include for-lg {
+          @include f2() {
+          }
+        }
+      }
+    }
+    & > div{
+      margin-top: 20px;
+      display: grid;
+      gap: 5px;
+      justify-self: right;
+    }
+  }
+}
+

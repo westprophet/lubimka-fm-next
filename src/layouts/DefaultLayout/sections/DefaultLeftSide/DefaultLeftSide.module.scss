@@ -1,9 +1,6 @@
 .DefaultLeftSide {
-  .inner{
+  :global(.inner){
     justify-content:center;
     gap: 4vh;
-  }
-  .arrow{
-    //margin-bottom: auto;
   }
 }

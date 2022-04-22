@@ -4,11 +4,11 @@
   border: 1px solid transparent;
   //transition: .25s;
   &.appstore{
-    background: url('../../../assets/buttons/app-store.svg');
+    background: url('../../../assets/buttons/app-store.svg') no-repeat;
     background-size: 100% 100%;
   }
   &.google{
-    background: url('../../../assets/buttons/google-play-market.svg');
+    background: url('../../../assets/buttons/google-play-market.svg') no-repeat;
     background-size: 100% 100%;
   }
   &:hover{

@@ -1,0 +1,76 @@
+@import "data";
+
+.MemberComponent {
+  width: $width-xs;
+  display: grid;
+  gap: 10px;
+  cursor: pointer;
+
+  @include for-sm{
+    width: $width-sm;
+  }
+  @include for-md{
+    width: $width-md;
+  }
+  @include for-xl{
+    width: $width-xl;
+  }
+  .cover {
+    width: 100%;
+    height: 100%;
+    @include zoom-effect-on-leave();
+  }
+
+  .inner {
+    position: relative;
+    width: 100%;
+    height: $width-xs;
+    border-radius: 5px;
+    overflow: hidden;
+    margin-bottom: 15px;
+    @include for-sm{
+      height: $width-sm;
+    }
+    @include for-md{
+      height: $width-md;
+    }
+    @include for-xl{
+      height: $width-xl;
+    }
+  }
+
+
+  h3 {
+    @include f7{
+      font-weight: 400;
+      letter-spacing: 0.2em;
+      line-height: 20px;
+    }
+    @include for-md{
+      white-space: nowrap;
+      @include f5();
+    }
+    @include for-xl{
+      @include f3(){
+        letter-spacing: 0.1em;
+      }
+    }
+  }
+  h4{
+    @include f8{
+      line-height: 140%;
+    }
+    @include for-md{
+      @include f7();
+    }
+    @include for-xl{
+      @include f5();
+    }
+  }
+
+  &:hover {
+    :local(.cover){
+      @include zoom-effect-on-hover();
+    }
+  }
+}
