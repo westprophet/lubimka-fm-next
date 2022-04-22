@@ -1,0 +1,220 @@
+@import "data";
+@import "mixins";
+
+
+.Channel {
+  cursor: pointer;
+  position: relative;
+  overflow: hidden;
+  z-index: 2;
+  display: flex;
+  flex-direction: column-reverse;
+  border: 2px solid transparent;
+  transition: .25s;
+
+  width: $width-xs;
+  height: $height-xs;
+  padding-top: 10px;
+  border-radius: $radius-xs;
+
+  @include for-md{
+    width: $width-md;
+    height: $height-md;
+    border-radius: $radius-md;
+  }
+  @include for-xl{
+    width: $width-lg;
+    height: $height-lg;
+    border-radius: $radius-lg;
+  }
+  &:global {
+    &.active {
+      transition: .25s;
+      border: 2px solid #FFF;
+    }
+
+    &.disabled {
+      .description h5 {
+        color: var(--text-color);
+      }
+
+      .cover {
+        filter: grayscale(50%);
+      }
+    }
+  }
+
+  :global {
+    .cover {
+      position: absolute;
+      overflow: hidden;
+      z-index: -1;
+      @include zoom-effect-on-leave();
+    }
+
+    .description {
+      display: grid;
+      grid-template-columns: 3fr 6fr;
+      grid-column-gap: $gap-column-md;
+      grid-row-gap: $gap-row-xs;
+      z-index: 3;
+      background: linear-gradient(0, rgba(30, 31, 35, 0.9) 7.98%, rgba(30, 31, 35, 0.846) 34.08%, rgba(30, 31, 35, 0.684) 63.43%, rgba(30, 31, 35, 0.36988) 84.36%, rgba(30, 31, 35, 0) 98.07%);
+      padding: $padding-xs;
+
+      @include for-md{
+        padding: $padding-md;
+        grid-template-columns: 2fr 7fr;
+      }
+      @include for-xl{
+        padding: $padding-md;
+        grid-column-gap: $gap-column-md;
+      }
+      .control {
+        grid-column: 1/2;
+        grid-row: 1/3;
+      }
+
+      h4 {
+        grid-column: 2/3;
+        @include f5() {
+          font-weight: 500;
+        }
+        @include for-md{
+          @include f3();
+        }
+        @include for-xl{
+          @include f2();
+        }
+      }
+
+      h5 {
+        grid-column: 2/3;
+        @include f8() {
+          color: var(--primary-color);
+          font-weight: 400;
+          letter-spacing: 0.05em;
+        }
+        @include for-md{
+          @include f5();
+        }
+        @include for-xl{
+          @include f4();
+        }
+      }
+    }
+  }
+
+  &:hover {
+    :global {
+      .cover {
+        @include zoom-effect-on-hover();
+      }
+    }
+  }
+
+
+  &:global {
+
+    &.small {
+      width: $width-xs;
+      height: $height-xs;
+      border-radius: $radius-xs;
+      :global {
+        .description {
+          padding: $padding-xs;
+          grid-column-gap: $gap-column-md;
+          grid-row-gap: $gap-row-xs;
+          grid-template-columns: 3fr 6fr;
+        }
+
+        h4 {
+          @include f5();
+        }
+
+        h5 {
+          @include f8();
+        }
+      }
+    }
+
+    &.middle {
+      width: $width-md;
+      height: $height-md;
+      border-radius: $radius-md;
+      :global {
+        .description {
+          padding: $padding-md;
+          grid-template-columns: 2fr 7fr;
+        }
+        h4 {
+          @include f3();
+        }
+
+        h5 {
+          @include f5();
+        }
+      }
+    }
+
+    &.large {
+      width: $width-lg;
+      height: $height-lg;
+      border-radius: $radius-lg;
+
+      :global {
+        .description {
+          grid-template-columns: 2fr 7fr;
+          padding: $padding-md;
+          grid-column-gap: $gap-column-md;
+        }
+
+        h4 {
+          @include f2();
+        }
+
+        h5 {
+          @include f4();
+        }
+      }
+    }
+
+/*    &.adaptive {
+      @include for-md {
+        width: $width-md;
+        height: $height-md;
+        border-radius: $radius-md;
+
+        :global {
+          h4 {
+            @include f3();
+          }
+
+          h5 {
+            @include f5();
+          }
+        }
+        .description {
+          padding: $padding-md;
+        }
+      }
+      @include for-xl {
+        width: $width-lg;
+        height: $height-lg;
+        border-radius: $radius-lg;
+        .description {
+          grid-template-columns: 2fr 7fr;
+          padding: $padding-md;
+          grid-column-gap: $gap-column-md;
+        }
+
+        h4 {
+          @include f2();
+        }
+
+        h5 {
+          @include f4();
+        }
+      }
+    }*/
+  }
+}

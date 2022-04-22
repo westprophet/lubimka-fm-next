@@ -8,18 +8,18 @@ import IChannel from '../../interfaces/IChannel';
 import { RadioPlayerContext } from '../../contexts/RadioPlayerManager';
 import { ChannelManagerContext } from '../../contexts/ChannelManager';
 import { compareIChannels } from 'src/tools/IChannel';
+import TBreakpoints from '../../types/TBreakpoints';
 
-export default function Channel({ className, channel, type, isNew }: ISimpleChannelProps) {
+export default function Channel({ className, channel, size, isNew, sizes }: ISimpleChannelProps) {
   const { setChannel, current } = useContext(ChannelManagerContext);
   const { status, play, stop }: any = useContext(RadioPlayerContext);
   const isActive = compareIChannels(current, channel);
-  // current.attributes.name.toLocaleLowerCase() === channel.attributes.name.toLocaleLowerCase();
-  // console.log(current.attributes.name, channel.attributes.name);
+
   return (
     <ChannelComponent
       className={className}
       channel={channel}
-      type={type}
+      size={size}
       isNew={isNew}
       active={isActive}
       onPlay={() => {
@@ -44,6 +44,7 @@ Channel.defaultProps = {
 interface ISimpleChannelProps {
   className?: string;
   channel: IChannel;
-  type?: TChannelComponentType;
+  size?: TChannelComponentType;
+  sizes?: Partial<TBreakpoints<TChannelComponentType>>;
   isNew?: boolean;
 }

@@ -1,0 +1,19 @@
+@import "data";
+@mixin small (){
+  width: $width-xs;
+  height: $height-xs;
+  padding-top: 10px;
+  @content;
+}
+
+@mixin middle (){
+  width: $width-md;
+  height: $height-md;
+  @content;
+}
+
+@mixin large (){
+  width: $width-lg;
+  height: $height-lg;
+  @content;
+}

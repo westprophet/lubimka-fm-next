@@ -3,21 +3,24 @@
  */
 
 import React from 'react';
-import s from './ChannelComponent.module.scss';
+import s from './scss/ChannelComponent.module.scss';
 import cn from 'classnames';
 import IChannel from '../../../interfaces/IChannel';
 
 import Image from 'next/image';
 import IStrapiImage from '../../../interfaces/IStrapiImage';
 import { TAudioManagerStatus } from '../../../types/TAudioManagerStatus';
-import { TChannelComponentType } from './types';
+import { TChannelComponentType } from '../../Channel/types';
 import PlayerControlComponent from 'components/UI/buttons/PlayerControlComponent';
+import useComponentSize from '../../../hooks/useComponentSize';
+import TBreakpoints from '../../../types/TBreakpoints';
 
 export default function ChannelComponent({
   className,
   channel,
   active,
-  type,
+  size,
+  sizes,
   isNew,
   onPlay,
   onStop,
@@ -25,38 +28,37 @@ export default function ChannelComponent({
   disabled,
 }: IChannelProps) {
   if (!channel) return null;
+  // eslint-disable-next-line react-hooks/rules-of-hooks
+  const _size = useComponentSize<TChannelComponentType>(sizes);
   const img: IStrapiImage = channel.attributes.cover?.data.attributes;
   return (
     <div
       className={cn(
         s.Channel,
-        {
-          [s.sm]: type === 'sm',
-          [s.md]: type === 'md',
-          [s.lg]: type === 'lg',
-        },
-        { [s.active]: active },
-        { [s.disabled]: disabled },
+        size ?? _size,
+        { active: active },
+        { disabled: disabled },
+
         className
       )}
     >
-      <div className={cn(s.description)}>
-        <div className={cn(s.control)}>
+      <div className="description">
+        <div className="control">
           <PlayerControlComponent
             play={onPlay}
             stop={onStop}
             status={!active ? 'paused' : status}
             // type={2}
             disable={disabled}
-            lg={false}
-            md={false}
+            sizes={sizes}
+            size={size}
           />
         </div>
-        <div className={cn(s.title)}>{channel.attributes.title}</div>
-        <div className={cn(s.status)}>{!disabled ? 'Online' : 'Offline'}</div>
+        <h4 className="title">{channel.attributes.title}</h4>
+        <h5 className="status">{!disabled ? 'Online' : 'Offline'}</h5>
       </div>
       {!img || !img.url ? null : (
-        <Image className={cn(s.cover)} src={img.url} layout="fill" objectFit="cover" />
+        <Image className="cover" src={img.url} layout="fill" objectFit="cover" />
       )}
     </div>
   );
@@ -64,10 +66,15 @@ export default function ChannelComponent({
 
 ChannelComponent.defaultProps = {
   className: '',
-  type: 'adaptive',
   active: false,
   isNew: false,
   disabled: false,
+  // sizes: {
+  //   xs: 'small',
+  //   sm: 'small',
+  //   md: 'middle',
+  //   xl: 'large',
+  // },
 };
 
 export interface IChannelProps {
@@ -77,7 +84,8 @@ export interface IChannelProps {
   onPlay(): any;
   onStop(): any;
   status: TAudioManagerStatus;
-  type?: TChannelComponentType;
+  size?: TChannelComponentType | null;
+  sizes?: Partial<TBreakpoints<TChannelComponentType>>;
   isNew?: boolean;
   disabled?: boolean;
 }

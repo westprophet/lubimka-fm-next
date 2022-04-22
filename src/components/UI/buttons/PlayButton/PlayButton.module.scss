@@ -9,41 +9,31 @@
   justify-content: center;
   align-items: center;
   flex-shrink: 0;
-
-  &:global {
-    &.sm {
-      @include for-sm {
-        height: $size-sm;
-        width: $size-sm;
-        min-width: $size-sm;
-        button svg {
-          font-size: 1.5rem;
-        }
-      }
-    }
-
-    &.md {
-      @include for-md {
-        height: $size-md;
-        width: $size-md;
-        min-width: $size-md;
-        button svg {
-          font-size: 2rem;
-        }
-      }
-    }
-
-    &.lg {
-      @include for-lg {
-        height: $size-lg;
-        width: $size-lg;
-        min-width: $size-lg;
-        button svg {
-          font-size: 3rem;
-        }
-      }
+  @include for-sm {
+    height: $size-sm;
+    width: $size-sm;
+    min-width: $size-sm;
+    button svg {
+      font-size: 1.5rem;
     }
   }
+  @include for-md {
+    height: $size-md;
+    width: $size-md;
+    min-width: $size-md;
+    button svg {
+      font-size: 2rem;
+    }
+  }
+  @include for-lg {
+    height: $size-lg;
+    width: $size-lg;
+    min-width: $size-lg;
+    button svg {
+      font-size: 3rem;
+    }
+  }
+
 
   button {
     width: calc(100% - #{$stroke-width-xs}px);
@@ -51,7 +41,8 @@
     color: var(--primary-color);
   }
 
-  .circular {
+
+  :global(.circular) {
     position: absolute;
     color: var(--primary-color);
     width: 100% !important;
@@ -64,25 +55,59 @@
     }
   }
 
-  &.type2 {
-    button {
-      background-color: var(--acсent-color);
-      color: var(--primary-color);
-    }
-
-    :local(.circular) {
-      color: var(--acсent-color);
-
-      &:global(.MuiCircularProgress-indeterminate) {
-        color: var(--third-color);
-      }
-    }
-
-    &:local(&.disable) {
+  &:global {
+    &.type2 {
       button {
-        color: var(--border-color);
+        background-color: var(--acсent-color);
+        color: var(--primary-color);
+      }
+
+      :global(.circular) {
+        color: var(--acсent-color);
+        &:global(.MuiCircularProgress-indeterminate) {
+          color: var(--third-color);
+        }
+      }
+
+      &:global(.disable) {
+        button {
+          color: var(--border-color);
+        }
       }
     }
   }
+
+  &:global {
+    &.small {
+      height: $size-sm;
+      width: $size-sm;
+      min-width: $size-sm;
+
+      button svg {
+        font-size: 1.5rem;
+      }
+    }
+
+    &.middle {
+      height: $size-md;
+      width: $size-md;
+      min-width: $size-md;
+
+      button svg {
+        font-size: 2rem;
+      }
+    }
+
+    &.large {
+      height: $size-lg;
+      width: $size-lg;
+      min-width: $size-lg;
+
+      button svg {
+        font-size: 3rem;
+      }
+    }
+  }
+
 
 }

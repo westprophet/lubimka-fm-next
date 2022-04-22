@@ -1,0 +1,94 @@
+@import "screen";
+
+/*=============================== MOBILE TO FIRST =================================*/
+@mixin for-xs {
+  @media (min-width: #{$screen-xs}) {
+    @content;
+  }
+}
+
+@mixin for-sm {
+  @media (min-width: #{$screen-sm}) {
+    @content;
+  }
+}
+
+// Medium devices
+@mixin for-md {
+  @media (min-width: #{$screen-md}) {
+    @content;
+  }
+}
+
+// extra medium devices
+@mixin for-lg {
+  @media (min-width: #{$screen-lg}) {
+    @content;
+  }
+}
+
+// Large devices
+@mixin for-xl {
+  @media (min-width: #{$screen-xl}) {
+    @content;
+  }
+}
+
+// Extra large devices
+@mixin for-xxl {
+  @media (min-width: #{$screen-2xl}) {
+    @content;
+  }
+}
+
+// Extra large devices
+@mixin for-xxxl {
+  @media (min-width: #{$screen-3xl}) {
+    @content;
+  }
+}
+
+
+
+/*=============================== DESCTOP TO FIRST =================================*/
+// ONLY BEFORE SM
+@mixin before-sm {
+  @media (max-width: #{$screen-sm}) {
+    @content;
+  }
+}
+
+// ONLY BEFORE SM
+@mixin before-md {
+  @media (max-width: #{$screen-md}) {
+    @content;
+  }
+}
+
+// ONLY BEFORE lg
+@mixin before-lg {
+  @media (max-width: #{$screen-lg}) {
+    @content;
+  }
+}
+
+// ONLY BEFORE XL
+@mixin before-xl {
+  @media (max-width: #{$screen-xl}) {
+    @content;
+  }
+}
+
+// ONLY BEFORE XXL
+@mixin before-xxl {
+  @media (max-width: #{$screen-2xl}) {
+    @content;
+  }
+}
+
+// ONLY BEFORE XXXL
+@mixin before-xxxl {
+  @media (max-width: #{$screen-3xl}) {
+    @content;
+  }
+}
