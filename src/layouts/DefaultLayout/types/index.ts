@@ -1,2 +1,10 @@
 import IDefaultManagerValues from './IDefaultManagerValues';
-export type { IDefaultManagerValues };
+import IHeaderStateContext from './IHeaderStateContext';
+import IPlayerStateContext from './IPlayerStateContext';
+import IDefaultLayoutAttributes from './IDefaultLayoutAttributes';
+export type {
+  IDefaultManagerValues,
+  IDefaultLayoutAttributes,
+  IHeaderStateContext,
+  IPlayerStateContext,
+};

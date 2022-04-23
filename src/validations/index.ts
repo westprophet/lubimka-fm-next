@@ -5,6 +5,7 @@ import isValidISocial from './isValidISocial';
 import isValidIEvent from './isValidIEvent';
 import isValidIClub from './isValidIClub';
 import isValidIPartner from './isValidIPartner';
+import isValidITeamMember from './isValidITeamMember';
 
 export {
   isValidICompany,
@@ -14,4 +15,5 @@ export {
   isValidIEvent,
   isValidIClub,
   isValidIPartner,
+  isValidITeamMember,
 };

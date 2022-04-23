@@ -11,6 +11,7 @@ import IStrapiReturn from '../../../types/IStrapiReturn';
 import { IGetPartnersResponse } from './types/IGetPartnersResponse';
 import { IGetPartnersRequestParams } from './types/IGetPartnersRequestParams';
 import { IPartner } from '../../../../../interfaces';
+import getParamsObject from './utils/getParamsObject';
 
 //Получить партнеров
 export default async function getPartners(
@@ -18,42 +19,7 @@ export default async function getPartners(
 ): Promise<IGetPartnersReturn> {
   try {
     const { data }: { data: IGetPartnersResponse } = await StrapiAxios.get(`/partners`, {
-      params: {
-        sort: p?.sort ?? ['order:asc'],
-        populate: {
-          Emails: '*',
-          PhoneNumbers: '*',
-          Socials: {
-            populate: {
-              icon: {
-                populate: '*',
-              },
-            },
-          },
-          avatar: {
-            fields: ['url'],
-          },
-          company: p?.withCompany
-            ? {
-                populate: {
-                  Emails: '*',
-                  PhoneNumbers: '*',
-                  Sites: '*',
-                  Socials: {
-                    populate: {
-                      icon: {
-                        populate: '*',
-                      },
-                    },
-                  },
-                  logotype: {
-                    fields: ['url'],
-                  },
-                },
-              }
-            : undefined,
-        },
-      },
+      params: getParamsObject(p),
     });
     return {
       data: data.data,

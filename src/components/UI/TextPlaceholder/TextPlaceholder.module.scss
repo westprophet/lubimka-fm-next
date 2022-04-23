@@ -1,0 +1,82 @@
+.TextPlaceholder {
+  position: relative;
+  overflow: hidden;
+  display: grid;
+  cursor: pointer;
+
+  .inner {
+    width: max-content;
+    overflow: hidden;
+
+    svg {
+      font-size: inherit !important;
+    }
+
+    div {
+      white-space: nowrap;
+      width: max-content;
+      display: flex;
+      transition: .25s;
+      gap: 10px;
+      align-items: center;
+    }
+
+    div:last-child {
+      position: absolute;
+      svg{
+        opacity: 0;
+      }
+    }
+
+    &:hover {
+      div {
+        transition: .25s;
+        transform: translateY(-100%);
+      }
+      div:last-child {
+        transform: translateY(-100%);
+      }
+      &.animation{
+        &.right {
+          div:last-child svg {
+            animation: anim-svg-right 1 .75s ease-in .25s forwards;
+          }
+        }
+        &.left {
+          div:last-child svg {
+            animation: anim-svg-left 1 .75s ease-in .25s forwards;
+          }
+        }
+      }
+    }
+  }
+}
+
+
+@keyframes anim-svg-left {
+  from {
+    opacity: 0;
+    transform: translateX(50%);
+  }
+  50% {
+    transform: translateX(-20%);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes anim-svg-right {
+  from {
+    opacity: 0;
+    transform: translateX(-50%);
+  }
+  50% {
+    transform: translateX(20%);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}

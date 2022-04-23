@@ -31,9 +31,6 @@ export default function HamburgerButtonMenu({ className }: IHamburgerButtonMenuP
               <MobileHeaderMenuItem key={mi.key} item={mi} />
             ))}
           </div>
-          {/*<div className={cn(s.items, 'with-screen-padding')}>*/}
-          {/*  */}
-          {/*</div>*/}
         </div>
       </aside>
     </div>

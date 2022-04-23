@@ -11,6 +11,7 @@ import { IRadioProgramm } from './IRadioProgramm';
 import { IEvent } from './IEvent';
 import { IClub } from './IClub';
 import { IPartner } from './IPartner';
+import { ITeamMember } from './ITeamMember';
 
 export type {
   ITrack,
@@ -28,4 +29,5 @@ export type {
   IPhone,
   IEvent,
   IPartner,
+  ITeamMember,
 };

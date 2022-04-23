@@ -28,8 +28,8 @@ const MENU_ITEMS: IHeaderMenuItem[] = [
   },
   {
     title: 'О нас',
-    link: 'about',
-    key: 'about',
+    link: 'about-us',
+    key: 'about-us',
   },
   {
     title: 'Контакты',

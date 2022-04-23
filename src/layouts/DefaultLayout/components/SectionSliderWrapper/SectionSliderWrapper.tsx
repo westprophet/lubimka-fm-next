@@ -16,17 +16,14 @@ function SectionSliderWrapper({ className, title, children, link }: ISectionSlid
   }
   return (
     <SectionWrapper.Wrapper className={cn(s.SectionSliderWrapper, className)}>
-      {title && (
-        <SectionWrapper.Title className={cn(s.title)}>
-          {link ? (
-            <Link href={link}>
-              <a>{title}</a>
-            </Link>
-          ) : (
-            title
-          )}
-        </SectionWrapper.Title>
-      )}
+      <div className={cn(s.head)}>
+        {title && <SectionWrapper.Title className={cn(s.title)}>{title}</SectionWrapper.Title>}
+        {/*{link ? (*/}
+        {/*  <Link href={link}>*/}
+        {/*    <a>{title}</a>*/}
+        {/*  </Link>*/}
+        {/*) : (*/}
+      </div>
       <SectionWrapper.Inner className={cn(s.inner)}>
         <Slider.SideBar className={cn(s.arrow, s.leftArrow)} side="left" />
         <Slider.Wrapper swipe className={cn(s.slider)}>

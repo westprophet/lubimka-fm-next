@@ -62,15 +62,15 @@
 }
 
 @mixin layout-padding($t: true, $r: true, $b: true, $l: true, $property: padding){
-  @include layout-padding-xs($t,$r,$b,$l);
+  @include layout-padding-xs($t,$r,$b,$l, $property);
   @include for-sm{
-    @include layout-padding-sm($t,$r,$b,$l);
+    @include layout-padding-sm($t,$r,$b,$l, $property);
   }
   @include for-md{
-    @include layout-padding-md($t,$r,$b,$l);
+    @include layout-padding-md($t,$r,$b,$l, $property);
   }
   @include for-xl{
-    @include layout-padding-xl($t,$r,$b,$l);
+    @include layout-padding-xl($t,$r,$b,$l, $property);
   }
 }
 

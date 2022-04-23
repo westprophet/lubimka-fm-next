@@ -3,10 +3,18 @@ import HomePage from '../src/pages/HomePage';
 import { GetStaticProps } from 'next';
 import { GetStaticPropsContext } from 'next/types';
 import api from '../src/api';
-import { IAuthor, IClub, IEvent, IPartner } from 'src/interfaces';
+import { IAuthor, IChannel, IClub, IEvent, IPartner } from 'src/interfaces';
 
-const Home: NextPage<IHomeProps> = ({ events, clubs, authors, partners }) => {
-  return <HomePage events={events} clubs={clubs} authors={authors} partners={partners} />;
+const Home: NextPage<IHomeProps> = ({ events, clubs, authors, partners, channels }) => {
+  return (
+    <HomePage
+      events={events}
+      clubs={clubs}
+      authors={authors}
+      partners={partners}
+      channels={channels}
+    />
+  );
 };
 
 export const getStaticProps: GetStaticProps = async (context: GetStaticPropsContext) => {
@@ -31,6 +39,7 @@ interface IHomeProps {
   clubs: IClub[];
   authors: IAuthor[];
   partners: IPartner[];
+  channels: IChannel[];
 }
 
 export default Home;

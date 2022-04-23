@@ -1,0 +1,6 @@
+@import "../../scss/data";
+@import "../../scss/mixins";
+
+.PageWrapper {
+  @include layout-padding(true, false, true, false);
+}

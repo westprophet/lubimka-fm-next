@@ -6,11 +6,14 @@ import React from 'react';
 import s from './MobileHeaderMenuItem.module.scss';
 import cn from 'classnames';
 import IHeaderMenuItem from '../../../../interfaces/IHeaderMenuItem';
+import Link from 'next/link';
 
 export default function MobileHeaderMenuItem({ className, item }: IMobileHeaderMenuItemProps) {
   return (
     <div className={cn(s.MobileHeaderMenuItem, className)}>
-      <div>{item.title}</div>
+      <Link href={item.link}>
+        <a>{item.title}</a>
+      </Link>
     </div>
   );
 }

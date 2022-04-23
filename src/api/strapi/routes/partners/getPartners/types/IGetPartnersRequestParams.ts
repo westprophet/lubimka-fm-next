@@ -1,10 +1,5 @@
-/***
- * filters
- * https://docs.strapi.io/developer-docs/latest/developer-resources/database-apis-reference/rest/filtering-locale-publication.html#filtering
- */
+import IStrapiRequestBaseParams from '../../../../types/IStrapiRequestBaseParams';
 
-export type IGetPartnersRequestParams = {
-  sort?: string; //'created_at:asc'
-  filter?: object; //
+export interface IGetPartnersRequestParams extends IStrapiRequestBaseParams {
   withCompany?: boolean;
-};
+}

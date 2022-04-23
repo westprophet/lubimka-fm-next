@@ -1,0 +1,38 @@
+@import "data";
+@import "../../scss/mixins";
+
+.PageTitle {
+  //$line-height-xs: 52px;
+  height: $height-xs;
+  display: grid;
+  grid-auto-flow: column;
+  grid-template-columns: $height-xs auto;
+  gap: $gap-xs;
+  align-items: center;
+  justify-content: left;
+  @include layout-padding(true, true, true, true, margin);
+  @include f5() {
+    font-weight: 700;
+    line-height: $height-xs;
+  }
+  @include before-sm {
+    margin-left: 2px;
+  }
+  @include for-sm {
+    padding-left: $gap-sm;
+    height: $height-sm;
+    grid-template-columns: auto;
+    @include f3(){
+      line-height: $height-sm;
+    }
+  }
+  @include for-lg {
+    padding-left: $gap-lg;
+  }
+
+  & > button {
+    @include for-sm {
+      display: none;
+    }
+  }
+}

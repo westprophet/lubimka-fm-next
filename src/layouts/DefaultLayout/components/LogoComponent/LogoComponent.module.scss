@@ -2,7 +2,7 @@
 
 .LogoComponent {
   display: flex;
-  grid-gap: 7px;
+  grid-gap: $gap-xs;
   color: var(--text-color);
 
   &:hover {
@@ -14,14 +14,15 @@
   }
 
   @include for-sm {
-    grid-gap: 11px;
+    grid-gap: $gap-sm;
+  }
+  @include for-xl{
+    grid-gap: $gap-xl;
   }
 
   .logoImg {
     width: $logo-size;
     height: $logo-size;
-    //animation: heartbeat ease-in 2s infinite;
-
     @include for-sm {
       width: $logo-size-sm;
       height: $logo-size-sm;

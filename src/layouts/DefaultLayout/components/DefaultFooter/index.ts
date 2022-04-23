@@ -1,3 +1,4 @@
 import DefaultFooter from './DefaultFooter';
+import React from 'react';
 
-export default DefaultFooter;
+export default React.memo(DefaultFooter);

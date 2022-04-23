@@ -4,22 +4,39 @@
   align-items: center;
   color: var(--border-color);
   transition: .25s;
-  &:hover{
+  justify-self: flex-start;
+  opacity: 0;
+
+  &:hover {
     transition: .25s;
     color: var(--text-color);
   }
-  justify-self: flex-start;
-  button{
+
+  button {
     color: currentColor;
   }
+
   &.left {
     transform: translateX(-100%);
   }
+
   &.right {
-    transform: translateX(+100%);
+    transform: translateX(100%);
   }
+
   &.show {
-    transition: .25s;
+    opacity: 0;
+    animation: show forwards .5s ease 1 .7s;
+  }
+}
+
+@keyframes show {
+  from{
+    opacity: 0;
+    transform: translateX(-100%);
+  }
+  to{
+    opacity: 1;
     transform: translateX(0);
   }
 }

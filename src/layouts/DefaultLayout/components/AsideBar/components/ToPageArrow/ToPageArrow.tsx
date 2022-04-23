@@ -42,7 +42,6 @@ export default function ToPageArrow({ className, onClick, show, type, link }: IT
 
 ToPageArrow.defaultProps = {
   className: '',
-  show: true,
   type: 'left',
 };
 
