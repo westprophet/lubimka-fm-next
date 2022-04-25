@@ -33,8 +33,8 @@ const MENU_ITEMS: IHeaderMenuItem[] = [
   },
   {
     title: 'Контакты',
-    link: 'contacts',
-    key: 'contacts',
+    link: 'contact-us',
+    key: 'contact-us',
   },
 ];
 export default MENU_ITEMS;

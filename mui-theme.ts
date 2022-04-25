@@ -20,6 +20,7 @@ const theme = createTheme({
     MuiOutlinedInput: {
       styleOverrides: {
         root: {
+          background: '#2B2C32',
           color: '#99D3FB',
           '&:hover': {
             '& .MuiOutlinedInput-notchedOutline': {
@@ -34,7 +35,14 @@ const theme = createTheme({
           color: '#99D3FB',
         },
         notchedOutline: {
-          borderColor: '#4F4F4F',
+          // borderColor: '#4F4F4F',
+          color: '#4F4F4F',
+        },
+      },
+    },
+    MuiFormHelperText: {
+      styleOverrides: {
+        root: {
           color: '#4F4F4F',
         },
       },

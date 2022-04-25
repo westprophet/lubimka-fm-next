@@ -1,0 +1,40 @@
+.ContactUsPage {
+  //min-height: 1000px;
+  .MainSection {
+    display: grid;
+    grid-gap: 40px;
+    h2{
+      margin-bottom: 50px;
+      @include f4(){
+        font-weight: 700;
+      }
+    }
+    @include for-xl {
+      grid-template-columns: 1fr 1fr;
+    }
+
+    .promo {
+      justify-self: center;
+    }
+
+    .formContainer {
+
+      margin: auto;
+      width: 100%;
+      .form{
+        display: grid;
+        grid-gap: 20px 20px;
+        grid-template-columns: 1fr;
+        @include for-md{
+          max-width: 440px;
+          grid-template-columns: 1fr 1fr;
+          grid-gap: 35px 20px;
+          .message{
+            margin-top: 15px;
+            grid-column: 1/3;
+          }
+        }
+      }
+    }
+  }
+}
