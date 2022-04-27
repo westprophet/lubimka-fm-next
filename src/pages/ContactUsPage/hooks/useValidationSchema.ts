@@ -4,7 +4,7 @@ import * as Yup from 'yup';
 export default function useValidationSchema() {
   return Yup.object().shape({
     name: Yup.string().min(2, 'Too Short!').max(50, 'Too Long!').required('Это поле обязательно'),
-    email: Yup.string().email('Invalid email').required('Required'),
+    email: Yup.string().email('Invalid email').required('Это поле обязательно'),
     phone: Yup.string(),
     city: Yup.string(),
     message: Yup.string().required('Это поле обязательно'),

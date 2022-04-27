@@ -34,6 +34,7 @@ export default function ChannelMenuSelector({
         ) : null}
       </div>
       <div className={cn(s.inner)}>
+        {/*// @ts-ignore*/}
         <Slider ref={sliderRef} {...settings} className={cn(s.slider)}>
           {channels.map((c: IChannel) => (
             <Channel key={c.attributes.name} channel={c} className={cn(s.slide)} size="small" />
@@ -51,7 +52,7 @@ ChannelMenuSelector.defaultProps = {
 
 interface IChannelMenuSelectorProps {
   className?: string;
-  isOpen: boolean;
+  isOpen: boolean | undefined | null;
   channels: IChannel[];
   channel: IChannel;
 }

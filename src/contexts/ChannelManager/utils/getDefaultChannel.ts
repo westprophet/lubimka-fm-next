@@ -7,5 +7,6 @@ export default function getDefaultChannel(channels: IChannel[]): IChannel | unde
     // console.error('ChannelManager: getDefaultChannel', 'channels: isEmptyArray');
     return null;
   }
+  // @ts-ignore
   return channels.find((c: IChannel) => c[FIELD_KEY] === DEFAULT_CHANNEL_KEY); //Ищем канал по умолчанию
 }

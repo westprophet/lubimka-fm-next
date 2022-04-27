@@ -8,7 +8,7 @@ export interface IChannelInner {
   name: string;
   title: string;
   locale: TLanguages;
-  subtitle: string;
+  subtitle: string | null;
   description: string;
   stream: IStream;
   createdAt: string;

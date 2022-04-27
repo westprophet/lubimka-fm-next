@@ -16,6 +16,7 @@ export default function BottomPlayer({
   setIsOpenChannelMenu,
 }: IBottomCommonPlayerProps) {
   const { title, channels, image, isLoading, status, play, stop, channel } = useCommonPlayerData();
+  if (!channel) return null;
   return (
     <CommonPlayer
       fixed={fixed}
@@ -28,7 +29,7 @@ export default function BottomPlayer({
       }}
       channels={{
         current: channel,
-        channels: channels,
+        channels: channels ?? [],
         isOpenChannelMenu,
         setIsOpenChannelMenu,
       }}
@@ -55,9 +56,9 @@ BottomPlayer.defaultProps = {
 interface IBottomCommonPlayerProps {
   fixed?: boolean;
   show?: boolean;
-  pinned: boolean;
+  pinned: boolean | undefined | null;
   setPinned(v: boolean): any;
-  isOpenChannelMenu: boolean;
+  isOpenChannelMenu: boolean | undefined | null;
   setIsOpenChannelMenu(v: boolean): any;
   transparent?: boolean;
 }

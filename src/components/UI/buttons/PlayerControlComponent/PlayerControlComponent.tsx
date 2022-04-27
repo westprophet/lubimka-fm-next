@@ -47,6 +47,6 @@ interface IPlayerControlComponentProps {
   type?: 1 | 2;
   play(): any;
   stop(): any;
-  size?: TPlayButtonSizes;
+  size?: TPlayButtonSizes | null;
   sizes?: Partial<TBreakpoints<TPlayButtonSizes>>;
 }

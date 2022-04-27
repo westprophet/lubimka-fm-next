@@ -1,7 +1,7 @@
 import SliderWrapperManager from './contexts/SliderWrapperManager';
 
 const withSliderWrapperManager =
-  (Component) =>
+  (Component: any) =>
   // eslint-disable-next-line react/display-name
   ({ ...props }) => {
     return (

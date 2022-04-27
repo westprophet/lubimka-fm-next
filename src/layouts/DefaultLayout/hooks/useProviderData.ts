@@ -5,8 +5,7 @@ import IPlayerStateContext from '../types/IPlayerStateContext';
 
 import { INITIAL_HEADER_DATA_STATE, INITIAL_PLAYER_DATA_STATE } from '../constants';
 import useLocalStorage from 'use-local-storage';
-
-let showTimer;
+let showTimer: NodeJS.Timeout;
 
 export default function useProviderData(): IDefaultManagerValues {
   const [headerData, setHeaderContextData] =

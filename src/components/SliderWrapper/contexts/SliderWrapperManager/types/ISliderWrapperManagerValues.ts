@@ -8,5 +8,5 @@ export default interface ISliderWrapperManagerValues {
   setCurrentSlideIndex(index: number): any;
   currentSlideIndex: number;
   ref: any | null;
-  count: number | null;
+  count: number;
 }

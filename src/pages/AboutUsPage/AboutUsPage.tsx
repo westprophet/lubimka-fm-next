@@ -19,7 +19,7 @@ export default function AboutUsPage({ className, team }: IAboutUsPageProps) {
       }}
     >
       <DefaultLayout.PageWrapper>
-        <DefaultLayout.PageTitle placeholder="Назад">О нас</DefaultLayout.PageTitle>
+        <DefaultLayout.PageTitle url="/">О нас</DefaultLayout.PageTitle>
         <MainSection />
         <TeamSection team={team} />
       </DefaultLayout.PageWrapper>

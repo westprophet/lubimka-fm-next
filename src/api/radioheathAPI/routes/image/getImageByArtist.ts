@@ -3,8 +3,8 @@ import IRadioHeartImage from '../../types/IRadioHeartImage';
 
 //Получаем картинку по имени и названию трека
 export const getImageByArtist = async (
-  artist: string,
-  title: string
+  artist?: string,
+  title?: string
 ): Promise<null | IRadioHeartImage> => {
   if (!artist || !title) return null;
   try {

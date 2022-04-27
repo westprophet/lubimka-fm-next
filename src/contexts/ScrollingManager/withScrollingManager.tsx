@@ -1,7 +1,8 @@
+import React from 'react';
 import ScrollingManager from './ScrollingManager';
 
 const withScrollingManager =
-  (Component) =>
+  (Component: any) =>
   // eslint-disable-next-line react/display-name
   ({ ...props }) => {
     return (

@@ -5,6 +5,8 @@ const INITIAL_VALUES: IChannelManagerValues = {
   channels: null,
   isLoadingChannels: false,
   setChannel: () => {},
+  prevChannel: () => {},
+  nextChannel: () => {},
 };
 
 export default INITIAL_VALUES;

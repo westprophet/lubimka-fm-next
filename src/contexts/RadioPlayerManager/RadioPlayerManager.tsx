@@ -34,16 +34,18 @@ export default function RadioPlayerManager({ children }: IPlayerManagerProps) {
 
   return (
     <RadioPlayerContext.Provider value={values}>
-      <audio
-        ref={audioRef}
-        autoPlay={false}
-        preload="none"
-        onCanPlay={onCanPlay}
-        onError={onError}
-        id={RADIO_PLAYER_ID}
-        crossOrigin="anonymous"
-        src={sourceURL}
-      />
+      {sourceURL && (
+        <audio
+          ref={audioRef}
+          autoPlay={false}
+          preload="none"
+          onCanPlay={onCanPlay}
+          onError={onError}
+          id={RADIO_PLAYER_ID}
+          crossOrigin="anonymous"
+          src={sourceURL}
+        />
+      )}
       {children}
     </RadioPlayerContext.Provider>
   );

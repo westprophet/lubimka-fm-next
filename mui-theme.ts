@@ -1,5 +1,7 @@
 import { createTheme } from '@mui/material';
+import type {} from '@mui/lab/themeAugmentation';
 
+//TODO: не рабоает расширение темы лабораторными компонентами
 const theme = createTheme({
   typography: {
     fontFamily: [
@@ -17,6 +19,19 @@ const theme = createTheme({
     },
   },
   components: {
+    MuiButton: {
+      defaultProps: {
+        variant: 'contained',
+      },
+    },
+    MuiButtonBase: {
+      styleOverrides: {
+        disabled: {
+          backgroundColor: '#4F4F4F',
+          color: 'white',
+        },
+      },
+    },
     MuiOutlinedInput: {
       styleOverrides: {
         root: {
@@ -47,10 +62,18 @@ const theme = createTheme({
         },
       },
     },
+
     MuiInputLabel: {
       styleOverrides: {
         root: {
           color: 'currentColor',
+        },
+      },
+    },
+    MuiLoadingButton: {
+      styleOverrides: {
+        disabled: {
+          color: '#4F4F4F',
         },
       },
     },

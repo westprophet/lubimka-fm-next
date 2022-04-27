@@ -4,7 +4,7 @@ import useChannels from './useChannels';
 import useChannelsMethods from './useChannelsMethods';
 import useLocalStorage from 'use-local-storage';
 
-export default function useChannelState(_channels: IChannel[]) {
+export default function useChannelState(_channels?: IChannel[]) {
   const { channels, isLoading } = useChannels(_channels); //Получаем каналы
   const [current, setChannel] = useLocalStorage<IChannel>('channel', channels[0], {
     syncData: false,

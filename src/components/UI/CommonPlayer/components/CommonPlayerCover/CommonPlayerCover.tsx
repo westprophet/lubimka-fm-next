@@ -34,5 +34,5 @@ CommonPlayerCover.defaultProps = {
 interface ICommonPlayerCoverProps {
   className?: string;
   isLoading: boolean;
-  image: IStrapiImage | string;
+  image?: IStrapiImage | string | null;
 }

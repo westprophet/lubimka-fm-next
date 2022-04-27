@@ -25,7 +25,7 @@ export default function BannerPlayerArrow({
       )}
       side={side}
       onClick={() => {
-        if (status !== 'loading') onClick();
+        if (status !== 'loading' && onClick) onClick();
       }}
     />
   );

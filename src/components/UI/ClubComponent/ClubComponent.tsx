@@ -6,6 +6,7 @@ import React from 'react';
 import s from './ClubComponent.module.scss';
 import cn from 'classnames';
 import Image from 'next/image';
+// @ts-ignore
 import Marquee from 'react-double-marquee';
 import DATA_FOR_BLUR from '../../../constants/DATA_FOR_BLUR';
 import NoImage from 'components/UI/NoImage';
@@ -92,8 +93,8 @@ interface IClubComponentProps {
   className?: string;
   title: string;
   address: string;
-  cover: string;
-  avatar: string;
+  cover: string | null;
+  avatar?: string | null;
   isLongType?: boolean;
   size?: TSizes;
 }

@@ -14,7 +14,7 @@ export default function useCommonPlayerData() {
   const { channels, current: channel } = useContext(ChannelManagerContext);
 
   const _data: IRadioHearthStreamDataMount | null = rTools.getMount(data); //Получаем более точные данные
-  const title: TAudioTitle = splitTrackName(_data); //Разделяем имя и название трека
+  const title: TAudioTitle | null = splitTrackName(_data); //Разделяем имя и название трека
   const { image, isLoading } = useImageState(title); // Запрашиваем картинку для трека
 
   const [isOpenChannelMenu, setIsOpenChannelMenu] = useState<boolean>(false); //Стейт открытия окна каналов

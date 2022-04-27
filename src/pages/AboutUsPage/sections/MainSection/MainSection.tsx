@@ -7,18 +7,15 @@ import s from './MainSection.module.scss';
 import cn from 'classnames';
 import hearth from 'assets/images/hearth-min.webp';
 import Image from 'next/image';
-import DATA_FOR_BLUR from '../../../../constants/DATA_FOR_BLUR';
 import Section from '../../../../layouts/DefaultLayout/components/SectionWrapper';
 
 export default function MainSection({ className }: IMainSectionProps) {
   return (
     <Section.Wrapper className={cn(s.MainSection, className)}>
-      {/*<Section.Inner>*/}
       <div className={cn(s.promo)}>
         <Image
           src={hearth}
           placeholder="blur"
-          // blurDataURL={DATA_FOR_BLUR}
           objectFit="cover"
           layout="intrinsic"
           alt="hearth lubimka about us"
@@ -50,7 +47,6 @@ export default function MainSection({ className }: IMainSectionProps) {
           <li>♥ Цель 1 </li>
         </ul>
       </div>
-      {/*</Section.Inner>*/}
     </Section.Wrapper>
   );
 }

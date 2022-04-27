@@ -5,6 +5,7 @@ const INITIAL_VALUES: IPlayerManagerValues = {
   audioRef: null,
   play: () => {},
   stop: () => {},
+  toggle: () => {},
   channel: null,
   id: '',
   data: null,

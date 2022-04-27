@@ -23,7 +23,7 @@ export default function CommonPlayerAction({
   return (
     <div className={cn(s.CommonPlayerAction, className)}>
       <IconButton
-        disabled={isOpenChannelMenu}
+        disabled={Boolean(isOpenChannelMenu)}
         className={cn(s.pinned, { [s.isPinned]: !pinned })}
         onClick={() => {
           setPinned(!pinned);
@@ -51,8 +51,8 @@ CommonPlayerAction.defaultProps = {
 interface ICommonPlayerActionProps {
   className?: string;
   channel: IChannel;
-  isOpenChannelMenu: boolean;
-  setOpenChannelMenu(v: boolean): any;
-  pinned: boolean;
+  isOpenChannelMenu: boolean | undefined | null;
+  setOpenChannelMenu(v: boolean | undefined | null): any;
+  pinned: boolean | undefined | null;
   setPinned(v: boolean): any;
 }

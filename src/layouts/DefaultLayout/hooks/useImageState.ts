@@ -7,9 +7,9 @@ import isEmptyString from '../../../utils/isEmptyString';
 //Получение картинки и запись ее в состояние
 export default function useGetImage(title: TAudioTitle | null): {
   isLoading: boolean;
-  image: string;
+  image: string | null;
 } {
-  const lock = !!title || isEmptyString(title?.artist) || isEmptyString(title?.title);
+  const lock = Boolean(title) || isEmptyString(title?.artist) || isEmptyString(title?.title);
 
   const { isLoading, error, data } = useQuery(
     ['image-fetch', title],

@@ -20,7 +20,7 @@ export default function DefaultLeftSide({ className, arrow }: IDefaultLeftSidePr
         <ToBackArrow
           show={arrow?.show ?? false}
           link={arrow?.link}
-          onClick={arrow?.onClick ?? arrow?.thisGoToPrevPage ? r.back : null}
+          onClick={arrow?.onClick ?? arrow?.thisGoToPrevPage ? r.back : () => {}}
         />
       </AsideBar.Top>
       <AsideBar.Inner className="inner">

@@ -21,8 +21,10 @@ export default function ChannelTitleSlider({ className }: IChannelTitleSliderPro
       sliderRef.current?.slickGoTo(currentSlideIndex);
   }, [currentSlideIndex, channels, sliderRef]);
 
+  if (!channels) return null;
   return (
     <div className={cn(s.ChannelTitleSlider, className)}>
+      {/*// @ts-ignore*/}
       <Slider ref={sliderRef} {...settings}>
         {channels.map((c: IChannel) => (
           <div key={`channel-${c.attributes.name}`}>{c.attributes.title}</div>

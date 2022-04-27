@@ -13,6 +13,7 @@ import TBreakpoints from '../../types/TBreakpoints';
 export default function Channel({ className, channel, size, isNew, sizes }: ISimpleChannelProps) {
   const { setChannel, current } = useContext(ChannelManagerContext);
   const { status, play, stop }: any = useContext(RadioPlayerContext);
+  if (!current) return null;
   const isActive = compareIChannels(current, channel);
 
   return (

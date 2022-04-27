@@ -1,7 +1,7 @@
 import { IGetPartnersRequestParams } from '../types/IGetPartnersRequestParams';
 
 //Формируем параметры для запроса на основе переданных аргументов
-export default function getParamsObject(p: IGetPartnersRequestParams) {
+export default function getParamsObject(p: IGetPartnersRequestParams | undefined) {
   return {
     sort: p?.sort ?? ['order:asc'],
     populate: {

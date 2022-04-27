@@ -1,7 +1,7 @@
 import IRadioHearthStreamDataMount from '../../api/radioheathAPI/types/IRadioHearthStreamDataMount';
 import TAudioTitle from '../../types/TAudioTitle';
 
-export default function splitTrackName(d: IRadioHearthStreamDataMount): TAudioTitle | null {
+export default function splitTrackName(d?: IRadioHearthStreamDataMount | null): TAudioTitle | null {
   if (!d) return null;
   const temp = d.title
     .replace(/&#039;/gi, "'")

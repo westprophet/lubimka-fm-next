@@ -7,8 +7,8 @@ export default function useSpectrum(audioID: string, canvasID: string) {
 
   useEffect(() => {
     if (isNotEmpty && document) {
-      const audioElement: HTMLMediaElement = document.querySelector(`#${audioID}`);
-      const canvasElement: HTMLCanvasElement = document.querySelector(`#${canvasID}`);
+      const audioElement: HTMLMediaElement | null = document.querySelector(`#${audioID}`);
+      const canvasElement: HTMLCanvasElement | null = document.querySelector(`#${canvasID}`);
       if (canvasElement && audioElement) {
         _wave.current = new Wave(audioElement, canvasElement);
         _wave.current.addAnimation(

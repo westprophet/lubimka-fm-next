@@ -2,6 +2,7 @@ import { useMedia } from 'react-media';
 
 import b from '../scss/breakpoints/_export.module.scss';
 import TBreakpoints from '../types/TBreakpoints';
+// import TBreakpointSize from '../types/TBreakpointSize';
 
 const GLOBAL_MEDIA_QUERIES = {
   xs: `(min-width: ${b.xs}px)`,

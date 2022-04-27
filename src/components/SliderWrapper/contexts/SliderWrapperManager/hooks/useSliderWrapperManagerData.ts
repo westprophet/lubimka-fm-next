@@ -41,7 +41,7 @@ export default function useSliderWrapperManagerData(): ISliderWrapperManagerValu
     prev,
     goTo,
     ref,
-    count: count.current,
+    count: count.current ?? 0,
     setCount,
     setCurrentSlideIndex,
     currentSlideIndex,

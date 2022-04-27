@@ -59,6 +59,6 @@ interface IPlayButtonProps {
   disable?: boolean;
   type?: 1 | 2;
   onClick(): any;
-  size?: TPlayButtonSizes;
+  size?: TPlayButtonSizes | null;
   sizes?: Partial<TBreakpoints<TPlayButtonSizes>>;
 }

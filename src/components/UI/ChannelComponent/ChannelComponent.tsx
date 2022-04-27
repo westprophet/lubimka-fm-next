@@ -30,7 +30,7 @@ export default function ChannelComponent({
   if (!channel) return null;
   // eslint-disable-next-line react-hooks/rules-of-hooks
   const _size = useComponentSize<TChannelComponentType>(sizes);
-  const img: IStrapiImage = channel.attributes.cover?.data.attributes;
+  const img: IStrapiImage | undefined = channel.attributes.cover?.data.attributes;
   return (
     <div
       className={cn(

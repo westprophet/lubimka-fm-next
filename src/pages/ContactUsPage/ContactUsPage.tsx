@@ -104,7 +104,7 @@ export default function ContactUsPage({ className }: IContactUsPageProps) {
                   />
                   <LoadingButton
                     type="submit"
-                    loading={isSubmitting}
+                    loading={!isSubmitting}
                     variant="contained"
                     size="large"
                     loadingPosition="end"

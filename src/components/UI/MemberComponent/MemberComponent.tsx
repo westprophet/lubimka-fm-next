@@ -7,6 +7,7 @@ import s from './MemberComponent.module.scss';
 import cn from 'classnames';
 import Image from 'next/image';
 import NoImage from 'components/UI/NoImage';
+// @ts-ignore
 import Marquee from 'react-double-marquee';
 import DATA_FOR_BLUR from '../../../constants/DATA_FOR_BLUR';
 
@@ -51,5 +52,5 @@ interface IPartnerComponentProps {
   className?: string;
   title: string;
   subtitle: string;
-  cover?: string;
+  cover?: string | null;
 }

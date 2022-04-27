@@ -5,19 +5,21 @@
 import React from 'react';
 import s from './AuthorComponent.module.scss';
 import cn from 'classnames';
-import NoCover from 'assets/no-photo-heath.svg';
 import Image from 'next/image';
 import NoImage from 'components/UI/NoImage';
 import PlayButton from 'components/UI/buttons/PlayButton';
 import { IAuthor } from 'src/interfaces';
+// @ts-ignore
 import Marquee from 'react-double-marquee';
 import tools from '../../../tools';
 import DATA_FOR_BLUR from '../../../constants/DATA_FOR_BLUR';
 
+// import NoCover from 'assets/no-photo-heath.svg';
+
 export default function AuthorComponent({ className, author, sm, md, lg }: IAuthorComponentProps) {
   const cover = author.attributes.avatar; // получаем данные о картинке
   let url: string | null = tools.IWrappedStrapiImage.getImageUrl(cover); //Получаем картинку
-  if (!url) url = NoCover; //ставим заглушку если нет картинки
+  if (!url) url = '/public/logo.svg'; //ставим заглушку если нет картинки
   return (
     <div
       className={cn(s.AuthorComponent, className, {

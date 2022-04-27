@@ -32,6 +32,6 @@ CommonRadioChannelButton.defaultProps = {
 interface ICommonRadioChannelButtonProps {
   className?: string;
   title: string;
-  isOpen: boolean;
+  isOpen?: boolean | null;
   onClick(): any;
 }

@@ -1,5 +1,6 @@
 {
   "compilerOptions": {
+    "strict": false,
     "baseUrl": ".",
     "paths": {
       "components/*": [
@@ -11,12 +12,15 @@
     },
     "target": "es5",
     "lib": [
-      "esnext",
-      "dom"
+      "es6",
+      "dom",
+      "esnext"
     ],
+    "noImplicitAny": true,
+    "noImplicitThis": true,
+    "strictNullChecks": true,
     "allowJs": true,
     "skipLibCheck": true,
-    "strict": false,
     "forceConsistentCasingInFileNames": true,
     "noEmit": true,
     "esModuleInterop": true,

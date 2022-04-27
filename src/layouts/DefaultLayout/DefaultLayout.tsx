@@ -34,28 +34,28 @@ function DefaultLayout({
         <DefaultHeader
           show={
             headerSettings?.alwaysShow ||
-            header.state.isShow ||
+            header.state?.isShow ||
             direction === 'Up' ||
-            header.state.isFixedShow
+            header.state?.isFixedShow
           }
-          transparent={header.state.isTransparent || position === 'top'}
+          transparent={header.state?.isTransparent || position === 'top'}
           fixed={true}
         />
         {children}
         <DefaultLeftSide arrow={leftSideSetting?.arrow} />
-        {!playerSettings.disable && (
+        {!playerSettings?.disable && (
           <BottomPlayer
-            show={player.state.isShow}
+            show={player.state?.isShow}
             transparent={
-              player.state.isTransparent || (position === 'top' && playerSettings?.transparent)
+              player.state?.isTransparent || (position === 'top' && playerSettings?.transparent)
             }
-            pinned={player.state.isPinned}
+            pinned={player.state?.isPinned}
             setPinned={player.pin}
-            isOpenChannelMenu={player.state.isOpenChannelMenu}
+            isOpenChannelMenu={player.state?.isOpenChannelMenu}
             setIsOpenChannelMenu={player.openChannelMenu}
           />
         )}
-        <DefaultRightSide showPlayer={!player.state.isPinned} />
+        <DefaultRightSide showPlayer={!player.state?.isPinned} />
         <DefaultFooter />
         <PostFooter />
       </DefaultLayoutManagerContext.Provider>

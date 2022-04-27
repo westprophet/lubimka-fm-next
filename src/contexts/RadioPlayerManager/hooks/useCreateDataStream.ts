@@ -1,11 +1,11 @@
 import { radio } from '../../../api';
 import IRadioHearthStreamData from '../../../api/radioheathAPI/types/IRadioHearthStreamData';
 import IChannel from '../../../interfaces/IChannel';
-import { useCallback, useEffect, useRef, useState } from 'react';
+import { useCallback, useRef, useState } from 'react';
 
 import FETCH_STREAM_TIMOUT from '../constants/FETCH_STREAM_TIMOUT';
 
-export default function useCreateDataStream(c: IChannel) {
+export default function useCreateDataStream(c?: IChannel | null) {
   const timer = useRef(); //Таймер
   const [data, setData] = useState<IRadioHearthStreamData | null>(); //Состояние данных
 

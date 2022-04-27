@@ -6,6 +6,7 @@ import React from 'react';
 import s from './CommonPlayerTitle.module.scss';
 import cn from 'classnames';
 import TAudioTitle from '../../../../../types/TAudioTitle';
+// @ts-ignore
 import Marquee from 'react-double-marquee';
 
 export default function CommonPlayerTitle({ className, ft }: ICommonPlayerTitleProps) {

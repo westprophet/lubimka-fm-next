@@ -2,17 +2,33 @@
  * Created by westp on 23.04.2022
  */
 
-import React, { useCallback } from 'react';
+import React, { useCallback, useEffect, useState } from 'react';
 import s from './PageTitle.module.scss';
 import cn from 'classnames';
 import ArrowButton from 'components/UI/buttons/ArrowButton';
 import TextPlaceholder from 'components/UI/TextPlaceholder';
 import { useRouter } from 'next/router';
 
-export default function PageTitle({ className, children, onClick, placeholder }: IPageTitleProps) {
+//Выполняет функцию заголовка и текста по котором можно возвратится обратно нв предыдущую страницу
+//или на определенную страницу если нет истории
+export default function PageTitle({
+  className,
+  children,
+  onClick,
+  placeholder,
+  url,
+}: IPageTitleProps) {
   const r = useRouter();
 
-  const onClickHandler = onClick ? onClick : r.back;
+  useEffect(() => {
+    if (url) r.prefetch(url);
+  }, [url]);
+
+  const onClickHandler = () => {
+    if (onClick) onClick(); // Исполняем функциюю если такая указана
+    else if (url) r.push(url);
+    else r.back();
+  };
 
   if (!placeholder)
     return (
@@ -37,7 +53,7 @@ export default function PageTitle({ className, children, onClick, placeholder }:
 
 PageTitle.defaultProps = {
   className: '',
-  // goToPrev: true,
+  placeholder: 'Назад',
 };
 
 interface IPageTitleProps {
@@ -45,4 +61,5 @@ interface IPageTitleProps {
   children: any;
   onClick?(): any;
   placeholder?: string;
+  url?: string;
 }

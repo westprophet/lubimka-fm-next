@@ -13,7 +13,10 @@ const getLocalChannel = (channels: IChannel[]): IChannel | null => {
   const localID = window.localStorage.getItem(LOCAL_KEY); // Вытягиваем ключ
   let foundedLocal: IChannel | null = null;
   //Ищем канал по локальному ключу
-  if (localID) foundedLocal = channels.find((c: IChannel) => c[FIELD_KEY] === localID);
+  if (localID) {
+    // @ts-ignore
+    foundedLocal = channels.find((c: IChannel) => c[FIELD_KEY] === localID);
+  }
   return foundedLocal;
 };
 export default getLocalChannel;

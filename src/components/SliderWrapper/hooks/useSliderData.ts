@@ -18,7 +18,7 @@ export default function useSliderData(count: number, swipe = false) {
     arrows: false,
     swipe: swipe,
     allowTouchMove: swipe,
-    afterChange: (cs) => sm.setCurrentSlideIndex(Number(cs) + 1),
+    afterChange: (cs: number) => sm.setCurrentSlideIndex(Number(cs) + 1),
     responsive: [
       {
         breakpoint: 576,

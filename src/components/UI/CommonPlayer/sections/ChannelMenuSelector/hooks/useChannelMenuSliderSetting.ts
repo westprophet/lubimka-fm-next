@@ -17,7 +17,7 @@ export default function useChannelMenuSliderSetting(channels: IChannel[]) {
     arrows: false,
     swipe: false,
     allowTouchMove: false,
-    afterChange: (cs) => setCurSlide(Number(cs) + 1),
+    afterChange: (cs: number) => setCurSlide(Number(cs) + 1),
     responsive: [
       {
         breakpoint: 576,

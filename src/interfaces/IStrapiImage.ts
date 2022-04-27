@@ -13,7 +13,7 @@ export default interface IStrapiImage {
   mime?: 'image/png' | 'image/jpeg';
   size?: number;
   url: string;
-  previewUrl?: string;
+  previewUrl?: string | null;
   provider?: 'local' | 'aws-s3';
   provider_metadata?: null;
   createdAt?: string;

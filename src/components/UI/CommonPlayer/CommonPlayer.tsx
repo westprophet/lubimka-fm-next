@@ -84,17 +84,17 @@ interface ICommonPlayerProps {
   channels: {
     channels: IChannel[];
     current: IChannel;
-    isOpenChannelMenu: boolean;
+    isOpenChannelMenu: boolean | null | undefined;
     setIsOpenChannelMenu(v: boolean): any;
   };
   pinned: {
-    pinned: boolean;
+    pinned: boolean | undefined | null;
     setPinned(v: boolean): any;
   };
-  title: TAudioTitle;
+  title: TAudioTitle | null;
 
   cover: {
-    url: string;
+    url?: string | null;
     isLoading: boolean;
   };
   control: {

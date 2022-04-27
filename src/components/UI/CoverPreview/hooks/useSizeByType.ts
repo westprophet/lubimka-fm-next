@@ -1,7 +1,7 @@
 import TType from '../types/TType';
 
 //Получаем размер аватарки зависимо от типа
-export default function useSizeByType(t: TType): {
+export default function useSizeByType(t?: TType): {
   width: number;
   height: number;
 } {
@@ -27,6 +27,11 @@ export default function useSizeByType(t: TType): {
         height: 150,
       };
     case 'adaptive':
+      return {
+        width: 0,
+        height: 0,
+      };
+    default:
       return {
         width: 0,
         height: 0,

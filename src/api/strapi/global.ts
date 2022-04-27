@@ -1,4 +1,5 @@
 import axios from 'axios';
+// @ts-ignore
 import qs from 'qs';
 
 const StrapiAxios = axios.create({

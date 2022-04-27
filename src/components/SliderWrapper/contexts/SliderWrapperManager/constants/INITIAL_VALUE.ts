@@ -7,6 +7,8 @@ const INITIAL_VALUE: ISliderWrapperManagerValues = {
   play: () => {},
   pause: () => {},
   goTo: (index: number) => {},
+  setCount: (index: number) => {},
+  count: 0,
   setCurrentSlideIndex: (index: number) => {},
   currentSlideIndex: 1,
   ref: Slider,

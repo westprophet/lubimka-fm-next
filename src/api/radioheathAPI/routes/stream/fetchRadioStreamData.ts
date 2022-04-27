@@ -4,7 +4,10 @@ import tools from '../../../../tools';
 import IRadioHearthStreamData from '../../types/IRadioHearthStreamData';
 
 //Получаем ВСЕ данные из потока радио
-export const fetchRadioStreamData = async (c: IChannel): Promise<null | IRadioHearthStreamData> => {
+export const fetchRadioStreamData = async (
+  c?: IChannel | null
+): Promise<null | IRadioHearthStreamData> => {
+  if (!c) return null;
   const baseURL = tools.IChannel.getBaseURL(c);
   const port = tools.IChannel.getPort(c);
   try {
