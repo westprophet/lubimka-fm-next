@@ -11,7 +11,9 @@ export default function LogoComponent({ className }: ILogoComponentProps) {
   return (
     <a href="/" className={cn(s.LogoComponent, className)}>
       {/*<Logo className={cn(s.logoImg)} />*/}
-      <img className={cn(s.logoImg)} src={'/logo.svg'} alt={'header logo lubimka'} />
+      <div className={cn(s.logoContainer)}>
+        <img className={cn(s.logoImg)} src={'/logo.svg'} alt={'header logo lubimka'} />
+      </div>
       <div className={cn(s.logoTitle)}>
         Radio
         <br />

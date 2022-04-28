@@ -1,0 +1,8 @@
+.ChannelPage {
+  .description{
+    @include f8(){
+      font-weight: 500;
+      line-height: 200%;
+    }
+  }
+}

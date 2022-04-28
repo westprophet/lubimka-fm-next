@@ -2,7 +2,7 @@
  * Created by westp on 23.04.2022
  */
 
-import React, { useState } from 'react';
+import React from 'react';
 import s from './ContactUsPage.module.scss';
 import cn from 'classnames';
 import DefaultLayout, { IDefaultLayoutAttributes } from '../../layouts/DefaultLayout';
@@ -18,7 +18,6 @@ import SendIcon from '@mui/icons-material/Send';
 //Связаться с нами
 export default function ContactUsPage({ className }: IContactUsPageProps) {
   const validationSchema = useValidationSchema();
-  // const [load, setLoad] = useState(false);
   return (
     <DefaultLayout.Layout
       className={cn(s.ContactUsPage, className)}
@@ -104,7 +103,7 @@ export default function ContactUsPage({ className }: IContactUsPageProps) {
                   />
                   <LoadingButton
                     type="submit"
-                    loading={!isSubmitting}
+                    loading={isSubmitting}
                     variant="contained"
                     size="large"
                     loadingPosition="end"

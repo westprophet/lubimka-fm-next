@@ -4,7 +4,6 @@
   display: flex;
   grid-gap: $gap-xs;
   color: var(--text-color);
-
   &:hover {
     img {
       &:global{
@@ -12,38 +11,41 @@
       }
     }
   }
+  .logoContainer{
+    width: $logo-container-size-xs;
+    justify-content: center;
+    align-items: center;
+    display: flex;
+    //padding-right: 2px;
+    @include for-md {
+      width: $logo-container-size-md;
+    }
+    @include for-lg {
+      width: $logo-container-size-lg;
+    }
+    @include for-xl {
+      width: $logo-container-size-xl;
+    }
+  }
 
-  @include for-sm {
-    grid-gap: $gap-sm;
-  }
-  @include for-xl{
-    grid-gap: $gap-xl;
-  }
 
   .logoImg {
-    width: $logo-size;
-    height: $logo-size;
-    @include for-sm {
-      width: $logo-size-sm;
-      height: $logo-size-sm;
-    }
-    @include for-md {
-      width: $logo-size-md;
-      height: $logo-size-md;
+    width: $logo-size-xs;
+    @include for-lg{
+      width: $logo-size-lg;
     }
   }
 
   .logoTitle {
-    @include f8() {
+    @include f5() {
       font-weight: 700;
-      line-height: 13px;
-    }
-    @include for-sm {
-      @include f7();
+      line-height: 150%;
     }
 
-    @include for-md {
-      @include f4();
+    @include for-lg {
+      @include f4(){
+        line-height: 170%;
+      }
     }
 
   }

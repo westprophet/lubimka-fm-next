@@ -16,14 +16,9 @@ export default function TextPlaceholder({
   arrow,
   animation,
   onClick,
+  placeholderArrow,
 }: ITextPlaceholderProps) {
-  const _arrow = arrow ? (
-    side === 'left' && arrow ? (
-      <ArrowBackIosNewIcon />
-    ) : (
-      <ArrowForwardIosIcon />
-    )
-  ) : null;
+  const _arrow = side === 'left' ? <ArrowBackIosNewIcon /> : <ArrowForwardIosIcon />;
 
   return (
     <div className={cn(s.TextPlaceholder, className)}>
@@ -37,14 +32,14 @@ export default function TextPlaceholder({
         onClick={onClick}
       >
         <div>
-          {side === 'left' && _arrow}
+          {side === 'left' && arrow && _arrow}
           <span>{children}</span>
-          {side === 'right' && _arrow}
+          {side === 'right' && arrow && _arrow}
         </div>
         <div>
-          {side === 'left' && _arrow}
+          {side === 'left' && placeholderArrow && _arrow}
           <span>{placeholder}</span>
-          {side === 'right' && _arrow}
+          {side === 'right' && placeholderArrow && _arrow}
         </div>
       </div>
     </div>
@@ -66,5 +61,6 @@ interface ITextPlaceholderProps {
   side?: 'left' | 'right';
   arrow?: boolean;
   animation?: boolean;
+  placeholderArrow?: boolean;
   onClick?(): any;
 }

@@ -9,7 +9,13 @@ import SectionWrapper from '../SectionWrapper';
 import Slider, { withSliderWrapperManager } from '../../../../components/SliderWrapper';
 import Link from 'next/link';
 
-function SectionSliderWrapper({ className, title, children, link }: ISectionSliderWrapperProps) {
+function SectionSliderWrapper({
+  className,
+  title,
+  children,
+  link,
+  placeholder,
+}: ISectionSliderWrapperProps) {
   if (!children) {
     console.warn('SectionSliderWrapper: slide none', title);
     return null;
@@ -17,7 +23,11 @@ function SectionSliderWrapper({ className, title, children, link }: ISectionSlid
   return (
     <SectionWrapper.Wrapper className={cn(s.SectionSliderWrapper, className)}>
       <div className={cn(s.head)}>
-        {title && <SectionWrapper.Title className={cn(s.title)}>{title}</SectionWrapper.Title>}
+        {title && (
+          <SectionWrapper.Title className={cn(s.title)} placeholder={placeholder} link={link}>
+            {title}
+          </SectionWrapper.Title>
+        )}
         {/*{link ? (*/}
         {/*  <Link href={link}>*/}
         {/*    <a>{title}</a>*/}
@@ -37,6 +47,7 @@ function SectionSliderWrapper({ className, title, children, link }: ISectionSlid
 
 SectionSliderWrapper.defaultProps = {
   className: '',
+  placeholder: 'Подробнее',
 };
 
 interface ISectionSliderWrapperProps {
@@ -44,5 +55,6 @@ interface ISectionSliderWrapperProps {
   title?: string;
   children?: any;
   link?: string;
+  placeholder?: string;
 }
 export default withSliderWrapperManager(SectionSliderWrapper);

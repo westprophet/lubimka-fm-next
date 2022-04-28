@@ -1,0 +1,12 @@
+@import "../../../../scss/mixins";
+
+.PreviewSection {
+  @include layout-padding(true, false, true, false);
+  z-index: 1;
+  position: relative;
+  //margin-bottom: -10%;
+  @include for-lg{
+    margin-bottom: initial;
+    position: initial;
+  }
+}

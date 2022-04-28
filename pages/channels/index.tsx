@@ -1,45 +1,25 @@
 import type { NextPage } from 'next';
-import HomePage from '../../src/pages/HomePage';
 import { GetStaticProps } from 'next';
 import { GetStaticPropsContext } from 'next/types';
 import api from '../../src/api';
-import { IAuthor, IChannel, IClub, IEvent, IPartner } from 'src/interfaces';
+import { IChannel } from 'src/interfaces';
+import ChannelsPage from '../../src/pages/ChannelsPage';
 
-const Home: NextPage<IHomeProps> = ({ events, clubs, authors, partners, channels }) => {
-  return (
-    <HomePage
-      events={events}
-      clubs={clubs}
-      authors={authors}
-      partners={partners}
-      channels={channels}
-    />
-  );
+const Channels: NextPage<IChannelsProps> = ({ channels }) => {
+  return <ChannelsPage channels={channels} />;
 };
 
 export const getStaticProps: GetStaticProps = async (context: GetStaticPropsContext) => {
-  const { data: events } = await api.strapi.events.getEvents();
-  const { data: clubs } = await api.strapi.clubs.getClubs();
-  const { data: authors } = await api.strapi.authors.getAuthors();
-  const { data: partners } = await api.strapi.partners.getPartners();
   const channels = await api.strapi.channels.getChannels();
   return {
     props: {
-      events,
-      clubs,
-      authors,
       channels,
-      partners,
     },
   };
 };
 
-interface IHomeProps {
-  events: IEvent[];
-  clubs: IClub[];
-  authors: IAuthor[];
-  partners: IPartner[];
+interface IChannelsProps {
   channels: IChannel[];
 }
 
-export default Home;
+export default Channels;

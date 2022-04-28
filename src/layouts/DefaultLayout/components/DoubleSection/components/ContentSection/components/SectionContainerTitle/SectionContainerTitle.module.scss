@@ -1,0 +1,9 @@
+.SectionContainerTitle {
+  margin-bottom: 15px;
+  @include f7() {
+    font-weight: 700;
+  }
+  @include for-lg {
+    @include f3();
+  }
+}

@@ -19,19 +19,6 @@ const theme = createTheme({
     },
   },
   components: {
-    MuiButton: {
-      defaultProps: {
-        variant: 'contained',
-      },
-    },
-    MuiButtonBase: {
-      styleOverrides: {
-        disabled: {
-          backgroundColor: '#4F4F4F',
-          color: 'white',
-        },
-      },
-    },
     MuiOutlinedInput: {
       styleOverrides: {
         root: {
@@ -70,11 +57,19 @@ const theme = createTheme({
         },
       },
     },
+
+    // @ts-ignore
     MuiLoadingButton: {
       styleOverrides: {
-        disabled: {
-          color: '#4F4F4F',
+        root: {
+          '&.Mui-disabled': {
+            backgroundColor: '#2B2C32',
+            color: 'white!important',
+          },
         },
+      },
+      defaultProps: {
+        variant: 'text',
       },
     },
   },

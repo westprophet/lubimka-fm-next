@@ -28,6 +28,7 @@ function DefaultLayout({
   const { position, direction } = useScrolling();
   const value = useProviderData(); //Получаем данные для провайдера
   const { player, header } = value;
+  if (!children) return null;
   return (
     <main className={cn(s.DefaultLayout, className)}>
       <DefaultLayoutManagerContext.Provider value={value}>
@@ -38,8 +39,10 @@ function DefaultLayout({
             direction === 'Up' ||
             header.state?.isFixedShow
           }
-          transparent={header.state?.isTransparent || position === 'top'}
-          fixed={true}
+          transparent={
+            headerSettings?.alwaysTransparent || header.state?.isTransparent || position === 'top'
+          }
+          fixed={headerSettings?.fixed}
         />
         {children}
         <DefaultLeftSide arrow={leftSideSetting?.arrow} />
@@ -70,6 +73,8 @@ DefaultLayout.defaultProps = {
   },
   header: {
     alwaysShow: false,
+    fixed: true,
+    alwaysTransparent: false,
   },
   left: {
     arrow: {

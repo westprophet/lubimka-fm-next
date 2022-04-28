@@ -13,17 +13,20 @@
   transition: .25s;
 
   width: $width-xs;
+  min-width: $width-xs;
   height: $height-xs;
   padding-top: 10px;
   border-radius: $radius-xs;
 
   @include for-md{
     width: $width-md;
+    min-width: $width-md;
     height: $height-md;
     border-radius: $radius-md;
   }
   @include for-xl{
     width: $width-lg;
+    min-width: $width-lg;
     height: $height-lg;
     border-radius: $radius-lg;
   }
@@ -43,7 +46,19 @@
       }
     }
   }
-
+  .title{
+    grid-column: 2/3;
+    @include f5() {
+      font-weight: 500;
+      letter-spacing: normal;
+    }
+    @include for-md{
+      @include f3();
+    }
+    @include for-xl{
+      @include f2();
+    }
+  }
   :global {
     .cover {
       position: absolute;
@@ -63,29 +78,22 @@
 
       @include for-md{
         padding: $padding-md;
-        grid-template-columns: 2fr 7fr;
+        grid-template-columns: 70px 7fr;
       }
       @include for-xl{
         padding: $padding-md;
         grid-column-gap: $gap-column-md;
+        grid-template-columns: 90px 7fr;
+      }
+      @include for-xxl{
+        grid-template-columns: 2fr 7fr;
       }
       .control {
         grid-column: 1/2;
         grid-row: 1/3;
       }
 
-      h4 {
-        grid-column: 2/3;
-        @include f5() {
-          font-weight: 500;
-        }
-        @include for-md{
-          @include f3();
-        }
-        @include for-xl{
-          @include f2();
-        }
-      }
+
 
       h5 {
         grid-column: 2/3;
@@ -178,43 +186,5 @@
       }
     }
 
-/*    &.adaptive {
-      @include for-md {
-        width: $width-md;
-        height: $height-md;
-        border-radius: $radius-md;
-
-        :global {
-          h4 {
-            @include f3();
-          }
-
-          h5 {
-            @include f5();
-          }
-        }
-        .description {
-          padding: $padding-md;
-        }
-      }
-      @include for-xl {
-        width: $width-lg;
-        height: $height-lg;
-        border-radius: $radius-lg;
-        .description {
-          grid-template-columns: 2fr 7fr;
-          padding: $padding-md;
-          grid-column-gap: $gap-column-md;
-        }
-
-        h4 {
-          @include f2();
-        }
-
-        h5 {
-          @include f4();
-        }
-      }
-    }*/
   }
 }

@@ -1,6 +1,5 @@
 import TBreakpoints from '../types/TBreakpoints';
 import useBreakpoint from './useBreakpoint';
-import TBreakpointSize from '../types/TBreakpointSize';
 
 //Получаем условный массив со значением 'size' : true; для отображения класса
 export default function useComponentSize<T>(
@@ -14,18 +13,9 @@ export default function useComponentSize<T>(
   for (const size in sizes) {
     if (size) {
       // @ts-ignore
-      result[size] = b[size];
+      result[sizes[size]] = b[size];
     }
   }
 
   return result;
-  // return {
-  //   [sizes?.xs]: b.xs && sizes?.xs,
-  //   [sizes?.sm]: b.sm && sizes?.sm,
-  //   [sizes?.md]: b.md && sizes?.md,
-  //   [sizes?.lg]: b.lg && sizes?.lg,
-  //   [sizes?.xl]: b.xl && sizes?.xl,
-  //   [sizes?.xxl]: b.xl && sizes?.xxl,
-  //   [sizes?.xxxl]: b.xl && sizes?.xxxl,
-  // };
 }

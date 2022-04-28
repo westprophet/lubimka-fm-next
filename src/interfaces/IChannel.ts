@@ -1,7 +1,7 @@
 import IStream from './others/IStream';
 import TStrapiResponseContainer from '../api/strapi/types/TStrapiResponseContainer';
 import TLanguages from 'src/types/TLanguages';
-import IStrapiImage from './IStrapiImage';
+import IStrapiImage, { IWrappedStrapiImage } from './IStrapiImage';
 
 export interface IChannelInner {
   order: number;
@@ -17,9 +17,7 @@ export interface IChannelInner {
   localizations?: {
     data: [];
   };
-  cover: {
-    data: TStrapiResponseContainer<IStrapiImage>;
-  } | null;
+  cover: IWrappedStrapiImage;
 }
 
 export type IChannel = TStrapiResponseContainer<IChannelInner>;

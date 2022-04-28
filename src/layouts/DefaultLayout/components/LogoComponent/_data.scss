@@ -1,7 +1,13 @@
-$logo-size: 25px;
-$logo-size-sm: 35px;
-$logo-size-md: 50px;
+@import "../AsideBar/data";
 
-$gap-xs: 10px;
-$gap-sm: 15px;
-$gap-xl: 30px;
+$logo-container-size-xs: $aside-width-sm;
+$logo-container-size-md: $aside-width-md;
+$logo-container-size-lg: $aside-width-lg;
+$logo-container-size-xl: $aside-width-xl;
+
+$logo-size-xs: 40px;
+$logo-size-lg: 50px;
+
+
+
+$gap-xs: 0px;

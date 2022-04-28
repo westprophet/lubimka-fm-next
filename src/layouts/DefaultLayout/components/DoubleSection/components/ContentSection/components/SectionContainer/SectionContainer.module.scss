@@ -1,0 +1,57 @@
+@import "../../../../../../scss/mixins";
+.SectionContainer {
+  $slice: 25px;
+  border-radius: 25px 25px 0 0;
+  @include layout-padding(false, true, true, true);
+  padding-top: $slice;
+  margin-top: -$slice;
+  .line{
+    display: flex;
+    width: 100%;
+    justify-content: center;
+    margin-bottom: 10px;
+    @include for-lg{
+      display: none;
+    }
+    span{
+      width: 10%;
+      max-width: 60px;
+      height: 2px;
+      background-color: white;
+    }
+  }
+
+  //.title{
+  //  margin-bottom: 15px;
+  //  @include f7(){
+  //    font-weight: 700;
+  //  }
+  //}
+
+  @include for-sm{
+    @include layout-padding-md(false, true, false, true);
+  }
+  @include for-lg{
+    background: none;
+    border-radius: 0;
+    margin-top: 0;
+    padding-top: 0;
+    padding-right: 0;
+    padding-left: 0;
+  }
+  &.colorType1{
+    @include before-lg{
+      @include lubimka-bg-gradient();
+    }
+  }
+  &.colorType2{
+    @include before-lg {
+      background: var(--bg-deep-color);
+    }
+  }
+  &.colorType3{
+    @include before-lg {
+      background: var(--bg-panel-color);
+    }
+  }
+}

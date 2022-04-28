@@ -19,7 +19,7 @@
     margin-left: 2px;
   }
   @include for-sm {
-    padding-left: $gap-sm;
+    //padding-left: $gap-sm;
     height: $height-sm;
     grid-template-columns: auto;
     @include f3(){
@@ -27,7 +27,7 @@
     }
   }
   @include for-lg {
-    padding-left: $gap-lg;
+    //padding-left: $gap-lg;
   }
 
   & > button {

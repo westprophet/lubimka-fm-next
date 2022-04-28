@@ -14,6 +14,9 @@ import { TChannelComponentType } from '../../Channel/types';
 import PlayerControlComponent from 'components/UI/buttons/PlayerControlComponent';
 import useComponentSize from '../../../hooks/useComponentSize';
 import TBreakpoints from '../../../types/TBreakpoints';
+import TextPlaceholder from 'components/UI/TextPlaceholder';
+import { useRouter } from 'next/router';
+import Link from 'next/link';
 
 export default function ChannelComponent({
   className,
@@ -27,9 +30,9 @@ export default function ChannelComponent({
   status,
   disabled,
 }: IChannelProps) {
-  if (!channel) return null;
-  // eslint-disable-next-line react-hooks/rules-of-hooks
   const _size = useComponentSize<TChannelComponentType>(sizes);
+  const r = useRouter();
+  if (!channel) return null;
   const img: IStrapiImage | undefined = channel.attributes.cover?.data.attributes;
   return (
     <div
@@ -54,7 +57,21 @@ export default function ChannelComponent({
             size={size}
           />
         </div>
-        <h4 className="title">{channel.attributes.title}</h4>
+        <Link href={`/channels/${channel.id}`}>
+          <a>
+            <TextPlaceholder
+              placeholder="Подробнее"
+              // onClick={() => r.push(`/channels/${channel.id}`)}
+              side="right"
+              animation={false}
+              // arrow
+              placeholderArrow
+              className={s.title}
+            >
+              <h4>{channel.attributes.title}</h4>
+            </TextPlaceholder>
+          </a>
+        </Link>
         <h5 className="status">{!disabled ? 'Online' : 'Offline'}</h5>
       </div>
       {!img || !img.url ? null : (
@@ -69,12 +86,6 @@ ChannelComponent.defaultProps = {
   active: false,
   isNew: false,
   disabled: false,
-  // sizes: {
-  //   xs: 'small',
-  //   sm: 'small',
-  //   md: 'middle',
-  //   xl: 'large',
-  // },
 };
 
 export interface IChannelProps {

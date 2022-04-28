@@ -13,7 +13,12 @@ import { IChannel } from '../../../../interfaces';
 export default function ChannelsSection({ className, channels }: IChannelsSectionsProps) {
   // const cm = useContext(ChannelManagerContext);
   return (
-    <SectionSlider.Wrapper className={cn(s.ChannelsSections, className)} title="Каналы">
+    <SectionSlider.Wrapper
+      className={cn(s.ChannelsSections, className)}
+      title="Каналы"
+      // placeholder="Подробнее"
+      link="/channels"
+    >
       {channels?.map((c: IChannel) => (
         <SectionSlider.Slide key={`channel-${c.id}`}>
           <Channel channel={c} type="lg" />

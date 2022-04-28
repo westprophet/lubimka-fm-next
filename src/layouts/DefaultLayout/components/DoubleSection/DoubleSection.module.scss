@@ -1,0 +1,26 @@
+@import "../../scss/mixins";
+
+.DoubleSection {
+  position: relative;
+  background-color: var(--bg-deep-color);
+  @include for-lg {
+    min-height: 100vh;
+  }
+  .cover {
+    position: absolute;
+    z-index: 0;
+    width: 100%;
+    min-height: 30vh;
+    @include for-lg {
+      height: 100%;
+    }
+  }
+
+  .inner {
+    display: grid;
+    min-height: inherit;
+    @include for-lg {
+      grid-template-columns: 7fr 4fr;
+    }
+  }
+}

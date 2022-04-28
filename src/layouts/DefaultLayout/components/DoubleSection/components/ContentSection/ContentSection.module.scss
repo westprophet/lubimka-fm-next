@@ -1,0 +1,21 @@
+@import "../../../../scss/mixins";
+.ContentSection {
+  @include layout-padding();
+  //overflow: hidden;
+  z-index: 1;
+  @include for-lg{
+    background: rgba(255, 255, 255, 0.3);
+    box-shadow: inset 0 2px 4px rgba(255, 255, 255, 0.25), inset 0px 0px 60px rgba(255, 255, 255, 0.25);
+    backdrop-filter: blur(60px);
+  }
+  @include before-lg{
+    padding: 0;
+  }
+
+  .inner{
+    @include layout-padding(true, false, false, false);
+    @include before-lg{
+      padding: 0;
+    }
+  }
+}
