@@ -7,8 +7,8 @@ import s from './SectionSliderWrapper.module.scss';
 import cn from 'classnames';
 import SectionWrapper from '../SectionWrapper';
 import Slider, { withSliderWrapperManager } from '../../../../components/SliderWrapper';
-import Link from 'next/link';
 
+//Обертка для секции со слайдером
 function SectionSliderWrapper({
   className,
   title,
@@ -28,11 +28,6 @@ function SectionSliderWrapper({
             {title}
           </SectionWrapper.Title>
         )}
-        {/*{link ? (*/}
-        {/*  <Link href={link}>*/}
-        {/*    <a>{title}</a>*/}
-        {/*  </Link>*/}
-        {/*) : (*/}
       </div>
       <SectionWrapper.Inner className={cn(s.inner)}>
         <Slider.SideBar className={cn(s.arrow, s.leftArrow)} side="left" />

@@ -1,6 +1,6 @@
 @import "../../../../../../scss/mixins";
 .SectionContainer {
-  $slice: 25px;
+  $slice: 15px;
   border-radius: 25px 25px 0 0;
   @include layout-padding(false, true, true, true);
   padding-top: $slice;

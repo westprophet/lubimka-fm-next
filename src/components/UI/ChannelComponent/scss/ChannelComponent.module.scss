@@ -13,20 +13,20 @@
   transition: .25s;
 
   width: $width-xs;
-  min-width: $width-xs;
+  //min-width: $width-xs;
   height: $height-xs;
   padding-top: 10px;
   border-radius: $radius-xs;
 
   @include for-md{
     width: $width-md;
-    min-width: $width-md;
+    //min-width: $width-md;
     height: $height-md;
     border-radius: $radius-md;
   }
   @include for-xl{
     width: $width-lg;
-    min-width: $width-lg;
+    //min-width: $width-lg;
     height: $height-lg;
     border-radius: $radius-lg;
   }
@@ -40,7 +40,6 @@
       .description h5 {
         color: var(--text-color);
       }
-
       .cover {
         filter: grayscale(50%);
       }
@@ -135,7 +134,7 @@
           grid-template-columns: 3fr 6fr;
         }
 
-        h4 {
+        :local(.title) {
           @include f5();
         }
 
@@ -154,7 +153,7 @@
           padding: $padding-md;
           grid-template-columns: 2fr 7fr;
         }
-        h4 {
+        :local(.title) {
           @include f3();
         }
 
@@ -176,7 +175,7 @@
           grid-column-gap: $gap-column-md;
         }
 
-        h4 {
+        :local(.title) {
           @include f2();
         }
 

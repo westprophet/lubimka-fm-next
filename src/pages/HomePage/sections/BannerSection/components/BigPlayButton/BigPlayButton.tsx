@@ -13,7 +13,7 @@ export default function BigPlayButton({ className, onClick, status }: IBigPlayBu
   return (
     <div className={cn(s.BigPlayButton, { [s.loading]: status === 'loading' }, className)}>
       <div className={cn(s.inner)}>
-        <PlayIconButton status={status} onClick={onClick} />
+        <PlayIconButton isPlay={status === 'played'} onClick={onClick} />
         <CircularProgress
           className={cn(s.circular, { [s.loadingCirc]: status === 'loading' })}
           variant={'indeterminate'}

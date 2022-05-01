@@ -1,8 +1,31 @@
 .ChannelPage {
+  .previewContainer{
+    display: flex;
+    justify-content: space-between;
+    flex-direction: column;
+    .player{
+
+    }
+    //.title{
+    //
+    //}
+  }
   .description{
     @include f8(){
       font-weight: 500;
       line-height: 200%;
     }
+    @include for-lg{
+      @include f5(){
+        line-height: 180%;
+      }
+    }
+    //@include for-xxl{
+    //  @include f4(){
+    //    line-height: 180%;
+    //  }
+    //}
+  }
+  .slider{
   }
 }

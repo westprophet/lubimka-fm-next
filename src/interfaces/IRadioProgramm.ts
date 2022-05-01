@@ -1,15 +1,18 @@
-import TStrapiResponseContainer from '../api/strapi/types/TStrapiResponseContainer';
-import { ISchedule } from './others';
+import { TStrapiResponseContainer, IWrappedStrapiImage } from '../api/strapi/types';
+// import { ISchedule } from './others';
 
 export default interface IRadioProgrammInner {
   title: string;
   description: string;
   order: number;
+  cover: IWrappedStrapiImage;
+  subtitle: string;
   DaySchedule: IDaySchedule[];
 }
-interface IDaySchedule {
+export interface IDaySchedule {
   title: string;
-  schedule: ISchedule;
+  order: number;
+  // schedule: ISchedule;
 }
 
 export type IRadioProgramm = TStrapiResponseContainer<IRadioProgrammInner>;

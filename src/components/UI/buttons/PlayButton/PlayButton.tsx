@@ -12,37 +12,43 @@ import TBreakpoints from '../../../../types/TBreakpoints';
 import TPlayButtonSizes from 'components/UI/buttons/PlayButton/types/TPlayButtonSizes';
 import useComponentSize from '../../../../hooks/useComponentSize';
 import { TChannelComponentType } from 'components/UI/ChannelComponent';
+import getStatusConst from '../../../../tools/TAudioManagerStatus/getStatusConst';
 
 export default function PlayButton({
   className,
   status,
   onClick,
-  type,
-  disable,
-  sizes,
-  size,
+  type, // Тип кнопки, белая или прозрачная
+  disable, //Отключаем клацание
+  sizes, // Размеры (адаптивность)
+  size, // фиксированный размер
+  active, // активный канал или нет. По умолчанию кнопка не привязана к каналу
 }: IPlayButtonProps) {
   const _size = useComponentSize<TChannelComponentType>(sizes);
+  const { isError, isPlayed, isPaused, isLoading } = getStatusConst(status);
   return (
     <div
       className={cn(
         s.PlayButton,
         {
-          type2: type === 2,
+          [s.type2]: type === 2,
         },
         size ?? _size,
         {
-          disable: disable,
+          [s.error]: !isError,
+        },
+        {
+          [s.disable]: disable,
         },
         className
       )}
     >
       <CircularProgress
-        className={cn('circular', { [s.loadingCirc]: status === 'loading' })}
-        variant={status === 'loading' ? 'indeterminate' : 'determinate'}
+        className={cn([s.circular], { [s.loadingCirc]: isLoading })}
+        variant={isLoading ? 'indeterminate' : 'determinate'}
         value={100}
       />
-      <PlayIconButton status={status} onClick={onClick} disabled={disable} />
+      <PlayIconButton isPlay={isPlayed && Boolean(active)} onClick={onClick} disabled={disable} />
     </div>
   );
 }
@@ -51,6 +57,7 @@ PlayButton.defaultProps = {
   className: '',
   type: 1,
   disable: false,
+  active: true,
 };
 
 interface IPlayButtonProps {
@@ -58,6 +65,7 @@ interface IPlayButtonProps {
   status: TAudioManagerStatus;
   disable?: boolean;
   type?: 1 | 2;
+  active?: boolean;
   onClick(): any;
   size?: TPlayButtonSizes | null;
   sizes?: Partial<TBreakpoints<TPlayButtonSizes>>;

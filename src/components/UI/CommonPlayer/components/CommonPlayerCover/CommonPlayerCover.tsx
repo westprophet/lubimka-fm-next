@@ -7,7 +7,7 @@ import s from './CommonPlayerCover.module.scss';
 import cn from 'classnames';
 import CoverPreview from 'components/UI/CoverPreview';
 
-import IStrapiImage from '../../../../../interfaces/IStrapiImage';
+import IStrapiImage from '../../../../../api/strapi/types/IStrapiImage';
 import NoCover from './components/NoCover';
 
 export default function CommonPlayerCover({

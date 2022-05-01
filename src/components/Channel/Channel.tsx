@@ -10,6 +10,7 @@ import { ChannelManagerContext } from '../../contexts/ChannelManager';
 import { compareIChannels } from 'src/tools/IChannel';
 import TBreakpoints from '../../types/TBreakpoints';
 
+//Компонент канала
 export default function Channel({ className, channel, size, isNew, sizes }: ISimpleChannelProps) {
   const { setChannel, current } = useContext(ChannelManagerContext);
   const { status, play, stop }: any = useContext(RadioPlayerContext);
@@ -24,8 +25,7 @@ export default function Channel({ className, channel, size, isNew, sizes }: ISim
       isNew={isNew}
       active={isActive}
       onPlay={() => {
-        if (isActive) play();
-        else setChannel(channel);
+        play(channel);
       }}
       onStop={() => {
         stop();

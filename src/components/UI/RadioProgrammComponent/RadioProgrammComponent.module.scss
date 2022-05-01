@@ -1,0 +1,171 @@
+@import "data";
+
+.RadioProgrammComponent {
+  width: $width-xs;
+  height: $height-xs;
+  display: grid;
+  grid-template-columns: $height-xs auto;
+  grid-gap: $grid-gap-xs;
+
+  .cover {
+    position: relative;
+    border-radius: $border-radius-xs;
+    overflow: hidden;
+    width: $height-xs;
+    height: $height-xs;
+
+    img {
+      @include zoom-effect-on-leave();
+    }
+  }
+
+  .desc {
+    & > * {
+      letter-spacing: 0.05em;
+      line-height: 100% !important;
+    }
+
+    h3 {
+      margin-bottom: $grid-gap-xs;
+      @include f7() {
+        font-weight: 500;
+      }
+    }
+
+    h4 {
+      margin-bottom: $grid-gap-xs;
+      @include f8() {
+        font-weight: 400;
+      }
+    }
+
+    ul {
+      li {
+        @include f8() {
+          font-weight: 400;
+          white-space: nowrap;
+        }
+      }
+    }
+  }
+
+  &:hover {
+    :local(.cover) {
+      img {
+        @include zoom-effect-on-hover();
+      }
+    }
+  }
+
+  &:global {
+    &.small {
+      width: $width-xs;
+      height: $height-xs;
+      grid-template-columns: $height-xs auto;
+      grid-gap: $grid-gap-xs;
+
+      :local(.cover) {
+        width: $height-xs;
+        height: $height-xs;
+
+      }
+
+      :local(.desc) {
+        h3 {
+          margin-bottom: $grid-gap-xs;
+          @include f7() {
+            font-weight: 500;
+          }
+        }
+
+        h4 {
+          margin-bottom: $grid-gap-xs;
+          @include f8() {
+            font-weight: 400;
+          }
+        }
+
+        ul {
+          li {
+            @include f8() {
+              font-weight: 400;
+            }
+          }
+        }
+      }
+    }
+
+    &.middle {
+      width: $width-md;
+      height: $height-md;
+      grid-template-columns: $height-md auto;
+      grid-gap: $grid-gap-md;
+      :local(.cover) {
+        width: $height-md;
+        height: $height-md;
+        border-radius: $border-radius-md;
+      }
+
+      :local(.desc) {
+        h3 {
+          margin-bottom: $grid-gap-md;
+          @include f4() {
+            font-weight: 500;
+          }
+        }
+
+        h4 {
+          margin-bottom: $grid-gap-md;
+          @include f5() {
+            font-weight: 400;
+          }
+        }
+
+        ul {
+          li {
+            @include f5() {
+              font-weight: 400;
+            }
+          }
+        }
+      }
+    }
+    &.large {
+      width: $width-xxl;
+      height: $height-xxl;
+      grid-template-columns: $height-xxl auto;
+      grid-gap: $grid-gap-xxl;
+
+      :local(.cover) {
+        width: $height-xxl;
+        height: $height-xxl;
+      }
+
+      :local(.desc) {
+        h3 {
+          margin-bottom: $grid-gap-xxl;
+          @include f3() {
+            font-weight: 500;
+          }
+        }
+
+        h4 {
+          margin-bottom: $grid-gap-xxl;
+          @include f4() {
+            font-weight: 400;
+          }
+        }
+
+        ul {
+          li {
+            line-height: 150%;
+            @include f4() {
+              font-weight: 400;
+            }
+          }
+        }
+      }
+    }
+  }
+}
+

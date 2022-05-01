@@ -7,12 +7,12 @@ import s from './PlayIconButton.module.scss';
 import cn from 'classnames';
 import { IconButton } from '@mui/material';
 import { Pause, PlayArrow } from '@mui/icons-material';
-import { TAudioManagerStatus } from '../../../../types/TAudioManagerStatus';
 
 export default function PlayIconButton({
   className,
   onClick,
-  status,
+  // status,
+  isPlay,
   disabled,
 }: IPlayIconButtonProps) {
   return (
@@ -22,13 +22,13 @@ export default function PlayIconButton({
       className={cn(
         s.PlayIconButton,
         {
-          [s.paused]: status === 'paused',
-          [s.played]: status === 'played' || status === 'loading',
+          [s.paused]: !isPlay,
+          [s.played]: isPlay,
         },
         className
       )}
     >
-      {status === 'paused' ? <PlayArrow /> : <Pause />}
+      {!isPlay ? <PlayArrow /> : <Pause />}
     </IconButton>
   );
 }
@@ -40,7 +40,8 @@ PlayIconButton.defaultProps = {
 
 interface IPlayIconButtonProps {
   className?: string;
-  status: TAudioManagerStatus;
+  isPlay: boolean;
+  // status: TAudioManagerStatus;
   onClick(): any;
   disabled?: boolean;
 }

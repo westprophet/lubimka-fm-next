@@ -2,7 +2,7 @@ import ISocial from './others/ISocial';
 import TStrapiResponseContainer from '../api/strapi/types/TStrapiResponseContainer';
 import IEmail from './others/IEmail';
 import IPhone from './others/IPhone';
-import { IWrappedStrapiImage } from './IStrapiImage';
+import { IWrappedStrapiImage } from '../api/strapi/types/IStrapiImage';
 
 export default interface IClubInner {
   title: string;

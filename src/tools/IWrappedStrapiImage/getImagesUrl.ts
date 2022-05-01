@@ -1,4 +1,4 @@
-import IStrapiImage, { IWrappedStrapiImages } from '../../interfaces/IStrapiImage';
+import IStrapiImage, { IWrappedStrapiImages } from '../../api/strapi/types/IStrapiImage';
 import TStrapiResponseContainer from '../../api/strapi/types/TStrapiResponseContainer';
 
 //Возвращаем урлы картинок

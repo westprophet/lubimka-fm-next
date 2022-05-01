@@ -1,5 +1,5 @@
 import TImageExtension from 'src/types/TImageExtension';
-import TStrapiResponseContainer from '../api/strapi/types/TStrapiResponseContainer';
+import TStrapiResponseContainer from './TStrapiResponseContainer';
 
 export default interface IStrapiImage {
   name?: string;

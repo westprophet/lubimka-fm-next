@@ -7,19 +7,20 @@ import s from './BannerMiniPlayer.module.scss';
 import cn from 'classnames';
 import BigPlayButton from '../../components/BigPlayButton';
 import { RadioPlayerContext } from '../../../../../../contexts/RadioPlayerManager';
-import { ChannelManagerContext } from 'src/contexts/ChannelManager';
 import BannerPlayerArrow from './components/BannerPlayerArrow';
-import ButtonSpectrum from '../../components/ButtonSpectrum';
 
 export default function BannerMiniPlayer({ className }: IBannerMiniPlayerProps) {
-  const { toggle, status } = useContext(RadioPlayerContext);
-  const { prevChannel, nextChannel } = useContext(ChannelManagerContext);
+  const { status, toggle, setPrevChannel, setNextChannel } = useContext(RadioPlayerContext);
   return (
     <div className={cn(s.BannerMiniPlayer, className)}>
-      <BannerPlayerArrow status={status} side="left" onClick={prevChannel} />
-      <BigPlayButton onClick={toggle} status={status} />
-      <BannerPlayerArrow side="right" status={status} onClick={nextChannel} />
-      {/*<ButtonSpectrum className={cn(s.spectrum)} />*/}
+      <BannerPlayerArrow status={status} side="left" onClick={setPrevChannel} />
+      <BigPlayButton
+        onClick={() => {
+          toggle();
+        }}
+        status={status}
+      />
+      <BannerPlayerArrow side="right" status={status} onClick={setNextChannel} />
     </div>
   );
 }

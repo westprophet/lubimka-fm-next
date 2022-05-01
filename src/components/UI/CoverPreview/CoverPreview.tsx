@@ -5,7 +5,7 @@
 import React from 'react';
 import s from './CoverPreview.module.scss';
 import cn from 'classnames';
-import IStrapiImage from 'src/interfaces/IStrapiImage';
+import IStrapiImage from 'src/api/strapi/types/IStrapiImage';
 import Image from 'next/image';
 // import logo from 'assets/logo.svg';
 import useSizeByType from 'components/UI/CoverPreview/hooks/useSizeByType';

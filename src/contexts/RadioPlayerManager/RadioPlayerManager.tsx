@@ -2,22 +2,41 @@
  * Created by westprophet on 19.02.2022
  */
 
-import React, { createContext, useContext } from 'react';
+import React, { createContext, useCallback, useContext } from 'react';
 
 import { IPlayerManagerValues } from './types';
 import { INITIAL_VALUES, RADIO_PLAYER_ID } from './constants';
 
 import useInitialAudioMethods from './hooks/useInitialAudioMethods';
 import { ChannelManagerContext } from '../ChannelManager';
-import tools from '../../tools';
+import { IChannel } from '../../interfaces';
 
 export const RadioPlayerContext = createContext<IPlayerManagerValues>(INITIAL_VALUES);
 
 //Глобальный контекст радио плеера
 export default function RadioPlayerManager({ children }: IPlayerManagerProps) {
-  const { current: channel } = useContext(ChannelManagerContext); // Получаем текущий канал
-  const { play, status, onCanPlay, audioRef, stop, data, onError, reload, toggle } =
-    useInitialAudioMethods(channel);
+  const {
+    current: channel,
+    setChannel,
+    setPrevChannel,
+    setNextChannel,
+  } = useContext(ChannelManagerContext); // Получаем текущий канал
+  const { play, status, audioRef, stop, data, toggle } = useInitialAudioMethods(
+    channel,
+    setChannel
+  );
+
+  //Устанавливаем предыдущий канал и воспроизводим
+  const _prevChannel = useCallback(() => {
+    const c: IChannel | undefined = setPrevChannel();
+    if (c) play(c);
+  }, [play, setPrevChannel]);
+
+  //Устанавливаем следующий канал и воспроизводим
+  const _nextChannel = useCallback(() => {
+    const c: IChannel | undefined = setNextChannel();
+    if (c) play(c);
+  }, [play, setNextChannel]);
 
   const values: IPlayerManagerValues = {
     id: RADIO_PLAYER_ID,
@@ -25,30 +44,14 @@ export default function RadioPlayerManager({ children }: IPlayerManagerProps) {
     stop,
     play,
     toggle,
+    setPrevChannel: _prevChannel,
+    setNextChannel: _nextChannel,
     status,
     channel,
     data,
   };
 
-  const sourceURL = tools.IChannel.getAudioSourceLink(channel);
-
-  return (
-    <RadioPlayerContext.Provider value={values}>
-      {sourceURL && (
-        <audio
-          ref={audioRef}
-          autoPlay={false}
-          preload="none"
-          onCanPlay={onCanPlay}
-          onError={onError}
-          id={RADIO_PLAYER_ID}
-          crossOrigin="anonymous"
-          src={sourceURL}
-        />
-      )}
-      {children}
-    </RadioPlayerContext.Provider>
-  );
+  return <RadioPlayerContext.Provider value={values}>{children}</RadioPlayerContext.Provider>;
 }
 
 interface IPlayerManagerProps {

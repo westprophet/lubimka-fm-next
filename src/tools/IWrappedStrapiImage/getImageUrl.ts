@@ -1,4 +1,4 @@
-import { IWrappedStrapiImage } from '../../interfaces/IStrapiImage';
+import { IWrappedStrapiImage } from '../../api/strapi/types/IStrapiImage';
 
 //Возвращаем урл картиноки
 export default function getImageUrl(d: IWrappedStrapiImage): string | null {

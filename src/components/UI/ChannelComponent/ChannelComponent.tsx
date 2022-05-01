@@ -8,14 +8,13 @@ import cn from 'classnames';
 import IChannel from '../../../interfaces/IChannel';
 
 import Image from 'next/image';
-import IStrapiImage from '../../../interfaces/IStrapiImage';
+import IStrapiImage from '../../../api/strapi/types/IStrapiImage';
 import { TAudioManagerStatus } from '../../../types/TAudioManagerStatus';
-import { TChannelComponentType } from '../../Channel/types';
+import { TChannelComponentType } from './types';
 import PlayerControlComponent from 'components/UI/buttons/PlayerControlComponent';
 import useComponentSize from '../../../hooks/useComponentSize';
 import TBreakpoints from '../../../types/TBreakpoints';
 import TextPlaceholder from 'components/UI/TextPlaceholder';
-import { useRouter } from 'next/router';
 import Link from 'next/link';
 
 export default function ChannelComponent({
@@ -31,7 +30,7 @@ export default function ChannelComponent({
   disabled,
 }: IChannelProps) {
   const _size = useComponentSize<TChannelComponentType>(sizes);
-  const r = useRouter();
+  // const r = useRouter();
   if (!channel) return null;
   const img: IStrapiImage | undefined = channel.attributes.cover?.data.attributes;
   return (

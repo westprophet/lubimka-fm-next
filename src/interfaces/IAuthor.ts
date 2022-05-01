@@ -1,7 +1,7 @@
 import { IAlbum } from './IAlbum';
 import TStrapiResponseContainer from '../api/strapi/types/TStrapiResponseContainer';
 import ISocial from './others/ISocial';
-import { IWrappedStrapiImage } from './IStrapiImage';
+import { IWrappedStrapiImage } from '../api/strapi/types/IStrapiImage';
 
 export interface IAuthorInner {
   name: string;

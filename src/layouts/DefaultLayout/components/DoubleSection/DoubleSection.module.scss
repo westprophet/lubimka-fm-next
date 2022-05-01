@@ -20,7 +20,10 @@
     display: grid;
     min-height: inherit;
     @include for-lg {
-      grid-template-columns: 7fr 4fr;
+      grid-template-columns: 7fr 6fr;
+    }
+    @include for-xxxl {
+      grid-template-columns: 7fr 5fr;
     }
   }
 }

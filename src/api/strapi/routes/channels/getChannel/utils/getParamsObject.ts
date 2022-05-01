@@ -7,7 +7,12 @@ export default function getParamsObject() {
   return {
     populate: {
       stream: '*',
-      programs: '*',
+      programs: {
+        populate: {
+          cover: '*',
+          DaySchedule: '*',
+        },
+      },
       Socials: {
         populate: {
           icon: {

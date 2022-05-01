@@ -12,16 +12,26 @@ export const ChannelManagerContext = createContext<IChannelManagerValues>(INITIA
 
 //Менеджер каналов
 export default function ChannelManager({ children, channels: _channels }: IChannelManagerProps) {
-  const { current, setChannel, channels, isLoadingChannels, prevChannel, nextChannel } =
-    useChannelState(_channels);
+  const {
+    current,
+    setChannel,
+    channels,
+    isLoadingChannels,
+    setPrevChannel,
+    setNextChannel,
+    getPrev,
+    getNext,
+  } = useChannelState(_channels);
 
   const value: IChannelManagerValues = {
     current,
     setChannel,
     channels,
     isLoadingChannels,
-    prevChannel,
-    nextChannel,
+    getNext,
+    getPrev,
+    setPrevChannel,
+    setNextChannel,
   };
   return <ChannelManagerContext.Provider value={value}>{children}</ChannelManagerContext.Provider>;
 }

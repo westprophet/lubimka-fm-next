@@ -1,5 +1,5 @@
 import TStrapiResponseContainer from '../api/strapi/types/TStrapiResponseContainer';
-import { IWrappedStrapiImage } from './IStrapiImage';
+import { IWrappedStrapiImage } from '../api/strapi/types/IStrapiImage';
 
 export default interface IEventInner {
   title: string;

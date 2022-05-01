@@ -10,14 +10,20 @@ export default function useChannelState(_channels?: IChannel[]) {
     syncData: false,
   }); //Каналы и канал по умолчанию
 
-  const { nextChannel, prevChannel } = useChannelsMethods(setChannel, current, channels);
+  const { setNextChannel, setPrevChannel, getNext, getPrev } = useChannelsMethods(
+    setChannel,
+    current,
+    channels
+  );
 
   return {
     current,
     setChannel,
     channels,
     isLoadingChannels: isLoading,
-    prevChannel,
-    nextChannel,
+    getNext,
+    getPrev,
+    setPrevChannel,
+    setNextChannel,
   };
 }

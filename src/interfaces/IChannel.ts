@@ -1,7 +1,14 @@
 import IStream from './others/IStream';
-import TStrapiResponseContainer from '../api/strapi/types/TStrapiResponseContainer';
+
+import {
+  IStrapiDataContainer,
+  TStrapiResponseContainer,
+  IWrappedStrapiImage,
+} from '../api/strapi/types';
+
+import { IRadioProgramm } from './IRadioProgramm';
+
 import TLanguages from 'src/types/TLanguages';
-import IStrapiImage, { IWrappedStrapiImage } from './IStrapiImage';
 
 export interface IChannelInner {
   order: number;
@@ -11,6 +18,8 @@ export interface IChannelInner {
   subtitle: string | null;
   description: string;
   stream: IStream;
+  online: boolean;
+  programs: IStrapiDataContainer<IRadioProgramm[]>;
   createdAt: string;
   updatedAt: string;
   publishedAt: string;

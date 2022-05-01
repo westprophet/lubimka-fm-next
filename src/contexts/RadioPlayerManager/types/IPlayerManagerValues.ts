@@ -1,15 +1,17 @@
-import { MutableRefObject, RefObject } from 'react';
 import IChannel from 'src/interfaces/IChannel';
 import { TAudioManagerStatus } from '../../../types/TAudioManagerStatus';
 import IRadioHearthStreamData from '../../../api/radioheathAPI/types/IRadioHearthStreamData';
+import { MutableRefObject } from 'react';
 
 export default interface IPlayerManagerValues {
   status: TAudioManagerStatus;
-  play(): any;
+  play: (c?: IChannel) => void;
   stop(): any;
-  toggle(): any;
+  audioRef: MutableRefObject<HTMLAudioElement | null>;
+  toggle(c?: IChannel): any;
+  setPrevChannel(): void;
+  setNextChannel(): void;
   channel: IChannel | null;
-  audioRef: RefObject<HTMLAudioElement> | null;
   id: string;
   data: IRadioHearthStreamData | null | undefined;
 }

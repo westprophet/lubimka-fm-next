@@ -1,4 +1,4 @@
-import { IWrappedStrapiImage } from './IStrapiImage';
+import { IWrappedStrapiImage } from '../api/strapi/types/IStrapiImage';
 import TStrapiResponseContainer from '../api/strapi/types/TStrapiResponseContainer';
 
 export default interface ITeamMemberInner {

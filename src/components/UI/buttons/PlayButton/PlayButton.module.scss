@@ -34,6 +34,9 @@
     }
   }
 
+  &.error{
+
+  }
 
   button {
     width: calc(100% - #{$stroke-width-xs}px);
@@ -42,7 +45,7 @@
   }
 
 
-  :global(.circular) {
+  :local(.circular) {
     position: absolute;
     color: var(--primary-color);
     width: 100% !important;
@@ -55,27 +58,34 @@
     }
   }
 
-  &:global {
-    &.type2 {
+  &:local(.type2) {
+    button {
+      background-color: var(--acсent-color);
+      color: var(--primary-color);
+    }
+
+
+    :global(.circular) {
+      color: var(--acсent-color);
+      &:global(.MuiCircularProgress-indeterminate) {
+        color: var(--third-color);
+      }
+    }
+
+    &:local(.disable) {
       button {
-        background-color: var(--acсent-color);
-        color: var(--primary-color);
+        color: var(--border-color);
       }
+    }
 
-      :global(.circular) {
-        color: var(--acсent-color);
-        &:global(.MuiCircularProgress-indeterminate) {
-          color: var(--third-color);
-        }
-      }
-
-      &:global(.disable) {
-        button {
-          color: var(--border-color);
-        }
+    &:local(.error){
+      button {
+        color: var(--border-color);
       }
     }
   }
+
+
 
   &:global {
     &.small {

@@ -4,7 +4,13 @@
   @include layout-padding(true, false, true, false);
   z-index: 1;
   position: relative;
-  //margin-bottom: -10%;
+  .cover{
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+  }
   @include for-lg{
     margin-bottom: initial;
     position: initial;

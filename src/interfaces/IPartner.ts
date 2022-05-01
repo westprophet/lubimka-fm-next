@@ -3,7 +3,7 @@ import ISocial from './others/ISocial';
 import IPhone from './others/IPhone';
 import IEmail from './others/IEmail';
 import ICompany from './ICompany';
-import { IWrappedStrapiImage } from './IStrapiImage';
+import { IWrappedStrapiImage } from '../api/strapi/types/IStrapiImage';
 
 export default interface IPartnerInner {
   title: string;

@@ -6,6 +6,10 @@
   &.played > * {
     animation: press-play-button .25s;
   }
+  &.error > *{
+    animation: press-play-button .25s;
+  }
+
 }
 
 

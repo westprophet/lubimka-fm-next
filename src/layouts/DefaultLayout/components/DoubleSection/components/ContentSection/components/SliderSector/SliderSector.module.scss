@@ -1,0 +1,41 @@
+@import '../../../../../../scss/data';
+@import '../../../../../../scss/mixins';
+.SliderSector {
+  width: 100%;
+  position: relative;
+  $padding: 25px;
+  display: flex;
+  overflow: hidden;
+  .arrow {
+    position: absolute;
+    width: $padding;
+    padding: 0;
+    background: transparent!important;
+    svg{
+      color: white;
+    }
+    &.leftArrow {
+      left: 0;
+    }
+
+    &.rightArrow {
+      right: 0;
+    }
+  }
+  .inner{
+    overflow: hidden;
+    padding: 0 $padding;
+
+  }
+
+  .slider {
+    overflow: hidden;
+    :global {
+      .slick-list {
+        margin-right: -$padding;
+        margin-left: -$padding;
+        padding: 0 $padding;
+      }
+    }
+  }
+}

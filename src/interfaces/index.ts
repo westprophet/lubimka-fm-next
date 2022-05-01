@@ -5,7 +5,7 @@ import { IAlbum } from './IAlbum';
 import { IAuthor } from './IAuthor';
 import IImage from './IImage';
 import { IChannel } from './IChannel';
-import IStrapiImage from './IStrapiImage';
+import IStrapiImage from '../api/strapi/types/IStrapiImage';
 import ICompany from './ICompany';
 import { IRadioProgramm } from './IRadioProgramm';
 import { IEvent } from './IEvent';
