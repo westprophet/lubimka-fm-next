@@ -24,41 +24,37 @@ function DefaultLayout({
   left: leftSideSetting,
   player: playerSettings,
   header: headerSettings,
+  right: rightSideSettings,
 }: IDefaultLayoutProps) {
   const { position, direction } = useScrolling();
-  const value = useProviderData(); //Получаем данные для провайдера
-  const { player, header } = value;
+  const value = useProviderData({
+    header: headerSettings,
+    player: playerSettings,
+    right: rightSideSettings,
+  }); //Получаем данные для провайдера
+  const { player, header, right } = value;
   if (!children) return null;
   return (
     <main className={cn(s.DefaultLayout, className)}>
       <DefaultLayoutManagerContext.Provider value={value}>
         <DefaultHeader
-          show={
-            headerSettings?.alwaysShow ||
-            header.state?.isShow ||
-            direction === 'Up' ||
-            header.state?.isFixedShow
-          }
-          transparent={
-            headerSettings?.alwaysTransparent || header.state?.isTransparent || position === 'top'
-          }
-          fixed={headerSettings?.fixed}
+          show={header.state?.isShow || direction === 'Up' || header.state?.isFixedShow}
+          transparent={header.state?.isTransparent || position === 'top'}
+          fixed={header.state?.isFix}
         />
         {children}
         <DefaultLeftSide arrow={leftSideSetting?.arrow} />
-        {!playerSettings?.disable && (
+        {!player.state?.isDisable && (
           <BottomPlayer
             show={player.state?.isShow}
-            transparent={
-              player.state?.isTransparent || (position === 'top' && playerSettings?.transparent)
-            }
+            transparent={player.state?.isTransparent}
             pinned={player.state?.isPinned}
             setPinned={player.pin}
             isOpenChannelMenu={player.state?.isOpenChannelMenu}
             setIsOpenChannelMenu={player.openChannelMenu}
           />
         )}
-        <DefaultRightSide showPlayer={!player.state?.isPinned} />
+        <DefaultRightSide showPlayer={right.state?.isShowPlayer || player.state?.isDisable} />
         <DefaultFooter />
         <PostFooter />
       </DefaultLayoutManagerContext.Provider>
@@ -68,14 +64,6 @@ function DefaultLayout({
 
 DefaultLayout.defaultProps = {
   className: '',
-  player: {
-    disable: false,
-  },
-  header: {
-    alwaysShow: false,
-    fixed: true,
-    alwaysTransparent: false,
-  },
   left: {
     arrow: {
       thisGoToPrevPage: true,

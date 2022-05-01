@@ -44,8 +44,8 @@ export default function PlayButton({
       )}
     >
       <CircularProgress
-        className={cn([s.circular], { [s.loadingCirc]: isLoading })}
-        variant={isLoading ? 'indeterminate' : 'determinate'}
+        className={cn([s.circular], { [s.loadingCirc]: isLoading && Boolean(active) })}
+        variant={isLoading && Boolean(active) ? 'indeterminate' : 'determinate'}
         value={100}
       />
       <PlayIconButton isPlay={isPlayed && Boolean(active)} onClick={onClick} disabled={disable} />

@@ -63,9 +63,7 @@
       background-color: var(--acсent-color);
       color: var(--primary-color);
     }
-
-
-    :global(.circular) {
+    :local(.circular) {
       color: var(--acсent-color);
       &:global(.MuiCircularProgress-indeterminate) {
         color: var(--third-color);

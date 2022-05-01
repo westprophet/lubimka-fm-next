@@ -2,7 +2,7 @@
  * Created by westp on 27.04.2022
  */
 
-import React, { useContext } from 'react';
+import React from 'react';
 import s from './ChannelPage.module.scss';
 import cn from 'classnames';
 import { IChannel, IRadioProgramm } from '../../interfaces';
@@ -12,9 +12,6 @@ import DSection from '../../layouts/DefaultLayout/components/DoubleSection';
 import { getImageUrl } from '../../tools/IWrappedStrapiImage';
 import ReactMarkdown from 'react-markdown';
 import RadioProgramm from 'components/RadioProgramm';
-import PlayButton from 'components/UI/buttons/PlayButton';
-import { ChannelManagerContext } from '../../contexts/ChannelManager';
-import { RadioPlayerContext } from '../../contexts/RadioPlayerManager';
 import ChannelPlayer from './components/ChannelPlayer';
 
 export default function ChannelPage({ className, channel }: IChannelPageProps) {
@@ -23,11 +20,9 @@ export default function ChannelPage({ className, channel }: IChannelPageProps) {
   return (
     <DefaultLayout.Layout
       className={cn(s.ChannelPage, className)}
-      header={{
-        alwaysShow: true,
-        fixed: false,
-        alwaysTransparent: true,
-      }}
+      header={{ isFix: false, isFixedShow: true, isTransparent: true, isShow: true }}
+      player={{ isDisable: true }}
+      // right={{ isShowPlayer: true }}
     >
       <DSection.Wrapper>
         <DSection.Preview.Wrapper cover={cover} className={cn(s.previewContainer)}>

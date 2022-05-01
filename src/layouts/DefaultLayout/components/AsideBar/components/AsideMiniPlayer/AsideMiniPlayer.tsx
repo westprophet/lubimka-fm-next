@@ -20,7 +20,12 @@ export default function AsideMiniPlayer({ className, show, type }: IAsideMiniPla
         className
       )}
     >
-      <PlayIconButton onClick={toggle} status={status} />
+      <PlayIconButton
+        onClick={() => {
+          toggle();
+        }}
+        isPlay={status === 'played'}
+      />
     </div>
   );
 }
