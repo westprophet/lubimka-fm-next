@@ -8,6 +8,7 @@ import * as team from './strapi/routes/team';
 
 import * as stream from './radioheathAPI/routes/stream';
 import * as image from './radioheathAPI/routes/image';
+import * as tracks from './radioheathAPI/routes/tracks';
 
 const strapi = {
   channels,
@@ -22,6 +23,7 @@ const strapi = {
 const radio = {
   stream,
   image,
+  tracks,
 };
 
 export { strapi, radio };

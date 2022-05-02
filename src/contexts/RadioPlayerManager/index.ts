@@ -1,6 +1,6 @@
 import RadioPlayerManager, { RadioPlayerContext } from './RadioPlayerManager';
 
-import useCreateDataStream from './hooks/useCreateDataStream'; //Создаем поток
+import useChannelStream from '../../hooks/useChannelStream'; //Создаем поток
 
-export { RadioPlayerContext, useCreateDataStream };
+export { RadioPlayerContext, useChannelStream };
 export default RadioPlayerManager;

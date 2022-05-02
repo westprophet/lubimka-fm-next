@@ -1,28 +1,39 @@
-import { radio } from '../../../api';
-import IRadioHearthStreamData from '../../../api/radioheathAPI/types/IRadioHearthStreamData';
-import IChannel from '../../../interfaces/IChannel';
+import { radio } from '../api';
+import IRadioHearthStreamData from '../api/radioheathAPI/types/IRadioHearthStreamData';
+import IChannel from '../interfaces/IChannel';
 import { useCallback, useRef, useState } from 'react';
 
-import FETCH_STREAM_TIMOUT from '../constants/FETCH_STREAM_TIMOUT';
+import FETCH_STREAM_TIMOUT from '../contexts/RadioPlayerManager/constants/FETCH_STREAM_TIMOUT';
+import TRadioHearthStreamDataStatus from '../types/TRadioHearthStreamDataStatus';
 
 //Поток данных трансляции
-export default function useCreateDataStream(c?: IChannel | null) {
+export default function useChannelStream(
+  c?: IChannel | null,
+  timeout: number = FETCH_STREAM_TIMOUT
+) {
   const timer = useRef(); //Таймер
   const [data, setData] = useState<IRadioHearthStreamData | null>(); //Состояние данных
+  const [status, setStatus] = useState<TRadioHearthStreamDataStatus>('stopped'); //Состояние данных
 
   //При ошибке
   const onError = useCallback((e) => {
     console.error('Something went wrong', e);
-    stopStream();
+    _stopStream();
+    setStatus('error');
   }, []);
 
   //При удачной итерации
   const onSuccess = useCallback((r) => setData(r), [setData]);
 
-  //Остановить поток
-  const stopStream = useCallback(() => {
+  const _stopStream = useCallback(() => {
     setData(null);
     clearInterval(timer.current);
+  }, [setData]);
+
+  //Остановить поток
+  const stopStream = useCallback(() => {
+    _stopStream();
+    setStatus('stopped');
   }, [setData]);
 
   //Начать поток
@@ -31,12 +42,13 @@ export default function useCreateDataStream(c?: IChannel | null) {
       .fetchRadioStreamData(c)
       .then((r: IRadioHearthStreamData) => {
         clearInterval(timer.current);
+        setStatus('active');
         onSuccess(r);
         // @ts-ignore
         timer.current = setInterval(
           // eslint-disable-next-line promise/no-nesting
           () => radio.stream.fetchRadioStreamData(c).then(onSuccess).catch(onError),
-          FETCH_STREAM_TIMOUT
+          timeout
         );
       })
       .catch(onError);
@@ -44,6 +56,7 @@ export default function useCreateDataStream(c?: IChannel | null) {
 
   return {
     data,
+    status,
     startStream,
     stopStream,
   };

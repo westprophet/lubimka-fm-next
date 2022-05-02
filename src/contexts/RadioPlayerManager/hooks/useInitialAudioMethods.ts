@@ -2,7 +2,7 @@ import { useCallback, useState } from 'react';
 import IChannel from 'src/interfaces/IChannel';
 import { useSnackbar } from 'notistack';
 import { TAudioManagerStatus } from '../../../types/TAudioManagerStatus';
-import useCreateDataStream from './useCreateDataStream';
+import useChannelStream from '../../../hooks/useChannelStream';
 import { compareIChannels } from '../../../tools/IChannel';
 import useAudio from './useAudio';
 import tools from '../../../tools';
@@ -30,7 +30,12 @@ export default function useInitialAudioMethods(
   const sourceURL = tools.IChannel.getAudioSourceLink(channel);
   const audioRef = useAudio(sourceURL, _onCanPlay, _onError);
 
-  const { data, startStream, stopStream } = useCreateDataStream(channel);
+  const {
+    data: streamData,
+    status: streamStatus,
+    startStream,
+    stopStream,
+  } = useChannelStream(channel);
 
   const isPlayed = status == 'played';
   const isPaused = status == 'paused';
@@ -122,7 +127,8 @@ export default function useInitialAudioMethods(
   //При ошибках загрузки
   _onError = useCallback(() => {
     setStatus('error');
-    _stop();
+    audioRef.current?.pause();
+    stopStream();
     // console.error();
     enqueueSnackbar(`Something then wrong`, {
       variant: 'error',
@@ -136,6 +142,9 @@ export default function useInitialAudioMethods(
     stop,
     status,
     toggle,
-    data,
+    stream: {
+      status: streamStatus,
+      data: streamData,
+    },
   };
 }

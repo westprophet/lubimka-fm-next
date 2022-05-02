@@ -1,0 +1,39 @@
+.ChannelTitle {
+  display: grid;
+  gap: 15px;
+  justify-content: left;
+  @include for-lg {
+    gap: 30px;
+  }
+  @include for-xl {
+    gap: 60px;
+  }
+
+  &.error {
+    color: var(--error-color);
+  }
+
+
+  .author {
+    white-space: nowrap;
+    @include f7() {
+      font-weight: 700;
+    }
+    @include for-lg {
+      @include f3();
+    }
+  }
+
+  .track {
+    height: 100%;
+    white-space: nowrap;
+    @include f4() {
+      font-weight: 700;
+    }
+    @include for-lg {
+      @include f2_55(){
+      }
+    }
+
+  }
+}

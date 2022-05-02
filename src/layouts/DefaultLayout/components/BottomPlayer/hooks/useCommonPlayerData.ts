@@ -6,14 +6,14 @@ import { RadioPlayerContext } from '../../../../../contexts/RadioPlayerManager';
 import IRadioHearthStreamDataMount from '../../../../../api/radioheathAPI/types/IRadioHearthStreamDataMount';
 import { splitTrackName } from '../../../../../tools/IRadioHearthStreamDataMount';
 import TAudioTitle from '../../../../../types/TAudioTitle';
-import useImageState from '../../../hooks/useImageState';
+import useImageState from '../../../../../hooks/useImageState';
 
 //Получение данных для плеера хук для упрощения
 export default function useCommonPlayerData() {
-  const { data, status, play, stop } = useContext(RadioPlayerContext);
+  const { stream, status, play, stop } = useContext(RadioPlayerContext);
   const { channels, current: channel } = useContext(ChannelManagerContext);
 
-  const _data: IRadioHearthStreamDataMount | null = rTools.getMount(data); //Получаем более точные данные
+  const _data: IRadioHearthStreamDataMount | null = rTools.getMount(stream.data); //Получаем более точные данные
   const title: TAudioTitle | null = splitTrackName(_data); //Разделяем имя и название трека
   const { image, isLoading } = useImageState(title); // Запрашиваем картинку для трека
 

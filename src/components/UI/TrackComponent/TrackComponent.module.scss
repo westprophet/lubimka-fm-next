@@ -1,0 +1,81 @@
+@import "data";
+
+.TrackComponent {
+  width: 100%;
+  height: $height-xs;
+  display: grid;
+  grid-column-gap: 15px;
+  grid-template-columns: min-content auto min-content;
+  align-items: center;
+  @include for-lg {
+    height: $height-lg;
+  }
+  @include for-xl {
+    height: $height-xl;
+    grid-column-gap: 20px;
+  }
+
+  .cover {
+    width: $height-xs;
+    height: $height-xs;
+    border-radius: 50%;
+    overflow: hidden;
+    position: relative;
+    @include for-lg {
+      width: $height-lg;
+      height: $height-lg;
+    }
+    @include for-xl {
+      width: $height-xl;
+      height: $height-xl;
+    }
+
+    &.noImageContainer {
+      border: 1px solid var(--border-color);
+
+      .noImg {
+        padding-top: 25%;
+      }
+    }
+  }
+
+  .title {
+    display: grid;
+    align-items: center;
+    justify-self: left;
+    height: 100%;
+    letter-spacing: 0.08em;
+    @include for-lg{
+      padding: 5px 0;
+    }
+
+    .name {
+      white-space: nowrap;
+      @include f5_16 {
+        font-weight: 500;
+      }
+      @include for-lg {
+        @include f4;
+      }
+    }
+
+    .artist {
+      white-space: nowrap;
+      @include f7 {
+        font-weight: 400;
+      }
+      @include for-lg {
+        @include f5_16;
+      }
+      @include for-xl {
+        @include f5_16;
+      }
+    }
+  }
+
+  .actionContainer {
+    button, button > svg {
+      color: var(--text-color);
+    }
+  }
+}

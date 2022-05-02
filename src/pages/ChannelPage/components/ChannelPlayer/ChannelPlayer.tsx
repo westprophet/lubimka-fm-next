@@ -9,14 +9,31 @@ import PlayButton from 'components/UI/buttons/PlayButton';
 import { RadioPlayerContext } from '../../../../contexts/RadioPlayerManager';
 import { IChannel } from '../../../../interfaces';
 import compareIChannels from '../../../../tools/IChannel/compareIChannels';
+import TAudioTitle from '../../../../types/TAudioTitle';
 
-export default function ChannelPlayer({ className, channel }: IChannelPlayerProps) {
+import useStaticChannelStream from '../../hooks/useStaticChannelStream';
+import ChannelTitle from './components/ChannelTitle';
+import getTitle from '../../../../tools/IRadioHearthStreamData/getTitle';
+import Cover from './components/Cover';
+import CoverAlternate from './components/CoverAlternate';
+
+//Плеер канала
+function ChannelPlayer({
+  className,
+  channel,
+  title,
+  isError,
+  isCurrentChannel,
+}: IChannelPlayerProps) {
   const { status, play, channel: current } = useContext(RadioPlayerContext);
   return (
     <div className={cn(s.ChannelPlayer, className)}>
+      <Cover title={title} />
+      {/*<CoverAlternate title={title} />*/}
+      <ChannelTitle title={title} isError={isError} />
       <PlayButton
         type={2}
-        active={compareIChannels(channel, current)}
+        active={isCurrentChannel ?? compareIChannels(channel, current)}
         onClick={() => {
           play(channel);
         }}
@@ -33,4 +50,9 @@ ChannelPlayer.defaultProps = {
 interface IChannelPlayerProps {
   className?: string;
   channel: IChannel;
+  title: TAudioTitle | null;
+  isError?: boolean;
+  isCurrentChannel?: boolean;
 }
+
+export default React.memo<IChannelPlayerProps>(ChannelPlayer);

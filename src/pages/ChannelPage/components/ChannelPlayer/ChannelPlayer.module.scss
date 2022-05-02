@@ -1,3 +1,7 @@
 .ChannelPlayer {
-
+  display: grid;
+  gap: 15px;
+  @include for-lg {
+    gap: 30px;
+  }
 }

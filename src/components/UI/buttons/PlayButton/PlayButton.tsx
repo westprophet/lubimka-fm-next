@@ -35,7 +35,7 @@ export default function PlayButton({
         },
         size ?? _size,
         {
-          [s.error]: !isError,
+          [s.error]: isError && active,
         },
         {
           [s.disable]: disable,

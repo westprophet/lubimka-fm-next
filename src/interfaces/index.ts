@@ -1,6 +1,6 @@
 import { IEmail, IIcon, IPhone, ISocial } from './others';
 
-import ITrack from './ITrack';
+import ITrackRadioheart from './ITrackRadioheart';
 import { IAlbum } from './IAlbum';
 import { IAuthor } from './IAuthor';
 import IImage from './IImage';
@@ -14,7 +14,7 @@ import { IPartner } from './IPartner';
 import { ITeamMember } from './ITeamMember';
 
 export type {
-  ITrack,
+  ITrackRadioheart,
   IClub,
   IEmail,
   IAuthor,

@@ -21,7 +21,7 @@ export default function RadioPlayerManager({ children }: IPlayerManagerProps) {
     setPrevChannel,
     setNextChannel,
   } = useContext(ChannelManagerContext); // Получаем текущий канал
-  const { play, status, audioRef, stop, data, toggle } = useInitialAudioMethods(
+  const { play, status, audioRef, stop, stream, toggle } = useInitialAudioMethods(
     channel,
     setChannel
   );
@@ -48,7 +48,7 @@ export default function RadioPlayerManager({ children }: IPlayerManagerProps) {
     setNextChannel: _nextChannel,
     status,
     channel,
-    data,
+    stream,
   };
 
   return <RadioPlayerContext.Provider value={values}>{children}</RadioPlayerContext.Provider>;

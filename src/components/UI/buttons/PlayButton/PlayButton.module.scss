@@ -34,23 +34,23 @@
     }
   }
 
-  &.error{
-
-  }
-
   button {
-    width: calc(100% - #{$stroke-width-xs}px);
-    height: calc(100% - #{$stroke-width-xs}px);
+    width: calc(100% - #{$stroke-width-xs + 1}px);
+    height: calc(100% - #{$stroke-width-xs + 1}px);
     color: var(--primary-color);
+    @include for-lg{
+      width: calc(100% - #{$stroke-width-lg + 1}px);
+      height: calc(100% - #{$stroke-width-lg + 1}px);
+    }
   }
-
 
   :local(.circular) {
     position: absolute;
     color: var(--primary-color);
     width: 100% !important;
     height: 100% !important;
-
+    left: 0;
+    top: 0;
     svg {
       circle {
         stroke-width: $stroke-width-xs;
@@ -78,12 +78,17 @@
 
     &:local(.error){
       button {
-        color: var(--border-color);
+        background-color: var(--error-color);
+        color: var(--text-color);
+      }
+      :local(.circular) {
+        color: var(--error-color);
+        &:global(.MuiCircularProgress-indeterminate) {
+          color: var(--text-color);
+        }
       }
     }
   }
-
-
 
   &:global {
     &.small {
@@ -116,6 +121,4 @@
       }
     }
   }
-
-
 }
