@@ -9,11 +9,11 @@
   @include for-sm{
     width: $width-sm;
   }
-  @include for-md{
-    width: $width-md;
-  }
   @include for-xl{
     width: $width-xl;
+  }
+  @include for-xxxl{
+    width: $width-xxxl;
   }
   .cover {
     width: 100%;
@@ -31,11 +31,11 @@
     @include for-sm{
       height: $width-sm;
     }
-    @include for-md{
-      height: $width-md;
-    }
     @include for-xl{
       height: $width-xl;
+    }
+    @include for-xxxl{
+      height: $width-xxxl;
     }
   }
 

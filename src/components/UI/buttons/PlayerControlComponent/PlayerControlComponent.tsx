@@ -14,8 +14,6 @@ export default function PlayerControlComponent({
   stop,
   type,
   disable,
-  sizes,
-  size,
 }: IPlayerControlComponentProps) {
   const onClickHandler = () => {
     if (status === 'paused') play();
@@ -28,8 +26,6 @@ export default function PlayerControlComponent({
       disable={disable}
       status={status}
       className={className}
-      size={size}
-      sizes={sizes}
     />
   );
 }
@@ -47,6 +43,4 @@ interface IPlayerControlComponentProps {
   type?: 1 | 2;
   play(): any;
   stop(): any;
-  size?: TPlayButtonSizes | null;
-  sizes?: Partial<TBreakpoints<TPlayButtonSizes>>;
 }

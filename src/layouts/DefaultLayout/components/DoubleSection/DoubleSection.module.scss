@@ -3,8 +3,13 @@
 .DoubleSection {
   position: relative;
   background-color: var(--bg-deep-color);
+  max-height: 100vh;
+  overflow: hidden;
   @include for-lg {
     min-height: 100vh;
+  }
+  &.resizable{
+    max-height: none;
   }
   .cover {
     position: absolute;
@@ -19,6 +24,7 @@
   .inner {
     display: grid;
     min-height: inherit;
+    overflow: hidden;
     @include for-lg {
       grid-template-columns: 7fr 6fr;
     }

@@ -46,6 +46,8 @@
   }
 }
 
+
+
 @mixin layout-padding-xl($t: true, $r: true,$b: true, $l: true, $property: padding){
   @if $t {
     #{$property}-top: $header-height-md;
@@ -60,6 +62,21 @@
     #{$property}-left: $aside-width-xl;
   }
 }
+
+//@mixin layout-padding-xxl($t: true, $r: true,$b: true, $l: true, $property: padding){
+//  @if $t {
+//    #{$property}-top: $header-height-md;
+//  }
+//  @if $r {
+//    #{$property}-right: $aside-width-xl;
+//  }
+//  @if $b {
+//    #{$property}-bottom: $player-height-sm;
+//  }
+//  @if $l {
+//    #{$property}-left: $aside-width-xl;
+//  }
+//}
 
 @mixin layout-padding($t: true, $r: true, $b: true, $l: true, $property: padding){
   @include layout-padding-xs($t,$r,$b,$l, $property);

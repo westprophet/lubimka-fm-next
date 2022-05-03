@@ -1,3 +1,4 @@
 import TrackComponent from './TrackComponent';
+import React from 'react';
 
-export default TrackComponent;
+export default React.memo(TrackComponent);

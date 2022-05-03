@@ -19,7 +19,7 @@ export default function TracksSection({ className, channel, title }: ITracksSect
       <div className={cn(s.inner)}>
         {tracks?.map((t: ITrackRadioheartPrev) => {
           const _title = getTAudioTitleByString(t.name);
-          return <TrackComponent key={t.time} title={_title} />;
+          return <TrackComponent key={t.name} title={_title} />;
         })}
       </div>
     </div>

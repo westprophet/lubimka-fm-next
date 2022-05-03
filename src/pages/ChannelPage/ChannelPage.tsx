@@ -44,7 +44,7 @@ function ChannelPage({ className, channel }: IChannelPageProps) {
       header={{ isFix: false, isFixedShow: true, isTransparent: true, isShow: true }}
       player={{ isDisable: true }}
     >
-      <DSection.Wrapper>
+      <DSection.Wrapper className={cn(s.wrapper)}>
         <DSection.Preview.Wrapper cover={cover} className={cn(s.previewContainer)}>
           <DefaultLayout.PageTitle className={cn(s.title)}>
             {channel.attributes.title}

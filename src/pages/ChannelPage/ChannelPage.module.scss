@@ -1,4 +1,9 @@
 .ChannelPage {
+  //.wrapper{
+  //  @include for-lg {
+  //    max-height: 100vh;
+  //  }
+  //}
   .previewContainer{
     display: flex;
     justify-content: space-between;
@@ -6,9 +11,6 @@
     .player{
       z-index: 1;
     }
-    //.title{
-    //
-    //}
   }
   .description{
     @include f8(){
@@ -20,11 +22,6 @@
         line-height: 180%;
       }
     }
-    //@include for-xxl{
-    //  @include f4(){
-    //    line-height: 180%;
-    //  }
-    //}
   }
   .slider{
   }

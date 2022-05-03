@@ -20,11 +20,9 @@ export default function PlayButton({
   onClick,
   type, // Тип кнопки, белая или прозрачная
   disable, //Отключаем клацание
-  sizes, // Размеры (адаптивность)
-  size, // фиксированный размер
   active, // активный канал или нет. По умолчанию кнопка не привязана к каналу
 }: IPlayButtonProps) {
-  const _size = useComponentSize<TChannelComponentType>(sizes);
+  // const _size = useComponentSize<TChannelComponentType>(sizes);
   const { isError, isPlayed, isPaused, isLoading } = getStatusConst(status);
   return (
     <div
@@ -33,7 +31,6 @@ export default function PlayButton({
         {
           [s.type2]: type === 2,
         },
-        size ?? _size,
         {
           [s.error]: isError && active,
         },
@@ -67,6 +64,6 @@ interface IPlayButtonProps {
   type?: 1 | 2;
   active?: boolean;
   onClick(): any;
-  size?: TPlayButtonSizes | null;
-  sizes?: Partial<TBreakpoints<TPlayButtonSizes>>;
+  // size?: TPlayButtonSizes | null;
+  // sizes?: Partial<TBreakpoints<TPlayButtonSizes>>;
 }

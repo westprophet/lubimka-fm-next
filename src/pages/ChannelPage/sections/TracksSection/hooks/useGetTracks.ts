@@ -10,15 +10,16 @@ export default function useGetTracks(
   title: TAudioTitle | null
 ): {
   isLoading: boolean;
+  isError: boolean;
   data: null | ITrackRadioheartPrev[];
 } {
-  const { isLoading, error, data } = useQuery(
+  const { isLoading, isError, data } = useQuery(
     ['getLastTrack', c.attributes.name, title?.title, title?.artist],
     () => api.radio.tracks.getLastTracks({ c }),
     {
       retryDelay: 2000,
       enabled: !!c,
-      refetchInterval: 3000,
+      // refetchInterval: 3000,
       // notifyOnChangeProps: ,
       refetchOnWindowFocus: true,
     }
@@ -26,5 +27,6 @@ export default function useGetTracks(
   return {
     data: data ?? null,
     isLoading,
+    isError,
   };
 }

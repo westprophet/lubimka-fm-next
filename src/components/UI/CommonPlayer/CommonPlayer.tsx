@@ -39,16 +39,12 @@ export default function CommonPlayer({
         className
       )}
     >
-      <CommonPlayerCover className={cn(s.cover)} image={cover.url} isLoading={cover.isLoading} />
+      <CommonPlayerCover className={cn(s.cover)} image={cover.url} />
       <PlayerControlComponent
         className={cn(s.controls)}
         status={control.status}
         play={control.play}
         stop={control.stop}
-        sizes={{
-          xs: 'small',
-          md: 'middle',
-        }}
       />
       <CommonPlayerTitle className={cn(s.title)} ft={title} />
       <CommonPlayerAction

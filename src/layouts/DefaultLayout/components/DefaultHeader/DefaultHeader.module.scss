@@ -30,6 +30,13 @@
   @include for-md{
     height: $height-md;
   }
+  @include for-xxl{
+    height: $height-xxl;
+  }
+  @include for-xxxl{
+    height: $height-xxxl;
+  }
+
   .mobile{
     @include for-lg{
       display: none;
