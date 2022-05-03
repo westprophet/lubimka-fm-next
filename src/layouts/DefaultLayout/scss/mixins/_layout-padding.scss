@@ -46,6 +46,20 @@
   }
 }
 
+@mixin layout-padding-lg($t: true, $r: true,$b: true, $l: true, $property: padding){
+  @if $t {
+    #{$property}-top: $header-height-md;
+  }
+  @if $r {
+    #{$property}-right: $aside-width-lg;
+  }
+  @if $b {
+    #{$property}-bottom: $player-height-lg;
+  }
+  @if $l {
+    #{$property}-left: $aside-width-lg;
+  }
+}
 
 
 @mixin layout-padding-xl($t: true, $r: true,$b: true, $l: true, $property: padding){
@@ -53,30 +67,46 @@
     #{$property}-top: $header-height-md;
   }
   @if $r {
-    #{$property}-right: $aside-width-xl;
+    #{$property}-right: $aside-width-xxl;
   }
   @if $b {
-    #{$property}-bottom: $player-height-sm;
+    #{$property}-bottom: $player-height-xl;
   }
   @if $l {
-    #{$property}-left: $aside-width-xl;
+    #{$property}-left: $aside-width-xxl;
   }
 }
 
-//@mixin layout-padding-xxl($t: true, $r: true,$b: true, $l: true, $property: padding){
-//  @if $t {
-//    #{$property}-top: $header-height-md;
-//  }
-//  @if $r {
-//    #{$property}-right: $aside-width-xl;
-//  }
-//  @if $b {
-//    #{$property}-bottom: $player-height-sm;
-//  }
-//  @if $l {
-//    #{$property}-left: $aside-width-xl;
-//  }
-//}
+@mixin layout-padding-xxl($t: true, $r: true,$b: true, $l: true, $property: padding){
+  @if $t {
+    #{$property}-top: $header-height-xxl;
+  }
+  @if $r {
+    #{$property}-right: $aside-width-xxl;
+  }
+  @if $b {
+    #{$property}-bottom: $player-height-xl;
+  }
+  @if $l {
+    #{$property}-left: $aside-width-xxl;
+  }
+}
+
+@mixin layout-padding-xxxl($t: true, $r: true,$b: true, $l: true, $property: padding){
+  @if $t {
+    #{$property}-top: $header-height-xxxl;
+  }
+  @if $r {
+    #{$property}-right: $aside-width-xxxl;
+  }
+  @if $b {
+    #{$property}-bottom: $player-height-xxxl;
+  }
+  @if $l {
+    #{$property}-left: $aside-width-xxxl;
+  }
+}
+
 
 @mixin layout-padding($t: true, $r: true, $b: true, $l: true, $property: padding){
   @include layout-padding-xs($t,$r,$b,$l, $property);
@@ -88,6 +118,12 @@
   }
   @include for-xl{
     @include layout-padding-xl($t,$r,$b,$l, $property);
+  }
+  @include for-xxl{
+    @include layout-padding-xxl($t,$r,$b,$l, $property);
+  }
+  @include for-xxxl{
+    @include layout-padding-xxxl($t,$r,$b,$l, $property);
   }
 }
 

@@ -1,8 +1,7 @@
 import IChannel from 'src/interfaces/IChannel';
 import { TAudioManagerStatus } from '../../../types/TAudioManagerStatus';
-import IRadioHearthStreamData from '../../../api/radioheathAPI/types/IRadioHearthStreamData';
 import { MutableRefObject } from 'react';
-import TRadioHearthStreamDataStatus from '../../../types/TRadioHearthStreamDataStatus';
+import TCreatedStream from '../../../types/TCreatedStream';
 
 export default interface IPlayerManagerValues {
   status: TAudioManagerStatus;
@@ -14,8 +13,5 @@ export default interface IPlayerManagerValues {
   setNextChannel(): void;
   channel: IChannel | null;
   id: string;
-  stream: {
-    data: IRadioHearthStreamData | null | undefined;
-    status: TRadioHearthStreamDataStatus;
-  };
+  stream: TCreatedStream;
 }

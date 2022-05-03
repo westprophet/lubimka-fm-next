@@ -55,7 +55,5 @@ export default function RadioPlayerManager({ children }: IPlayerManagerProps) {
 }
 
 interface IPlayerManagerProps {
-  // className?: string;
-  // channel?: IChannel;
   children: any;
 }

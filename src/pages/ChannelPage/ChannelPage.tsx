@@ -2,41 +2,33 @@
  * Created by westp on 27.04.2022
  */
 
-import React, { useContext } from 'react';
+import React from 'react';
 import s from './ChannelPage.module.scss';
 import cn from 'classnames';
-import { IChannel, IRadioProgramm } from '../../interfaces';
+import { IChannel } from '../../interfaces';
 
 import DefaultLayout from '../../layouts/DefaultLayout';
 import DSection from '../../layouts/DefaultLayout/components/DoubleSection';
 import { getImageUrl } from '../../tools/IWrappedStrapiImage';
 import ReactMarkdown from 'react-markdown';
-import RadioProgramm from 'components/RadioProgramm';
 import ChannelPlayer from './components/ChannelPlayer';
-import TracksSection from './sections/TracksSection';
-import { RadioPlayerContext } from '../../contexts/RadioPlayerManager';
-import compareIChannels from '../../tools/IChannel/compareIChannels';
-import useStaticChannelStream from './hooks/useStaticChannelStream';
 import TAudioTitle from '../../types/TAudioTitle';
 import getTitle from '../../tools/IRadioHearthStreamData/getTitle';
+import RadioProgramsSection from './sections/RadioProgramsSection';
+import { useGetStaticChannelStream } from '../../contexts/RadioPlayerManager';
+import TracksSection from './sections/TracksSection';
 
+//Подробнее о канале
 function ChannelPage({ className, channel }: IChannelPageProps) {
   const cover = getImageUrl(channel.attributes.cover);
-  const { status, channel: current, stream: oldStream } = useContext(RadioPlayerContext);
-  const isCurrentChannel = compareIChannels(channel, current); //Это активный канал
+  const stream = useGetStaticChannelStream(channel);
+  //
+  const isError = stream.status === 'error';
+  //
+  const title: TAudioTitle | null = getTitle(stream.data);
+  // const title: TAudioTitle | null = null;
 
-  //Нужен отдельный поток
-  const isNeedNewStream =
-    !isCurrentChannel || oldStream.status === 'stopped' || oldStream.status === 'error';
-
-  const newStream = useStaticChannelStream(channel, isNeedNewStream);
-
-  //Если нужен отдельный поток то тянем инфу из нового потока, если работает старый то тянем из старого
-  const _stream = !isNeedNewStream ? oldStream : newStream;
-
-  const isError = _stream.status === 'error' || status === 'error';
-
-  const title: TAudioTitle | null = getTitle(_stream.data);
+  // console.log('Render: ChannelPage');
 
   return (
     <DefaultLayout.Layout
@@ -44,7 +36,7 @@ function ChannelPage({ className, channel }: IChannelPageProps) {
       header={{ isFix: false, isFixedShow: true, isTransparent: true, isShow: true }}
       player={{ isDisable: true }}
     >
-      <DSection.Wrapper className={cn(s.wrapper)}>
+      <DSection.Wrapper>
         <DSection.Preview.Wrapper cover={cover} className={cn(s.previewContainer)}>
           <DefaultLayout.PageTitle className={cn(s.title)}>
             {channel.attributes.title}
@@ -54,7 +46,7 @@ function ChannelPage({ className, channel }: IChannelPageProps) {
               channel={channel}
               title={title}
               isError={isError}
-              isCurrentChannel={isCurrentChannel}
+              isCurrentChannel={stream.isCurrentChannel}
             />
           </DSection.Preview.Inner>
         </DSection.Preview.Wrapper>
@@ -63,13 +55,7 @@ function ChannelPage({ className, channel }: IChannelPageProps) {
             <ReactMarkdown>{channel.attributes.description}</ReactMarkdown>
           </DSection.Content.Container>
           <DSection.Content.Container title="Программы" colorType={2}>
-            <DSection.Content.Slider.Wrapper className={cn(s.slider)}>
-              {channel.attributes.programs.data?.map((rp: IRadioProgramm) => (
-                <DSection.Content.Slider.Slide key={`radio-program-${rp.id}`}>
-                  <RadioProgramm rp={rp} />
-                </DSection.Content.Slider.Slide>
-              ))}
-            </DSection.Content.Slider.Wrapper>
+            <RadioProgramsSection programs={channel.attributes.programs.data} />
           </DSection.Content.Container>
           <DSection.Content.Container title="История эфира" colorType={3}>
             <TracksSection channel={channel} title={title} />

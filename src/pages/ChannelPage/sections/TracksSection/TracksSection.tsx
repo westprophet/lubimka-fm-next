@@ -9,15 +9,21 @@ import TrackComponent from 'components/UI/TrackComponent';
 import useGetTracks from './hooks/useGetTracks';
 import { IChannel } from '../../../../interfaces';
 import TAudioTitle from '../../../../types/TAudioTitle';
-import { ITrackRadioheartPrev } from '../../../../interfaces/ITrackRadioheart';
+import { ITrackRadioheart } from '../../../../interfaces/ITrackRadioheart';
 import { getTAudioTitleByString } from '../../../../tools/ITrack';
+import useAddLastTrack from './hooks/useAddLastTrack';
+import useGetLastTrack from './hooks/useGetLastTrack';
 
 export default function TracksSection({ className, channel, title }: ITracksSectionProps) {
-  const { data: tracks, isLoading } = useGetTracks(channel, title);
+  const { data: tracks } = useGetTracks(channel);
+  const { data: lastTracks } = useGetLastTrack(channel, title);
+  const lastTrack = lastTracks ? lastTracks[0] : null;
+  const _tracks = useAddLastTrack(lastTrack, tracks);
+
   return (
     <div className={cn(s.TracksSection, className)}>
       <div className={cn(s.inner)}>
-        {tracks?.map((t: ITrackRadioheartPrev) => {
+        {_tracks?.map((t: ITrackRadioheart) => {
           const _title = getTAudioTitleByString(t.name);
           return <TrackComponent key={t.name} title={_title} />;
         })}

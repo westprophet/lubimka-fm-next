@@ -2,7 +2,7 @@ import { useCallback, useState } from 'react';
 import IChannel from 'src/interfaces/IChannel';
 import { useSnackbar } from 'notistack';
 import { TAudioManagerStatus } from '../../../types/TAudioManagerStatus';
-import useChannelStream from '../../../hooks/useChannelStream';
+import useChannelStream from './useChannelStream';
 import { compareIChannels } from '../../../tools/IChannel';
 import useAudio from './useAudio';
 import tools from '../../../tools';
@@ -37,7 +37,6 @@ export default function useInitialAudioMethods(
     stopStream,
   } = useChannelStream(channel);
 
-  const isPlayed = status == 'played';
   const isPaused = status == 'paused';
   const isError = status == 'error';
   const isCanPlay = isPaused || isError;

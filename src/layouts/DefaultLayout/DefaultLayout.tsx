@@ -77,4 +77,4 @@ interface IDefaultLayoutProps extends IDefaultLayoutAttributes {
   children: any;
 }
 
-export default DefaultLayout;
+export default React.memo(DefaultLayout);

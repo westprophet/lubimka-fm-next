@@ -10,8 +10,8 @@
   @include for-lg {
     height: $height-lg;
   }
-  @include for-xl {
-    height: $height-xl;
+  @include for-xxxl {
+    height: $height-xxxl;
     grid-column-gap: 20px;
   }
 
@@ -25,9 +25,9 @@
       width: $height-lg;
       height: $height-lg;
     }
-    @include for-xl {
-      width: $height-xl;
-      height: $height-xl;
+    @include for-xxxl {
+      width: $height-xxxl;
+      height: $height-xxxl;
     }
 
     &.noImageContainer {

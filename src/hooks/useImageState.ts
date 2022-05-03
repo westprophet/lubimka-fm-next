@@ -12,16 +12,16 @@ export default function useGetImage(title: TAudioTitle | null): {
   const lock = !title || isEmptyString(title?.artist) || isEmptyString(title?.title);
 
   const { isLoading, error, data } = useQuery(
-    ['image-fetch', title?.title, title?.artist],
+    ['image-fetch', title],
     () =>
       api.radio.image.getImageByArtist(title?.artist, title?.title).catch(() => {
         console.error('useGetImage error');
       }),
     {
-      retry: 5,
       retryDelay: 2000,
       enabled: !lock,
-      cacheTime: 60 * 6, //Часов
+      cacheTime: 10 * (60 * (60 * 1000)), //milisec (10 h)
+      notifyOnChangeProps: ['data'],
       refetchOnWindowFocus: false,
     }
   );

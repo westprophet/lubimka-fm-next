@@ -17,6 +17,7 @@ export default function BottomPlayer({
 }: IBottomCommonPlayerProps) {
   const { title, channels, image, isLoading, status, play, stop, channel } = useCommonPlayerData();
   if (!channel) return null;
+  console.log(status);
   return (
     <CommonPlayer
       fixed={fixed}
