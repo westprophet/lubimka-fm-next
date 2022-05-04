@@ -32,5 +32,5 @@ CommonPlayerTitle.defaultProps = {
 
 interface ICommonPlayerTitleProps {
   className?: string;
-  ft: TAudioTitle | null;
+  ft: TAudioTitle | null | undefined;
 }

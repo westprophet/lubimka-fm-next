@@ -2,37 +2,46 @@
  * Created by westp on 04.04.2022
  */
 
-import React, { useCallback } from 'react';
+import React, { forwardRef, LegacyRef, useCallback } from 'react';
 import s from './SectionTitle.module.scss';
 import cn from 'classnames';
-import TextPlaceholder from 'components/UI/TextPlaceholder';
 import { useRouter } from 'next/router';
+import TextPlaceholder from 'components/UI/TextPlaceholder';
 
-export default function SectionTitle({
-  className,
-  children,
-  placeholder,
-  side,
-  link,
-}: ISectionTitleProps) {
-  const r = useRouter();
-  const onClickHandler = useCallback(() => {
-    if (link) r.push(link);
-  }, [link]);
+// eslint-disable-next-line react/display-name
+const SectionTitle = forwardRef(
+  (
+    { className, children, placeholder, side, link }: ISectionTitleProps,
+    ref: LegacyRef<HTMLHeadingElement> | undefined
+  ) => {
+    const r = useRouter();
+    const onClickHandler = useCallback(() => {
+      if (link) r.push(link);
+    }, [link]);
 
-  if (!placeholder || !link) return <h2 className={cn(s.SectionTitle, className)}>{children}</h2>;
-  return (
-    <TextPlaceholder
-      className={cn(s.SectionTitle, className)}
-      placeholder={placeholder}
-      arrow
-      side={side}
-      onClick={onClickHandler}
-    >
-      {children}
-    </TextPlaceholder>
-  );
-}
+    if (!placeholder || !link)
+      return (
+        <h2 ref={ref} className={cn(s.SectionTitle, className)}>
+          {children}
+        </h2>
+      );
+    return (
+      <div ref={ref}>
+        <TextPlaceholder
+          className={cn(s.SectionTitle, className)}
+          placeholder={placeholder}
+          arrow
+          side={side}
+          onClick={onClickHandler}
+        >
+          {children}
+        </TextPlaceholder>
+      </div>
+    );
+  }
+);
+
+export default SectionTitle;
 
 SectionTitle.defaultProps = {
   className: '',

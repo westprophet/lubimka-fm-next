@@ -8,22 +8,19 @@ import cn from 'classnames';
 import { TAudioManagerStatus } from '../../../../types/TAudioManagerStatus';
 import { CircularProgress } from '@mui/material';
 import PlayIconButton from 'components/UI/buttons/PlayIconButton';
-import TBreakpoints from '../../../../types/TBreakpoints';
-import TPlayButtonSizes from 'components/UI/buttons/PlayButton/types/TPlayButtonSizes';
-import useComponentSize from '../../../../hooks/useComponentSize';
-import { TChannelComponentType } from 'components/UI/ChannelComponent';
 import getStatusConst from '../../../../tools/TAudioManagerStatus/getStatusConst';
 
 export default function PlayButton({
   className,
   status,
   onClick,
+  isError,
   type, // Тип кнопки, белая или прозрачная
   disable, //Отключаем клацание
   active, // активный канал или нет. По умолчанию кнопка не привязана к каналу
 }: IPlayButtonProps) {
   // const _size = useComponentSize<TChannelComponentType>(sizes);
-  const { isError, isPlayed, isPaused, isLoading } = getStatusConst(status);
+  const { isError: isErrorStatus, isPlayed, isPaused, isLoading } = getStatusConst(status);
   return (
     <div
       className={cn(
@@ -32,7 +29,7 @@ export default function PlayButton({
           [s.type2]: type === 2,
         },
         {
-          [s.error]: isError && active,
+          [s.error]: (isErrorStatus && active) || isError,
         },
         {
           [s.disable]: disable,
@@ -63,6 +60,7 @@ interface IPlayButtonProps {
   disable?: boolean;
   type?: 1 | 2;
   active?: boolean;
+  isError?: boolean;
   onClick(): any;
   // size?: TPlayButtonSizes | null;
   // sizes?: Partial<TBreakpoints<TPlayButtonSizes>>;

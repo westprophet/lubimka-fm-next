@@ -43,8 +43,7 @@ export default function CommonPlayer({
       <PlayerControlComponent
         className={cn(s.controls)}
         status={control.status}
-        play={control.play}
-        stop={control.stop}
+        onClick={control.onClick}
       />
       <CommonPlayerTitle className={cn(s.title)} ft={title} />
       <CommonPlayerAction
@@ -87,15 +86,14 @@ interface ICommonPlayerProps {
     pinned: boolean | undefined | null;
     setPinned(v: boolean): any;
   };
-  title: TAudioTitle | null;
+  title: TAudioTitle | null | undefined;
 
   cover: {
     url?: string | null;
-    isLoading: boolean;
+    // isLoading: boolean;
   };
   control: {
     status: TAudioManagerStatus;
-    play(): any;
-    stop(): any;
+    onClick(): any;
   };
 }

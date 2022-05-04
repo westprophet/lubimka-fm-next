@@ -6,9 +6,11 @@ const INITIAL_VALUES: IPlayerManagerValues = {
   play: () => {},
   stop: () => {},
   toggle: () => {},
+  setPrevChannel: () => {},
+  setNextChannel: () => {},
   channel: null,
   id: '',
-  data: null,
+  stream: null,
 };
 
 export default INITIAL_VALUES;

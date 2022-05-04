@@ -1,5 +1,5 @@
 import IChannel from '../../../interfaces/IChannel';
-import { FIELD_KEY, LOCAL_KEY } from '../constants';
+import { FIELD_KEY, LOCAL_KEY } from '../../ChannelManager/constants';
 // import ls from 'universal-localstorage';
 import isEmptyArray from '../../../utils/isEmptyArray';
 

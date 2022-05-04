@@ -8,6 +8,21 @@ import cn from 'classnames';
 import SectionWrapper from '../SectionWrapper';
 import Slider, { withSliderWrapperManager } from '../../../../components/SliderWrapper';
 
+const variants = {
+  visible: {
+    opacity: 1,
+    y: 0,
+    transition: {
+      duration: 0.5,
+      delay: 0.2,
+    },
+  },
+  hidden: {
+    opacity: 0,
+    y: '-30%',
+  },
+};
+
 //Обертка для секции со слайдером
 function SectionSliderWrapper({
   className,
@@ -24,9 +39,20 @@ function SectionSliderWrapper({
     <SectionWrapper.Wrapper className={cn(s.SectionSliderWrapper, className)}>
       <div className={cn(s.head)}>
         {title && (
-          <SectionWrapper.Title className={cn(s.title)} placeholder={placeholder} link={link}>
+          <SectionWrapper.MTitle
+            variants={variants}
+            initial="hidden"
+            whileInView="visible"
+            viewport={{
+              amount: 0.6,
+              once: true,
+            }}
+            className={cn(s.title)}
+            placeholder={placeholder}
+            link={link}
+          >
             {title}
-          </SectionWrapper.Title>
+          </SectionWrapper.MTitle>
         )}
       </div>
       <SectionWrapper.Inner className={cn(s.inner)}>

@@ -7,8 +7,9 @@ import api from '../../../api';
 export default function useChannels(channels: IChannel[] = []): {
   channels: IChannel[];
   isLoading: boolean;
+  isError: boolean;
 } {
-  const { isLoading, error, data } = useQuery(
+  const { isLoading, isError, isRefetchError, data } = useQuery(
     'getAllChannels',
     () =>
       api.strapi.channels.getChannels().catch(() => {
@@ -16,6 +17,8 @@ export default function useChannels(channels: IChannel[] = []): {
       }),
     {
       initialData: channels,
+      cacheTime: 24 * (60 * (60 * 1000)),
+      notifyOnChangeProps: 'tracked',
       refetchOnWindowFocus: false,
     }
   );
@@ -24,5 +27,6 @@ export default function useChannels(channels: IChannel[] = []): {
     // @ts-ignore
     channels: data,
     isLoading,
+    isError,
   };
 }

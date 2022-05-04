@@ -37,7 +37,7 @@ export default function ChannelMenuSelector({
         {/*// @ts-ignore*/}
         <Slider ref={sliderRef} {...settings} className={cn(s.slider)}>
           {channels.map((c: IChannel) => (
-            <Channel key={c.attributes.name} channel={c} className={cn(s.slide)} size="small" />
+            <Channel key={c.attributes.name} channel={c} className={cn(s.slide)} typeSize="small" />
           ))}
         </Slider>
       </div>

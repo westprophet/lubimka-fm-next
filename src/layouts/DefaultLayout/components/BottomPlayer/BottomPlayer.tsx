@@ -2,9 +2,10 @@
  * Created by westp on 11.04.2022
  */
 
-import React from 'react';
+import React, { useContext } from 'react';
 import CommonPlayer from 'components/UI/CommonPlayer';
-import useCommonPlayerData from './hooks/useCommonPlayerData';
+import { RadioPlayerContext } from '../../../../contexts/RadioPlayerManager';
+import useImageState from '../../../../hooks/useImageState';
 
 export default function BottomPlayer({
   fixed,
@@ -15,9 +16,10 @@ export default function BottomPlayer({
   isOpenChannelMenu,
   setIsOpenChannelMenu,
 }: IBottomCommonPlayerProps) {
-  const { title, channels, image, isLoading, status, play, stop, channel } = useCommonPlayerData();
-  if (!channel) return null;
+  const { stream, status, toggle, channel: current, channels } = useContext(RadioPlayerContext);
   console.log(status);
+  const { image } = useImageState(stream?.current);
+  if (!current) return null;
   return (
     <CommonPlayer
       fixed={fixed}
@@ -25,11 +27,12 @@ export default function BottomPlayer({
       transparent={transparent}
       control={{
         status,
-        play,
-        stop,
+        onClick: () => {
+          toggle();
+        },
       }}
       channels={{
-        current: channel,
+        current,
         channels: channels ?? [],
         isOpenChannelMenu,
         setIsOpenChannelMenu,
@@ -38,10 +41,9 @@ export default function BottomPlayer({
         pinned,
         setPinned,
       }}
-      title={title}
+      title={stream?.current}
       cover={{
         url: image,
-        isLoading: isLoading,
       }}
     />
   );

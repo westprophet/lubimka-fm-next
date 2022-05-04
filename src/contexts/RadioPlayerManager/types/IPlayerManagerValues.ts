@@ -5,13 +5,15 @@ import TCreatedStream from '../../../types/TCreatedStream';
 
 export default interface IPlayerManagerValues {
   status: TAudioManagerStatus;
-  play: (c?: IChannel) => void;
+  audioRef: MutableRefObject<HTMLAudioElement | null> | null;
+  play: () => void;
   stop(): any;
-  audioRef: MutableRefObject<HTMLAudioElement | null>;
-  toggle(c?: IChannel): any;
-  setPrevChannel(): void;
-  setNextChannel(): void;
+  toggle(): any;
+  set(c: IChannel, isAndPlay: boolean): any;
+  setPrev(isAndPlay?: boolean): void;
+  setNext(isAndPlay?: boolean): void;
   channel: IChannel | null;
+  channels: IChannel[] | null;
   id: string;
-  stream: TCreatedStream;
+  stream: TCreatedStream | null;
 }

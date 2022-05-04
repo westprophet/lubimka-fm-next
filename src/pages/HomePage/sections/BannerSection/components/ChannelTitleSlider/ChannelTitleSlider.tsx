@@ -6,13 +6,14 @@ import React, { useContext, useEffect } from 'react';
 import s from './ChannelTitleSlider.module.scss';
 import cn from 'classnames';
 import Slider from 'react-slick';
-import { ChannelManagerContext } from '../../../../../../contexts/ChannelManager';
+// import { ChannelManagerContext } from '../../../../../../contexts/ChannelManager';
 import { IChannel } from '../../../../../../interfaces';
 import useGetCurrentSlideByChannels from './hooks/useGetCurrentSlideByChannels';
 import useGetSliderSettings from './hooks/useGetSliderSettings';
+import { RadioPlayerContext } from '../../../../../../contexts/RadioPlayerManager';
 
 export default function ChannelTitleSlider({ className }: IChannelTitleSliderProps) {
-  const { current: channel, channels } = useContext(ChannelManagerContext); // Получаем текущий канал
+  const { channel, channels } = useContext(RadioPlayerContext); // Получаем текущий канал
   const currentSlideIndex = useGetCurrentSlideByChannels(channel, channels);
   const { sliderRef, settings } = useGetSliderSettings();
   useEffect(() => {

@@ -3,9 +3,10 @@ import IChannel from '../../../interfaces/IChannel';
 import useChannels from './useChannels';
 import useChannelsMethods from './useChannelsMethods';
 import useLocalStorage from 'use-local-storage';
+import IChannelManagerValues from '../types/IChannelManagerState';
 
-export default function useChannelState(_channels?: IChannel[]) {
-  const { channels, isLoading } = useChannels(_channels); //Получаем каналы
+export default function useChannelState(_channels?: IChannel[]): IChannelManagerValues {
+  const { channels, isLoading, isError } = useChannels(_channels); //Получаем каналы
   const [current, setChannel] = useLocalStorage<IChannel>('channel', channels[0], {
     syncData: false,
   }); //Каналы и канал по умолчанию
@@ -20,7 +21,8 @@ export default function useChannelState(_channels?: IChannel[]) {
     current,
     setChannel,
     channels,
-    isLoadingChannels: isLoading,
+    isLoading,
+    isError,
     getNext,
     getPrev,
     setPrevChannel,

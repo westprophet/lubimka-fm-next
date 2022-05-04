@@ -11,12 +11,12 @@ import BannerPlayerArrow from './components/BannerPlayerArrow';
 
 //Плеер в баннере
 export default function BannerMiniPlayer({ className }: IBannerMiniPlayerProps) {
-  const { status, toggle, setPrevChannel, setNextChannel } = useContext(RadioPlayerContext);
+  const { status, toggle, setPrev, setNext } = useContext(RadioPlayerContext);
   return (
     <div className={cn(s.BannerMiniPlayer, className)}>
-      <BannerPlayerArrow status={status} side="left" onClick={setPrevChannel} />
+      <BannerPlayerArrow status={status} side="left" onClick={setPrev} />
       <BigPlayButton onClick={() => toggle()} status={status} />
-      <BannerPlayerArrow side="right" status={status} onClick={setNextChannel} />
+      <BannerPlayerArrow side="right" status={status} onClick={setNext} />
     </div>
   );
 }

@@ -19,7 +19,18 @@
       height: calc(100% - #{$stroke-width-lg + 1}px);
     }
   }
+  &:local(.error){
+    button svg{
 
+      color: var(--error-color);
+    }
+    :local(.circular) {
+      color: var(--error-color);
+      &:global(.MuiCircularProgress-indeterminate) {
+        color: var(--text-color);
+      }
+    }
+  }
   :local(.circular) {
     position: absolute;
     color: var(--primary-color);
@@ -57,12 +68,12 @@
         background-color: var(--error-color);
         color: var(--text-color);
       }
-      :local(.circular) {
-        color: var(--error-color);
-        &:global(.MuiCircularProgress-indeterminate) {
-          color: var(--text-color);
-        }
-      }
+      //:local(.circular) {
+      //  color: var(--error-color);
+      //  &:global(.MuiCircularProgress-indeterminate) {
+      //    color: var(--text-color);
+      //  }
+      //}
     }
   }
 }

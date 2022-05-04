@@ -4,28 +4,24 @@
 
 import React from 'react';
 import { TAudioManagerStatus } from '../../../../types/TAudioManagerStatus';
-import PlayButton, { TPlayButtonSizes } from 'components/UI/buttons/PlayButton';
-import TBreakpoints from '../../../../types/TBreakpoints';
+import PlayButton from 'components/UI/buttons/PlayButton';
 
 export default function PlayerControlComponent({
   className,
   status,
-  play,
-  stop,
+  onClick,
   type,
   disable,
+  isError,
 }: IPlayerControlComponentProps) {
-  const onClickHandler = () => {
-    if (status === 'paused') play();
-    else stop();
-  };
   return (
     <PlayButton
       type={type}
-      onClick={onClickHandler}
+      onClick={onClick}
       disable={disable}
       status={status}
       className={className}
+      isError={isError}
     />
   );
 }
@@ -40,7 +36,7 @@ interface IPlayerControlComponentProps {
   className?: string;
   status: TAudioManagerStatus;
   disable?: boolean;
+  isError?: boolean;
   type?: 1 | 2;
-  play(): any;
-  stop(): any;
+  onClick(): any;
 }

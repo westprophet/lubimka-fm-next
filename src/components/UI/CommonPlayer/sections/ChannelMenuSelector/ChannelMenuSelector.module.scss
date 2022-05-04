@@ -29,11 +29,8 @@
 
   .inner {
     width: 100%;
-
-    .slider {
-      .slide {
-        margin-right: 20px;
-      }
+    .slide {
+      margin-right: 20px;
     }
   }
 
@@ -44,3 +41,4 @@
     border-bottom: 1px solid var(--border-color);
   }
 }
+

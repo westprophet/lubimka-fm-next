@@ -5,13 +5,14 @@ import api from '../api';
 import isEmptyString from '../utils/isEmptyString';
 
 //Получение картинки и запись ее в состояние
-export default function useGetImage(title: TAudioTitle | null): {
+export default function useGetImage(title: TAudioTitle | null | undefined): {
   isLoading: boolean;
+  isError: boolean;
   image: string | null;
 } {
   const lock = !title || isEmptyString(title?.artist) || isEmptyString(title?.title);
 
-  const { isLoading, error, data } = useQuery(
+  const { isLoading, isError, data } = useQuery(
     ['image-fetch', title],
     () =>
       api.radio.image.getImageByArtist(title?.artist, title?.title).catch(() => {
@@ -28,5 +29,6 @@ export default function useGetImage(title: TAudioTitle | null): {
   return {
     image: data && 'image' in data ? data.image : null,
     isLoading,
+    isError,
   };
 }

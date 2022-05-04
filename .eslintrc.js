@@ -13,6 +13,7 @@ module.exports = {
   rules: {
     'react/react-in-jsx-scope': 'off',
     'react/jsx-uses-react': 'error',
+    'react/display-name': 'off',
     'react/jsx-uses-vars': 'error',
     'react-hooks/rules-of-hooks': 'error',
     'react-hooks/exhaustive-deps': 'warn',

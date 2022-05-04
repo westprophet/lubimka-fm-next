@@ -2,7 +2,6 @@ import type { AppProps } from 'next/app';
 import { useState } from 'react';
 
 import { SnackbarProvider } from 'notistack';
-import ChannelManager from '../src/contexts/ChannelManager';
 import RadioPlayerManager from '../src/contexts/RadioPlayerManager';
 import theme from '../mui-theme';
 import { QueryClient, QueryClientProvider, Hydrate } from 'react-query';
@@ -34,11 +33,9 @@ function App({ Component, pageProps }: AppProps) {
             }}
           >
             <CookiesProvider>
-              <ChannelManager channels={pageProps.channels}>
-                <RadioPlayerManager>
-                  <Component {...pageProps} />
-                </RadioPlayerManager>
-              </ChannelManager>
+              <RadioPlayerManager channels={pageProps.channels}>
+                <Component {...pageProps} />
+              </RadioPlayerManager>
             </CookiesProvider>
           </SnackbarProvider>
         </Hydrate>

@@ -2,5 +2,6 @@
 type TAudioTitle = {
   artist: string;
   title: string;
+  isAds?: boolean;
 };
 export default TAudioTitle;

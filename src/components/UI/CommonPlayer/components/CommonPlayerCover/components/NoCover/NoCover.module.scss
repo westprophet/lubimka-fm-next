@@ -6,6 +6,8 @@
   width: 100%;
   display: flex;
   svg{
+    flex-shrink: 1;
+    flex-grow: 1;
     margin:auto;
   }
   //& > div > div{

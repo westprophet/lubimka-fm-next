@@ -1,2 +1,3 @@
 import IPlayerManagerValues from './IPlayerManagerValues';
-export type { IPlayerManagerValues };
+import IChannelManagerState from './IChannelManagerState';
+export type { IPlayerManagerValues, IChannelManagerState };

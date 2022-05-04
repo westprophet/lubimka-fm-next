@@ -5,18 +5,26 @@
 import React from 'react';
 import s from './ClubLifeSection.module.scss';
 import cn from 'classnames';
-import SectionSlider from '../../../../layouts/DefaultLayout/components/SectionSliderWrapper';
+import SectionSlider, {
+  MSlideAnimationVariants,
+} from '../../../../layouts/DefaultLayout/components/SectionSliderWrapper';
 import { IClub } from '../../../../interfaces';
 import Club from 'components/Club';
 
 export default function ClubLifeSection({ clubs }: IClubLifeSectionProps) {
   return (
     <SectionSlider.Wrapper className={cn(s.ClubLifeSection)} title="Club Life">
-      {clubs?.map((club: IClub) => {
+      {clubs?.map((club: IClub, index: number) => {
         return (
-          <SectionSlider.Slide key={`club-${club.id}`}>
+          <SectionSlider.MSlide
+            key={`club-${club.id}`}
+            variants={MSlideAnimationVariants}
+            custom={index}
+            whileInView="visible"
+            initial="hidden"
+          >
             <Club club={club} />
-          </SectionSlider.Slide>
+          </SectionSlider.MSlide>
         );
       })}
     </SectionSlider.Wrapper>

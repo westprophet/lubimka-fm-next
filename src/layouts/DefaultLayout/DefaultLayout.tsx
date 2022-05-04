@@ -27,11 +27,13 @@ function DefaultLayout({
   right: rightSideSettings,
 }: IDefaultLayoutProps) {
   const { position, direction } = useScrolling();
+
   const value = useProviderData({
     header: headerSettings,
     player: playerSettings,
     right: rightSideSettings,
   }); //Получаем данные для провайдера
+
   const { player, header, right } = value;
   if (!children) return null;
   return (

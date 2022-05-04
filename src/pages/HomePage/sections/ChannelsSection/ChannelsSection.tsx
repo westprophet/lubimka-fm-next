@@ -5,7 +5,9 @@
 import React from 'react';
 import s from './ChannelsSection.module.scss';
 import cn from 'classnames';
-import SectionSlider from 'src/layouts/DefaultLayout/components/SectionSliderWrapper';
+import SectionSlider, {
+  MSlideAnimationVariants,
+} from 'src/layouts/DefaultLayout/components/SectionSliderWrapper';
 import Channel from 'components/Channel';
 // import { ChannelManagerContext } from '../../../../contexts/ChannelManager';
 import { IChannel } from '../../../../interfaces';
@@ -19,10 +21,16 @@ export default function ChannelsSection({ className, channels }: IChannelsSectio
       // placeholder="Подробнее"
       link="/channels"
     >
-      {channels?.map((c: IChannel) => (
-        <SectionSlider.Slide key={`channel-${c.id}`}>
+      {channels?.map((c: IChannel, index: number) => (
+        <SectionSlider.MSlide
+          key={`channel-${c.id}`}
+          variants={MSlideAnimationVariants}
+          custom={index}
+          whileInView="visible"
+          initial="hidden"
+        >
           <Channel channel={c} type="lg" />
-        </SectionSlider.Slide>
+        </SectionSlider.MSlide>
       ))}
     </SectionSlider.Wrapper>
   );

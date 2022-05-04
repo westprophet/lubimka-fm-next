@@ -1,3 +1,4 @@
+//@ts-nocheck
 import IChannel from 'src/interfaces/IChannel';
 
 const CHANNELS: IChannel[] = [

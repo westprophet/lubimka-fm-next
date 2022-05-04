@@ -7,31 +7,52 @@ import s from './LubimkaDjsSection.module.scss';
 import cn from 'classnames';
 import AuthorComponent from 'components/UI/AuthorComponent';
 
-import SectionSlider from '../../../../layouts/DefaultLayout/components/SectionSliderWrapper';
+import SectionSlider, {
+  MSlideAnimationVariants,
+} from '../../../../layouts/DefaultLayout/components/SectionSliderWrapper';
 import { IAuthor } from '../../../../interfaces';
 
 export default function LubimkaDjsSection({ authors }: ILubimkaDjsSectionProps) {
   return (
     <SectionSlider.Wrapper className={cn(s.LubimkaDjsSection)} title="Любимка DJ’s">
-      {authors?.map((a: IAuthor) => {
+      {authors?.map((a: IAuthor, index: number) => {
         return (
-          <SectionSlider.Slide key={`author-${a.attributes.name}`}>
+          <SectionSlider.MSlide
+            variants={MSlideAnimationVariants}
+            custom={index}
+            whileInView="visible"
+            initial="hidden"
+            key={`author-${a.attributes.name}`}
+          >
             <AuthorComponent author={a} />
-          </SectionSlider.Slide>
+          </SectionSlider.MSlide>
         );
       })}
-      {authors?.map((a: IAuthor) => {
+
+      {authors?.map((a: IAuthor, index: number) => {
         return (
-          <SectionSlider.Slide key={`author-${a.attributes.name}`}>
+          <SectionSlider.MSlide
+            variants={MSlideAnimationVariants}
+            custom={index + 3}
+            whileInView="visible"
+            initial="hidden"
+            key={`author-${a.attributes.name}`}
+          >
             <AuthorComponent author={a} />
-          </SectionSlider.Slide>
+          </SectionSlider.MSlide>
         );
       })}
-      {authors?.map((a: IAuthor) => {
+      {authors?.map((a: IAuthor, index: number) => {
         return (
-          <SectionSlider.Slide key={`author-${a.attributes.name}`}>
+          <SectionSlider.MSlide
+            variants={MSlideAnimationVariants}
+            custom={index + 6}
+            whileInView="visible"
+            initial="hidden"
+            key={`author-${a.attributes.name}`}
+          >
             <AuthorComponent author={a} />
-          </SectionSlider.Slide>
+          </SectionSlider.MSlide>
         );
       })}
     </SectionSlider.Wrapper>
