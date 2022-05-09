@@ -17,12 +17,6 @@ export default function ViewSection({ className, channels }: IViewSectionProps) 
       {channels.map((c: IChannel) => (
         <Channel key={`channel-${c.id}`} channel={c} />
       ))}
-      {channels.map((c: IChannel) => (
-        <Channel key={`channel-${c.id}`} channel={c} />
-      ))}
-      {channels.map((c: IChannel) => (
-        <Channel key={`channel-${c.id}`} channel={c} />
-      ))}
     </GridSection>
   );
 }

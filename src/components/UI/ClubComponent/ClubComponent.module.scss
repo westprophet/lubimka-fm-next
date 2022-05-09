@@ -1,37 +1,31 @@
 @import './data';
+@import './mixins';
 
 .ClubComponent {
   position: relative;
-  width: $width-xs;
-  height: $height-xs;
   border-radius: 5px;
   display: grid;
   grid-gap: 10px;
   padding: $padding-xs;
   overflow: hidden;
   cursor: pointer;
+  @include size();
   *{
     letter-spacing: 0.02em!important;
   }
+  @include for-xxl{
+    padding: $padding-xxl;
+  }
 
-  @include for-md{
-    width: $width-md;
-    height: $height-md;
-    padding: $padding-md;
-  }
-  @include for-lg{
-    width: $width-lg;
-    height: $height-lg;
-    //padding: $padding-lg;
-  }
+
 
   .bg {
+    z-index: 0;
     position: absolute;
     width: 100%;
     height: 100%;
     top: 0;
     left: 0;
-    z-index: -1;
     filter: brightness(50%);
     @include zoom-effect-on-leave();
   }
@@ -44,7 +38,7 @@
   .head {
     display: flex;
     justify-content: space-between;
-
+    z-index: 1;
     .avatar{
       border-radius: 50%;
       width: $avatar-size-xs;
@@ -52,14 +46,14 @@
       background: var(--bg-panel-color);
       overflow: hidden;
       position: relative;
-      @include for-md{
-        width: $avatar-size-md;
-        height: $avatar-size-md;
-
-      }
       @include for-lg{
         width: $avatar-size-lg;
         height: $avatar-size-lg;
+
+      }
+      @include for-xxl{
+        width: $avatar-size-xxl;
+        height: $avatar-size-xxl;
       }
       .no{
         padding: 15% 10% 10% 10%;
@@ -70,7 +64,10 @@
       @include f8() {
         font-weight: 500;
       }
-      @include for-md{
+      @include for-lg{
+          @include f7();
+      }
+      @include for-xxl{
         @include f4(){
           line-height: 150%!important;
         }
@@ -81,13 +78,17 @@
   .body {
     display: grid;
     grid-gap: 5px;
+    z-index: 1;
     h3 {
       @include f8 {
         width: 100%;
         font-weight: 900;
         white-space: nowrap;
       }
-      @include for-md{
+      @include for-lg{
+        @include f5();
+      }
+      @include for-xxl{
         @include f3();
       }
     }
@@ -102,10 +103,11 @@
         overflow: hidden;
         text-overflow: ellipsis;
         line-height: 140%!important;
-        @include for-md{
-          @include f4(){
-            //white-space: pre-wrap;
-          }
+        @include for-lg{
+          @include f7();
+        }
+        @include for-xxl{
+          @include f4();
         }
       }
     }
@@ -119,9 +121,7 @@
     }
   }
 
-
-
   &.longType {
-    width: 255px;
+    width: 100%;
   }
 }

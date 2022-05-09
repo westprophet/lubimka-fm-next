@@ -1,0 +1,13 @@
+@import "../../components/UI/ClubComponent/mixins";
+
+//@import "components/UI/ClubComponent/mixins";
+.ClubsPage {
+  .ViewSection {
+    width: 100%;
+    //display: grid!important;
+    //@include grid-fill();
+    //& > * {
+    //  width: 100% !important;
+    //}
+  }
+}

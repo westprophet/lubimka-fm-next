@@ -22,7 +22,8 @@ export default function ContactUsPage({ className }: IContactUsPageProps) {
     <DefaultLayout.Layout
       className={cn(s.ContactUsPage, className)}
       player={{
-        transparent: false,
+        isTransparent: true,
+        isShow: true,
       }}
     >
       <DefaultLayout.PageWrapper>

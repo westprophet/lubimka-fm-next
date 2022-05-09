@@ -1,24 +1,32 @@
 @import "../../scss/mixins";
 
 .GridSection {
-  @include layout-padding(false, true, true, true);
+  @include inner-section-padding(false, true, true, true);
   display: flex;
   justify-content: center;
 
   .inner {
     gap: 10px;
     display: flex;
+    width: 100%;
     flex-wrap: wrap;
-    justify-content: space-evenly;
+    justify-content: space-around;
+
     @include for-md {
       gap: 20px;
     }
     @include for-lg {
       gap: 30px;
-
     }
   }
-
+  &.flexible {
+    :local(.inner){
+      //justify-content: space-between;
+      & > * {
+        flex: 1 1 min-content;
+      }
+    }
+  }
   &.dense {
     :local(.inner) {
       & > * {

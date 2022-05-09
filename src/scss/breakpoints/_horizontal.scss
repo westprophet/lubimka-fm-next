@@ -1,6 +1,12 @@
 @import "screen";
 
 /*=============================== MOBILE TO FIRST =================================*/
+@mixin for-xxs {
+  @media (min-width: #{$screen-xxs}) {
+    @content;
+  }
+}
+
 @mixin for-xs {
   @media (min-width: #{$screen-xs}) {
     @content;

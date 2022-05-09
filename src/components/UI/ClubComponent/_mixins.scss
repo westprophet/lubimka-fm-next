@@ -1,0 +1,66 @@
+@import 'data';
+
+@mixin size-xs(){
+  //min-width: $width-xs;
+  //width: 100%;
+  width: $width-xs;
+  height: $height-xs;
+  min-height: $height-xs;
+}
+
+@mixin size-sm(){
+  width: $width-sm;
+  height: $height-sm;
+  min-height: $height-sm;
+}
+
+
+@mixin size-lg(){
+  width: $width-lg;
+  height: $height-lg;
+  min-height: $height-lg;
+}
+
+
+@mixin size-xxl(){
+  //min-width: $width-lg;
+  width: $width-xxl;
+  height: $height-xxl;
+  min-height: $height-xxl;
+}
+
+@mixin size-xxxl(){
+  width: $width-xxxl;
+  height: $height-xxxl;
+  min-height: $height-xxxl;
+}
+
+@mixin size(){
+  width: 100%;
+  @include for-xs{
+    @include size-xs();
+  }
+  @include for-sm{
+      @include size-sm();
+  }
+  @include for-lg{
+    @include size-lg();
+  }
+  @include for-xxl{
+      @include size-xxl();
+  }
+  @include for-xxxl{
+    @include size-xxxl();
+  }
+}
+
+
+@mixin grid-fill(){
+  grid-template-columns: repeat(auto-fit, minmax($width-xs, $width-md));
+  @include for-md{
+    grid-template-columns: repeat(auto-fit, minmax($width-md, $height-xxl));
+  }
+  @include for-lg{
+    grid-template-columns: repeat(auto-fit, minmax($height-xxl, $width-xxl));
+  }
+}

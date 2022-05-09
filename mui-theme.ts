@@ -33,6 +33,9 @@ const theme = createTheme({
         adornedEnd: {
           color: 'currentColor',
         },
+        adornedStart: {
+          color: '#99D3FB',
+        },
         input: {
           color: '#99D3FB',
         },
@@ -46,6 +49,13 @@ const theme = createTheme({
       styleOverrides: {
         root: {
           color: '#4F4F4F',
+        },
+      },
+    },
+    MuiInputAdornment: {
+      styleOverrides: {
+        root: {
+          color: 'currentColor',
         },
       },
     },
