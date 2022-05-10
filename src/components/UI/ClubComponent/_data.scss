@@ -1,15 +1,20 @@
-$width-xs:  175px;
-$width-sm:  230px;
-$width-lg:  300px;
-$width-xxl:  410px;
-$width-xxxl:  510px;
-//$width-xxl:  550px;
+$width-xs: 175px;
+$width-sm: 230px;
+$width-lg: 300px;
+$width-xxl: 410px;
+$width-fxl: 370px;
+$width-qxl: 510px;
+
+$max-width-qxl: 600px;
+//$width-xxl:5 550px;
 
 $height-xs: 130px;
 $height-sm: 150px;
-$height-lg: 180px;
+//$height-md: 190px;
+$height-lg: 210px;
 $height-xxl: 240px;
-$height-xxxl: 300px;
+$height-fxl: 240px;
+$height-qxl: 300px;
 
 $padding-xs: 10px;
 $padding-xxl: 20px;

@@ -10,7 +10,7 @@
   @include for-lg {
     height: $height-lg;
   }
-  @include for-xxxl {
+  @include for-qxl {
     height: $height-xxxl;
     grid-column-gap: 20px;
   }
@@ -25,7 +25,7 @@
       width: $height-lg;
       height: $height-lg;
     }
-    @include for-xxxl {
+    @include for-qxl {
       width: $height-xxxl;
       height: $height-xxxl;
     }

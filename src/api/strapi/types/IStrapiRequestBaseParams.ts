@@ -11,10 +11,13 @@
 export default interface IStrapiRequestBaseParams {
   sort?: string; //'created_at:asc'
   filter?: object; //
-  pagination?: {
-    page: number;
-    pageSize: number;
-    // start: number;
-    // limit: number;
-  };
+  pagination?:
+    | {
+        page: number;
+        pageSize: number;
+      }
+    | {
+        limit: number;
+        start: number;
+      };
 }

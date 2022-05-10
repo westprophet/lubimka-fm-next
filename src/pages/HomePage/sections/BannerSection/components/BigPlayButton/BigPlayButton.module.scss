@@ -26,7 +26,7 @@
       width: $size-lg;
       height: $size-lg;
     }
-    @include for-xxxl{
+    @include for-qxl{
       width: $size-xxl;
       height: $size-xxl;
     }
@@ -42,7 +42,7 @@
         @include for-md{
           font-size: 5rem;
         }
-        @include for-xxxl{
+        @include for-qxl{
           font-size: 8rem;
         }
       }

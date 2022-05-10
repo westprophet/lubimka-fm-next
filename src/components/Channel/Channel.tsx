@@ -15,6 +15,7 @@ export default function Channel({
   isNew,
   typeSize,
   isError,
+  resizable,
 }: ISimpleChannelProps) {
   const { status, set, channel: current }: any = useContext(RadioPlayerContext);
   if (!current) return null;
@@ -29,6 +30,7 @@ export default function Channel({
       onPlayClick={() => set(channel, true)}
       status={status}
       typeSize={typeSize}
+      resizable={resizable}
     />
   );
 }
@@ -45,5 +47,6 @@ interface ISimpleChannelProps extends IChannelProps {
   channel: IChannel;
   isNew?: boolean;
   isError?: boolean;
+  resizable: boolean;
   typeSize?: 'small';
 }

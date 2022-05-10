@@ -122,7 +122,7 @@
   @include for-xxl{
     @include layout-padding-xxl($t,$r,$b,$l, $property);
   }
-  @include for-xxxl{
+  @include for-qxl{
     @include layout-padding-xxxl($t,$r,$b,$l, $property);
   }
 }

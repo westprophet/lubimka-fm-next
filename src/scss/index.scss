@@ -3,14 +3,17 @@
 @import './theme.scss';
 @import './animations.scss';
 @import './styles-overrides.scss';
-//@import './others';
 
 
 
 :root {
   @include DefaultTheme();
 }
+#__next{
+  display: flex;
+  justify-content: center;
 
+}
 html,
 body {
   font-family: Montserrat, sans-serif;

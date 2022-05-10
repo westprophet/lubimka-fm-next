@@ -7,8 +7,6 @@ import React, { useState, useTransition } from 'react';
 import s from './ClubsPage.module.scss';
 import cn from 'classnames';
 import DefaultLayout from 'src/layouts/DefaultLayout';
-// import CallbackSection from '../ChannelsPage/sections/CallbackSection';
-import GridSection from '../../layouts/DefaultLayout/components/GridSection';
 import { IClub } from '../../interfaces';
 import Club from 'components/Club';
 import { InputAdornment, TextField } from '@mui/material';
@@ -20,14 +18,14 @@ export default function ClubsPage({ clubs }: IClubsPageProps) {
   const [search, setSearch] = useState<string>();
   const [inTransition, startTransition] = useTransition();
 
-  const handleChange = (e) => {
+  const handleChange = (e: { target: { value: React.SetStateAction<string | undefined> } }) => {
     startTransition(() => {
       setSearch(e.target.value);
     });
   };
 
-  let _clubs = clubs;
-  // let _clubs = [...clubs, ...clubs, ...clubs, ...clubs, ...clubs];
+  // let _clubs = clubs;
+  let _clubs = [...clubs, ...clubs, ...clubs, ...clubs, ...clubs];
 
   if (!isEmptyString(search))
     _clubs = _clubs?.filter((c: IClub) =>
@@ -41,7 +39,7 @@ export default function ClubsPage({ clubs }: IClubsPageProps) {
       <DefaultLayout.PageWrapper>
         <DefaultLayout.PageTitle url="/">Клубы</DefaultLayout.PageTitle>
         <DefaultLayout.Section.Wrapper>
-          <DefaultLayout.Section.Inner>
+          <DefaultLayout.Section.Inner disableHorizontalPadding>
             <TextField
               placeholder="Поиск"
               InputProps={{
@@ -56,18 +54,19 @@ export default function ClubsPage({ clubs }: IClubsPageProps) {
               onChange={handleChange}
             />
           </DefaultLayout.Section.Inner>
-          {!isEmpty ? (
-            <GridSection className={cn(s.ViewSection)}>
-              {_clubs.map((c: IClub, i: number) => (
-                <Club key={`club-${c.id}-${i}`} club={c} />
-              ))}
-            </GridSection>
-          ) : (
-            <DefaultLayout.Section.Inner>
-              <h2>По данному запросу ничего не найдено</h2>
-            </DefaultLayout.Section.Inner>
-          )}
         </DefaultLayout.Section.Wrapper>
+
+        {!isEmpty ? (
+          <DefaultLayout.Section.Wrapper className={cn(s.ViewSection)}>
+            {_clubs.map((c: IClub, i: number) => (
+              <Club key={`club-${c.id}-${i}`} club={c} resizable />
+            ))}
+          </DefaultLayout.Section.Wrapper>
+        ) : (
+          <DefaultLayout.Section.Inner>
+            <h2>По данному запросу ничего не найдено</h2>
+          </DefaultLayout.Section.Inner>
+        )}
       </DefaultLayout.PageWrapper>
     </DefaultLayout.Layout>
   );

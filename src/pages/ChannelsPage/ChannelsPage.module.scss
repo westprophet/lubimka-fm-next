@@ -1,3 +1,23 @@
 .ChannelsPage {
-
+  .viewSection{
+    display: grid;
+    width: 100%;
+    gap: 20px;
+    @include for-xs{
+      grid-template-columns: 1fr 1fr;
+    }
+    @include for-sm{
+      grid-template-columns: repeat(3, 1fr);
+    }
+    @include for-fxl{
+      grid-template-columns: repeat(4, 1fr);
+      gap: 30px;
+    }
+    @include for-qxl{
+      grid-template-columns: repeat(5, 1fr);
+    }
+    @include for-uxl{
+      grid-template-columns: repeat(6, 1fr);
+    }
+  }
 }

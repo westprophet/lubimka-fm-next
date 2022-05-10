@@ -26,6 +26,7 @@ export default function ChannelComponent({
   isDetail,
   typeSize,
   disabled,
+  resizable,
 }: IChannelProps) {
   const { isError: isErrorStatus } = getStatusConst(status);
   const _isError = Boolean(isError || (isCurrent && isErrorStatus));
@@ -40,6 +41,7 @@ export default function ChannelComponent({
         { [s.error]: _isError },
         { disabled: disabled },
         { [s.small]: typeSize === 'small' },
+        { [s.notResizable]: resizable },
         className
       )}
     >
@@ -56,7 +58,6 @@ export default function ChannelComponent({
         <TextPlaceholder
           placeholder="Подробнее"
           side="right"
-          animation={false}
           placeholderArrow
           className={s.title}
           isEnable={isDetail || _isError}
@@ -82,6 +83,7 @@ ChannelComponent.defaultProps = {
   isNew: false,
   disabled: false,
   isDetail: true,
+  resizable: false,
 };
 
 interface IChannelProps {
@@ -96,5 +98,6 @@ interface IChannelProps {
   isNew?: boolean;
   isError?: boolean;
   isCurrent?: boolean;
+  resizable?: boolean;
   isDetail?: boolean;
 }

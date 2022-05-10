@@ -17,19 +17,11 @@ export default function ClubComponent({
   title,
   cover,
   address,
-  size,
   avatar,
-  isLongType,
+  resizable,
 }: IClubComponentProps) {
   return (
-    <div
-      className={cn(
-        s.ClubComponent,
-        { [s.small]: size === 'small', [s.middle]: size === 'middle', [s.large]: size === 'large' },
-        { [s.longType]: isLongType },
-        className
-      )}
-    >
+    <div className={cn(s.ClubComponent, { [s.notResizable]: resizable }, className)}>
       {cover ? (
         <Image
           className={cn(s.bg, 'zoom-effect')}
@@ -85,6 +77,7 @@ ClubComponent.defaultProps = {
   className: '',
   size: 'small',
   isLongType: false,
+  resizable: false,
 };
 
 export type TSizes = 'small' | 'middle' | 'large';
@@ -96,5 +89,5 @@ interface IClubComponentProps {
   cover: string | null;
   avatar?: string | null;
   isLongType?: boolean;
-  size?: TSizes;
+  resizable?: boolean;
 }

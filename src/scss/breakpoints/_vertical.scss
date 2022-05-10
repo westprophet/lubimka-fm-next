@@ -33,8 +33,8 @@
   }
 }
 
-@mixin vh-for-xxxl {
-  @media (min-height: #{$screen-3xl}) {
+@mixin vh-for-qxl {
+  @media (min-height: #{$screen-4xl}) {
     @content;
   }
 }
@@ -78,7 +78,7 @@
 
 // ONLY BEFORE XXXL
 @mixin vh-before-xxxl {
-  @media (max-height: #{$screen-3xl}) {
+  @media (max-height: #{$screen-4xl}) {
     @content;
   }
 }

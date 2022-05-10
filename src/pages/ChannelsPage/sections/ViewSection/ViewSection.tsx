@@ -5,7 +5,6 @@
 import React from 'react';
 import s from './ViewSection.module.scss';
 import cn from 'classnames';
-import GridSection from '../../../../layouts/DefaultLayout/components/GridSection';
 import { IChannel } from '../../../../interfaces';
 import Channel from 'components/Channel';
 // import isEmptyArray from '../../../../utils/isEmptyArray';
@@ -13,11 +12,11 @@ import Channel from 'components/Channel';
 export default function ViewSection({ className, channels }: IViewSectionProps) {
   // if (isEmptyArray(channels)) return null;
   return (
-    <GridSection className={cn(s.ViewSection, className)} dense>
+    <section className={cn(s.ViewSection, className)}>
       {channels.map((c: IChannel) => (
         <Channel key={`channel-${c.id}`} channel={c} />
       ))}
-    </GridSection>
+    </section>
   );
 }
 

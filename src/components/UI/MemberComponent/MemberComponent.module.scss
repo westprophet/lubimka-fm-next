@@ -12,7 +12,7 @@
   @include for-xl{
     width: $width-xl;
   }
-  @include for-xxxl{
+  @include for-qxl{
     width: $width-xxxl;
   }
   .cover {
@@ -34,7 +34,7 @@
     @include for-xl{
       height: $width-xl;
     }
-    @include for-xxxl{
+    @include for-qxl{
       height: $width-xxxl;
     }
   }

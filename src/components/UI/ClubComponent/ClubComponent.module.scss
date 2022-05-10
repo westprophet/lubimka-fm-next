@@ -10,10 +10,13 @@
   overflow: hidden;
   cursor: pointer;
   @include size();
+  &.notResizable{
+    width: 100% !important;
+  }
   *{
     letter-spacing: 0.02em!important;
   }
-  @include for-xxl{
+  @include for-fxl{
     padding: $padding-xxl;
   }
 
@@ -51,7 +54,7 @@
         height: $avatar-size-lg;
 
       }
-      @include for-xxl{
+      @include for-fxl{
         width: $avatar-size-xxl;
         height: $avatar-size-xxl;
       }
@@ -67,7 +70,7 @@
       @include for-lg{
           @include f7();
       }
-      @include for-xxl{
+      @include for-fxl{
         @include f4(){
           line-height: 150%!important;
         }
@@ -89,6 +92,9 @@
         @include f5();
       }
       @include for-xxl{
+        @include f4();
+      }
+      @include for-fxl{
         @include f3();
       }
     }
@@ -107,6 +113,9 @@
           @include f7();
         }
         @include for-xxl{
+          @include f5();
+        }
+        @include for-fxl{
           @include f4();
         }
       }
