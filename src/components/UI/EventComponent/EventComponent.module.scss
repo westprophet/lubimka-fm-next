@@ -1,0 +1,36 @@
+@import 'data';
+@import 'mixins';
+
+.EventComponent {
+  @include size();
+  display: flex;
+  gap: $gap-xs;
+  position: relative;
+
+  &.resizable {
+    width: 100% !important;
+  }
+
+  @include for-xl {
+    gap: $gap-xl;
+  }
+
+  .cover {
+    @include size-cover();
+    border-radius: 5px;
+    height: 100%;
+    overflow: hidden;
+    position: relative;
+  }
+
+  .desc {
+    .title {
+    }
+
+    .date {
+    }
+
+    .address {
+    }
+  }
+}

@@ -10,6 +10,7 @@ import { IEvent } from '../../../../interfaces';
 import { SectionWrapper as Section } from '../../../../layouts/DefaultLayout/components';
 import isEmptyArray from '../../../../utils/isEmptyArray';
 import DefaultLayout from '../../../../layouts/DefaultLayout';
+import Event from 'components/Event';
 
 export default function ViewSection({ className, events }: IViewSectionProps) {
   const isEmpty = isEmptyArray(events);
@@ -23,8 +24,7 @@ export default function ViewSection({ className, events }: IViewSectionProps) {
     return (
       <Section.Wrapper className={cn(s.ViewSection, className)}>
         {events.map((e: IEvent, i: number) => (
-          <div key={`event-${e.id}-${i}`}>{e.attributes.title}</div>
-          // <Club  club={c} resizable />
+          <Event event={e} key={`event-${e.id}-${i}`} resizable />
         ))}
       </Section.Wrapper>
     );

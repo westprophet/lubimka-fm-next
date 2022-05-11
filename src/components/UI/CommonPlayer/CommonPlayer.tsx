@@ -28,7 +28,7 @@ export default function CommonPlayer({
   title,
 }: ICommonPlayerProps) {
   return (
-    <div
+    <aside
       className={cn(
         s.CommonPlayer,
         'with-screen-padding',
@@ -45,7 +45,10 @@ export default function CommonPlayer({
         status={control.status}
         onClick={control.onClick}
       />
-      <CommonPlayerTitle className={cn(s.title)} ft={title} />
+      <CommonPlayerTitle
+        className={cn(s.title)}
+        ft={control.status === 'paused' || control.status === 'error' ? null : title}
+      />
       <CommonPlayerAction
         channel={channels.current}
         className={cn(s.actions)}
@@ -60,7 +63,7 @@ export default function CommonPlayer({
         isOpen={channels.isOpenChannelMenu}
         className={cn(s.channelMenuSelector)}
       />
-    </div>
+    </aside>
   );
 }
 

@@ -1,3 +1,6 @@
 .ViewSection {
+  display: grid;
+  @include for-sm{
 
+  }
 }

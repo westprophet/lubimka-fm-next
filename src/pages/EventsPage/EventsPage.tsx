@@ -23,7 +23,7 @@ export default function EventsPage({ events }: IEventsPageProps) {
 
   const [inTransition, startTransition] = useTransition();
 
-  const __events = useGetEvents(from, to);
+  // const __events = useGetEvents(from, to);
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     startTransition(() => {

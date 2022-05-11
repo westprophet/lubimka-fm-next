@@ -10,10 +10,10 @@ import TAudioTitle from '../../../../../types/TAudioTitle';
 import Marquee from 'react-double-marquee';
 
 export default function CommonPlayerTitle({ className, ft }: ICommonPlayerTitleProps) {
-  const played = !!ft;
+  const isPlayed = !!ft;
   const title = 'Нажмите play для начала воспроизведения';
 
-  const inner = !played ? (
+  const inner = !isPlayed ? (
     <div className={cn(s.oneLine)}>
       <Marquee childMargin={20}>{title}</Marquee>
     </div>

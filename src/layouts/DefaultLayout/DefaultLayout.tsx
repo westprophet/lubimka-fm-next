@@ -46,16 +46,16 @@ function DefaultLayout({
         />
         {children}
         <DefaultLeftSide arrow={leftSideSetting?.arrow} />
-        {!player.state?.isDisable && (
-          <BottomPlayer
-            show={player.state?.isShow}
-            transparent={player.state?.isTransparent}
-            pinned={player.state?.isPinned}
-            setPinned={player.pin}
-            isOpenChannelMenu={player.state?.isOpenChannelMenu}
-            setIsOpenChannelMenu={player.openChannelMenu}
-          />
-        )}
+        {/*{!player.state?.isDisable && (*/}
+        {/*  <BottomPlayer*/}
+        {/*    show={player.state?.isShow}*/}
+        {/*    transparent={player.state?.isTransparent}*/}
+        {/*    pinned={player.state?.isPinned}*/}
+        {/*    setPinned={player.pin}*/}
+        {/*    isOpenChannelMenu={player.state?.isOpenChannelMenu}*/}
+        {/*    setIsOpenChannelMenu={player.openChannelMenu}*/}
+        {/*  />*/}
+        {/*)}*/}
         <DefaultRightSide showPlayer={right.state?.isShowPlayer || player.state?.isDisable} />
         <DefaultFooter />
         <PostFooter />

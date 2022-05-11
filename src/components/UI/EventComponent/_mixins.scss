@@ -1,0 +1,27 @@
+@import "data";
+@mixin size(){
+  height: $height-xs;
+  max-width: $width-xs;
+  width: 100%;
+  @include for-xl{
+    height: $height-xs;
+    width: $width-xs;
+  }
+  @include for-qxl{
+    height: $height-qxl;
+    width: $width-qxl;
+  }
+}
+
+@mixin size-cover(){
+  height: $height-xs;
+  width: $height-xs;
+  @include for-xl{
+    height: $height-xl;
+    width: $height-xl;
+  }
+  @include for-qxl{
+    height: $height-qxl;
+    width: $height-qxl;
+  }
+}
