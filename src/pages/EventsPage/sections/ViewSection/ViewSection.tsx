@@ -22,10 +22,12 @@ export default function ViewSection({ className, events }: IViewSectionProps) {
     );
   else
     return (
-      <Section.Wrapper className={cn(s.ViewSection, className)}>
-        {events.map((e: IEvent, i: number) => (
-          <Event event={e} key={`event-${e.id}-${i}`} resizable />
-        ))}
+      <Section.Wrapper>
+        <Section.Inner className={cn(s.ViewSection, className)} disableHorizontalPadding>
+          {events.map((e: IEvent, i: number) => (
+            <Event event={e} key={`event-${e.id}-${i}`} resizable />
+          ))}
+        </Section.Inner>
       </Section.Wrapper>
     );
 }

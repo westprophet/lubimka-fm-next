@@ -24,14 +24,22 @@ const theme = createTheme({
         root: {
           background: '#2B2C32',
           color: '#99D3FB',
+          '& .MuiInputAdornment-root': {
+            '& .MuiButtonBase-root': {
+              color: '#99D3FB',
+            },
+          },
           '&:hover': {
             '& .MuiOutlinedInput-notchedOutline': {
               borderColor: '#99D3FB',
             },
           },
         },
+        // inputAdornedEnd: {
+        //   color: 'currentcolor',
+        // },
         adornedEnd: {
-          color: 'currentColor',
+          color: 'currentcolor',
         },
         adornedStart: {
           color: '#99D3FB',
@@ -55,11 +63,23 @@ const theme = createTheme({
     MuiInputAdornment: {
       styleOverrides: {
         root: {
-          color: 'currentColor',
+          color: 'currentcolor',
         },
       },
     },
 
+    MuiButton: {
+      styleOverrides: {
+        outlined: {
+          background: '#2B2C32',
+          color: '#99D3FB',
+          borderColor: 'transparent',
+          '&:hover': {
+            borderColor: '#99D3FB',
+          },
+        },
+      },
+    },
     MuiInputLabel: {
       styleOverrides: {
         root: {
@@ -74,10 +94,13 @@ const theme = createTheme({
         root: {
           '&.Mui-disabled': {
             backgroundColor: '#2B2C32',
-            color: 'white!important',
           },
         },
+        loadingIndicator: {
+          color: '#99D3FB',
+        },
       },
+      variant: {},
       defaultProps: {
         variant: 'text',
       },

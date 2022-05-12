@@ -12,6 +12,12 @@ declare module '@mui/material/styles' {
   }
 }
 
+// declare module '@mui/material/Button' {
+//   interface ButtonPropsVariantOverrides {
+//     dashed: true;
+//   }
+// }
+
 declare module '*.svg' {
   const content: StaticImageData;
 

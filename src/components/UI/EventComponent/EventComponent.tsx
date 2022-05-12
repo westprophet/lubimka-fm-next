@@ -8,6 +8,12 @@ import cn from 'classnames';
 import Image from 'next/image';
 import DATA_FOR_BLUR from '../../../constants/DATA_FOR_BLUR';
 import NoImage from 'components/UI/NoImage';
+import TextPlaceholder from 'components/UI/TextPlaceholder';
+import FmdGoodIcon from '@mui/icons-material/FmdGood';
+import AccessTimeIcon from '@mui/icons-material/AccessTime';
+
+// @ts-ignore
+import Marquee from 'react-double-marquee';
 
 export default function EventComponent({
   address,
@@ -33,9 +39,27 @@ export default function EventComponent({
         <NoImage className={cn(s.cover)} />
       )}
       <div className={cn(s.desc)}>
-        <div className={cn(s.title)}>{title}</div>
-        <div className={cn(s.date)}>{date}</div>
-        <div className={cn(s.address)}>{address}</div>
+        <TextPlaceholder className={cn(s.title)} placeholder="Подробнее">
+          {title}
+        </TextPlaceholder>
+
+        <div className={cn(s.date)}>
+          <AccessTimeIcon />
+          <span>
+            <Marquee speed={0.02} direction="left" scrollWhen={'overflow'} delay={3000}>
+              {date}
+            </Marquee>
+          </span>
+        </div>
+
+        <div className={cn(s.address)}>
+          <FmdGoodIcon />
+          <span>
+            <Marquee speed={0.02} direction="right" scrollWhen={'overflow'} delay={3000}>
+              {address}
+            </Marquee>
+          </span>
+        </div>
       </div>
     </div>
   );

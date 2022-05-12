@@ -2,29 +2,81 @@
 @import 'mixins';
 
 .EventComponent {
-  @include size();
   display: flex;
+  //grid-auto-flow: column;
   gap: $gap-xs;
   position: relative;
+  height: $height-xs;
+  //max-width: $width-xs;
+  width: 100%;
+
+  @include for-lg {
+    height: $height-lg;
+    width: $width-lg;
+  }
+
+  @include for-xl {
+    //gap: $gap-xl;
+  }
+  @include for-qxl {
+    height: $height-qxl;
+    width: $width-qxl;
+  }
 
   &.resizable {
     width: 100% !important;
   }
 
-  @include for-xl {
-    gap: $gap-xl;
-  }
-
   .cover {
-    @include size-cover();
     border-radius: 5px;
-    height: 100%;
     overflow: hidden;
     position: relative;
+    width: $height-xs;
+    flex-shrink: 0;
+    @include for-lg {
+      min-width: $height-lg;
+    }
+    @include for-qxl {
+      min-width: $height-qxl;
+      border-radius: 15px;
+    }
   }
 
   .desc {
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+
     .title {
+      margin-bottom: 10px;
+      @include f7();
+      @include for-lg {
+        @include f4();
+        margin-bottom: 20px;
+      }
+    }
+
+    :local(.address),
+    :local(.date) {
+      display: flex;
+      gap: 5px;
+      align-items: center;
+      @include f8();
+      @include for-lg {
+        @include f7();
+      }
+
+      svg {
+        font-size: 1rem;
+        @include for-lg {
+          font-size: 1.5rem;
+        }
+      }
+
+      & > span {
+        white-space: nowrap;
+      }
     }
 
     .date {
