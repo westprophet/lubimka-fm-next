@@ -3,15 +3,13 @@ import { IAuthor } from '../../../../../interfaces';
 import IStrapiReturn from '../../../types/IStrapiReturn';
 import isValidGetAuthorsResponse from './validators/isValidGetAuthorResponse';
 import { TGetAuthorsResponse } from './types/IGetAuthorsResponse';
+import getParamsObject from './utils/getParamsObject';
+import { IGetAuthorsRequestParams } from './types/IGetAuthorsRequestParams';
 
-export default async function getAuthors(): Promise<IGetAuthorsReturn> {
+export default async function getAuthors(p: IGetAuthorsRequestParams): Promise<IGetAuthorsReturn> {
   try {
     const { data }: { data: TGetAuthorsResponse } = await StrapiAxios.get('/authors', {
-      params: {
-        'populate[Socials][populate][icon][populate]': '*',
-        'populate[albums]': '*',
-        'populate[avatar]': '*',
-      },
+      params: getParamsObject(p),
     });
     if (isValidGetAuthorsResponse(data)) {
       return {

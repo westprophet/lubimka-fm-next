@@ -1,0 +1,13 @@
+.ViewSection {
+  display: grid;
+  gap: 30px;
+  @include for-sm{
+    grid-template-columns: repeat(2, 1fr);
+  }
+  @include for-md{
+    grid-template-columns: repeat(3, 1fr);
+  }
+  @include for-xl{
+    grid-template-columns: repeat(3, 1fr);
+  }
+}

@@ -50,6 +50,7 @@ export default function EventsPage({ events }: IEventsPageProps) {
   const handleChangeSearch = (e: React.ChangeEvent<HTMLInputElement>) => {
     setSearch(e.target.value);
   };
+
   const handleChangeRange = (e: React.ChangeEvent<HTMLInputElement>) => {
     // @ts-ignore
     setRange(e.target.value);

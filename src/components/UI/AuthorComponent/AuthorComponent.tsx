@@ -8,30 +8,19 @@ import cn from 'classnames';
 import Image from 'next/image';
 import NoImage from 'components/UI/NoImage';
 import PlayButton from 'components/UI/buttons/PlayButton';
-import { IAuthor } from 'src/interfaces';
 // @ts-ignore
 import Marquee from 'react-double-marquee';
-import tools from '../../../tools';
 import DATA_FOR_BLUR from '../../../constants/DATA_FOR_BLUR';
 
 // import NoCover from 'assets/no-photo-heath.svg';
 
-export default function AuthorComponent({ className, author, sm, md, lg }: IAuthorComponentProps) {
-  const cover = author.attributes.avatar; // получаем данные о картинке
-  let url: string | null = tools.IWrappedStrapiImage.getImageUrl(cover); //Получаем картинку
-  if (!url) url = '/public/logo.svg'; //ставим заглушку если нет картинки
+export default function AuthorComponent({ className, name, cover, resizable }: IAuthorComponent) {
   return (
-    <div
-      className={cn(s.AuthorComponent, className, {
-        sm: sm,
-        md: md,
-        lg: lg,
-      })}
-    >
+    <div className={cn(s.AuthorComponent, { [s.resizable]: resizable }, className)}>
       <div className={cn(s.inner)}>
         {cover ? (
           <Image
-            src={url}
+            src={cover}
             className={cn(s.cover, 'zoom-effect')}
             layout="fill"
             objectFit="cover"
@@ -47,7 +36,7 @@ export default function AuthorComponent({ className, author, sm, md, lg }: IAuth
       </div>
       <h3>
         <Marquee speed={0.02} direction="left">
-          {author.attributes.name}
+          {name}
         </Marquee>
       </h3>
     </div>
@@ -56,16 +45,14 @@ export default function AuthorComponent({ className, author, sm, md, lg }: IAuth
 
 AuthorComponent.defaultProps = {
   className: '',
-  xs: true,
-  sm: true,
-  md: true,
-  lg: true,
 };
 
-interface IAuthorComponentProps {
+export interface IAuthorComponentProps {
+  resizable?: boolean;
+}
+
+interface IAuthorComponent extends IAuthorComponentProps {
   className?: string;
-  author: IAuthor;
-  sm?: boolean;
-  md?: boolean;
-  lg?: boolean;
+  name: string;
+  cover: string | null;
 }
