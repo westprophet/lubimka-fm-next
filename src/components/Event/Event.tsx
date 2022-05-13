@@ -19,11 +19,11 @@ export default function Event(p: IEventProps) {
 
   let date = start.format('DD MMMM HH:mm');
 
-  console.log(p.event.attributes.startDate, p.event.attributes.endDate);
   const isTwoDate = p.event.attributes.startDate && p.event.attributes.endDate; // Это диапазон
+  const isNotBroke = start.isBefore(end);
   const isNowDay = start.isSame(moment(), 'day');
 
-  if (isTwoDate) {
+  if (isTwoDate && isNotBroke) {
     const isOneDay = start.isSame(end, 'day'); //В один и тот же день
     if (isOneDay) {
       if (isNowDay) date = `${start.format('Cегодня в HH:mm')} - ${end.format('HH:mm')}`;

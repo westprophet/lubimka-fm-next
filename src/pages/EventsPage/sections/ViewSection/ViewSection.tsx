@@ -7,6 +7,7 @@ import s from './ViewSection.module.scss';
 import cn from 'classnames';
 import { IEvent } from '../../../../interfaces';
 // import Club from 'components/Club';
+
 import { SectionWrapper as Section } from '../../../../layouts/DefaultLayout/components';
 import isEmptyArray from '../../../../utils/isEmptyArray';
 import DefaultLayout from '../../../../layouts/DefaultLayout';

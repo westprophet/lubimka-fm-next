@@ -7,17 +7,19 @@ import { IGetEventsRequestParams } from '../types/IGetEventsRequestParams';
 export default function getParamsObject(p: IGetEventsRequestParams | undefined) {
   const obj: any = {
     sort: p?.sort ?? ['title:asc'],
+    filters: {
+      $and: [],
+    },
     populate: {
       preview: {
         fields: ['url'],
       },
     },
   };
-
-  if (p?.fromDate) obj.filters['$gte'] = p?.fromDate;
-  if (p?.toDate) obj.filters['$lte'] = p?.toDate;
-
-  if (p?.pagination) obj.pagination = p.pagination;
+  if (p?.search) obj.filters['$and'].push({ title: { $containsi: p.search } });
+  if (p?.fromDate) obj.filters['$and'].push({ startDate: { $gte: p.fromDate } });
+  if (p?.toDate) obj.filters['$and'].push({ startDate: { $lte: p.toDate } });
+  if (p?.pagination) obj.filters.pagination = p.pagination;
 
   return obj;
 }
