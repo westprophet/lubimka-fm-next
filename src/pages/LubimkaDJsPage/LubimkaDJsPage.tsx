@@ -13,6 +13,7 @@ import api from '../../api';
 
 import { useQueryClient } from 'react-query';
 import { IGetAuthorsReturn } from '../../api/strapi/routes/authors/getAuthors/getAuthors';
+import ViewSection from './sections/ViewSection';
 
 export default function LubimkaDJsPage({ className, authors }: ILubimkaDJsPageProps) {
   const [search, setSearch] = useState<string>('');
@@ -57,6 +58,7 @@ export default function LubimkaDJsPage({ className, authors }: ILubimkaDJsPagePr
             </div>
           </DefaultLayout.Section.Inner>
         </DefaultLayout.Section.Wrapper>
+        <ViewSection authors={_authors} />
       </DefaultLayout.PageWrapper>
     </DefaultLayout.Layout>
   );

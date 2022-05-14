@@ -6,7 +6,7 @@ import { IGetAuthorsRequestParams } from '../types/IGetAuthorsRequestParams';
  */
 export default function getParamsObject(p: IGetAuthorsRequestParams | undefined) {
   const obj: any = {
-    sort: p?.sort ?? ['title:asc'],
+    sort: p?.sort ?? ['name:asc'],
     filters: {
       $and: [],
     },
@@ -21,12 +21,12 @@ export default function getParamsObject(p: IGetAuthorsRequestParams | undefined)
           },
         },
       },
-      albums: {
-        fields: ['url'],
-      },
+      // albums: {
+      //   fields: ['url'],
+      // },
     },
   };
-  if (p?.search) obj.filters['$and'].push({ title: { $containsi: p.search } });
+  if (p?.search) obj.filters['$and'].push({ name: { $containsi: p.search } });
   if (p?.pagination) obj.filters.pagination = p.pagination;
 
   return obj;
