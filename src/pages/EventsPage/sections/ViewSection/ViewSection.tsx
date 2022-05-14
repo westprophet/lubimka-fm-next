@@ -14,7 +14,7 @@ import DefaultLayout from '../../../../layouts/DefaultLayout';
 import Event from 'components/Event';
 
 export default function ViewSection({ className, events }: IViewSectionProps) {
-  const isEmpty = isEmptyArray(events);
+  const isEmpty = isEmptyArray(events) || !events;
   if (isEmpty)
     return (
       <DefaultLayout.Section.Inner>
@@ -39,5 +39,5 @@ ViewSection.defaultProps = {
 
 interface IViewSectionProps {
   className?: string;
-  events: IEvent[];
+  events: IEvent[] | null | undefined;
 }

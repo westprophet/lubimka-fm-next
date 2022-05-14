@@ -13,7 +13,7 @@ import DefaultLayout from '../../../../layouts/DefaultLayout';
 import Author from 'components/Author';
 
 export default function ViewSection({ className, authors }: IViewSectionProps) {
-  const isEmpty = isEmptyArray(authors);
+  const isEmpty = isEmptyArray(authors) || !authors;
   if (isEmpty)
     return (
       <DefaultLayout.Section.Inner>
@@ -38,5 +38,5 @@ ViewSection.defaultProps = {
 
 interface IViewSectionProps {
   className?: string;
-  authors: IAuthor[];
+  authors: IAuthor[] | null | undefined;
 }

@@ -1,0 +1,34 @@
+.FilterSection {
+  display: grid;
+  gap: 30px;
+
+  .searchContainer {
+    display: flex;
+    gap: 30px;
+
+    .searchInput {
+    }
+  }
+
+  .filterPanel {
+    display: flex;
+    width: 100%;
+    justify-content: space-between;
+    flex-wrap: wrap;
+
+    .date {
+      display: flex;
+      gap: 30px;
+      width: 100%;
+      justify-content: right;
+      flex-wrap: wrap;
+
+      .selector {
+        min-width: max-content;
+        align-self: start;
+        margin: auto auto auto 0;
+      }
+    }
+
+  }
+}

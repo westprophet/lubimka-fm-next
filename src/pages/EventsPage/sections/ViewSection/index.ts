@@ -1,3 +1,4 @@
 import ViewSection from './ViewSection';
+import React from 'react';
 
-export default ViewSection;
+export default React.memo(ViewSection);

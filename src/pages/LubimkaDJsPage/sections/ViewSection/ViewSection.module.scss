@@ -1,13 +1,33 @@
 .ViewSection {
   display: grid;
-  gap: 30px;
-  @include for-sm{
+  gap: 50px 30px;
+  @include for-xxs{
     grid-template-columns: repeat(2, 1fr);
   }
+  @include for-xs{
+    grid-template-columns: repeat(2, 1fr);
+  }
+  @include for-sm{
+    grid-template-columns: repeat(3, 1fr);
+  }
   @include for-md{
+    grid-template-columns: repeat(2, 1fr);
+  }
+  @include for-lg{
     grid-template-columns: repeat(3, 1fr);
   }
   @include for-xl{
-    grid-template-columns: repeat(3, 1fr);
+    grid-template-columns: repeat(4, 1fr);
+  }
+  @include for-fxl{
+    grid-template-columns: repeat(5, 1fr);
+  }
+  @include for-qxl{
+    grid-template-columns: repeat(6, 1fr);
+    gap: 4vh 30px;
+  }
+  @include for-uxl{
+    grid-template-columns: repeat(7, 1fr);
+
   }
 }

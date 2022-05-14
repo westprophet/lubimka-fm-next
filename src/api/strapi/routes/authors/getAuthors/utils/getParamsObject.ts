@@ -27,7 +27,7 @@ export default function getParamsObject(p: IGetAuthorsRequestParams | undefined)
     },
   };
   if (p?.search) obj.filters['$and'].push({ name: { $containsi: p.search } });
-  if (p?.pagination) obj.filters.pagination = p.pagination;
+  if (p?.pagination) obj.pagination = p.pagination;
 
   return obj;
 }

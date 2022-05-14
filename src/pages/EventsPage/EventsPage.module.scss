@@ -2,59 +2,6 @@
 
 //@import "components/UI/ClubComponent/mixins";
 .EventsPage {
-  .searchSection {
-    display: grid;
-    gap: 30px;
 
-    .searchContainer {
-      display: flex;
-      gap: 30px;
-      .searchInput {
-      }
-    }
 
-    .filterPanel {
-      display: flex;
-      width: 100%;
-      justify-content: space-between;
-      flex-wrap: wrap;
-      .date {
-        display: flex;
-        gap: 30px;
-        width: 100%;
-        justify-content: right;
-        flex-wrap: wrap;
-        .selector{
-          min-width: max-content;
-          align-self: start;
-          margin: auto auto auto 0;
-        }
-      }
-
-    }
-  }
-
-  .ViewSection {
-    display: grid;
-    gap: 20px;
-    @include for-xs {
-      grid-template-columns: 1fr 1fr;
-    }
-    @include for-sm {
-      grid-template-columns: 1fr 1fr;
-    }
-    @include for-md {
-      grid-template-columns: repeat(3, 1fr);
-    }
-    @include for-lg {
-      grid-template-columns: repeat(3, 1fr);
-    }
-    @include for-xl {
-      grid-template-columns: repeat(4, 1fr);
-      gap: 30px;
-    }
-    @include for-uxl {
-      grid-template-columns: repeat(5, 1fr);
-    }
-  }
 }

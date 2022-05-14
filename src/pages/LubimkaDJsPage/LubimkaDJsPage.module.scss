@@ -1,3 +1,13 @@
 .LubimkaDJsPage {
+  .searchSection {
+    display: grid;
+    gap: 30px;
 
+    .searchContainer {
+      display: flex;
+      gap: 30px;
+      .searchInput {
+      }
+    }
+  }
 }

@@ -2,14 +2,28 @@
  * Created by westp on 10.05.2022
  */
 
-import React from 'react';
+import React, { useRef } from 'react';
 import s from './SearchInput.module.scss';
 import cn from 'classnames';
 import { InputAdornment, TextField } from '@mui/material';
 import SearchIcon from '@mui/icons-material/Search';
+import SEARCH_INPUT_DELAY from '../../constants/SEARCH_INPUT_DELAY';
+
+interface ISearchInputProps {
+  className?: string;
+  onChange(e: React.ChangeEvent<HTMLInputElement>): any;
+  // searchValue: string | undefined;
+}
 
 //Компонент строки поиска, передается стейт. Используется на нескольких страницах
-export default function SearchInput({ className, onChange, searchValue }: ISearchInputProps) {
+export default function SearchInput({ className, onChange }: ISearchInputProps) {
+  const t = useRef<any>();
+  const handlerOnChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    clearTimeout(t.current);
+    t.current = setTimeout(() => {
+      onChange(e);
+    }, SEARCH_INPUT_DELAY);
+  };
   return (
     <TextField
       placeholder="Поиск"
@@ -21,8 +35,8 @@ export default function SearchInput({ className, onChange, searchValue }: ISearc
         ),
       }}
       fullWidth
-      value={searchValue}
-      onChange={onChange}
+      // value={searchValue}
+      onChange={handlerOnChange}
       className={cn(s.SearchInput, className)}
     />
   );
@@ -31,9 +45,3 @@ export default function SearchInput({ className, onChange, searchValue }: ISearc
 SearchInput.defaultProps = {
   className: '',
 };
-
-interface ISearchInputProps {
-  className?: string;
-  onChange(e: React.ChangeEvent<HTMLInputElement>): any;
-  searchValue: string | undefined;
-}
