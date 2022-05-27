@@ -13,8 +13,8 @@ const MENU_ITEMS: IHeaderMenuItem[] = [
   },
   {
     title: "Lubimka Dj's",
-    link: 'Lubimka-djs',
-    key: 'Lubimka-djs',
+    link: 'lubimka-djs',
+    key: 'lubimka-djs',
   },
   {
     title: 'Новости',

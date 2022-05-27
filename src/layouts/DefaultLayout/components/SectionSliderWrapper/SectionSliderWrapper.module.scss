@@ -4,9 +4,22 @@
 .SectionSliderWrapper {
   width: 100%;
   position: relative;
-  .title {
-    @include inner-section-padding(true, true, false, true);
+  .head{
+    @include for-sm{
+      display: flex;
+      justify-content: space-between;
+    }
+    .title {
+      @include inner-section-padding(true, true, false, true);
+    }
+    .additional{
+      margin-bottom: 4vh!important;
+      @include for-sm{
+        @include inner-section-padding(true, false, false, false);
+      }
+    }
   }
+
 
   .arrow {
     position: absolute;

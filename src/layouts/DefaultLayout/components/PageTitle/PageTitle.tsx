@@ -32,9 +32,9 @@ export default function PageTitle({
 
   if (!placeholder)
     return (
-      <div className={cn(s.PageTitle, className)}>
+      <div className={cn(s.PageTitle, className)} onClick={onClickHandler}>
         <ArrowButton side="left" size="small" />
-        <h1>{children}</h1>
+        <h2>{children}</h2>
       </div>
     );
   else {
@@ -45,7 +45,7 @@ export default function PageTitle({
         side="left"
         onClick={onClickHandler}
       >
-        <h1>{children}</h1>
+        <h2>{children}</h2>
       </TextPlaceholder>
     );
   }
@@ -60,6 +60,6 @@ interface IPageTitleProps {
   className?: string;
   children: any;
   onClick?(): any;
-  placeholder?: string;
+  placeholder?: string | false;
   url?: string;
 }

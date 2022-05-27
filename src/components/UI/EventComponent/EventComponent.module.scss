@@ -3,20 +3,16 @@
 
 .EventComponent {
   display: flex;
-  //grid-auto-flow: column;
   gap: $gap-xs;
   position: relative;
   height: $height-xs;
-  //max-width: $width-xs;
-  width: 100%;
-
   @include for-lg {
     height: $height-lg;
     width: $width-lg;
   }
 
   @include for-xl {
-    //gap: $gap-xl;
+    gap: $gap-xl;
   }
   @include for-qxl {
     height: $height-qxl;
@@ -77,12 +73,6 @@
       & > span {
         white-space: nowrap;
       }
-    }
-
-    .date {
-    }
-
-    .address {
     }
   }
 }

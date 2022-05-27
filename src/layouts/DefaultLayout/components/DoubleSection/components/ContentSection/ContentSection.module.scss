@@ -1,14 +1,11 @@
 @import "../../../../scss/mixins";
 
 .ContentSectionContainer {
-  max-height: 100vh;
   z-index: 1;
   @include layout-padding();
   overflow: hidden;
-  //&.resizable {
-  //  max-height: none;
-  //}
   @include for-lg {
+    height: 100vh;
     background: rgba(255, 255, 255, 0.3);
     box-shadow: inset 0 2px 4px rgba(255, 255, 255, 0.25), inset 0px 0px 60px rgba(255, 255, 255, 0.25);
     backdrop-filter: blur(60px);
@@ -19,6 +16,10 @@
   .ContentSection {
     max-height: inherit;
     overflow: auto;
+    @include for-lg{
+      height: inherit;
+      z-index: 2;
+    }
     @include layout-padding(true, false, false, false);
     &::-webkit-scrollbar {
       display: none;

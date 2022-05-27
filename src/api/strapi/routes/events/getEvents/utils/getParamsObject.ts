@@ -17,6 +17,7 @@ export default function getParamsObject(p: IGetEventsRequestParams | undefined) 
     },
   };
   if (p?.search) obj.filters['$and'].push({ title: { $containsi: p.search } });
+  if (p?.byClub) obj.filters['$and'].push({ club: { id: { $eq: p.byClub } } });
   if (p?.fromDate) obj.filters['$and'].push({ startDate: { $gte: p.fromDate } });
   if (p?.toDate) obj.filters['$and'].push({ startDate: { $lte: p.toDate } });
   if (p?.pagination) obj.pagination = p.pagination;

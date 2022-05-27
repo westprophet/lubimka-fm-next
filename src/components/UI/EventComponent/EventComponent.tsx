@@ -14,13 +14,17 @@ import AccessTimeIcon from '@mui/icons-material/AccessTime';
 
 // @ts-ignore
 import Marquee from 'react-double-marquee';
+import Link from 'next/link';
+import IconString from 'components/UI/others/IconString';
 
+//Визуальный UI компонент который отображает сущность "Мероприятие" в чистом виде
 export default function EventComponent({
   address,
   date,
   className,
   cover,
   title,
+  link,
   resizable,
 }: IEventComponent) {
   return (
@@ -39,27 +43,24 @@ export default function EventComponent({
         <NoImage className={cn(s.cover)} />
       )}
       <div className={cn(s.desc)}>
-        <TextPlaceholder className={cn(s.title)} placeholder="Подробнее">
-          {title}
-        </TextPlaceholder>
+        <Link href={link}>
+          <a>
+            <TextPlaceholder className={cn(s.title)} placeholder="Подробнее">
+              {title}
+            </TextPlaceholder>
+          </a>
+        </Link>
 
-        <div className={cn(s.date)}>
-          <AccessTimeIcon />
-          <span>
-            <Marquee speed={0.02} direction="left" scrollWhen={'overflow'} delay={3000}>
-              {date}
-            </Marquee>
-          </span>
-        </div>
-
-        <div className={cn(s.address)}>
-          <FmdGoodIcon />
-          <span>
-            <Marquee speed={0.02} direction="right" scrollWhen={'overflow'} delay={3000}>
-              {address}
-            </Marquee>
-          </span>
-        </div>
+        <IconString icon={<AccessTimeIcon />}>{date}</IconString>
+        <IconString icon={<FmdGoodIcon />}>{address}</IconString>
+        {/*<div className={cn(s.address)}>*/}
+        {/*  <FmdGoodIcon />*/}
+        {/*  <span>*/}
+        {/*    <Marquee speed={0.02} direction="right" scrollWhen={'overflow'} delay={3000}>*/}
+        {/*      {address}*/}
+        {/*    </Marquee>*/}
+        {/*  </span>*/}
+        {/*</div>*/}
       </div>
     </div>
   );
@@ -79,5 +80,6 @@ interface IEventComponent extends IEventComponentProps {
   cover?: string | null;
   title: string;
   date: string;
+  link: string;
   address: string;
 }

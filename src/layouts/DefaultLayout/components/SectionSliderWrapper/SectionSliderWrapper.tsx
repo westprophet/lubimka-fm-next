@@ -7,6 +7,8 @@ import s from './SectionSliderWrapper.module.scss';
 import cn from 'classnames';
 import SectionWrapper from '../SectionWrapper';
 import Slider, { withSliderWrapperManager } from '../../../../components/SliderWrapper';
+import { motion } from 'framer-motion';
+import Link from 'next/link';
 
 const variants = {
   visible: {
@@ -21,6 +23,10 @@ const variants = {
     opacity: 0,
     y: '-30%',
   },
+  hiddenTop: {
+    opacity: 0,
+    y: '30%',
+  },
 };
 
 //Обертка для секции со слайдером
@@ -30,6 +36,7 @@ function SectionSliderWrapper({
   children,
   link,
   placeholder,
+  detail,
 }: ISectionSliderWrapperProps) {
   if (!children) {
     console.warn('SectionSliderWrapper: slide none', title);
@@ -54,6 +61,22 @@ function SectionSliderWrapper({
             {title}
           </SectionWrapper.MTitle>
         )}
+        {detail && (
+          <motion.div
+            variants={variants}
+            initial="hiddenTop"
+            whileInView="visible"
+            viewport={{
+              amount: 0.6,
+              once: true,
+            }}
+            className={cn(s.additional)}
+          >
+            <Link href={detail.link}>
+              <a>{detail.title}</a>
+            </Link>
+          </motion.div>
+        )}
       </div>
       <SectionWrapper.Inner className={cn(s.inner)}>
         <Slider.SideBar className={cn(s.arrow, s.leftArrow)} side="left" />
@@ -77,5 +100,9 @@ interface ISectionSliderWrapperProps {
   children?: any;
   link?: string;
   placeholder?: string;
+  detail: {
+    title: string;
+    link: string;
+  };
 }
 export default withSliderWrapperManager(SectionSliderWrapper);

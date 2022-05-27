@@ -8,14 +8,11 @@ import cn from 'classnames';
 import EventComponent, { IEventComponentProps } from 'components/UI/EventComponent';
 import { IEvent } from '../../interfaces';
 import { getImageUrl } from '../../tools/IWrappedStrapiImage';
-import moment from 'moment';
-import useGetDate from 'components/Event/hooks/useGetDate';
-
-// import useCompareDate from '../../hooks/useCompareDate';
+import useGetEventDate from 'src/hooks/others/useGetEventDate';
 
 export default function Event(p: IEventProps) {
   const cover = getImageUrl(p.event.attributes.preview);
-  const date = useGetDate(p.event.attributes.startDate, p.event.attributes.endDate);
+  const date = useGetEventDate(p.event.attributes.startDate, p.event.attributes.endDate);
 
   return (
     <EventComponent
@@ -24,6 +21,7 @@ export default function Event(p: IEventProps) {
       address={p.event.attributes.address}
       date={date}
       title={p.event.attributes.title}
+      link={`/club-life/events/${p.event.id}/`}
       resizable={p.resizable}
     />
   );

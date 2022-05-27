@@ -6,7 +6,7 @@ import { TGetAuthorsResponse } from './types/IGetAuthorsResponse';
 import getParamsObject from './utils/getParamsObject';
 import { IGetAuthorsRequestParams } from './types/IGetAuthorsRequestParams';
 
-export default async function getAuthors(p: IGetAuthorsRequestParams): Promise<IGetAuthorsReturn> {
+export default async function getAuthors(p?: IGetAuthorsRequestParams): Promise<IGetAuthorsReturn> {
   try {
     const { data }: { data: TGetAuthorsResponse } = await StrapiAxios.get('/authors', {
       params: getParamsObject(p),

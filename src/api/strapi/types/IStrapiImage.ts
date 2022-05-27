@@ -1,5 +1,6 @@
 import TImageExtension from 'src/types/TImageExtension';
 import TStrapiResponseContainer from './TStrapiResponseContainer';
+import TWrappedData from '../../../types/TWrappedData';
 
 export default interface IStrapiImage {
   name?: string;
@@ -20,10 +21,6 @@ export default interface IStrapiImage {
   updatedAt?: string;
 }
 
-export type IWrappedStrapiImage = {
-  data: TStrapiResponseContainer<IStrapiImage>;
-};
+export type IWrappedStrapiImage = TWrappedData<TStrapiResponseContainer<IStrapiImage>>;
 
-export type IWrappedStrapiImages = {
-  data: TStrapiResponseContainer<IStrapiImage>[];
-};
+export type IWrappedStrapiImages = TWrappedData<TStrapiResponseContainer<IStrapiImage>[]>;

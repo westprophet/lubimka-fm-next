@@ -11,6 +11,7 @@ import Marquee from 'react-double-marquee';
 import DATA_FOR_BLUR from '../../../constants/DATA_FOR_BLUR';
 import NoImage from 'components/UI/NoImage';
 import PlaceIcon from '@mui/icons-material/Place';
+import Link from 'next/link';
 
 export default function ClubComponent({
   className,
@@ -18,6 +19,7 @@ export default function ClubComponent({
   cover,
   address,
   avatar,
+  link,
   resizable,
 }: IClubComponentProps) {
   return (
@@ -54,11 +56,13 @@ export default function ClubComponent({
         </div>
       </div>
       <div className={cn(s.body)}>
-        <h3>
-          <Marquee speed={0.02} direction="left" scrollWhen={'overflow'} delay={3000}>
-            {title}
-          </Marquee>
-        </h3>
+        <Link href={link}>
+          <h3>
+            <Marquee speed={0.02} direction="left" scrollWhen={'overflow'} delay={3000}>
+              {title}
+            </Marquee>
+          </h3>
+        </Link>
 
         <div className={cn(s.addressContainer)}>
           <PlaceIcon fontSize="large" />
@@ -85,6 +89,7 @@ export type TSizes = 'small' | 'middle' | 'large';
 interface IClubComponentProps {
   className?: string;
   title: string;
+  link: string;
   address: string;
   cover: string | null;
   avatar?: string | null;

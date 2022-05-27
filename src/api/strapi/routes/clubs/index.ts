@@ -1,2 +1,3 @@
 import getClubs from './getClubs';
-export { getClubs };
+import getClub from './getClub';
+export { getClubs, getClub };
