@@ -3,6 +3,24 @@
     "strict": false,
     "baseUrl": ".",
     "paths": {
+      "hooks/*": [
+        "src/hooks/*"
+      ],
+      "interfaces/*": [
+        "src/interfaces/*"
+      ],
+      "api/*": [
+        "src/api/*"
+      ],
+      "scss/*": [
+        "src/scss/*"
+      ],
+      "layouts/*": [
+        "src/layouts/*"
+      ],
+      "tools/*": [
+        "src/tools/*"
+      ],
       "components/*": [
         "src/components/*"
       ],

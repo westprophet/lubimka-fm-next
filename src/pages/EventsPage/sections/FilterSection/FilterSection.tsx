@@ -8,8 +8,8 @@ import s from './FilterSection.module.scss';
 import cn from 'classnames';
 import DefaultLayout from '../../../../layouts/DefaultLayout';
 import SearchInput from 'components/SearchInput';
-import LoadingButton from '@mui/lab/LoadingButton';
-import { FormControl, InputLabel, MenuItem, Select, TextField } from '@mui/material';
+
+import { FormControl, MenuItem, Select, TextField } from '@mui/material';
 import { DateTimePicker, LocalizationProvider } from '@mui/x-date-pickers';
 import { AdapterMoment } from '@mui/x-date-pickers/AdapterMoment';
 import moment from 'moment';
@@ -78,13 +78,6 @@ export default function FilterSection({
             // searchValue={search}
             className={cn(s.searchInput)}
           />
-          {/*<LoadingButton*/}
-          {/*  variant="outlined"*/}
-          {/*  onClick={() => onSearch(search, from, to)}*/}
-          {/*  loading={loader}*/}
-          {/*>*/}
-          {/*  Поиск*/}
-          {/*</LoadingButton>*/}
         </div>
         <div className={cn(s.filterPanel)}>
           <div className={cn(s.date)}>

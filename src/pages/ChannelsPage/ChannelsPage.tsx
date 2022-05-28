@@ -10,9 +10,9 @@ import DefaultLayout from '../../layouts/DefaultLayout';
 import CallbackSection from './sections/CallbackSection';
 import Channel from 'components/Channel';
 
-export default function ChannelsPage({ className, channels }: IChannelsPageProps) {
+export default function ChannelsPage({ channels }: IChannelsPageProps) {
   return (
-    <DefaultLayout.Layout className={cn(s.ChannelsPage, className)}>
+    <DefaultLayout.Layout className={cn(s.ChannelsPage)}>
       <DefaultLayout.PageWrapper>
         <DefaultLayout.PageTitle url="/">Каналы</DefaultLayout.PageTitle>
         <DefaultLayout.Section.Wrapper>
@@ -28,11 +28,6 @@ export default function ChannelsPage({ className, channels }: IChannelsPageProps
   );
 }
 
-ChannelsPage.defaultProps = {
-  className: '',
-};
-
 interface IChannelsPageProps {
-  className?: string;
   channels: IChannel[];
 }

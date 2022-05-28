@@ -24,8 +24,8 @@ export const getStaticProps: GetStaticProps = async ({
 }: GetStaticPropsContext<IChannelPageParams>) => {
   const id = params ? params['id'] : 0; //Получаем id
   let channel: IChannel | false = false;
-  if (id) channel = await api.strapi.channels.getChannel(id); //Запрашиваем данные о канале
 
+  if (id) channel = await api.strapi.channels.getChannel(id);
   if (!channel)
     return {
       redirect: {

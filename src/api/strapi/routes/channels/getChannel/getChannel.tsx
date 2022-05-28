@@ -6,12 +6,11 @@
  */
 
 import StrapiAxios from '../../../global';
-import IStrapiReturn from '../../../types/IStrapiReturn';
 import { IGetChannelResponse } from './types';
 import { IChannel } from '../../../../../interfaces';
 import getParamsObject from './utils/getParamsObject';
 
-export default async function getChannel(id: string | number): Promise<IChannel | false> {
+export default async function getChannel(id: string | number): Promise<IGetChannelReturn> {
   try {
     const { data }: { data: IGetChannelResponse } = await StrapiAxios.get(`/radio-shannels/${id}`, {
       params: getParamsObject(),
@@ -23,4 +22,4 @@ export default async function getChannel(id: string | number): Promise<IChannel 
   }
 }
 
-export type IGetChannelReturn = IStrapiReturn<IChannel>;
+export type IGetChannelReturn = IChannel | false;

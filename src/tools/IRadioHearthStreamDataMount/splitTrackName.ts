@@ -4,5 +4,6 @@ import getTAudioTitleByString from '../ITrack/getTAudioTitleByString';
 
 export default function splitTrackName(d?: IRadioHearthStreamDataMount | null): TAudioTitle | null {
   if (!d) return null;
+
   return getTAudioTitleByString(d.title);
 }

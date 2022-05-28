@@ -7,6 +7,9 @@
   grid-column-gap: 15px;
   grid-template-columns: min-content auto min-content;
   align-items: center;
+  &.isDontShowCover{
+    grid-template-columns: auto min-content;
+  }
   @include for-lg {
     height: $height-lg;
   }

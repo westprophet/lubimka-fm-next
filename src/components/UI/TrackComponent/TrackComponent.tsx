@@ -16,18 +16,27 @@ import { IconButton } from '@mui/material';
 // @ts-ignore
 import Marquee from 'react-double-marquee';
 
-export default function TrackComponent({ className, title, id }: ITrackComponentProps) {
-  const { image } = useImageState(title); // Запрашиваем картинку для трека
+export default function TrackComponent({
+  className,
+  title,
+  id,
+  isShowCover,
+  // style,
+  isCanFetchImage,
+}: ITrackComponentProps) {
+  const { image } = useImageState(title, isCanFetchImage && isShowCover); // Запрашиваем картинку для трека
   const isNoImg = typeof image !== 'string';
   return (
-    <div className={cn(s.TrackComponent, className)}>
-      <div className={cn(s.cover, { [s.noImageContainer]: isNoImg })}>
-        {!isNoImg ? (
-          <Image src={image} layout="fill" placeholder="blur" blurDataURL={DATA_FOR_BLUR} />
-        ) : (
-          <NoImage className={cn(s.noImg)} />
-        )}
-      </div>
+    <div className={cn(s.TrackComponent, { [s.isDontShowCover]: !isShowCover }, className)}>
+      {isShowCover && (
+        <div className={cn(s.cover, { [s.noImageContainer]: isNoImg })}>
+          {!isNoImg ? (
+            <Image src={image} layout="fill" placeholder="blur" blurDataURL={DATA_FOR_BLUR} />
+          ) : (
+            <NoImage className={cn(s.noImg)} />
+          )}
+        </div>
+      )}
       <div className={cn(s.title)}>
         <div className={cn(s.name)}>
           <Marquee scrollWhen="overflow" direction="left">
@@ -51,10 +60,15 @@ export default function TrackComponent({ className, title, id }: ITrackComponent
 
 TrackComponent.defaultProps = {
   className: '',
+  isCanFetchImage: true,
+  isShowCover: true,
 };
 
 interface ITrackComponentProps {
   className?: string;
   title: TAudioTitle | null;
+  isCanFetchImage?: boolean;
+  isShowCover?: boolean;
   id?: string | number;
+  // style?: CSSProperties | undefined;
 }

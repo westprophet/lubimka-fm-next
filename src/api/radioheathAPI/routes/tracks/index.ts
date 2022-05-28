@@ -1,2 +1,3 @@
 import getLastTracks from './getLastTracks';
-export { getLastTracks };
+import getAllTrack from './getAllTrack';
+export { getLastTracks, getAllTrack };
