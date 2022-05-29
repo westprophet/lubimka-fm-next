@@ -1,14 +1,20 @@
 .VirtualList {
-  min-height: 90vh;
+  min-height: 80vh;
+
   ::-webkit-scrollbar {
-    width: 5px;
+    width: 7px;
     background-color: transparent;
   }
 
   ::-webkit-scrollbar-thumb {
     background-color: var(--bg-panel-color);
-    border-radius: 10px;
-    //@media (pointer:coarse) {
-    //}
+    border-radius: 3px;
+
+    &:hover{
+      width: 10px;
+    }
   }
+}
+.Empty{
+  min-height: 30vh;
 }

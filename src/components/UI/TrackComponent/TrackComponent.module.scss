@@ -1,14 +1,26 @@
 @import "data";
 
-.TrackComponent {
+.T {
   width: 100%;
   height: $height-xs;
   display: grid;
   grid-column-gap: 15px;
   grid-template-columns: min-content auto min-content;
   align-items: center;
-  &.isDontShowCover{
+  background-color: transparent;
+  transition: background-color .3s;
+  padding-right: 10px;
+  padding-left: 10px;
+  &.dsc{
     grid-template-columns: auto min-content;
+  }
+  &.c{
+    cursor: pointer;
+    border-radius: 5px;
+    &:hover{
+      background-color: var(--bg-panel-color);
+      transition: background-color .3s;
+    }
   }
   @include for-lg {
     height: $height-lg;

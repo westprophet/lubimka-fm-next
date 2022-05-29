@@ -18,7 +18,13 @@
       "layouts/*": [
         "src/layouts/*"
       ],
-      "tools/*": [
+      "@pages/*": [
+        "src/pages/*"
+      ],
+      "utils/*": [
+        "src/utils/*"
+      ],
+      "@tools/*": [
         "src/tools/*"
       ],
       "components/*": [

@@ -9,14 +9,8 @@ import { InputAdornment, TextField } from '@mui/material';
 import SearchIcon from '@mui/icons-material/Search';
 import SEARCH_INPUT_DELAY from '../../constants/SEARCH_INPUT_DELAY';
 
-interface ISearchInputProps {
-  className?: string;
-  onChange(e: React.ChangeEvent<HTMLInputElement>): any;
-  // searchValue: string | undefined;
-}
-
 //Компонент строки поиска, передается стейт. Используется на нескольких страницах
-export default function SearchInput({ className, onChange }: ISearchInputProps) {
+export default function SearchInput({ className, onChange, placeholder }: ISearchInputProps) {
   const t = useRef<any>();
   const handlerOnChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     clearTimeout(t.current);
@@ -26,7 +20,7 @@ export default function SearchInput({ className, onChange }: ISearchInputProps) 
   };
   return (
     <TextField
-      placeholder="Поиск"
+      placeholder={placeholder}
       InputProps={{
         startAdornment: (
           <InputAdornment position="start">
@@ -44,4 +38,11 @@ export default function SearchInput({ className, onChange }: ISearchInputProps) 
 
 SearchInput.defaultProps = {
   className: '',
+  placeholder: 'Поиск',
 };
+
+interface ISearchInputProps {
+  className?: string;
+  onChange(e: React.ChangeEvent<HTMLInputElement>): any;
+  placeholder?: string;
+}

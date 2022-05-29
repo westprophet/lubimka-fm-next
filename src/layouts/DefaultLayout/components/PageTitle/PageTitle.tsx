@@ -8,6 +8,8 @@ import cn from 'classnames';
 import ArrowButton from 'components/UI/buttons/ArrowButton';
 import TextPlaceholder from 'components/UI/TextPlaceholder';
 import { useRouter } from 'next/router';
+import useBreakpoint from 'hooks/useBreakpoint';
+import useIsMobile from 'hooks/useIsMobile';
 
 //Выполняет функцию заголовка и текста по котором можно возвратится обратно нв предыдущую страницу
 //или на определенную страницу если нет истории
@@ -19,6 +21,7 @@ export default function PageTitle({
   url,
 }: IPageTitleProps) {
   const r = useRouter();
+  const isMobile = useIsMobile();
 
   useEffect(() => {
     if (url) r.prefetch(url);
@@ -30,9 +33,9 @@ export default function PageTitle({
     else r.back();
   };
 
-  if (!placeholder)
+  if (!placeholder || isMobile)
     return (
-      <div className={cn(s.PageTitle, className)} onClick={onClickHandler}>
+      <div className={cn(s.PageTitle, s.simple, className)} onClick={onClickHandler}>
         <ArrowButton side="left" size="small" />
         <h2>{children}</h2>
       </div>

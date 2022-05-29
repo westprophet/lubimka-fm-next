@@ -2,12 +2,11 @@ import type { NextPage } from 'next';
 import { GetStaticProps } from 'next';
 import { GetStaticPropsContext } from 'next/types';
 import api from '../../../../src/api';
-import { ITrackRadioheart } from '../../../../src/interfaces/ITrackRadioheart';
-import { IChannel } from '../../../../src/interfaces';
-import ListOrderPage from '../../../../src/pages/ListOrderPage';
+import { IChannel } from 'interfaces/IChannel';
+// import ListOrderPage from '../../../../src/pages/ListOrderPage';
 
-const Order: NextPage<IOrderProps> = ({ tracks }) => {
-  return <ListOrderPage tracks={tracks} />;
+const Order: NextPage = () => {
+  return null;
 };
 
 export const getStaticProps: GetStaticProps = async ({
@@ -22,10 +21,10 @@ export const getStaticProps: GetStaticProps = async ({
         permanent: false,
       },
     };
-  const tracks = await api.radio.tracks.getAllTrack({ c: channel ?? null });
   return {
-    props: {
-      tracks,
+    redirect: {
+      destination: `/broadcast/${channel?.id}/order/tracks/`,
+      permanent: false,
     },
   };
 };
@@ -43,9 +42,5 @@ export async function getStaticPaths() {
 type IIOrderPageParams = {
   channel: string;
 };
-
-interface IOrderProps {
-  tracks: ITrackRadioheart[];
-}
 
 export default Order;

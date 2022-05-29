@@ -18,9 +18,12 @@
   }
   @include layout-padding(true, true, true, true, margin);
 
-  @include before-sm {
-    margin-left: 2px;
+  &.simple {
+    @include before-sm {
+      margin-left: 2px;
+    }
   }
+
   @include for-sm {
     //padding-left: $gap-sm;
     height: $height-sm;
@@ -34,7 +37,7 @@
   }
 
   & > button {
-    @include for-sm {
+    @include for-md {
       display: none;
     }
   }

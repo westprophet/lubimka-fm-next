@@ -1,3 +1,4 @@
 import VirtualListTrackAlt from './VirtualListTrackAlt';
+import React from 'react';
 
-export default VirtualListTrackAlt;
+export default React.memo(VirtualListTrackAlt);

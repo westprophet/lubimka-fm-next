@@ -1,0 +1,11 @@
+.FormSection {
+  gap: 15px;
+  display: grid;
+  width: 100%;
+  max-width: 644px;
+  justify-items: center;
+  button{
+    max-width: 345px;
+    min-width: 200px;
+  }
+}

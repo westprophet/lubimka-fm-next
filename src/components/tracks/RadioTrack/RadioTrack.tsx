@@ -5,37 +5,28 @@
 import React from 'react';
 import s from './RadioTrack.module.scss';
 import cn from 'classnames';
-import TrackComponent from 'components/UI/TrackComponent/TrackComponent';
+import TrackComponent, { ITrackComponentProps } from 'components/UI/TrackComponent/TrackComponent';
 import { ITrackRadioheart } from 'interfaces/ITrackRadioheart';
 import useGetTAudioByString from 'hooks/others/useGetTAudioByString';
 
-export default function RadioTrack({
-  className,
-  track,
-  isCanFetchImage,
-  isShowCover,
-}: IRadioTrackProps) {
-  const title = useGetTAudioByString(track.name); //Получаем название трека и автора
-  if (!track) return null;
+export default function RadioTrack(p: IRadioTrackProps) {
+  const title = useGetTAudioByString(p.track.name); //Получаем название трека и автора
+  if (!p.track) return null;
   return (
     <TrackComponent
-      className={cn(s.RadioTrack, className)}
+      className={cn(s.RadioTrack, p.className)}
       title={title}
-      isCanFetchImage={isCanFetchImage}
-      isShowCover={isShowCover}
-    />
+      isCanFetchImage={p.isCanFetchImage}
+      isShowCover={p.isShowCover}
+      style={p.style}
+      onClick={p.onClick}
+      isClickable={p.isClickable}
+    >
+      {p.children}
+    </TrackComponent>
   );
 }
 
-RadioTrack.defaultProps = {
-  className: '',
-  isCanFetchImage: true,
-  isShowCover: true,
-};
-
-interface IRadioTrackProps {
-  className?: string;
+interface IRadioTrackProps extends ITrackComponentProps {
   track: ITrackRadioheart;
-  isCanFetchImage?: boolean;
-  isShowCover?: boolean;
 }

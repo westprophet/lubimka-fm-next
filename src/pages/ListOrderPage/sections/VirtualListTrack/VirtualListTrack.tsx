@@ -10,37 +10,40 @@ import { FixedSizeList as List } from 'react-window';
 import RadioTrack from 'components/tracks/RadioTrack';
 import { ITrackRadioheart } from 'interfaces/ITrackRadioheart';
 import useBreakpoint from 'hooks/useBreakpoint';
+import isEmptyArray from '../../../../utils/isEmptyArray';
+// import SearchInput from 'components/SearchInput';
 
+//Виртуальный список специально для отображения большого количества элементов
 export default function VirtualListTrack({ className, tracks }: IVirtualListProps) {
   const b = useBreakpoint();
-  console.log(b);
-  const renderRow = useCallback(
-    ({
-      key, // Unique key within array of rows
-      index, // Index of row within collection
-      isScrolling, // The List is currently being scrolled
-      isVisible, // This row is visible within the List (eg it is not an overscanned row)
-      style, // Style object to be applied to row (to position it)
-    }) => {
-      return (
-        <span style={style} key={key}>
-          <RadioTrack track={tracks[index]} />
-        </span>
-      );
-    },
-    [tracks]
-  );
+
+  //Формируем ключ
+  const itemKey = useCallback((index, data) => {
+    const item = data[index];
+    return item.id;
+  }, []);
+
+  //Формируем строку
+  const renderRow = useCallback(({ data, key, index, style }) => {
+    return <RadioTrack key={key} track={data[index]} style={style} isClickable />;
+  }, []);
+
+  if (isEmptyArray(tracks)) {
+    return <div className={cn(s.Empty)}>Ничего не найдено</div>;
+  }
   return (
     <div className={cn(s.VirtualList, className)}>
+      {/*<SearchInput onChange={() => {}} />*/}
       <AutoSizer>
         {({ height, width }) => (
           <List
-            // initialScrollOffset={100}
-            overscanCount={2}
             layout="vertical"
+            overscanCount={b.fxl ? 10 : 2}
+            itemData={tracks}
+            itemKey={itemKey}
             height={height}
             itemCount={tracks.length}
-            itemSize={b.qxl ? 90 : b.fxl ? 72 : 50}
+            itemSize={b.fxl ? 90 : b.lg ? 72 : 55}
             width={width}
           >
             {renderRow}

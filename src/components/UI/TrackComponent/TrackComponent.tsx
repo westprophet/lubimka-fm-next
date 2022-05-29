@@ -2,7 +2,7 @@
  * Created by westp on 02.05.2022
  */
 
-import React from 'react';
+import React, { CSSProperties } from 'react';
 import s from './TrackComponent.module.scss';
 import cn from 'classnames';
 import TAudioTitle from '../../../types/TAudioTitle';
@@ -20,14 +20,21 @@ export default function TrackComponent({
   className,
   title,
   id,
+  style,
   isShowCover,
-  // style,
+  onClick,
+  children,
+  isClickable,
   isCanFetchImage,
-}: ITrackComponentProps) {
+}: ITrackComponentDataProps) {
   const { image } = useImageState(title, isCanFetchImage && isShowCover); // Запрашиваем картинку для трека
   const isNoImg = typeof image !== 'string';
   return (
-    <div className={cn(s.TrackComponent, { [s.isDontShowCover]: !isShowCover }, className)}>
+    <div
+      className={cn(s.T, { [s.dsc]: !isShowCover }, { [s.c]: isClickable }, className)}
+      style={style}
+      onClick={isClickable ? onClick : () => {}}
+    >
       {isShowCover && (
         <div className={cn(s.cover, { [s.noImageContainer]: isNoImg })}>
           {!isNoImg ? (
@@ -50,6 +57,7 @@ export default function TrackComponent({
         </div>
       </div>
       <div className={cn(s.actionContainer)}>
+        {children}
         <IconButton>
           <MoreHorizIcon />
         </IconButton>
@@ -64,11 +72,18 @@ TrackComponent.defaultProps = {
   isShowCover: true,
 };
 
-interface ITrackComponentProps {
+export interface ITrackComponentProps {
   className?: string;
-  title: TAudioTitle | null;
   isCanFetchImage?: boolean;
   isShowCover?: boolean;
+  isClickable?: boolean;
+  onClick?(): any;
+  style?: CSSProperties;
+  children?: any;
+  // additionalButton?: any;
+}
+
+interface ITrackComponentDataProps extends ITrackComponentProps {
+  title: TAudioTitle | null;
   id?: string | number;
-  // style?: CSSProperties | undefined;
 }

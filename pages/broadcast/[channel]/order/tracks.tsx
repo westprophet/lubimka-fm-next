@@ -1,23 +1,18 @@
 import type { NextPage } from 'next';
 import { GetStaticProps } from 'next';
 import { GetStaticPropsContext } from 'next/types';
-import api from '../../../src/api';
+import api from 'api/index';
+import { ITrackRadioheart } from 'interfaces/ITrackRadioheart';
+import { IChannel } from 'interfaces/index';
+import ListOrderPage from '../../../../src/pages/ListOrderPage';
 
-import { IChannel } from 'src/interfaces';
-
-const Channel: NextPage<IChannelProps> = ({ channel }) => {
-  return (
-    <div>
-      <div>
-        <a href={`/broadcast/${channel.id}/order/`}>{channel.attributes.title}</a>
-      </div>
-    </div>
-  );
+const TrackList: NextPage<ITrackListProps> = ({ tracks, channel }) => {
+  return <ListOrderPage tracks={tracks} channel={channel} />;
 };
 
 export const getStaticProps: GetStaticProps = async ({
   params,
-}: GetStaticPropsContext<IChannelPageParams>) => {
+}: GetStaticPropsContext<ITrackListPageParams>) => {
   const id = params ? params['channel'] : 0; //Получаем id
   const channel = await api.strapi.channels.getChannel(id);
   if (!channel)
@@ -27,8 +22,10 @@ export const getStaticProps: GetStaticProps = async ({
         permanent: false,
       },
     };
+  const tracks = await api.radio.tracks.getAllTrack({ c: channel ?? null });
   return {
     props: {
+      tracks,
       channel,
     },
   };
@@ -44,12 +41,13 @@ export async function getStaticPaths() {
 }
 
 //Получаемые по ссылке параметры страницы
-type IChannelPageParams = {
+type ITrackListPageParams = {
   channel: string;
 };
 
-interface IChannelProps {
+interface ITrackListProps {
+  tracks: ITrackRadioheart[];
   channel: IChannel;
 }
 
-export default Channel;
+export default TrackList;

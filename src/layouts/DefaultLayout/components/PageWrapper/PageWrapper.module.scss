@@ -3,4 +3,5 @@
 
 .PageWrapper {
   @include layout-padding(true, false, true, false);
+  min-height: 70vh;
 }

@@ -1,10 +1,47 @@
 .ListOrderPage {
-  .title{
+  .title {
     margin-bottom: 0px;
   }
-  .searchContainer{
-    .searchInnerContainer{
-      padding-bottom: 0!important;
+
+  .viewSection {
+    @include before-fxl {
+      padding-top: 10px;
     }
   }
+
+  .searchInnerContainer {
+    padding-bottom: 0 !important;
+    position: sticky;
+    top: 100px;
+
+    .subaction {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-top: 20px;
+      margin-bottom: 10px;
+      @include for-xl {
+        margin-top: 40px;
+        margin-bottom: 30px;
+      }
+      & > p {
+        @include f7() {
+          font-weight: 500;
+        }
+        @include for-xl {
+          @include f5();
+        }
+      }
+      & > button{
+        max-height: 30px;
+      }
+    }
+
+    //.search{
+    //  position: sticky;
+    //  top: 20px;
+    //}
+  }
 }
+
+

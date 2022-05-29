@@ -1,23 +1,18 @@
 import type { NextPage } from 'next';
 import { GetStaticProps } from 'next';
 import { GetStaticPropsContext } from 'next/types';
-import api from '../../../src/api';
+import api from '../../../../src/api';
+import { IChannel } from 'interfaces/IChannel';
+import OrderTrackPage from '@pages/OrderTrackPage';
 
-import { IChannel } from 'src/interfaces';
-
-const Channel: NextPage<IChannelProps> = ({ channel }) => {
-  return (
-    <div>
-      <div>
-        <a href={`/broadcast/${channel.id}/order/`}>{channel.attributes.title}</a>
-      </div>
-    </div>
-  );
+//Заказ трека
+const Track: NextPage<ITrackProps> = ({ channel }) => {
+  return <OrderTrackPage channel={channel} />;
 };
 
 export const getStaticProps: GetStaticProps = async ({
   params,
-}: GetStaticPropsContext<IChannelPageParams>) => {
+}: GetStaticPropsContext<ITrackPageParams>) => {
   const id = params ? params['channel'] : 0; //Получаем id
   const channel = await api.strapi.channels.getChannel(id);
   if (!channel)
@@ -43,13 +38,13 @@ export async function getStaticPaths() {
   return { paths, fallback: false };
 }
 
-//Получаемые по ссылке параметры страницы
-type IChannelPageParams = {
-  channel: string;
-};
-
-interface IChannelProps {
+interface ITrackProps {
   channel: IChannel;
 }
 
-export default Channel;
+//Получаемые по ссылке параметры страницы
+type ITrackPageParams = {
+  channel: string;
+};
+
+export default Track;

@@ -1,7 +1,18 @@
-import { createTheme } from '@mui/material';
+import { createTheme, Theme } from '@mui/material';
 import type {} from '@mui/lab/themeAugmentation';
 
-const theme = createTheme({
+let theme: Theme = createTheme({
+  breakpoints: {
+    values: {
+      xs: 0,
+      sm: 600,
+      md: 900,
+      lg: 1200,
+      xl: 1536,
+    },
+  },
+});
+theme = createTheme(theme, {
   typography: {
     fontFamily: [
       'Montserrat',
@@ -16,6 +27,13 @@ const theme = createTheme({
     mode: 'dark',
     primary: {
       main: '#99D3FB',
+      light: '#99D3FB',
+      dark: '#99D3FB',
+    },
+    secondary: {
+      main: '#256BFE',
+      light: '#256BFE',
+      dark: '#256BFE',
     },
   },
   components: {
@@ -24,20 +42,20 @@ const theme = createTheme({
         root: {
           background: '#2B2C32',
           color: '#99D3FB',
+
           '& .MuiInputAdornment-root': {
             '& .MuiButtonBase-root': {
               color: '#99D3FB',
             },
           },
+
           '&:hover': {
             '& .MuiOutlinedInput-notchedOutline': {
               borderColor: '#99D3FB',
             },
           },
         },
-        // inputAdornedEnd: {
-        //   color: 'currentcolor',
-        // },
+
         adornedEnd: {
           color: 'currentcolor',
         },
@@ -46,9 +64,11 @@ const theme = createTheme({
         },
         input: {
           color: '#99D3FB',
+          // [theme.breakpoints.down('md')]: {
+          //   padding: '12.5px 14px',
+          // },
         },
         notchedOutline: {
-          // borderColor: '#4F4F4F',
           color: '#4F4F4F',
         },
       },
@@ -80,21 +100,6 @@ const theme = createTheme({
         },
       },
     },
-    // MuiInputLabel: {
-    //   styleOverrides: {
-    //     root: {
-    //       color: 'currentColor',
-    //     },
-    //   },
-    // },
-    // MuiPaginationItem: {
-    //   styleOverrides: {
-    //     root: {
-    //       color: 'currentcolor!important',
-    //     },
-    //   },
-    // },
-
     // @ts-ignore
     MuiLoadingButton: {
       styleOverrides: {

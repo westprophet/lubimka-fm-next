@@ -1,0 +1,79 @@
+.OrderTrackPage {
+  .inner {
+    display: grid;
+    gap: 25px;
+    align-items: center;
+    justify-items: center;
+    width: 100%;
+
+    & > p {
+      @include f7() {
+        font-weight: 400;
+      }
+      @include for-xxl {
+        @include f4();
+      }
+      b{
+        color: var(--primary-color);
+      }
+    }
+
+    @include for-xxl {
+      gap: 40px;
+    }
+
+    .cover {
+      position: relative;
+      width: 184px;
+      height: 184px;
+      overflow: hidden;
+      border-radius: 50%;
+      @include for-xxl {
+        width: 368px;
+        height: 368px;
+      }
+
+      .noImg {
+        padding-top: 25%;
+      }
+    }
+
+    .name {
+      display: grid;
+      justify-content: center;
+      text-align: center;
+      gap: 15px;
+      @include for-xxl {
+        gap: 30px;
+      }
+
+      .title {
+        @include f5() {
+          font-weight: 500;
+        }
+        @include for-xxl {
+          @include f3() {
+            font-weight: 700;
+          }
+        }
+      }
+
+      .author {
+        @include f7() {
+          font-weight: 400;
+        }
+        @include for-xxl {
+          @include f4() {
+            font-weight: 500;
+          }
+        }
+      }
+
+    }
+
+    .form {
+      width: 100%;
+      max-width: 644px;
+    }
+  }
+}

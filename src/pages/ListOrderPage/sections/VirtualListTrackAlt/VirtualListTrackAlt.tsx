@@ -6,27 +6,54 @@ import React, { useCallback } from 'react';
 import s from './VirtualListTrackAlt.module.scss';
 import cn from 'classnames';
 import AutoSizer from 'react-virtualized-auto-sizer';
-// import { FixedSizeList as List } from 'react-window';
 import RadioTrack from 'components/tracks/RadioTrack';
 import { ITrackRadioheart } from 'interfaces/ITrackRadioheart';
-import { WindowScroller, List } from 'react-virtualized';
+import List from 'react-virtualized/dist/commonjs/List';
+import WindowScroller from 'react-virtualized/dist/commonjs/WindowScroller';
 
-export default function VirtualListTrackAlt({ className, tracks }: IVirtualListProps) {
+import useBreakpoint from 'hooks/useBreakpoint';
+import SearchInput from 'components/SearchInput';
+import TOrderTrackViewMode from '../../types/TOrderTrackViewMode';
+import { useRouter } from 'next/router';
+import IChannel from 'interfaces/IChannel';
+
+export default function VirtualListTrackAlt({
+  className,
+  tracks,
+  viewMode,
+  channel,
+}: IVirtualListProps) {
+  const b = useBreakpoint();
+  const r = useRouter();
+  //Формируем ключ
+  // const itemKey = useCallback((index, data) => {
+  //   const item = data[index];
+  //   return item.id;
+  // }, []);
+
+  //Формируем строку
   const renderRow = useCallback(
-    ({
-      key, // Unique key within array of rows
-      index, // Index of row within collection
-      isScrolling, // The List is currently being scrolled
-      isVisible, // This row is visible within the List (eg it is not an overscanned row)
-      style, // Style object to be applied to row (to position it)
-    }) => {
-      return (
-        <div style={style} key={key}>
-          <RadioTrack track={tracks[index]} />
-        </div>
-      );
+    ({ key, index, style }) => {
+      // @ts-ignore
+      const url = `/broadcast/${channel.id}/order/track?id=${tracks[index].id}&name=${tracks[index].name}`;
+      if (viewMode === 'full')
+        return (
+          <RadioTrack
+            key={key}
+            track={tracks[index]}
+            style={style}
+            isClickable
+            onClick={() => r.push(url)}
+          />
+        );
+      else
+        return (
+          <div key={key} style={style}>
+            {tracks[index].name}
+          </div>
+        );
     },
-    [tracks]
+    [tracks, viewMode]
   );
 
   return (
@@ -40,10 +67,12 @@ export default function VirtualListTrackAlt({ className, tracks }: IVirtualListP
                 layout="vertical"
                 height={height}
                 width={width}
+                // itemData={tracks}
+                // itemKey={itemKey}
                 scrollTop={scrollTop}
-                overscanRowCount={5}
+                // overscanRowCount={10}
                 rowCount={tracks.length}
-                rowHeight={60}
+                rowHeight={b.fxl ? 90 : b.lg ? 72 : 55}
                 rowRenderer={renderRow}
               />
             )}
@@ -61,4 +90,6 @@ VirtualListTrackAlt.defaultProps = {
 interface IVirtualListProps {
   className?: string;
   tracks: ITrackRadioheart[];
+  channel: IChannel;
+  viewMode: TOrderTrackViewMode;
 }

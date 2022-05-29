@@ -6,4 +6,8 @@
   @include layout-padding(false, false, true, false);
   position: relative;
   max-width: $screen-uxl;
+
+  //& > section > *{
+  //  min-height: 70vh;
+  //}
 }

@@ -1,6 +1,6 @@
 const withPlugins = require('next-compose-plugins');
 const withOptimizedImages = require('next-optimized-images');
-const withImages = require('next-images');
+// const withImages = require('next-images');
 const path = require('path');
 
 const isProduction =
@@ -8,6 +8,7 @@ const isProduction =
 
 //Next Config
 const nextConfig = {
+  strictMode: true,
   future: {
     webpack5: true,
   },
