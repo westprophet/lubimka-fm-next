@@ -1,2 +1,3 @@
 import getAuthors from './getAuthors/getAuthors';
-export { getAuthors };
+import getAuthor from './getAuthor';
+export { getAuthors, getAuthor };

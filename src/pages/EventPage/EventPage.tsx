@@ -15,7 +15,7 @@ import useGetEventDate from '../../hooks/others/useGetEventDate';
 import IconString from 'components/UI/others/IconString';
 import AccessTimeIcon from '@mui/icons-material/AccessTime';
 import FmdGoodIcon from '@mui/icons-material/FmdGood';
-import { Map, GoogleApiWrapper } from 'google-maps-react';
+// import { Map, GoogleApiWrapper } from 'google-maps-react';
 import MiniMap from './sections/MiniMap';
 
 export default function EventPage({ event, club }: IEventPageProps) {
@@ -34,7 +34,7 @@ export default function EventPage({ event, club }: IEventPageProps) {
             <h1 className={cn(s.title)}>{event.attributes.title}</h1>
           </DSection.Preview.Inner>
         </DSection.Preview.Wrapper>
-        <DSection.Content.Wrapper className={cn(s.tabs)}>
+        <DSection.Content.Wrapper>
           {club && (
             <DSection.Content.Container colorType={1}>
               <SimpleClubComponent club={club} />

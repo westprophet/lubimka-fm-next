@@ -1,25 +1,24 @@
 @import './data';
 
 .AuthorComponent {
-  width: 100%;
   display: grid;
   grid-gap: 20px;
   color: var(--text-color);
-
-
+  width: min-content;
   .inner {
     position: relative;
     height: $size-img-xs;
     overflow: hidden;
     border-radius: 10px;
-    @include for-md{
+    @include for-md {
       height: $size-img-md;
       width: $size-img-md;
     }
-    @include for-xl{
+    @include for-xl {
       height: $size-img-xl;
       width: $size-img-xl;
     }
+
     .cover {
       position: absolute;
       width: 100%;
@@ -37,12 +36,14 @@
       @include for-lg {
         padding: 15px 20px;
       }
-      .button{
-        margin:  auto auto 0 0;
+
+      .button {
+        margin: auto auto 0 0;
       }
     }
   }
-  h3{
+
+  h3 {
     width: 100%;
     white-space: nowrap;
     @include f7() {
@@ -50,22 +51,18 @@
       line-height: 13px;
       font-weight: 400;
     }
-    @include for-md{
-        @include f4();
+    @include for-md {
+      @include f4();
     }
-    @include for-xl{
+    @include for-xl {
       @include f3();
     }
   }
-  &.resizable{
-    :local(.inner){
+
+  &.resizable {
+    width: max-content;
+    :local(.inner) {
       width: 100%;
-      //img{
-      //  width: 100% !important;
-      //  height: auto!important;
-      //}
-      //:local(.cover){
-      //}
     }
   }
 

@@ -13,6 +13,7 @@ export default function Author({ className, author, resizable }: IAuthorProps) {
   if (!url) url = '/public/logo.svg'; //ставим заглушку если нет картинки
   return (
     <AuthorComponent
+      link={`/lubimka-djs/${author.id}/`}
       cover={url}
       name={author.attributes.name}
       className={className}

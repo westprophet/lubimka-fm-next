@@ -1,19 +1,23 @@
-@import "../../../../../../scss/mixins";
+@import '../../../../../../scss/mixins';
+
 .SectionContainer {
   $slice: 18px;
+
   border-radius: 25px 25px 0 0;
   @include layout-padding(false, true, true, true);
-  padding-top: $slice - 3px;
+  padding-top: $slice -  3px;
   margin-top: -$slice;
-  .line{
+
+  .line {
     display: flex;
     width: 100%;
     justify-content: center;
     margin-bottom: 10px;
-    @include for-lg{
+    @include for-lg {
       display: none;
     }
-    span{
+
+    span {
       width: 10%;
       max-width: 60px;
       height: 2px;
@@ -21,35 +25,42 @@
     }
   }
 
-  //.title{
-  //  margin-bottom: 15px;
-  //  @include f7(){
-  //    font-weight: 700;
-  //  }
-  //}
+  .title {
+    margin-bottom: 15px;
+    @include f7() {
+      font-weight: 700;
+    }
+    @include for-lg {
+      @include f5();
+      margin-bottom: 30px;
+    }
+  }
 
-  @include for-sm{
+  @include for-sm {
     @include layout-padding-md(false, true, false, true);
   }
-  @include for-lg{
-    background: none;
-    border-radius: 0;
+  @include for-lg {
+    background: rgba(255, 255, 255, 0.3);
+    border-radius: 5px;
+    backdrop-filter: blur(60px);
     margin-top: 0;
-    padding-top: 0;
-    padding-right: 0;
-    padding-left: 0;
+    padding: 15px 15px;
+    min-height: 285px;
   }
-  &.colorType1{
-    @include before-lg{
+
+  &.colorType1 {
+    @include before-lg {
       @include lubimka-bg-gradient();
     }
   }
-  &.colorType2{
+
+  &.colorType2 {
     @include before-lg {
       background: var(--bg-deep-color);
     }
   }
-  &.colorType3{
+
+  &.colorType3 {
     @include before-lg {
       background: var(--bg-panel-color);
     }

@@ -1,5 +1,5 @@
 import StrapiAxios from '../../../global';
-import { IAuthor } from '../../../../../interfaces';
+import { IAuthor } from 'interfaces/IAuthor';
 import IStrapiReturn from '../../../types/IStrapiReturn';
 import isValidGetAuthorsResponse from './validators/isValidGetAuthorResponse';
 import { TGetAuthorsResponse } from './types/IGetAuthorsResponse';

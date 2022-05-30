@@ -10,12 +10,12 @@ import { MainSection } from './sections';
 import { ITeamMember } from '../../interfaces';
 import TeamSection from './sections/TeamSection';
 
-export default function AboutUsPage({ className, team }: IAboutUsPageProps) {
+export default function AboutUsPage({ team }: IAboutUsPageProps) {
   return (
     <DefaultLayout.Layout
-      className={cn(s.AboutUsPage, className)}
+      className={cn(s.AboutUsPage)}
       player={{
-        transparent: false,
+        isTransparent: false,
       }}
     >
       <DefaultLayout.PageWrapper>
@@ -27,11 +27,6 @@ export default function AboutUsPage({ className, team }: IAboutUsPageProps) {
   );
 }
 
-AboutUsPage.defaultProps = {
-  className: '',
-};
-
 interface IAboutUsPageProps extends IDefaultLayoutAttributes {
-  className?: string;
   team: ITeamMember[];
 }

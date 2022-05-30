@@ -5,12 +5,12 @@
 import React from 'react';
 import s from './LubimkaDjsSection.module.scss';
 import cn from 'classnames';
-import AuthorComponent from 'components/UI/AuthorComponent';
 
 import SectionSlider, {
   MSlideAnimationVariants,
 } from '../../../../layouts/DefaultLayout/components/SectionSliderWrapper';
-import { IAuthor } from '../../../../interfaces';
+import { IAuthor } from 'interfaces/IAuthor';
+import Author from 'components/Author';
 
 export default function LubimkaDjsSection({ authors }: ILubimkaDjsSectionProps) {
   return (
@@ -24,7 +24,7 @@ export default function LubimkaDjsSection({ authors }: ILubimkaDjsSectionProps) 
             initial="hidden"
             key={`author-${a.attributes.name}`}
           >
-            <AuthorComponent author={a} />
+            <Author author={a} />
           </SectionSlider.MSlide>
         );
       })}
@@ -38,7 +38,7 @@ export default function LubimkaDjsSection({ authors }: ILubimkaDjsSectionProps) 
             initial="hidden"
             key={`author-${a.attributes.name}`}
           >
-            <AuthorComponent author={a} />
+            <Author author={a} />
           </SectionSlider.MSlide>
         );
       })}
@@ -51,7 +51,7 @@ export default function LubimkaDjsSection({ authors }: ILubimkaDjsSectionProps) 
             initial="hidden"
             key={`author-${a.attributes.name}`}
           >
-            <AuthorComponent author={a} />
+            <Author author={a} />
           </SectionSlider.MSlide>
         );
       })}

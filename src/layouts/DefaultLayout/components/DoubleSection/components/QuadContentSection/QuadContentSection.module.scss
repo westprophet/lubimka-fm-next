@@ -1,0 +1,36 @@
+@import "../../../../scss/mixins";
+
+.QCC {
+  z-index: 1;
+  @include layout-padding();
+  overflow: hidden;
+  @include for-lg {
+    height: 100vh;
+  }
+  @include before-lg {
+    padding: 0;
+  }
+  .QC {
+    max-height: inherit;
+    overflow: auto;
+    @include for-lg{
+      height: inherit;
+      z-index: 2;
+    }
+    @include layout-padding(true, false, false, false);
+    &::-webkit-scrollbar {
+      display: none;
+    }
+    .inner {
+      gap: 30px;
+      @include layout-padding(false, false, true, false);
+      @include before-lg {
+        padding: 0;
+      }
+      @include for-lg{
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+      }
+    }
+  }
+}
