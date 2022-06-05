@@ -72,7 +72,7 @@ export default function VirtualListTrackAlt({
                 scrollTop={scrollTop}
                 // overscanRowCount={10}
                 rowCount={tracks.length}
-                rowHeight={b.fxl ? 90 : b.lg ? 72 : 55}
+                rowHeight={b.fxl ? 90 : b.lg ? 60 : 50}
                 rowRenderer={renderRow}
               />
             )}

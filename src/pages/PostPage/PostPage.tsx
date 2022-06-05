@@ -19,7 +19,9 @@ export default function PostPage({ children, title }: IPostPageProps) {
     >
       <DefaultLayout.PageWrapper>
         <DefaultLayout.PageTitle url="/">{title}</DefaultLayout.PageTitle>
-        <ReactMarkdown>{children}</ReactMarkdown>
+        <DefaultLayout.Section.Wrapper>
+          <ReactMarkdown>{children}</ReactMarkdown>
+        </DefaultLayout.Section.Wrapper>
       </DefaultLayout.PageWrapper>
     </DefaultLayout.Layout>
   );

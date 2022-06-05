@@ -5,4 +5,4 @@ import * as events from './events';
 import * as clubs from './clubs';
 import * as team from './team';
 
-export { companies, channels, authors, events, clubs };
+export { companies, channels, authors, events, clubs, team };

@@ -1,18 +1,19 @@
 import { createTheme, Theme } from '@mui/material';
 import type {} from '@mui/lab/themeAugmentation';
 
-let theme: Theme = createTheme({
-  breakpoints: {
-    values: {
-      xs: 0,
-      sm: 600,
-      md: 900,
-      lg: 1200,
-      xl: 1536,
-    },
-  },
-});
-theme = createTheme(theme, {
+// let theme: Theme = createTheme({
+//   breakpoints: {
+//     values: {
+//       xs: 0,
+//       sm: 600,
+//       md: 900,
+//       lg: 1200,
+//       xl: 1536,
+//     },
+//   },
+// });
+
+const theme = createTheme({
   typography: {
     fontFamily: [
       'Montserrat',

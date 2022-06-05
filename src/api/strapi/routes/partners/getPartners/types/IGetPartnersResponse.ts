@@ -1,4 +1,4 @@
-import IStrapiResponseTemplate from '../../../../types/IStrapiResponseTemplate';
-import { IPartner } from '../../../../../../interfaces';
+import IStrapiReturn from '../../../../types/IStrapiReturn';
+import { IPartner } from 'interfaces/IPartner';
 
-export type IGetPartnersResponse = IStrapiResponseTemplate<IPartner[]>;
+export type IGetPartnersResponse = IStrapiReturn<IPartner[]>;

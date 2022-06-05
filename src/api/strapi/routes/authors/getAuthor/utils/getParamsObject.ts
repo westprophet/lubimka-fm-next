@@ -17,6 +17,17 @@ export default function getParamsObject(p: IGetAuthorRequestParams | undefined) 
           },
         },
       },
+      albums: {
+        populate: {
+          cover: '*',
+          tracks: {
+            populate: {
+              cover: '*',
+              source: '*',
+            },
+          },
+        },
+      },
     },
   };
   return obj;

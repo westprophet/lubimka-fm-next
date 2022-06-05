@@ -1,4 +1,4 @@
-import IStrapiResponseTemplate from '../../../../types/IStrapiResponseTemplate';
+import IStrapiReturn from '../../../../types/IStrapiReturn';
 import { IClub } from '../../../../../../interfaces';
 
-export type IGetClubResponse = IStrapiResponseTemplate<IClub>;
+export type IGetClubResponse = IStrapiReturn<IClub>;

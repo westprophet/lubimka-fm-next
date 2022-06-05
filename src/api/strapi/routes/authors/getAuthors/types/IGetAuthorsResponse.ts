@@ -1,4 +1,4 @@
-import IStrapiResponseTemplate from '../../../../types/IStrapiResponseTemplate';
+import IStrapiReturn from '../../../../types/IStrapiReturn';
 import { IAuthor } from '../../../../../../interfaces';
 
-export type TGetAuthorsResponse = IStrapiResponseTemplate<IAuthor[]>;
+export type TGetAuthorsResponse = IStrapiReturn<IAuthor[]>;

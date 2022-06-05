@@ -1,4 +1,4 @@
-import IStrapiResponseTemplate from '../../../../types/IStrapiResponseTemplate';
+import IStrapiReturn from '../../../../types/IStrapiReturn';
 import { ITeamMember } from '../../../../../../interfaces';
 
-export type IGetTeamMembersResponse = IStrapiResponseTemplate<ITeamMember[]>;
+export type IGetTeamMembersResponse = IStrapiReturn<ITeamMember[]>;

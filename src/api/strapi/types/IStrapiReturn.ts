@@ -1,7 +1,8 @@
 import IStrapiMetaData from './IStrapiMetaData';
+import IStrapiError from './IStrapiError';
 
-//Этот тип мы возвращаем в программу
-export default interface IStrapiReturn<T> {
-  data: T | null;
-  meta?: IStrapiMetaData | null;
+export default interface IStrapiReturn<Type> {
+  data: Type;
+  meta?: IStrapiMetaData;
+  error?: IStrapiError;
 }

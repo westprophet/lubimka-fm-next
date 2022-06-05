@@ -9,11 +9,12 @@ const PrivacyPolicy: NextPage<IPrivacyPolicyProps> = ({ content, title }) => {
 };
 
 export const getStaticProps: GetStaticProps = async (context: GetStaticPropsContext) => {
-  const { data: team } = await api.strapi.team.getTeamMembers();
+  const content = await api.strapi.single.getPrivacyPolicy();
+  const title = 'Соглашение об использовании Cookies';
   return {
     props: {
-      // channels,
-      team,
+      title,
+      content,
     },
   };
 };

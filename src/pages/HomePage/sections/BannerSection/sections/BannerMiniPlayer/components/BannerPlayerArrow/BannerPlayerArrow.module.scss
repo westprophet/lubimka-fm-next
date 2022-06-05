@@ -1,9 +1,17 @@
+$translate: 200%;
+
 .BannerPlayerArrow {
-  opacity: 0.4;
+  $opacity: 0.4;
+  opacity:$opacity;
   display: none;
+
+
   @include for-md {
     display: block;
   }
+
+
+
   &.left{
     animation: show-right-arrow 1s;
   }
@@ -15,17 +23,18 @@
 @keyframes show-right-arrow {
   from {
     opacity: 0;
-    transform: translateX(+200%);
+    transform: translateX($translate);
   }
   to {
     transform: translateX(0);
     opacity: 0.4;
   }
 }
+
 @keyframes show-left-arrow {
   from {
     opacity: 0;
-    transform: translateX(-200%);
+    transform: translateX(-$translate);
   }
   to {
     transform: translateX(0);

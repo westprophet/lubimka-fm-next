@@ -1,4 +1,4 @@
-import IStrapiResponseTemplate from '../../../../types/IStrapiResponseTemplate';
+import IStrapiReturn from '../../../../types/IStrapiReturn';
 import { IChannel } from '../../../../../../interfaces';
 
-export type IGetChannelResponse = IStrapiResponseTemplate<IChannel>;
+export type IGetChannelResponse = IStrapiReturn<IChannel>;

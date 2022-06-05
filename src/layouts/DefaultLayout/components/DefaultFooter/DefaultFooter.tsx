@@ -9,6 +9,7 @@ import LogoComponent from '../LogoComponent';
 import GooglePlayButton from 'components/buttons/GooglePlayButton';
 import AppStoreButton from 'components/buttons/AppStoreButton';
 import SubscribeEmailInput from 'components/SubscribeEmailInput';
+import CustomLink from 'layouts/DefaultLayout/components/DefaultFooter/components/CustomLink';
 
 export default function DefaultFooter({ className }: IDefaultFooterProps) {
   return (
@@ -19,11 +20,13 @@ export default function DefaultFooter({ className }: IDefaultFooterProps) {
           <ul className={cn(s.column)}>
             <li>0 (00) 00 00 00 00</li>
             <li>Адрес, номер дома индекс, страна</li>
-            <li>info@lubimka.fm</li>
+            <li>
+              <a href="mailto:info@lubimka.fm">info@lubimka.fm</a>
+            </li>
           </ul>
           <ul className={cn(s.column)}>
-            <li>Соглашение об использовании Cookies</li>
-            <li>Политика конфиденциальности</li>
+            <CustomLink link="/privacy-policy">Соглашение об использовании Cookies</CustomLink>
+            <CustomLink link="/terms-and-conditions">Политика конфиденциальности</CustomLink>
             <li>Как нас слушать?</li>
             <li>Реклама</li>
           </ul>

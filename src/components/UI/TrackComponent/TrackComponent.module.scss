@@ -4,31 +4,28 @@
   width: 100%;
   height: $height-xs;
   display: grid;
-  grid-column-gap: 15px;
   grid-template-columns: min-content auto min-content;
   align-items: center;
   background-color: transparent;
   transition: background-color .3s;
-  padding-right: 10px;
-  padding-left: 10px;
-  &.dsc{
+  padding-right: 4px;
+  grid-column-gap: 5px;
+  padding-left: 2px;
+
+  &.dsc {
     grid-template-columns: auto min-content;
   }
-  &.c{
+
+  &.c {
     cursor: pointer;
     border-radius: 5px;
-    &:hover{
+
+    &:hover {
       background-color: var(--bg-panel-color);
       transition: background-color .3s;
     }
   }
-  @include for-lg {
-    height: $height-lg;
-  }
-  @include for-qxl {
-    height: $height-xxxl;
-    grid-column-gap: 20px;
-  }
+
 
   .cover {
     width: $height-xs;
@@ -36,18 +33,17 @@
     border-radius: 50%;
     overflow: hidden;
     position: relative;
-    @include for-lg {
+    @include for-xxl {
       width: $height-lg;
       height: $height-lg;
     }
-    @include for-qxl {
-      width: $height-xxxl;
-      height: $height-xxxl;
-    }
+    //@include for-qxl {
+    //  width: $height-xxxl;
+    //  height: $height-xxxl;
+    //}
 
     &.noImageContainer {
       border: 1px solid var(--border-color);
-
       .noImg {
         padding-top: 25%;
       }
@@ -60,18 +56,18 @@
     justify-self: left;
     height: 100%;
     letter-spacing: 0.08em;
-    @include for-lg{
+    @include for-xxl {
       padding: 5px 0;
     }
 
     .name {
       white-space: nowrap;
-      @include f5_16 {
+      @include f5 {
         font-weight: 500;
       }
-      @include for-lg {
-        @include f4;
-      }
+      //@include for-xxl {
+      //  @include f5_16;
+      //}
     }
 
     .artist {
@@ -79,11 +75,8 @@
       @include f7 {
         font-weight: 400;
       }
-      @include for-lg {
-        @include f5_16;
-      }
-      @include for-xl {
-        @include f5_16;
+      @include for-xxl {
+        @include f5;
       }
     }
   }
@@ -93,4 +86,38 @@
       color: var(--text-color);
     }
   }
+
+  //&:not(.small) {
+    @include for-xxl {
+      padding-right: 5px;
+      padding-left: 5px;
+      grid-column-gap: 10px;
+      height: $height-lg;
+    }
+    @include for-qxl {
+      //height: $height-xxxl;
+      grid-column-gap: 15px;
+    }
+  //}
+
+/*  &.small {
+    :local(.cover) {
+      width: $height-xs;
+      height: $height-xs;
+    }
+
+    :local(.title .artist) {
+      @include f7 {
+        font-weight: 400;
+      }
+    }
+
+    :local(.title .name) {
+      @include f7 {
+        font-weight: 400;
+      }
+    }
+  }*/
+
 }
+

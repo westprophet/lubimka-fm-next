@@ -25,18 +25,21 @@ export default function TrackComponent({
   onClick,
   children,
   isClickable,
+  small,
   isCanFetchImage,
 }: ITrackComponentDataProps) {
   const { image } = useImageState(title, isCanFetchImage && isShowCover); // Запрашиваем картинку для трека
   const isNoImg = typeof image !== 'string';
   return (
     <div
-      className={cn(s.T, { [s.dsc]: !isShowCover }, { [s.c]: isClickable }, className)}
+      className={cn(s.T, { [s.dsc]: !isShowCover }, { [s.c]: isClickable }, className, {
+        [s.small]: small,
+      })}
       style={style}
       onClick={isClickable ? onClick : () => {}}
     >
       {isShowCover && (
-        <div className={cn(s.cover, { [s.noImageContainer]: isNoImg })}>
+        <div className={cn(s.cover, 'cover', { [s.noImageContainer]: isNoImg })}>
           {!isNoImg ? (
             <Image src={image} layout="fill" placeholder="blur" blurDataURL={DATA_FOR_BLUR} />
           ) : (
@@ -44,19 +47,19 @@ export default function TrackComponent({
           )}
         </div>
       )}
-      <div className={cn(s.title)}>
+      <div className={cn(s.title, 'title')}>
         <div className={cn(s.name)}>
           <Marquee scrollWhen="overflow" direction="left">
             {title?.title}
           </Marquee>
         </div>
-        <div className={cn(s.artist)}>
+        <div className={cn(s.artist, 'artist')}>
           <Marquee scrollWhen="overflow" direction="left">
             {title?.artist}
           </Marquee>
         </div>
       </div>
-      <div className={cn(s.actionContainer)}>
+      <div className={cn(s.actionContainer, 'actions')}>
         {children}
         <IconButton>
           <MoreHorizIcon />
@@ -70,6 +73,7 @@ TrackComponent.defaultProps = {
   className: '',
   isCanFetchImage: true,
   isShowCover: true,
+  small: true,
 };
 
 export interface ITrackComponentProps {
@@ -80,6 +84,7 @@ export interface ITrackComponentProps {
   onClick?(): any;
   style?: CSSProperties;
   children?: any;
+  small?: boolean;
   // additionalButton?: any;
 }
 

@@ -1,0 +1,70 @@
+@import "./data";
+
+.AlbumComponent {
+  display: grid;
+  grid-template-columns: $height-1 auto;
+  grid-template-rows: 1fr 1fr;
+  gap: 10px;
+  cursor: pointer;
+  width: 100%;
+  height: $height-1;
+  @include for-xl {
+    grid-template-columns: $height-2 auto;
+    height: $height-2;
+  }
+
+  .cover {
+    position: relative;
+    overflow: hidden;
+    border-radius: 5px;
+    height: $height-1;
+    width: $height-1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    @include for-xl {
+      height: $height-2;
+      width: $height-2;
+    }
+
+    .play {
+      margin: auto;
+      position: absolute;
+      z-index: 2;
+      @include before-xl {
+        width: 20px;
+        height: 20px;
+        min-width: 20px;
+        svg {
+          width: 10px;
+          height: 10px;
+        }
+      }
+    }
+  }
+
+  .description {
+    display: grid;
+    align-items: center;
+
+    .title {
+      @include f7 {
+        font-weight: 500;
+        line-height: 140%;
+      }
+      @include for-xl {
+        @include f5_16;
+      }
+    }
+
+    .year {
+      @include f8 {
+        font-weight: 500;
+        line-height: 11px;
+      }
+      @include for-xl {
+        @include f7;
+      }
+    }
+  }
+}

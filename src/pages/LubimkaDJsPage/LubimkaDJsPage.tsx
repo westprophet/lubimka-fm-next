@@ -8,7 +8,7 @@ import cn from 'classnames';
 import DefaultLayout from '../../layouts/DefaultLayout';
 import SearchInput from 'components/SearchInput';
 
-import { IGetAuthorsReturn } from '../../api/strapi/routes/authors/getAuthors/getAuthors';
+import { IGetAuthorsReturn } from 'api/strapi/routes/authors/getAuthors/getAuthors';
 import ViewSection from './sections/ViewSection';
 import { TablePagination } from '@mui/material';
 import useGetAuthors from './hooks/useGetAuthors';
@@ -51,6 +51,7 @@ export default function LubimkaDJsPage({ authors }: ILubimkaDJsPageProps) {
           <TablePagination
             component="div"
             count={total}
+            // className={cn(s.pagination)}
             labelRowsPerPage="Показать"
             rowsPerPageOptions={[25, 50, 100]}
             page={page - 1}

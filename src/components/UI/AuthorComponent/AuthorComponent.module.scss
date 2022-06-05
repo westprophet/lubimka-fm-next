@@ -42,7 +42,6 @@
       }
     }
   }
-
   h3 {
     width: 100%;
     white-space: nowrap;
@@ -58,12 +57,11 @@
       @include f3();
     }
   }
-
   &.resizable {
-    width: max-content;
+    //width: max-content;
+    width:100%;
     :local(.inner) {
       width: 100%;
     }
   }
-
 }

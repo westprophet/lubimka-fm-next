@@ -1,4 +1,4 @@
-import IStrapiResponseTemplate from '../../../../types/IStrapiResponseTemplate';
+import IStrapiReturn from '../../../../types/IStrapiReturn';
 import { IEvent } from '../../../../../../interfaces';
 
-export type IGetEventResponse = IStrapiResponseTemplate<IEvent>;
+export type IGetEventResponse = IStrapiReturn<IEvent>;

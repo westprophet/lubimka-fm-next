@@ -10,6 +10,8 @@ import * as stream from './radioheathAPI/routes/stream';
 import * as image from './radioheathAPI/routes/image';
 import * as tracks from './radioheathAPI/routes/tracks';
 
+import * as single from './strapi/routes/single';
+
 const strapi = {
   channels,
   companies,
@@ -18,6 +20,7 @@ const strapi = {
   clubs,
   partners,
   team,
+  single,
 };
 
 const radio = {
