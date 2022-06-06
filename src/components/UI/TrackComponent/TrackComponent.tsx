@@ -8,7 +8,7 @@ import cn from 'classnames';
 import TAudioTitle from '../../../types/TAudioTitle';
 import useImageState from '../../../hooks/useImageState';
 import Image from 'next/image';
-import DATA_FOR_BLUR from '../../../constants/DATA_FOR_BLUR';
+import DATA_FOR_BLUR, { DATA_FOR_BLUR_ALT } from '../../../constants/DATA_FOR_BLUR';
 import NoImage from 'components/UI/NoImage';
 import MoreHorizIcon from '@mui/icons-material/MoreHoriz';
 import { IconButton } from '@mui/material';
@@ -16,32 +16,22 @@ import { IconButton } from '@mui/material';
 // @ts-ignore
 import Marquee from 'react-double-marquee';
 
-export default function TrackComponent({
-  className,
-  title,
-  id,
-  style,
-  isShowCover,
-  onClick,
-  children,
-  isClickable,
-  small,
-  isCanFetchImage,
-}: ITrackComponentDataProps) {
-  const { image } = useImageState(title, isCanFetchImage && isShowCover); // Запрашиваем картинку для трека
+export default function TrackComponent(p: ITrackComponentDataProps) {
+  // Запрашиваем картинку для трека
+  const { image } = useImageState(p.title, p.isCanFetchImage && p.isShowCover);
   const isNoImg = typeof image !== 'string';
   return (
     <div
-      className={cn(s.T, { [s.dsc]: !isShowCover }, { [s.c]: isClickable }, className, {
-        [s.small]: small,
+      className={cn(s.T, { [s.dsc]: !p.isShowCover }, { [s.c]: p.isClickable }, p.className, {
+        [s.small]: p.small,
       })}
-      style={style}
-      onClick={isClickable ? onClick : () => {}}
+      style={p.style}
+      onClick={p.isClickable ? p.onClick : () => {}}
     >
-      {isShowCover && (
+      {p.isShowCover && (
         <div className={cn(s.cover, 'cover', { [s.noImageContainer]: isNoImg })}>
           {!isNoImg ? (
-            <Image src={image} layout="fill" placeholder="blur" blurDataURL={DATA_FOR_BLUR} />
+            <Image src={image} layout="fill" placeholder="blur" blurDataURL={DATA_FOR_BLUR_ALT} />
           ) : (
             <NoImage className={cn(s.noImg)} />
           )}
@@ -50,17 +40,17 @@ export default function TrackComponent({
       <div className={cn(s.title, 'title')}>
         <div className={cn(s.name)}>
           <Marquee scrollWhen="overflow" direction="left">
-            {title?.title}
+            {p.title?.title}
           </Marquee>
         </div>
         <div className={cn(s.artist, 'artist')}>
           <Marquee scrollWhen="overflow" direction="left">
-            {title?.artist}
+            {p.title?.artist}
           </Marquee>
         </div>
       </div>
       <div className={cn(s.actionContainer, 'actions')}>
-        {children}
+        {p.children}
         <IconButton>
           <MoreHorizIcon />
         </IconButton>
@@ -90,5 +80,5 @@ export interface ITrackComponentProps {
 
 interface ITrackComponentDataProps extends ITrackComponentProps {
   title: TAudioTitle | null;
-  id?: string | number;
+  source?: string;
 }

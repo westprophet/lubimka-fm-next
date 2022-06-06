@@ -8,6 +8,7 @@ import TWrappedData from '../types/TWrappedData';
 export interface IAuthorInner {
   name: string;
   description: string;
+  recommendedTrack: TWrappedData<ITrack> | null;
   albums: TWrappedData<IAlbum[]>;
   createdAt: string;
   updatedAt: string;

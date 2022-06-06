@@ -9,20 +9,27 @@ import DefaultLayout from 'layouts/DefaultLayout';
 import { IAuthor } from 'interfaces/IAuthor';
 import DSection from 'layouts/DefaultLayout/components/DoubleSection';
 import { getImageUrl } from '@tools/IWrappedStrapiImage';
-import NewTrackSection from '@pages/AuthorPage/sections/NewTrackSection';
 import ReactMarkdown from 'react-markdown';
 import { ITrack } from 'interfaces/ITrack';
-import Track from 'components/Track';
+import Track from 'components/tracks/Track';
 import { IAlbum } from 'interfaces/IAlbum';
 import Album from 'components/Album';
+
+// import VerticalTrackComponent from 'components/UI/VerticalTrackComponent';
+
+import VerticalTrack from 'components/tracks/VerticalTrack';
+import useAlbumsTracks from '@pages/AuthorPage/hooks/useAlbumsTracks';
 
 export default function AuthorPage({ author }: IAuthorPageProps) {
   if (!author) return null;
   const cover = getImageUrl(author?.attributes.avatar);
   const albums = author.attributes.albums.data;
-
+  let recommendedTrack = author.attributes.recommendedTrack?.data;
   // eslint-disable-next-line react-hooks/rules-of-hooks
-  // const _tracks = useAlbumsTracks(author.attributes.albums.data);
+  const _trackList = useAlbumsTracks(albums, (t: ITrack, i: number, a: IAlbum) => {
+    if (i === 0 && !recommendedTrack) recommendedTrack = t;
+    return <Track album={a} author={author} key={`strapi-track-${t.id}`} track={t} />;
+  });
   return (
     <DefaultLayout.Layout
       className={cn(s.AuthorPage)}
@@ -31,54 +38,37 @@ export default function AuthorPage({ author }: IAuthorPageProps) {
     >
       <DSection.Wrapper>
         <DSection.Preview.Wrapper cover={cover} className={cn(s.previewContainer)}>
-          <DefaultLayout.PageTitle placeholder={'На страницу Lubimka DJs'}>
-            Назад
-          </DefaultLayout.PageTitle>
+          <DefaultLayout.PageTitle placeholder={'К Lubimka DJs'}>Назад</DefaultLayout.PageTitle>
           <DSection.Preview.Inner className={cn(s.previewInner)}>
             <h1 className={cn(s.title)}>{author.attributes.name}</h1>
           </DSection.Preview.Inner>
         </DSection.Preview.Wrapper>
         <DSection.QuadContent.Wrapper className={cn(s.content)}>
-          <NewTrackSection />
+          {recommendedTrack && (
+            <DSection.QuadContent.Container
+              title={recommendedTrack ? 'Рекомендуем' : 'Новый трек'}
+              colorType={1}
+              className={cn(s.trackContainer)}
+            >
+              <VerticalTrack track={recommendedTrack} className={cn(s.recommendedTrack)} />
+            </DSection.QuadContent.Container>
+          )}
           <DSection.QuadContent.Container
             title="Треки"
             colorType={3}
             className={cn(s.trackContainer)}
           >
             <div className={cn(s.trackInnerContainer)}>
-              <div className={cn(s.tracks)}>
-                {albums.map((a: IAlbum) => {
-                  return a.attributes.tracks.data.map((t: ITrack) => {
-                    return (
-                      <Track album={a} author={author} key={`strapi-track-${t.id}`} track={t} />
-                    );
-                  });
-                })}
-              </div>
+              <div className={cn(s.tracks)}>{_trackList}</div>
             </div>
           </DSection.QuadContent.Container>
           <DSection.QuadContent.Container
             title="Альбомы"
-            colorType={1}
+            colorType={2}
             className={cn(s.albumContainer)}
           >
             <div className={cn(s.albumInnerContainer)}>
               <div className={cn(s.album)}>
-                {albums.map((a: IAlbum) => {
-                  return <Album key={`album-${a.id}`} album={a} />;
-                })}
-                {albums.map((a: IAlbum) => {
-                  return <Album key={`album-${a.id}`} album={a} />;
-                })}
-                {albums.map((a: IAlbum) => {
-                  return <Album key={`album-${a.id}`} album={a} />;
-                })}
-                {albums.map((a: IAlbum) => {
-                  return <Album key={`album-${a.id}`} album={a} />;
-                })}
-                {albums.map((a: IAlbum) => {
-                  return <Album key={`album-${a.id}`} album={a} />;
-                })}{' '}
                 {albums.map((a: IAlbum) => {
                   return <Album key={`album-${a.id}`} album={a} />;
                 })}

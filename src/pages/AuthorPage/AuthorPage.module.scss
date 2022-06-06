@@ -30,7 +30,7 @@
   .content {
     .trackContainer {
       height: 100%;
-      position: relative;
+      //position: relative;
       display: flex;
       flex-direction: column;
       .trackInnerContainer {
@@ -48,7 +48,7 @@
     }
     .albumContainer{
       height: 100%;
-      position: relative;
+      //position: relative;
       display: flex;
       flex-direction: column;
       .albumInnerContainer{
@@ -65,8 +65,12 @@
       }
 
     }
+    .recommendedTrack{
+      margin: auto;
+    }
 
     .description {
+      z-index: 4;
       font-weight: 400;
       font-size: 12px;
       line-height: 140%;

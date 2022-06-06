@@ -7,7 +7,7 @@ import s from './Track.module.scss';
 import cn from 'classnames';
 import { ITrack } from 'interfaces/ITrack';
 import TrackComponent from 'components/UI/TrackComponent';
-import TAudioTitle from '../../types/TAudioTitle';
+import TAudioTitle from '../../../types/TAudioTitle';
 import { IAlbum } from 'interfaces/IAlbum';
 import { IAuthor } from 'interfaces/IAuthor';
 

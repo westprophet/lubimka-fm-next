@@ -1,0 +1,97 @@
+.VerticalTrack {
+  $height-1: 50px;
+  width: 100%;
+  display: grid;
+  grid-template-columns: $height-1 auto;
+  height: 50px;
+  gap: 10px;
+  align-items: center;
+  @include for-lg {
+    width: auto;
+    grid-template-columns: 1fr;
+    height: auto;
+    justify-items: center;
+    max-width: 180px;
+  }
+  @include for-fxl{
+    max-width: 280px;
+  }
+
+  .cover {
+    position: relative;
+    border-radius: 50%;
+    overflow: hidden;
+    width: $height-1;
+    height: $height-1;
+    display: flex;
+
+    :local(.playA){
+      width: 25px;
+      height: 25px;
+      min-width: 25px;
+      z-index: 1;
+      margin: auto;
+    }
+    @include for-lg {
+      width: 90px;
+      height: 90px;
+      margin-bottom: 30px;
+      :local(.playA){
+        display: none;
+      }
+    }
+    @include for-fxl{
+      width: 120px;
+      height: 120px;
+    }
+
+    &.noImageContainer {
+      border: 1px solid var(--border-color);
+      .noImg {
+        z-index: 0;
+        position: absolute;
+        left: 0;
+        top: 0;
+        padding-top: 25%;
+      }
+    }
+  }
+
+  .content {
+    @include for-lg {
+      display: flex;
+      gap: 10px;
+    }
+    .playD{
+      @include before-lg(){
+        display: none;
+      }
+    }
+
+    .title {
+      display: grid;
+      gap: 5px;
+      overflow: hidden;
+      .name {
+        white-space: nowrap;
+        @include f5() {
+          font-weight: 500;
+        }
+        @include for-fxl{
+          @include f4();
+        }
+      }
+
+
+      .artist {
+        white-space: nowrap;
+        @include f7() {
+          font-weight: 500;
+        }
+        @include for-fxl{
+          @include f5();
+        }
+      }
+    }
+  }
+}
