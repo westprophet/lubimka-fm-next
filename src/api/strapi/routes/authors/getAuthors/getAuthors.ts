@@ -25,4 +25,4 @@ export default async function getAuthors(p?: IGetAuthorsRequestParams): Promise<
     };
   }
 }
-export type IGetAuthorsReturn = IStrapiReturn<IAuthor[]>;
+export type IGetAuthorsReturn = IStrapiReturn<IAuthor[] | null>;

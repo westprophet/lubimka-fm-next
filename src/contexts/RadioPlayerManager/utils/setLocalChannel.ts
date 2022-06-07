@@ -1,5 +1,5 @@
 import IChannel from '../../../interfaces/IChannel';
-import { LOCAL_KEY, FIELD_KEY } from '../../ChannelManager/constants';
+import { FIELD_KEY, LOCAL_KEY } from '../constants';
 
 const setLocalChannel = (c: IChannel) => {
   if (typeof window === 'undefined') return null;

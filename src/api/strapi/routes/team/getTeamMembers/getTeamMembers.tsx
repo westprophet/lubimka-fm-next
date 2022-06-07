@@ -34,4 +34,4 @@ export default async function getTeamMembers(
   }
 }
 
-export type IGetTeamMembersReturn = IStrapiReturn<ITeamMember[]>;
+export type IGetTeamMembersReturn = IStrapiReturn<ITeamMember[] | null>;

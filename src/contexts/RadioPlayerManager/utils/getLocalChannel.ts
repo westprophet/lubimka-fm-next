@@ -1,7 +1,7 @@
 import IChannel from '../../../interfaces/IChannel';
-import { FIELD_KEY, LOCAL_KEY } from '../../ChannelManager/constants';
 // import ls from 'universal-localstorage';
 import isEmptyArray from '../../../utils/isEmptyArray';
+import { LOCAL_KEY, FIELD_KEY } from '../constants';
 
 const getLocalChannel = (channels: IChannel[]): IChannel | null => {
   if (typeof window === 'undefined') return null;

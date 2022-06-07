@@ -7,26 +7,23 @@ import ChannelComponent, { IChannelProps } from 'components/UI/ChannelComponent'
 import IChannel from '../../interfaces/IChannel';
 import { RadioPlayerContext } from '../../contexts/RadioPlayerManager';
 import { compareIChannels } from 'src/tools/IChannel';
+import IStrapiImage from '../../api/strapi/types/IStrapiImage';
+import { getImageUrl } from '@tools/IWrappedStrapiImage';
 
 //Компонент канала
-export default function Channel({
-  className,
-  channel,
-  isNew,
-  typeSize,
-  isError,
-  resizable,
-}: ISimpleChannelProps) {
+export default function Channel({ className, channel, typeSize, resizable }: ISimpleChannelProps) {
   const { status, set, channel: current }: any = useContext(RadioPlayerContext);
-  if (!current) return null;
   const isActive = compareIChannels(current, channel);
+  const title = channel.attributes.title;
+  const cover: IStrapiImage | string | null = getImageUrl(channel.attributes.cover);
+
   return (
     <ChannelComponent
+      id={channel.id}
       className={className}
-      channel={channel}
-      isNew={isNew}
-      isError={isError}
-      isCurrent={isActive}
+      title={title}
+      cover={cover}
+      isActive={isActive}
       onPlayClick={() => set(channel, true)}
       status={status}
       typeSize={typeSize}
@@ -35,18 +32,6 @@ export default function Channel({
   );
 }
 
-Channel.defaultProps = {
-  className: '',
-  type: 'adaptive',
-  isCurrent: false,
-  isNew: false,
-};
-
 interface ISimpleChannelProps extends IChannelProps {
-  className?: string;
   channel: IChannel;
-  isNew?: boolean;
-  isError?: boolean;
-  resizable: boolean;
-  typeSize?: 'small';
 }

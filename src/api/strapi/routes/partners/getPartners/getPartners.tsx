@@ -34,4 +34,4 @@ export default async function getPartners(
   }
 }
 
-export type IGetPartnersReturn = IStrapiReturn<IPartner[]>;
+export type IGetPartnersReturn = IStrapiReturn<IPartner[] | null>;

@@ -12,9 +12,9 @@ export default function useGetChannelStream(channel: IChannel): IUseGetChannelSt
   //Нужен отдельный поток
   const isNeedNewStream =
     !isCurrentChannel ||
-    rpc.stream.status === 'stopped' ||
-    rpc.stream.status === 'error' ||
-    rpc.stream.status === 'paused';
+    rpc.stream?.status === 'stopped' ||
+    rpc.stream?.status === 'error' ||
+    rpc.stream?.status === 'paused';
 
   const newStream = useChannelStream(channel);
 
@@ -24,6 +24,7 @@ export default function useGetChannelStream(channel: IChannel): IUseGetChannelSt
   }, [channel, isNeedNewStream]);
 
   const res = isNeedNewStream ? newStream : rpc.stream;
+  // @ts-ignore
   return { ...res, isCurrentChannel, isNewStream: isNeedNewStream };
 }
 

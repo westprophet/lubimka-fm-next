@@ -25,7 +25,7 @@ function ChannelPlayer({
   isError,
   isCurrentChannel,
 }: IChannelPlayerProps) {
-  const { status, play, channel: current } = useContext(RadioPlayerContext);
+  const { status, set, channel: current } = useContext(RadioPlayerContext);
   return (
     <div className={cn(s.ChannelPlayer, className)}>
       <Cover title={title} />
@@ -35,7 +35,7 @@ function ChannelPlayer({
         type={2}
         active={isCurrentChannel ?? compareIChannels(channel, current)}
         onClick={() => {
-          play(channel);
+          set(channel, true);
         }}
         status={status}
       />

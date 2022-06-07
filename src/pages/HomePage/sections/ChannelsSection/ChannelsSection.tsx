@@ -10,7 +10,7 @@ import SectionSlider, {
 } from 'src/layouts/DefaultLayout/components/SectionSliderWrapper';
 import Channel from 'components/Channel';
 // import { ChannelManagerContext } from '../../../../contexts/ChannelManager';
-import { IChannel } from '../../../../interfaces';
+import { IChannel } from 'interfaces/IChannel';
 
 export default function ChannelsSection({ className, channels }: IChannelsSectionsProps) {
   // const cm = useContext(ChannelManagerContext);
@@ -29,7 +29,7 @@ export default function ChannelsSection({ className, channels }: IChannelsSectio
           whileInView="visible"
           initial="hidden"
         >
-          <Channel channel={c} type="lg" />
+          <Channel channel={c} />
         </SectionSlider.MSlide>
       ))}
     </SectionSlider.Wrapper>

@@ -9,7 +9,7 @@ export default interface IPlayerManagerValues {
   play: () => void;
   stop(): any;
   toggle(): any;
-  set(c: IChannel, isAndPlay: boolean): any;
+  set(c: IChannel, isAndPlay?: boolean): any;
   setPrev(isAndPlay?: boolean): void;
   setNext(isAndPlay?: boolean): void;
   channel: IChannel | null;

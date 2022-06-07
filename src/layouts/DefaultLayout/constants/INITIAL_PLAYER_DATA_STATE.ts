@@ -5,5 +5,6 @@ const INITIAL_PLAYER_DATA_STATE: IPlayerStateContext = {
   isTransparent: false,
   isPinned: true,
   isOpenChannelMenu: false,
+  isDisable: false,
 };
 export default INITIAL_PLAYER_DATA_STATE;

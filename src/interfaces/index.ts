@@ -1,6 +1,6 @@
 import { IEmail, IIcon, IPhone, ISocial } from './others';
 
-import ITrackRadioheart from './ITrackRadioheart';
+import { ITrackRadioheart } from './ITrackRadioheart';
 import { IAlbum } from './IAlbum';
 import { IAuthor } from './IAuthor';
 import IImage from './IImage';

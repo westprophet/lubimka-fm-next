@@ -26,4 +26,4 @@ export default async function getNearbyEvents(
   });
 }
 
-export type IGetLastEventsReturn = IStrapiReturn<IEvent[]>;
+export type IGetLastEventsReturn = IStrapiReturn<IEvent[] | null>;

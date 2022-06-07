@@ -2,13 +2,10 @@
  * Created by westp on 20.03.2022
  */
 
-import React, { useRef } from 'react';
+import React from 'react';
 import s from './scss/ChannelComponent.module.scss';
 import cn from 'classnames';
-import IChannel from '../../../interfaces/IChannel';
-
 import Image from 'next/image';
-import IStrapiImage from '../../../api/strapi/types/IStrapiImage';
 import { TAudioManagerStatus } from '../../../types/TAudioManagerStatus';
 import PlayerControlComponent from 'components/UI/buttons/PlayerControlComponent';
 import TextPlaceholder from 'components/UI/TextPlaceholder';
@@ -17,8 +14,10 @@ import getStatusConst from '../../../tools/TAudioManagerStatus/getStatusConst';
 
 export default function ChannelComponent({
   className,
-  channel,
-  isCurrent,
+  title,
+  id,
+  cover,
+  isActive,
   isNew,
   onPlayClick,
   status,
@@ -27,17 +26,14 @@ export default function ChannelComponent({
   typeSize,
   disabled,
   resizable,
-}: IChannelProps) {
+}: IChannelDataProps) {
   const { isError: isErrorStatus } = getStatusConst(status);
-  const _isError = Boolean(isError || (isCurrent && isErrorStatus));
-
-  const img: IStrapiImage | undefined = channel.attributes.cover?.data.attributes;
-  if (!channel) return null;
+  const _isError = Boolean(isError || (isActive && isErrorStatus));
   return (
     <div
       className={cn(
         s.Channel,
-        { [s.active]: isCurrent },
+        { [s.active]: isActive },
         { [s.error]: _isError },
         { disabled: disabled },
         { [s.small]: typeSize === 'small' },
@@ -49,7 +45,7 @@ export default function ChannelComponent({
         <div className={s.control}>
           <PlayerControlComponent
             onClick={onPlayClick}
-            status={!isCurrent ? 'paused' : status}
+            status={!isActive ? 'paused' : status}
             disable={disabled}
             isError={_isError}
           />
@@ -62,17 +58,15 @@ export default function ChannelComponent({
           className={s.title}
           isEnable={isDetail || _isError}
         >
-          <Link href={`/channels/${channel.id}`}>
+          <Link href={`/channels/${id}`}>
             <a>
-              <h4>{channel.attributes.title}</h4>
+              <h4>{title}</h4>
             </a>
           </Link>
         </TextPlaceholder>
         <h5 className="status">{!disabled ? 'Online' : 'Offline'}</h5>
       </div>
-      {!img || !img.url ? null : (
-        <Image className={s.cover} src={img.url} layout="fill" objectFit="cover" />
-      )}
+      {cover ? <Image className={s.cover} src={cover} layout="fill" objectFit="cover" /> : null}
     </div>
   );
 }
@@ -86,18 +80,21 @@ ChannelComponent.defaultProps = {
   resizable: false,
 };
 
-interface IChannelProps {
-  channel: IChannel;
-
-  onPlayClick(): any;
-
-  status: TAudioManagerStatus;
+export interface IChannelProps {
   disabled?: boolean;
   className?: string;
   typeSize?: 'small';
-  isNew?: boolean;
-  isError?: boolean;
-  isCurrent?: boolean;
   resizable?: boolean;
   isDetail?: boolean;
+}
+
+interface IChannelDataProps extends IChannelProps {
+  id: string | number;
+  title: string;
+  cover: string | null | undefined;
+  onPlayClick(): any;
+  isNew?: boolean;
+  isError?: boolean;
+  isActive?: boolean;
+  status: TAudioManagerStatus;
 }

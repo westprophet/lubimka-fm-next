@@ -33,4 +33,4 @@ export default async function getEvents(p?: IGetEventsRequestParams): Promise<IG
   }
 }
 
-export type IGetEventsReturn = IStrapiReturn<IEvent[]>;
+export type IGetEventsReturn = IStrapiReturn<IEvent[] | null>;

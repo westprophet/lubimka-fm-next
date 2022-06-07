@@ -3,6 +3,6 @@ import IStrapiError from './IStrapiError';
 
 export default interface IStrapiReturn<Type> {
   data: Type;
-  meta?: IStrapiMetaData;
+  meta?: IStrapiMetaData | null;
   error?: IStrapiError;
 }

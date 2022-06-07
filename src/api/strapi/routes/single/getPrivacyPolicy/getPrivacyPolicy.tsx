@@ -6,7 +6,6 @@
  */
 
 import StrapiAxios from '../../../global';
-import IStrapiReturn from '../../../types/IStrapiReturn';
 import { IStrapiReturn } from 'api/strapi/types';
 import TStrapiResponseContainer from '../../../types/TStrapiResponseContainer';
 

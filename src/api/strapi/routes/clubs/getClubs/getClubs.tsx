@@ -40,4 +40,4 @@ export default async function getClubs(): Promise<IGetClubsReturn> {
   }
 }
 
-export type IGetClubsReturn = IStrapiReturn<IClub[]>;
+export type IGetClubsReturn = IStrapiReturn<IClub[] | null>;
