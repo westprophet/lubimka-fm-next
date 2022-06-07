@@ -1,4 +1,3 @@
-import useIsMobile from '../../../../../../hooks/useIsMobile';
 import { useRef, useState } from 'react';
 import IChannel from '../../../../../../interfaces/IChannel';
 

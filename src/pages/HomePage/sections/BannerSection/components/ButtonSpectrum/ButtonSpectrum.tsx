@@ -10,7 +10,7 @@ import { RadioPlayerContext } from '../../../../../../contexts/RadioPlayerManage
 
 export default function ButtonSpectrum({ className }: IButtonSpectrumProps) {
   const { id } = useContext(RadioPlayerContext);
-  const wave = useSpectrum(id, 'button-banner-spectrum-id');
+  useSpectrum(id, 'button-banner-spectrum-id');
   return (
     <div className={cn(s.ButtonSpectrum, className)}>
       <canvas width={180} height={180} id={'button-banner-spectrum-id'} />

@@ -18,7 +18,6 @@ export default function ClubComponent({
   title,
   cover,
   address,
-  avatar,
   link,
   resizable,
 }: IClubComponentProps) {

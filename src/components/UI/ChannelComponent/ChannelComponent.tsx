@@ -18,7 +18,6 @@ export default function ChannelComponent({
   id,
   cover,
   isActive,
-  isNew,
   onPlayClick,
   status,
   isError,

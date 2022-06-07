@@ -33,7 +33,7 @@ export default function FilterSection({
   setTo,
 }: IFilterSectionProps) {
   const [range, setRange] = useState<RangeTypes>('day');
-  const [loader, setLoader] = useState<boolean>(false);
+  // const [loader, setLoader] = useState<boolean>(false);
   const handleChangeSearch = (e: React.ChangeEvent<HTMLInputElement>) => {
     startTransition(() => {
       setSearch(e.target.value);

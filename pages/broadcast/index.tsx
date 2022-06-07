@@ -1,6 +1,5 @@
 import type { NextPage } from 'next';
 import { GetStaticProps } from 'next';
-import { GetStaticPropsContext } from 'next/types';
 import { useContext, useEffect } from 'react';
 import { RadioPlayerContext } from '../../src/contexts/RadioPlayerManager';
 import { useRouter } from 'next/router';
@@ -14,7 +13,7 @@ const Channels: NextPage = () => {
   return <div></div>;
 };
 
-export const getStaticProps: GetStaticProps = async ({ params }: GetStaticPropsContext) => {
+export const getStaticProps: GetStaticProps = async () => {
   return { props: {} };
 };
 

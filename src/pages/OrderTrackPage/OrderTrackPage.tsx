@@ -15,8 +15,6 @@ import Image from 'next/image';
 import DATA_FOR_BLUR from '../../constants/DATA_FOR_BLUR';
 import NoImage from 'components/UI/NoImage';
 import FormSection from '@pages/OrderTrackPage/section/FormSection';
-//21 - 50 Cent & Justin Timberlake & - Ayo Technology
-//3081 - Aliona Moon - O mie (Moldova
 
 export default function OrderTrackPage({ channel }: ITrackPageProps) {
   const r = useRouter();

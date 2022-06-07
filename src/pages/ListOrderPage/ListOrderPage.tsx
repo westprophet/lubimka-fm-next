@@ -18,7 +18,6 @@ import SearchInput from 'components/SearchInput';
 import isEmptyString from 'utils/isEmptyString';
 import VirtualListTrackAlt from './sections/VirtualListTrackAlt';
 
-import { Button } from '@mui/material';
 import useLocalStorage from 'use-local-storage';
 import { useRouter } from 'next/router';
 
@@ -63,24 +62,13 @@ export default function ListOrderPage({ tracks, channel }: IListOrderPageProps) 
             <SearchInput className={cn(s.search)} onChange={handleChangeSearch} />
             <div className={cn(s.subaction)}>
               <p>Выберите трек, который хотите заказать</p>
-              {/*<Button*/}
-              {/*  variant="text"*/}
-              {/*  size="small"*/}
-              {/*  onClick={() => {*/}
-              {/*    setViewMode(viewMode === 'compact' ? 'full' : 'compact');*/}
-              {/*  }}*/}
-              {/*>*/}
-              {/*  {viewMode === 'compact' ? 'Полный вид' : 'Компактный вид'}*/}
-              {/*</Button>*/}
             </div>
           </DefaultLayout.Section.Inner>
         </DefaultLayout.Section.Wrapper>
 
         <DefaultLayout.Section.Wrapper>
           <DefaultLayout.Section.Inner className={cn(s.viewSection)}>
-            {/*<VirtualListTrack tracks={_tracks} />*/}
             <VirtualListTrackAlt tracks={_tracks} viewMode={viewMode} channel={channel} />
-            {/*<ListTrack tracks={_tracks} />*/}
           </DefaultLayout.Section.Inner>
         </DefaultLayout.Section.Wrapper>
       </DefaultLayout.PageWrapper>

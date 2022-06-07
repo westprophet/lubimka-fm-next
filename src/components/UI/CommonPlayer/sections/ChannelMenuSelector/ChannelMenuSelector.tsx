@@ -17,7 +17,6 @@ export default function ChannelMenuSelector({
   className,
   isOpen,
   channels,
-  channel,
 }: IChannelMenuSelectorProps) {
   const isMobile = useIsMobile();
 

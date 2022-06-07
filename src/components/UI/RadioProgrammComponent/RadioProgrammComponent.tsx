@@ -26,7 +26,6 @@ export default function RadioProgrammComponent({
   subtitle,
   schedule,
   cover,
-  size,
   sizes,
 }: IRadioProgrammComponentProps) {
   const _size = useComponentSize<TRadioProgrammType>(sizes);

@@ -17,10 +17,7 @@ export const getStaticProps: GetStaticProps = async ({
   const channel = await api.strapi.channels.getChannel(id);
   if (!channel)
     return {
-      redirect: {
-        destination: '/',
-        permanent: false,
-      },
+      notFound: true,
     };
   return {
     props: {

@@ -8,7 +8,7 @@ import cn from 'classnames';
 import TAudioTitle from '../../../types/TAudioTitle';
 import useImageState from '../../../hooks/useImageState';
 import Image from 'next/image';
-import DATA_FOR_BLUR, { DATA_FOR_BLUR_ALT } from '../../../constants/DATA_FOR_BLUR';
+import { DATA_FOR_BLUR_ALT } from '../../../constants/DATA_FOR_BLUR';
 import NoImage from 'components/UI/NoImage';
 import MoreHorizIcon from '@mui/icons-material/MoreHoriz';
 import { IconButton } from '@mui/material';

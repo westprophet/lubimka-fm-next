@@ -1,6 +1,6 @@
 import type { NextPage } from 'next';
 import { GetStaticProps, GetStaticPaths } from 'next';
-import { GetStaticPropsContext, GetStaticPathsContext } from 'next/types';
+import { GetStaticPropsContext } from 'next/types';
 import api from '../../../src/api';
 import { IClub, IEvent } from 'src/interfaces';
 import ClubPage from '../../../src/pages/ClubPage';
@@ -29,7 +29,7 @@ export const getStaticProps: GetStaticProps = async (context: GetStaticPropsCont
 };
 
 // @ts-ignore
-export const getStaticPaths: GetStaticPaths = async (context: GetStaticPathsContext) => {
+export const getStaticPaths: GetStaticPaths = async () => {
   const { data: clubs } = await api.strapi.clubs.getClubs();
 
   const paths = clubs?.map((c: IClub) => ({
@@ -37,7 +37,6 @@ export const getStaticPaths: GetStaticPaths = async (context: GetStaticPathsCont
   }));
   return {
     paths,
-    fallback: true,
   };
 };
 

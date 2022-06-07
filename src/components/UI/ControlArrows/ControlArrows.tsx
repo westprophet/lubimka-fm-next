@@ -6,9 +6,6 @@ import React from 'react';
 import s from './ControlArrows.module.scss';
 import cn from 'classnames';
 
-import ArrowBackIosNewIcon from '@mui/icons-material/ArrowBackIosNew';
-import ArrowForwardIosIcon from '@mui/icons-material/ArrowForwardIos';
-import { IconButton } from '@mui/material';
 import ArrowButton from 'components/UI/buttons/ArrowButton';
 
 export default function ControlArrows({

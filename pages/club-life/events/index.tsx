@@ -10,7 +10,7 @@ const Events: NextPage<IEventsProps> = ({ events }) => {
   return <EventsPage events={events} />;
 };
 
-export const getStaticProps: GetStaticProps = async (context: GetStaticPropsContext) => {
+export const getStaticProps: GetStaticProps = async () => {
   const initialPagination: IStrapiRequestPagination = {
     page: 1,
     pageSize: 50,

@@ -13,7 +13,7 @@ import FmdGoodIcon from '@mui/icons-material/FmdGood';
 import AccessTimeIcon from '@mui/icons-material/AccessTime';
 
 // @ts-ignore
-import Marquee from 'react-double-marquee';
+// import Marquee from 'react-double-marquee';
 import Link from 'next/link';
 import IconString from 'components/UI/others/IconString';
 

@@ -21,7 +21,6 @@ export default function VerticalTrackComponent({
   isCanFetchImage,
   title,
   cover,
-  source,
 }: IVerticalTrackDataProps) {
   // Запрашиваем картинку для трека
   const { image } = useImageState(title, isCanFetchImage && isShowCover);
