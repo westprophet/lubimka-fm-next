@@ -8,9 +8,11 @@ import cn from 'classnames';
 import AutoSizer from 'react-virtualized-auto-sizer';
 import RadioTrack from 'components/tracks/RadioTrack';
 import { ITrackRadioheart } from 'interfaces/ITrackRadioheart';
-import { List, WindowScroller } from 'react-virtualized';
+import List from 'react-virtualized/dist/commonjs/List';
+import WindowScroller from 'react-virtualized/dist/commonjs/WindowScroller';
 
 import useBreakpoint from 'hooks/useBreakpoint';
+import SearchInput from 'components/SearchInput';
 import TOrderTrackViewMode from '../../types/TOrderTrackViewMode';
 import { useRouter } from 'next/router';
 import IChannel from 'interfaces/IChannel';
@@ -23,6 +25,12 @@ export default function VirtualListTrackAlt({
 }: IVirtualListProps) {
   const b = useBreakpoint();
   const r = useRouter();
+  //Формируем ключ
+  // const itemKey = useCallback((index, data) => {
+  //   const item = data[index];
+  //   return item.id;
+  // }, []);
+
   //Формируем строку
   const renderRow = useCallback(
     ({ key, index, style }) => {
@@ -45,7 +53,7 @@ export default function VirtualListTrackAlt({
           </div>
         );
     },
-    [channel.id, r, tracks, viewMode]
+    [tracks, viewMode]
   );
 
   return (
@@ -59,7 +67,10 @@ export default function VirtualListTrackAlt({
                 layout="vertical"
                 height={height}
                 width={width}
+                // itemData={tracks}
+                // itemKey={itemKey}
                 scrollTop={scrollTop}
+                // overscanRowCount={10}
                 rowCount={tracks.length}
                 rowHeight={b.fxl ? 90 : b.lg ? 60 : 50}
                 rowRenderer={renderRow}
