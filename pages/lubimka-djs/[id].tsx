@@ -34,10 +34,9 @@ export const getStaticPaths: GetStaticPaths = async (context: GetStaticPathsCont
   const paths = authors?.map((a: IAuthor) => ({
     params: { id: String(a.id) },
   }));
-  console.log(authors);
   return {
     paths,
-    fallback: true,
+    fallback: false,
   };
 };
 

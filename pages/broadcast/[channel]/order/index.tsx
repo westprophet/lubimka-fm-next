@@ -14,17 +14,18 @@ export const getStaticProps: GetStaticProps = async ({
 }: GetStaticPropsContext<IIOrderPageParams>) => {
   const id = params ? params['channel'] : 0; //Получаем id
   const channel = await api.strapi.channels.getChannel(id);
-  if (!channel)
-    return {
-      notFound: true,
-    };
+  // if (!channel)
   return {
-    redirect: {
-      destination: `/broadcast/${channel?.id}/order/tracks/`,
-      permanent: false,
-      //statusCode: 301
-    },
+    notFound: true,
   };
+  // return {
+  //   redirect: {
+  //     // destination: `/broadcast/${channel?.id}/order/tracks/`,
+  //     destination: `/`,
+  //     // permanent: false,
+  //     statusCode: 301,
+  //   },
+  // };
 };
 
 //https://nextjs.org/docs/api-reference/data-fetching/get-static-paths
