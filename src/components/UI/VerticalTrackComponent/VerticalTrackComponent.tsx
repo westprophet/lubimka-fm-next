@@ -41,6 +41,7 @@ export default function VerticalTrackComponent({
       )}
       <div className={cn(s.content)}>
         <PlayButton status="paused" type={2} onClick={() => {}} className={cn(s.playD)} />
+
         <div className={cn(s.title, 'title')}>
           <div className={cn(s.name)}>
             <Marquee scrollWhen="overflow" direction="left">
