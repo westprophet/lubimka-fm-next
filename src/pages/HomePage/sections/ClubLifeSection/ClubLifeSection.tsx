@@ -8,7 +8,7 @@ import cn from 'classnames';
 import SectionSlider, {
   MSlideAnimationVariants,
 } from '../../../../layouts/DefaultLayout/components/SectionSliderWrapper';
-import { IClub } from '../../../../interfaces';
+import { IClub } from 'interfaces/IClub';
 import Club from 'components/Club';
 
 export default function ClubLifeSection({ clubs }: IClubLifeSectionProps) {

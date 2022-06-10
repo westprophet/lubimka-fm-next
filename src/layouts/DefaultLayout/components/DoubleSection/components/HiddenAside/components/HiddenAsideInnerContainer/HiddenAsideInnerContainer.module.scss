@@ -1,0 +1,8 @@
+@import "../../../../../../scss/mixins";
+
+.HiddenAsideInnerContainer {
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
+  @include layout-padding(false, true, false, true);
+}

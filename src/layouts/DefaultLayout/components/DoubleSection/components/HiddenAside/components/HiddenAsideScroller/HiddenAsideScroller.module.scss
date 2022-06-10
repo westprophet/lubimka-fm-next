@@ -1,0 +1,14 @@
+@import "../../../../../../scss/mixins";
+
+.HiddenAsideScroller {
+  overflow: scroll;
+  height: 100%;
+  &::-webkit-scrollbar {
+    display: none;
+  }
+  .inner{
+    height: 100%;
+    display: grid;
+    gap: 5px;
+  }
+}

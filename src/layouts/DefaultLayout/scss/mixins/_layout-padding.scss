@@ -1,129 +1,219 @@
 @import "../data";
 
+$sides: (
+  't': (
+    enable: true,
+    value: 0
+  ),
+  'r': (
+    enable: true,
+    value: 0
+  ),
+  'b': (
+    enable: true,
+    value: 0
+  ),
+  'l': (
+    enable: true,
+    value: 0
+  ),
+);
+
+@mixin layout-padding-template($sides: $sides, $property: padding, $char: ''){
+  @if (map-get(map-get($sides,'t'),enable)) {
+    $map: map-get($sides,t);
+    #{$property}-top: #{$char}#{map-get($map,value)};
+  }
+  @if map-get(map-get($sides,'r'),enable)  {
+    $map: map-get($sides,'r');
+    #{$property}-right: #{$char}#{map-get($map,value)};
+  }
+  @if map-get(map-get($sides,'b'),'enable')  {
+    $map: map-get($sides,'b');
+    #{$property}-bottom: #{$char}#{map-get($map,'value')};
+  }
+  @if map-get(map-get($sides,'l'),'enable')  {
+    $map: map-get($sides,'l');
+    #{$property}-left: #{$char}#{map-get($map,'value')};
+  }
+}
+
 //Отступы шаблона
-@mixin layout-padding-xs($t: true, $r: true,$b: true, $l: true, $property: padding){
-  @if $t {
-    #{$property}-top: $header-height-xs;
-  }
-  @if $r {
-    #{$property}-right: $aside-width-xs;
-  }
-  @if $b {
-    #{$property}-bottom: $player-height-xs;
-  }
-  @if $l {
-    #{$property}-left: $aside-width-xs;
-  }
+@mixin layout-padding-xs($t: true, $r: true,$b: true, $l: true, $property: padding, $char: ''){
+  $sides: (
+    't': (
+      enable: $t,
+      value: $header-height-xs
+    ),
+    'r': (
+      enable: $r,
+      value: $aside-width-xs
+    ),
+    'b': (
+      enable: $b,
+      value: $player-height-xs
+    ),
+    'l': (
+      enable: $l,
+      value: $aside-width-xs
+    ),
+  );
+  @include layout-padding-template($sides, $property, $char);
+
 }
 
-@mixin layout-padding-sm($t: true, $r: true,$b: true, $l: true, $property: padding){
-  @if $t {
-    #{$property}-top: $header-height-sm;
-  }
-  @if $r {
-    #{$property}-right: $aside-width-sm;
-  }
-  @if $b {
-    #{$property}-bottom: $player-height-sm;
-  }
-  @if $l {
-    #{$property}-left: $aside-width-sm;
-  }
+@mixin layout-padding-sm($t: true, $r: true,$b: true, $l: true, $property: padding, $char: ''){
+  $sides: (
+    't': (
+      enable: $t,
+      value: $header-height-sm
+    ),
+    'r': (
+      enable: $r,
+      value: $aside-width-sm
+    ),
+    'b': (
+      enable: $b,
+      value: $player-height-sm
+    ),
+    'l': (
+      enable: $l,
+      value: $aside-width-sm
+    ),
+  );
+  @include layout-padding-template($sides, $property, $char);
+
 }
 
-@mixin layout-padding-md($t: true, $r: true,$b: true, $l: true, $property: padding){
-  @if $t {
-    #{$property}-top: $header-height-md;
-  }
-  @if $r {
-    #{$property}-right: $aside-width-md;
-  }
-  @if $b {
-    #{$property}-bottom: $player-height-sm;
-  }
-  @if $l {
-    #{$property}-left: $aside-width-md;
-  }
+@mixin layout-padding-md($t: true, $r: true,$b: true, $l: true, $property: padding,  $char: ''){
+  $sides: (
+    't': (
+      enable: $t,
+      value: $header-height-md
+    ),
+    'r': (
+      enable: $r,
+      value: $aside-width-md
+    ),
+    'b': (
+      enable: $b,
+      value: $player-height-sm
+    ),
+    'l': (
+      enable: $l,
+      value: $aside-width-md
+    ),
+  );
+  @include layout-padding-template($sides, $property, $char);
 }
 
-@mixin layout-padding-lg($t: true, $r: true,$b: true, $l: true, $property: padding){
-  @if $t {
-    #{$property}-top: $header-height-md;
-  }
-  @if $r {
-    #{$property}-right: $aside-width-lg;
-  }
-  @if $b {
-    #{$property}-bottom: $player-height-lg;
-  }
-  @if $l {
-    #{$property}-left: $aside-width-lg;
-  }
+@mixin layout-padding-lg($t: true, $r: true,$b: true, $l: true, $property: padding,  $char: ''){
+  $sides: (
+    't': (
+      enable: $t,
+      value: $header-height-md
+    ),
+    'r': (
+      enable: $r,
+      value: $aside-width-lg
+    ),
+    'b': (
+      enable: $b,
+      value: $player-height-lg
+    ),
+    'l': (
+      enable: $l,
+      value: $aside-width-lg
+    ),
+  );
+  @include layout-padding-template($sides, $property, $char);
+
+}
+
+@mixin layout-padding-xl($t: true, $r: true,$b: true, $l: true, $property: padding,  $char: ''){
+  $sides: (
+    't': (
+      enable: $t,
+      value: $header-height-md
+    ),
+    'r': (
+      enable: $r,
+      value: $aside-width-xxl
+    ),
+    'b': (
+      enable: $b,
+      value: $player-height-xl
+    ),
+    'l': (
+      enable: $l,
+      value: $aside-width-xxl
+    ),
+  );
+  @include layout-padding-template($sides, $property, $char);
+}
+
+@mixin layout-padding-xxl($t: true, $r: true,$b: true, $l: true, $property: padding,  $char: ''){
+  $sides: (
+    't': (
+      enable: $t,
+      value: $header-height-xxl
+    ),
+    'r': (
+      enable: $r,
+      value: $aside-width-xxl
+    ),
+    'b': (
+      enable: $b,
+      value: $player-height-xl
+    ),
+    'l': (
+      enable: $l,
+      value: $aside-width-xxl
+    ),
+  );
+  @include layout-padding-template($sides, $property, $char);
+
+}
+
+@mixin layout-padding-xxxl($t: true, $r: true,$b: true, $l: true, $property: padding,  $char: ''){
+  $sides: (
+    't': (
+      enable: $t,
+      value: $header-height-xxxl
+    ),
+    'r': (
+      enable: $r,
+      value: $aside-width-xxxl
+    ),
+    'b': (
+      enable: $b,
+      value: $player-height-xxxl
+    ),
+    'l': (
+      enable: $l,
+      value: $aside-width-xxxl
+    ),
+  );
+  @include layout-padding-template($sides, $property, $char);
 }
 
 
-@mixin layout-padding-xl($t: true, $r: true,$b: true, $l: true, $property: padding){
-  @if $t {
-    #{$property}-top: $header-height-md;
-  }
-  @if $r {
-    #{$property}-right: $aside-width-xxl;
-  }
-  @if $b {
-    #{$property}-bottom: $player-height-xl;
-  }
-  @if $l {
-    #{$property}-left: $aside-width-xxl;
-  }
-}
-
-@mixin layout-padding-xxl($t: true, $r: true,$b: true, $l: true, $property: padding){
-  @if $t {
-    #{$property}-top: $header-height-xxl;
-  }
-  @if $r {
-    #{$property}-right: $aside-width-xxl;
-  }
-  @if $b {
-    #{$property}-bottom: $player-height-xl;
-  }
-  @if $l {
-    #{$property}-left: $aside-width-xxl;
-  }
-}
-
-@mixin layout-padding-xxxl($t: true, $r: true,$b: true, $l: true, $property: padding){
-  @if $t {
-    #{$property}-top: $header-height-xxxl;
-  }
-  @if $r {
-    #{$property}-right: $aside-width-xxxl;
-  }
-  @if $b {
-    #{$property}-bottom: $player-height-xxxl;
-  }
-  @if $l {
-    #{$property}-left: $aside-width-xxxl;
-  }
-}
-
-
-@mixin layout-padding($t: true, $r: true, $b: true, $l: true, $property: padding){
-  @include layout-padding-xs($t,$r,$b,$l, $property);
+@mixin layout-padding($t: true, $r: true, $b: true, $l: true, $property: padding,  $char: ''){
+  @include layout-padding-xs($t,$r,$b,$l, $property, $char);
   @include for-sm{
-    @include layout-padding-sm($t,$r,$b,$l, $property);
+    @include layout-padding-sm($t,$r,$b,$l, $property, $char);
   }
   @include for-md{
-    @include layout-padding-md($t,$r,$b,$l, $property);
+    @include layout-padding-md($t,$r,$b,$l, $property, $char);
   }
   @include for-xl{
-    @include layout-padding-xl($t,$r,$b,$l, $property);
+    @include layout-padding-xl($t,$r,$b,$l, $property, $char);
   }
   @include for-xxl{
-    @include layout-padding-xxl($t,$r,$b,$l, $property);
+    @include layout-padding-xxl($t,$r,$b,$l, $property, $char);
   }
   @include for-qxl{
-    @include layout-padding-xxxl($t,$r,$b,$l, $property);
+    @include layout-padding-xxxl($t,$r,$b,$l, $property, $char);
   }
 }
 

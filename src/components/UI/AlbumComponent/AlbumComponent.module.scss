@@ -3,21 +3,22 @@
 .AlbumComponent {
   display: grid;
   grid-template-columns: $height-1 auto;
-  grid-template-rows: 1fr 1fr;
   gap: 10px;
   cursor: pointer;
   width: 100%;
-  height: $height-1;
+  //min-height: $height-1;
+  &.hover{
+
+  }
   @include for-xl {
     grid-template-columns: $height-2 auto;
-    height: $height-2;
   }
 
   .cover {
     position: relative;
     overflow: hidden;
     border-radius: 5px;
-    height: $height-1;
+    height:$height-1;
     width: $height-1;
     display: flex;
     justify-content: center;

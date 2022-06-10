@@ -1,0 +1,15 @@
+.HiddenAsideTitle {
+  display: flex;
+  align-content: center;
+  align-items: center;
+  span {
+    gap: 10px;
+  }
+
+  @include f5() {
+    font-weight: 700;
+  }
+  @include for-lg {
+    @include f3();
+  }
+}

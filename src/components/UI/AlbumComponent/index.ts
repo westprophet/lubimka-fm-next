@@ -1,3 +1,3 @@
-import AlbumComponent from './AlbumComponent';
-
+import AlbumComponent, { IAlbumComponentProps } from './AlbumComponent';
+export type { IAlbumComponentProps };
 export default AlbumComponent;

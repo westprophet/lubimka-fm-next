@@ -51,3 +51,12 @@ a {
 .zoom-effect {
   @include zoom-effect();
 }
+
+.link-arrow{
+  &:not(.left-arrow){
+    @include link-arrow();
+  }
+  &.left-arrow{
+    @include link-arrow(left);
+  }
+}

@@ -1,0 +1,33 @@
+
+//Стрелочка для ссылки
+@mixin link-arrow( $side: right){
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  cursor: pointer;
+  @if($side == right){
+    @include link-arrow-right();
+  }
+  @else{
+    @include link-arrow-left();
+  }
+  &::before,
+  &::after{
+    transform: scale(1.15);
+  }
+}
+
+@mixin link-arrow-right(){
+  &::after {
+    margin-left: 5px;
+    font-family: 'Material Icons';
+    content: "chevron_right";
+  }
+}
+@mixin link-arrow-left(){
+  &::before {
+    margin-right: 5px;
+    font-family: 'Material Icons';
+    content: "chevron_left";
+  }
+}

@@ -28,49 +28,22 @@
   }
 
   .content {
-    .trackContainer {
+    .sector {
       height: 100%;
-      //position: relative;
       display: flex;
       flex-direction: column;
-      .trackInnerContainer {
-        height: min-content;
-        overflow: scroll;
-        &::-webkit-scrollbar{
-          display: none;
-        }
-        .tracks {
-          display: grid;
-          gap: 5px;
-          height: 100%;
-        }
-      }
     }
-    .albumContainer{
-      height: 100%;
-      //position: relative;
-      display: flex;
-      flex-direction: column;
-      .albumInnerContainer{
-        height: min-content;
-        overflow: scroll;
-        &::-webkit-scrollbar{
-          display: none;
-        }
-        .album{
-          display: grid;
-          gap: 15px;
-          height: 100%;
-        }
-      }
 
+    .albumsInner {
+      gap: 15px;
     }
-    .recommendedTrack{
+
+    .recommendedTrack {
       margin: auto;
     }
 
+
     .description {
-      z-index: 4;
       font-weight: 400;
       font-size: 12px;
       line-height: 140%;

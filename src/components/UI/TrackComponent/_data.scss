@@ -1,3 +1,11 @@
-$height-xs: 40px;
-$height-lg: 60px;
+$padding-v-xs: 7px;
+
+$grid-column-gap-xs: 5px;
+$grid-column-gap-lg: 10px;
+
+$height-image-xs: 45px;
+$height-image-lg: 60px;
+
+$height-xs: $height-image-xs + ($padding-v-xs * 2);
+$height-lg: $height-image-lg + ($padding-v-xs * 2);
 

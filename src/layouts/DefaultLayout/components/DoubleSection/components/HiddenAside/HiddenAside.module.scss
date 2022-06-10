@@ -1,0 +1,37 @@
+@import "../../../../scss/mixins";
+
+.HiddenAside {
+  position: fixed;
+  height: 100vh;
+  top: 0;
+  z-index: 4;
+  width: 100%;
+  background: var(--bg-deep-color);
+  @include layout-padding(true, false, true, false);
+  @include for-lg {
+    backdrop-filter: blur(60px);
+    width: 50vw;
+    box-shadow: inset 0 2px 4px rgba(255, 255, 255, 0.25), inset 0 0 60px rgba(255, 255, 255, 0.25);
+    background: rgba(255, 255, 255, 0.3);
+  }
+  @include for-xl{
+    width: 50vw;
+  }
+  @include for-qxl{
+    width: 39vw;
+  }
+
+  &.right {
+    right: 0;
+    transform: translateX(130%);
+  }
+
+  &.left {
+    left: 0;
+    transform: translateX(130%);
+  }
+
+  &.show {
+    transform: translateX(0);
+  }
+}

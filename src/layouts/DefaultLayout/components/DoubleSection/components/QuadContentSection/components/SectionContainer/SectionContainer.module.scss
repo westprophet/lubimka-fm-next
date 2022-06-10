@@ -2,11 +2,11 @@
 
 .SectionContainer {
   $slice: 18px;
-
   border-radius: 25px 25px 0 0;
-  @include layout-padding(false, true, true, true);
+  //@include layout-padding-xs(false, true, true, true);
   padding-top: $slice -  3px;
   margin-top: -$slice;
+  z-index: 1;
 
   .line {
     display: flex;
@@ -25,26 +25,41 @@
     }
   }
 
-  .title {
+  .head {
+    display: flex;
+    width: 100%;
+    justify-content: space-between;
+    @include layout-padding(false, true, false, true);
     margin-bottom: 15px;
     @include f7() {
       font-weight: 700;
     }
     @include for-lg {
-      @include f5();
       margin-bottom: 30px;
+      padding: 0 15px;
+      @include f5();
+    }
+    @include for-qxl{
+      padding: 0 20px;
+    }
+    .title {
+    }
+    .link{
+      font-weight: 300;
+      cursor: pointer;
+      @include for-lg {
+        @include f7();
+      }
     }
   }
 
-  @include for-sm {
-    @include layout-padding-md(false, true, false, true);
-  }
+
   @include for-lg {
     background: rgba(255, 255, 255, 0.3);
     border-radius: 5px;
     backdrop-filter: blur(60px);
     margin-top: 0;
-    padding: 15px 15px;
+    //padding: 15px 15px;
     min-height: 285px;
     height: 100%;
   }

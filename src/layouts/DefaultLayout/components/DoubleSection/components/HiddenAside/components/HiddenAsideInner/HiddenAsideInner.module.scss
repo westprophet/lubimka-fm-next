@@ -1,0 +1,10 @@
+@import "../../../../../../scss/mixins";
+
+.HiddenAsideInner {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  gap: 30px;
+  justify-content: space-between;
+  @include inner-section-padding(true, false, false, false);
+}

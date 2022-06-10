@@ -9,7 +9,7 @@ import StrapiAxios from '../../../global';
 import IStrapiReturn from '../../../types/IStrapiReturn';
 // import isValidGetTeamMembersResponse from './validators/isValidGetTeamMembersResponse';
 import { IGetTeamMembersResponse, IGetPartnersRequestParams } from './types';
-import { ITeamMember } from '../../../../../interfaces';
+import { ITeamMember } from 'interfaces/ITeamMember';
 import getParamsObject from './utils/getParamsObject';
 
 export default async function getTeamMembers(

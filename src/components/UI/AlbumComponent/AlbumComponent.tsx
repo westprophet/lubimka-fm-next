@@ -5,20 +5,24 @@
 import React from 'react';
 import s from './AlbumComponent.module.scss';
 import cn from 'classnames';
-import { IAlbum } from 'interfaces/IAlbum';
 import Image from 'next/image';
 import DATA_FOR_BLUR from '../../../constants/DATA_FOR_BLUR';
 import NoImage from 'components/UI/NoImage';
-import { getImageUrl } from '@tools/IWrappedStrapiImage';
 import PlayButton from 'components/UI/buttons/PlayButton';
 
-export default function AlbumComponent({ className, album }: IAlbumComponentProps) {
-  const cover = getImageUrl(album.attributes.cover);
+export default function AlbumComponent({
+  className,
+  title,
+  year,
+  onClick,
+  cover,
+  hover,
+}: IAlbumComponentDataProps) {
   const isNoImg = !cover;
   return (
-    <div className={cn(s.AlbumComponent, className)}>
+    <div className={cn(s.AlbumComponent, { [s.hover]: hover }, className)}>
       <div className={cn(s.cover, 'cover', { [s.noImageContainer]: isNoImg })}>
-        <PlayButton status="paused" type={2} onClick={() => {}} className={cn(s.play)} />
+        <PlayButton status="paused" type={2} onClick={onClick} className={cn(s.play)} />
         {!isNoImg ? (
           // @ts-ignore
           <Image src={cover} layout="fill" placeholder="blur" blurDataURL={DATA_FOR_BLUR} />
@@ -27,8 +31,8 @@ export default function AlbumComponent({ className, album }: IAlbumComponentProp
         )}
       </div>
       <div className={cn(s.description)}>
-        <div className={cn(s.title)}>{album.attributes.title}</div>
-        <div className={cn(s.year)}>{album.attributes.year}</div>
+        <div className={cn(s.title)}>{title}</div>
+        <div className={cn(s.year)}>{year}</div>
       </div>
     </div>
   );
@@ -36,9 +40,17 @@ export default function AlbumComponent({ className, album }: IAlbumComponentProp
 
 AlbumComponent.defaultProps = {
   className: '',
+  onClick: () => {},
+  hover: false,
 };
 
-interface IAlbumComponentProps {
+export interface IAlbumComponentProps {
+  hover?: boolean;
   className?: string;
-  album: IAlbum;
+}
+interface IAlbumComponentDataProps extends IAlbumComponentProps {
+  title: string;
+  year: string | number;
+  cover: string | null;
+  onClick(): any;
 }

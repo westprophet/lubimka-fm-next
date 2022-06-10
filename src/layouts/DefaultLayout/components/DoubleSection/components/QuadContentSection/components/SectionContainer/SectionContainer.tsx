@@ -5,14 +5,17 @@
 import React from 'react';
 import s from './SectionContainer.module.scss';
 import cn from 'classnames';
+import { useRouter } from 'next/router';
 
 export default function SectionContainer({
   className,
   children,
   colorType,
   title,
+  other,
   enableLine,
 }: ISectionContainerProps) {
+  const r = useRouter();
   return (
     <div
       className={cn(
@@ -23,13 +26,27 @@ export default function SectionContainer({
           [s.colorType3]: colorType === 3,
         },
         { [s.enableLine]: enableLine },
+
         className
       )}
     >
       <div className={cn(s.line)}>
         <span></span>
       </div>
-      {title && <div className={cn(s.title)}>{title}</div>}
+      <div className={cn(s.head)}>
+        {title && <div className={cn(s.title)}>{title}</div>}
+        {other && (
+          <div
+            className={cn(s.link, 'link-arrow')}
+            onClick={() => {
+              if (other.onClick) other.onClick();
+              else if (other.href) r.push(other.href);
+            }}
+          >
+            {other.title}
+          </div>
+        )}
+      </div>
       {children}
     </div>
   );
@@ -39,6 +56,7 @@ SectionContainer.defaultProps = {
   className: '',
   colorType: 1,
   enableLine: true,
+  disableHorizontalPadding: false,
 };
 
 interface ISectionContainerProps {
@@ -47,4 +65,9 @@ interface ISectionContainerProps {
   enableLine?: boolean;
   colorType?: 1 | 2 | 3;
   title?: any;
+  other?: {
+    onClick?(): any;
+    href?: string;
+    title: any;
+  };
 }

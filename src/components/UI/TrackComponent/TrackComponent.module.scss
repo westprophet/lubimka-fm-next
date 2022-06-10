@@ -8,9 +8,8 @@
   align-items: center;
   background-color: transparent;
   transition: background-color .3s;
-  padding-right: 4px;
-  grid-column-gap: 5px;
-  padding-left: 2px;
+  grid-column-gap: $grid-column-gap-xs;
+  padding: $padding-v-xs 4px $padding-v-xs 2px;
 
   &.dsc {
     grid-template-columns: auto min-content;
@@ -28,22 +27,19 @@
 
 
   .cover {
-    width: $height-xs;
-    height: $height-xs;
+    width: $height-image-xs;
+    height: $height-image-xs;
     border-radius: 50%;
     overflow: hidden;
     position: relative;
     @include for-xxl {
-      width: $height-lg;
-      height: $height-lg;
+      width: $height-image-lg;
+      height: $height-image-lg;
     }
-    //@include for-qxl {
-    //  width: $height-xxxl;
-    //  height: $height-xxxl;
-    //}
 
     &.noImageContainer {
       border: 1px solid var(--border-color);
+
       .noImg {
         padding-top: 25%;
       }
@@ -65,9 +61,6 @@
       @include f5 {
         font-weight: 500;
       }
-      //@include for-xxl {
-      //  @include f5_16;
-      //}
     }
 
     .artist {
@@ -87,37 +80,19 @@
     }
   }
 
-  //&:not(.small) {
-    @include for-xxl {
-      padding-right: 5px;
-      padding-left: 5px;
-      grid-column-gap: 10px;
-      height: $height-lg;
-    }
-    @include for-qxl {
-      //height: $height-xxxl;
-      grid-column-gap: 15px;
-    }
-  //}
+  @include for-lg {
+    grid-column-gap: $grid-column-gap-lg;
+  }
+  @include for-xxl {
+    padding-right: 5px;
+    padding-left: 5px;
+    grid-column-gap: 10px;
+    height: $height-lg;
+  }
+  @include for-qxl {
+    grid-column-gap: 15px;
+  }
 
-/*  &.small {
-    :local(.cover) {
-      width: $height-xs;
-      height: $height-xs;
-    }
-
-    :local(.title .artist) {
-      @include f7 {
-        font-weight: 400;
-      }
-    }
-
-    :local(.title .name) {
-      @include f7 {
-        font-weight: 400;
-      }
-    }
-  }*/
 
 }
 

@@ -1,0 +1,16 @@
+@import "src/layouts/DefaultLayout/scss/mixins";
+.TrackList {
+  .inner{
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+    .track{
+      cursor: pointer;
+      @include layout-padding(false, true, false, true);
+      &:hover{
+        background: rgba(255, 255, 255, 0.15);
+        box-shadow: inset 0px 0px 60px rgba(255, 255, 255, 0.25);
+      }
+    }
+  }
+}
