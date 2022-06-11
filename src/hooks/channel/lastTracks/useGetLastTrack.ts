@@ -1,8 +1,8 @@
 import { useQuery } from 'react-query';
-import { IChannel } from '../../../../../interfaces';
-import api from '../../../../../api';
-import { ITrackRadioheartPrev } from '../../../../../interfaces/ITrackRadioheart';
-import TAudioTitle from '../../../../../types/TAudioTitle';
+import { IChannel } from 'interfaces/IChannel';
+import api from 'api/index';
+import { ITrackRadioheartPrev } from 'interfaces/ITrackRadioheart';
+import TAudioTitle from '../../../types/TAudioTitle';
 
 //Получаем последние треки на канале
 export default function useGetLastTrack(
@@ -24,7 +24,6 @@ export default function useGetLastTrack(
   );
   return {
     data: data ?? null,
-    // isLoading,
     isError,
   };
 }

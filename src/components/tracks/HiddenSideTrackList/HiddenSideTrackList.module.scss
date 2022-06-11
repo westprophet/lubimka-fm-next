@@ -1,10 +1,10 @@
-@import "src/layouts/DefaultLayout/scss/mixins";
+@import "../../../layouts/DefaultLayout/scss/mixins/index";
 .TrackList {
   .inner{
     display: flex;
     flex-direction: column;
     gap: 0;
-    .track{
+    & > *{
       cursor: pointer;
       @include layout-padding(false, true, false, true);
       &:hover{

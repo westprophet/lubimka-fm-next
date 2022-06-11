@@ -3,8 +3,8 @@ import IHeaderMenuItem from '../interfaces/IHeaderMenuItem';
 const MENU_ITEMS: IHeaderMenuItem[] = [
   {
     title: 'Эфир',
-    link: 'radio-broadcast',
-    key: 'radio-broadcast',
+    link: 'broadcast',
+    key: 'broadcast',
   },
   {
     title: 'Club Life',

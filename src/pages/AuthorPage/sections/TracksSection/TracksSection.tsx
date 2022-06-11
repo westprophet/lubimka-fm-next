@@ -9,7 +9,7 @@ import { QuadContentSection as QS } from 'layouts/DefaultLayout/components/Doubl
 import { ITrack } from 'interfaces/ITrack';
 import Track from 'components/tracks/Track';
 import { IAuthor } from 'interfaces/IAuthor';
-import TrackList from '@pages/AuthorPage/components/TrackList';
+import HiddenSideTrackList from 'components/tracks/HiddenSideITrackList';
 
 export default function TracksSection({
   className,
@@ -19,16 +19,6 @@ export default function TracksSection({
   onOpen,
   author,
 }: IAlbumsSectionProps) {
-  const allTracks = [
-    ...tracks,
-    ...tracks,
-    ...tracks,
-    ...tracks,
-    ...tracks,
-    ...tracks,
-    ...tracks,
-    ...tracks,
-  ];
   return (
     <>
       <QS.Container
@@ -41,7 +31,7 @@ export default function TracksSection({
         className={cn(s.TracksSection, className)}
       >
         <QS.Inner className={cn(s.inner)} withHorizontalPadding={false}>
-          {allTracks.slice(0, 10).map((t: ITrack) => {
+          {tracks.slice(0, 10).map((t: ITrack) => {
             return (
               <Track
                 album={t.attributes.album}
@@ -54,7 +44,7 @@ export default function TracksSection({
           })}
         </QS.Inner>
       </QS.Container>
-      <TrackList
+      <HiddenSideTrackList
         onClose={onClose}
         tracks={tracks}
         author={author}
@@ -66,7 +56,7 @@ export default function TracksSection({
 }
 
 TracksSection.defaultProps = {
-  className: '',
+  className: undefined,
 };
 
 interface IAlbumsSectionProps {

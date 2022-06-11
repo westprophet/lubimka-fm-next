@@ -10,6 +10,7 @@ const Channels: NextPage = () => {
   useEffect(() => {
     r.push(`/broadcast/${rm.channel?.id}/`);
   }, [r, rm.channel?.id]);
+
   return <div></div>;
 };
 

@@ -9,11 +9,16 @@
   justify-content: center;
   align-items: center;
   flex-shrink: 0;
-
+  color: var(--primary-color);
   button {
     width: calc(100% - #{$stroke-width-xs + 1}px);
     height: calc(100% - #{$stroke-width-xs + 1}px);
-    color: var(--primary-color);
+    color: currentColor;
+    position: relative;
+    svg{
+      width: 70%;
+      height: 70%;
+    }
     @include for-lg{
       width: calc(100% - #{$stroke-width-lg + 1}px);
       height: calc(100% - #{$stroke-width-lg + 1}px);
@@ -21,7 +26,6 @@
   }
   &:local(.error){
     button svg{
-
       color: var(--error-color);
     }
     :local(.circular) {
@@ -33,7 +37,7 @@
   }
   :local(.circular) {
     position: absolute;
-    color: var(--primary-color);
+    color: currentColor;
     width: 100% !important;
     height: 100% !important;
     left: 0;

@@ -60,3 +60,7 @@ a {
     @include link-arrow(left);
   }
 }
+
+.fire-text-effect{
+  @include fire-text-effect();
+}

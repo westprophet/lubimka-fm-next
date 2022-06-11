@@ -1,0 +1,20 @@
+.BroadcastPlayer {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: 30px;
+  color: var(--border-color);
+  .play{
+    $size: 70px;
+    color: inherit;
+    grid-column: 3/4;
+    width: $size;
+    height: $size;
+  }
+  button{
+    color: inherit;
+    &:hover{
+      color: white;
+      transition: .25s;
+    }
+  }
+}

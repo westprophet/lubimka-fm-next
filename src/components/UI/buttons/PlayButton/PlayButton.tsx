@@ -20,8 +20,7 @@ export default function PlayButton({
   disable, //Отключаем клацание
   active, // активный канал или нет. По умолчанию кнопка не привязана к каналу
 }: IPlayButtonProps) {
-  // const _size = useComponentSize<TChannelComponentType>(sizes);
-  const { isError: isErrorStatus, isPlayed, isPaused, isLoading } = getStatusConst(status);
+  const { isError: isErrorStatus, isPlayed, isLoading } = getStatusConst(status);
   return (
     <div
       className={cn(

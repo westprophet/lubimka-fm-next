@@ -7,9 +7,15 @@ import isValidIChannel from './isValidIChannel';
 import isValidIClub from './isValidIClub';
 import isValidIPartner from './isValidIPartner';
 import isValidITeamMember from './isValidITeamMember';
+import isValidITrackRadioheartNew from './isValidITrackRadioheartNew';
+import isValidITrackRadioheartNext from './isValidITrackRadioheartNext';
+import isValidITrackRadioheartPrev from './isValidITrackRadioheartPrev';
 
 export {
   isValidICompany,
+  isValidITrackRadioheartNew,
+  isValidITrackRadioheartPrev,
+  isValidITrackRadioheartNext,
   isValidIAuthor,
   isValidIIcon,
   isValidISocial,

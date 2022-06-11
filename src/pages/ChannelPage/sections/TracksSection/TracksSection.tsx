@@ -6,20 +6,14 @@ import React from 'react';
 import s from './TracksSection.module.scss';
 import cn from 'classnames';
 import TrackComponent from 'components/UI/TrackComponent';
-import useGetTracks from './hooks/useGetTracks';
-import { IChannel } from '../../../../interfaces';
+import { IChannel } from 'interfaces/IChannel';
 import TAudioTitle from '../../../../types/TAudioTitle';
-import { ITrackRadioheart } from '../../../../interfaces/ITrackRadioheart';
+import { ITrackRadioheart } from 'interfaces/ITrackRadioheart';
 import { getTAudioTitleByString } from '../../../../tools/ITrack';
-import useAddLastTrack from './hooks/useAddLastTrack';
-import useGetLastTrack from './hooks/useGetLastTrack';
+import useLastTracks from 'hooks/channel/lastTracks/useLastTracks';
 
 export default function TracksSection({ className, channel, title }: ITracksSectionProps) {
-  const { data: tracks } = useGetTracks(channel);
-  const { data: lastTracks } = useGetLastTrack(channel, title);
-  const lastTrack = lastTracks ? lastTracks[0] : null;
-  const _tracks = useAddLastTrack(lastTrack, tracks);
-
+  const _tracks = useLastTracks(channel, title);
   return (
     <div className={cn(s.TracksSection, className)}>
       <div className={cn(s.inner)}>

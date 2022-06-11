@@ -9,6 +9,9 @@
       "interfaces/*": [
         "src/interfaces/*"
       ],
+      "types/*": [
+        "src/types/*"
+      ],
       "api/*": [
         "src/api/*"
       ],

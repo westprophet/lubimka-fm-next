@@ -1,0 +1,13 @@
+
+//Стрелочка для ссылки
+@mixin fire-text-effect( $duration: 25s){
+  background: url('../../assets/test/title-bg-3-smoth.jpg');
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  animation: bg-swim $duration linear infinite;
+  &::selection {
+    background-color: transparent;
+  }
+
+}
+

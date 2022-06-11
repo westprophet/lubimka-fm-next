@@ -5,10 +5,22 @@ import {
   SectionWrapper,
   FullPageSectionWrapper,
   SectionSliderWrapper,
+  DoubleSection,
 } from './components';
+
 import { IDefaultLayoutAttributes } from './types';
 
 export type { IDefaultLayoutAttributes };
+
+export {
+  DefaultLayout,
+  PageWrapper,
+  PageTitle,
+  SectionWrapper,
+  FullPageSectionWrapper,
+  SectionSliderWrapper,
+  DoubleSection,
+};
 
 export default {
   Layout: DefaultLayout,
@@ -17,4 +29,5 @@ export default {
   Section: SectionWrapper,
   FullPageSection: FullPageSectionWrapper,
   SliderSection: SectionSliderWrapper,
+  DoubleSection: DoubleSection,
 };

@@ -8,7 +8,6 @@ import cn from 'classnames';
 import Image from 'next/image';
 import { TAudioManagerStatus } from '../../../types/TAudioManagerStatus';
 import PlayerControlComponent from 'components/UI/buttons/PlayerControlComponent';
-import TextPlaceholder from 'components/UI/TextPlaceholder';
 import Link from 'next/link';
 import getStatusConst from '../../../tools/TAudioManagerStatus/getStatusConst';
 
@@ -49,20 +48,11 @@ export default function ChannelComponent({
             isError={_isError}
           />
         </div>
-
-        <TextPlaceholder
-          placeholder="Подробнее"
-          side="right"
-          placeholderArrow
-          className={s.title}
-          isEnable={isDetail || _isError}
-        >
-          <Link href={`/channels/${id}`}>
-            <a>
-              <h4>{title}</h4>
-            </a>
-          </Link>
-        </TextPlaceholder>
+        <Link href={`/channels/${id}`}>
+          <a>
+            <h4 className={s.title}>{title}</h4>
+          </a>
+        </Link>
         <h5 className="status">{!disabled ? 'Online' : 'Offline'}</h5>
       </div>
       {cover ? <Image className={s.cover} src={cover} layout="fill" objectFit="cover" /> : null}

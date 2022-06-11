@@ -4,15 +4,11 @@ import { GetStaticPropsContext } from 'next/types';
 import api from '../../../src/api';
 
 import { IChannel } from 'src/interfaces';
+import BroadcastPage from '@pages/BroadcastPage';
+import { ITrackRadioheartNew } from 'interfaces/ITrackRadioheart';
 
-const Channel: NextPage<IChannelProps> = ({ channel }) => {
-  return (
-    <div>
-      <div>
-        <a href={`/broadcast/${channel.id}/order/`}>{channel.attributes.title}</a>
-      </div>
-    </div>
-  );
+const Channel: NextPage<IChannelProps> = ({ channel, newTracks }) => {
+  return <BroadcastPage channel={channel} newTracks={newTracks} />;
 };
 
 export const getStaticProps: GetStaticProps = async ({
@@ -20,6 +16,9 @@ export const getStaticProps: GetStaticProps = async ({
 }: GetStaticPropsContext<IChannelPageParams>) => {
   const id = params ? params['channel'] : 0; //Получаем id
   const channel = await api.strapi.channels.getChannel(id);
+  const newTracks = channel
+    ? await api.radio.tracks.getNewTracks({ c: channel, count: 100 })
+    : null;
   if (!channel)
     return {
       redirect: {
@@ -30,6 +29,7 @@ export const getStaticProps: GetStaticProps = async ({
   return {
     props: {
       channel,
+      newTracks,
     },
   };
 };
@@ -50,6 +50,7 @@ type IChannelPageParams = {
 
 interface IChannelProps {
   channel: IChannel;
+  newTracks: ITrackRadioheartNew[] | null;
 }
 
 export default Channel;

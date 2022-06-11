@@ -1,5 +1,5 @@
 //Получение названия и автора по имени
-import { ITrackRadioheart } from '../../interfaces/ITrackRadioheart';
+import { ITrackRadioheart } from 'interfaces/ITrackRadioheart';
 
 export default function compareITrackRadioheart(
   a: null | ITrackRadioheart,

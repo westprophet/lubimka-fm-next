@@ -72,8 +72,9 @@
       display: grid;
       gap: 5px;
       overflow: hidden;
+      text-align: center;
       .name {
-        white-space: nowrap;
+        //white-space: nowrap;
         @include f5() {
           font-weight: 500;
         }
@@ -84,7 +85,7 @@
 
 
       .artist {
-        white-space: nowrap;
+        //white-space: nowrap;
         @include f7() {
           font-weight: 500;
         }

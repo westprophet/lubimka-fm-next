@@ -1,0 +1,31 @@
+@import "src/scss/animations";
+.ErrorPage {
+  .inner{
+    //background-color: red;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    text-align: center;
+    gap: 30px;
+    align-items: center;
+    h1{
+      font-size: 80px;
+      font-weight: 800;
+      @include for-lg{
+        font-size: 200px;
+        letter-spacing: 0.14em;
+      }
+    }
+    h2{
+      text-transform: uppercase;
+      font-weight: 600;
+      @include for-lg{
+        font-size: 46px;
+      }
+    }
+    button{
+      max-width: 300px;
+    }
+  }
+}

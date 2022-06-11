@@ -14,7 +14,6 @@ function DefaultHeader({ className, show, transparent, fixed }: IDefaultHeaderPr
     <header
       className={cn(
         s.DefaultHeader,
-        // 'with-screen-padding',
         { [s.show]: show },
         { [s.transparent]: transparent },
         { [s.fixed]: fixed },

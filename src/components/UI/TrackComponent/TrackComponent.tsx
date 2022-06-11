@@ -22,9 +22,7 @@ export default function TrackComponent(p: ITrackComponentDataProps) {
   const isNoImg = typeof image !== 'string';
   return (
     <div
-      className={cn(s.T, { [s.dsc]: !p.isShowCover }, { [s.c]: p.isClickable }, p.className, {
-        [s.small]: p.small,
-      })}
+      className={cn(s.T, { [s.dsc]: !p.isShowCover }, { [s.c]: p.isClickable }, p.className)}
       style={p.style}
       onClick={p.isClickable ? p.onClick : () => {}}
     >
@@ -63,7 +61,6 @@ TrackComponent.defaultProps = {
   className: '',
   isCanFetchImage: true,
   isShowCover: true,
-  small: true,
 };
 
 export interface ITrackComponentProps {
@@ -74,8 +71,6 @@ export interface ITrackComponentProps {
   onClick?(): any;
   style?: CSSProperties;
   children?: any;
-  small?: boolean;
-  // additionalButton?: any;
 }
 
 interface ITrackComponentDataProps extends ITrackComponentProps {

@@ -20,7 +20,7 @@ import TracksSection from '@pages/AuthorPage/sections/TracksSection';
 
 export default function AuthorPage({ author }: IAuthorPageProps) {
   const [active, setActive] = useState<'tracks' | 'albums' | null>(null);
-
+  const onClose = () => setActive(null);
   const cover = getImageUrl(author?.attributes.avatar);
   const albums = author.attributes.albums.data;
   let recommendedTrack = author.attributes.recommendedTrack?.data;
@@ -60,7 +60,7 @@ export default function AuthorPage({ author }: IAuthorPageProps) {
             tracks={allTracks}
             className={s.sector}
             isShowDetail={active === 'tracks'}
-            onClose={() => setActive(null)}
+            onClose={onClose}
             onOpen={() => setActive('tracks')}
           />
           <AlbumsSection
@@ -68,7 +68,7 @@ export default function AuthorPage({ author }: IAuthorPageProps) {
             albums={albums}
             className={s.sector}
             isShowDetail={active === 'albums'}
-            onClose={() => setActive(null)}
+            onClose={onClose}
             onOpen={() => setActive('albums')}
           />
           <DSection.QuadContent.Container

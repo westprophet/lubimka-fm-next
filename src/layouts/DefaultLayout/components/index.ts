@@ -6,6 +6,7 @@ import FullPageSectionWrapper from './FullPageSectionWrapper';
 import LogoComponent from './LogoComponent';
 import SectionSliderWrapper from './SectionSliderWrapper';
 import SectionWrapper from './SectionWrapper';
+import DoubleSection from './DoubleSection';
 import PageWrapper from './PageWrapper';
 import PageTitle from './PageTitle';
 
@@ -18,6 +19,7 @@ export {
   FullPageSectionWrapper,
   SectionWrapper,
   DefaultHeader,
+  DoubleSection,
   PageWrapper,
   PageTitle,
 };

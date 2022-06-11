@@ -1,15 +1,15 @@
 import { useQuery } from 'react-query';
-import { IChannel } from '../../../../../interfaces';
-import api from '../../../../../api';
-import { ITrackRadioheartPrev } from '../../../../../interfaces/ITrackRadioheart';
+import { IChannel } from 'interfaces/IChannel';
+import api from 'api/index';
+import { ITrackRadioheartPrev } from 'interfaces/ITrackRadioheart';
 
 //Получаем последние треки на канале
-export default function useGetTracks(c: IChannel): {
+export default function useGetLastTracks(c: IChannel): {
   // isLoading: boolean;
   isError: boolean;
   data: null | ITrackRadioheartPrev[];
 } {
-  const { isLoading, isError, data } = useQuery(
+  const { isError, data } = useQuery(
     ['getLastTrack', c.attributes.name],
     () => api.radio.tracks.getLastTracks({ c }),
     {

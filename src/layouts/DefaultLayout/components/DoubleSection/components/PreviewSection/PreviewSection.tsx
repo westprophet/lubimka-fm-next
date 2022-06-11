@@ -19,6 +19,7 @@ export default function PreviewSection({ className, children, cover }: IPreviewS
             objectFit="cover"
             alt="alt"
             placeholder="blur"
+            className={cn('section-background')}
             blurDataURL={DATA_FOR_BLUR}
           />
         </div>

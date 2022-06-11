@@ -9,9 +9,8 @@ import { QuadContentSection as QS } from 'layouts/DefaultLayout/components/Doubl
 import { IAlbum } from 'interfaces/IAlbum';
 import Album from 'components/Album';
 // import DSection from 'layouts/DefaultLayout/components/DoubleSection';
-import TrackList from '@pages/AuthorPage/components/TrackList';
 import { IAuthor } from 'interfaces/IAuthor';
-import { ITrack } from 'interfaces/ITrack';
+import HiddenSideTrackList from 'components/tracks/HiddenSideITrackList';
 
 export default function AlbumsSection({
   className,
@@ -47,7 +46,7 @@ export default function AlbumsSection({
           })}
         </QS.Inner>
       </QS.Container>
-      <TrackList
+      <HiddenSideTrackList
         onClose={onClose}
         tracks={currentAlbum?.attributes.tracks.data ?? []}
         author={author}

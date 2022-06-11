@@ -1,0 +1,17 @@
+.LastTracksSection {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  .track{
+    cursor: pointer;
+    @include for-lg{
+      padding: 10px;
+    }
+    @include for-qxl{
+      padding: 10px 15px;
+    }
+    &:hover{
+      background: rgba(255, 255, 255, 0.15);
+    }
+  }
+}

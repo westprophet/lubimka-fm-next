@@ -21,16 +21,19 @@ export default function VerticalTrackComponent({
   isCanFetchImage,
   title,
   cover,
+  disablePlayButton,
 }: IVerticalTrackDataProps) {
   // Запрашиваем картинку для трека
-  const { image } = useImageState(title, isCanFetchImage && isShowCover);
+  const { image } = useImageState(title, isCanFetchImage && isShowCover && !cover);
   const _cover = image ?? cover;
   const isNoImg = typeof image !== 'string' || !_cover;
   return (
     <div className={cn(s.VerticalTrack, className)}>
       {isShowCover && (
         <div className={cn(s.cover, 'cover', { [s.noImageContainer]: isNoImg })}>
-          <PlayButton status="paused" type={2} onClick={() => {}} className={cn(s.playA)} />
+          {!disablePlayButton ? (
+            <PlayButton status="paused" type={2} onClick={() => {}} className={cn(s.playA)} />
+          ) : null}
           {!isNoImg ? (
             <Image src={_cover} layout="fill" placeholder="blur" blurDataURL={DATA_FOR_BLUR_ALT} />
           ) : (
@@ -39,18 +42,20 @@ export default function VerticalTrackComponent({
         </div>
       )}
       <div className={cn(s.content)}>
-        <PlayButton status="paused" type={2} onClick={() => {}} className={cn(s.playD)} />
+        {!disablePlayButton && (
+          <PlayButton status="paused" type={2} onClick={() => {}} className={cn(s.playD)} />
+        )}
 
         <div className={cn(s.title, 'title')}>
           <div className={cn(s.name)}>
-            <Marquee scrollWhen="overflow" direction="left">
-              {title?.title}
-            </Marquee>
+            {/*<Marquee scrollWhen="overflow" direction="left">*/}
+            {title?.title}
+            {/*</Marquee>*/}
           </div>
           <div className={cn(s.artist, 'artist')}>
-            <Marquee scrollWhen="overflow" direction="left">
-              {title?.artist}
-            </Marquee>
+            {/*<Marquee scrollWhen="overflow" direction="left">*/}
+            {title?.artist}
+            {/*</Marquee>*/}
           </div>
         </div>
       </div>
@@ -61,12 +66,14 @@ export default function VerticalTrackComponent({
 VerticalTrackComponent.defaultProps = {
   className: '',
   isShowCover: true,
+  disablePlayButton: true,
 };
 
 export interface IVerticalTrackProps {
   className?: string;
   isCanFetchImage?: boolean;
   isShowCover?: boolean;
+  disablePlayButton?: boolean;
 }
 
 interface IVerticalTrackDataProps extends IVerticalTrackProps {

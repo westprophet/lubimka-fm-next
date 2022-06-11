@@ -4,36 +4,37 @@
 
 // @ts-ignore
 import React, { startTransition, useCallback, useState } from 'react';
-import s from './TrackList.module.scss';
+import s from './HiddenSideTrackList.module.scss';
 import cn from 'classnames';
-import { ITrack } from 'interfaces/ITrack';
 import DSection from 'layouts/DefaultLayout/components/DoubleSection';
 import SearchInput from 'components/SearchInput';
-import Track from 'components/tracks/Track';
 import isEmptyString from 'utils/isEmptyString';
-import { IAuthor } from 'interfaces/IAuthor';
 
-export default function TrackList({
+export default function HiddenSideTrackList<T>({
   className,
   tracks,
   isShow,
   title,
   onClose,
-  author,
-}: ITrackListProps) {
+  onFilter,
+  children,
+}: ITrackListDataProps<T>) {
   const [searchValue, setSearchValue] = useState('');
-  const allTracks = tracks;
+  const allTracks: T[] = tracks;
   const onSearchHandler = useCallback((e: React.ChangeEvent<HTMLInputElement>) => {
     startTransition(() => {
       setSearchValue(e.target.value);
     });
   }, []);
-  let filteredTracks = [...allTracks];
+  let filteredTracks: T[] = [...allTracks];
 
   if (!isEmptyString(searchValue))
-    filteredTracks = allTracks?.filter((t: ITrack) =>
-      t.attributes.title.toLocaleLowerCase().includes(String(searchValue?.toLocaleLowerCase()))
+    filteredTracks = allTracks?.filter((value: T, index: number, array: T[]) =>
+      onFilter(value, searchValue, index, array)
     );
+
+  const res_tracks = filteredTracks.map(children);
+
   return (
     <DSection.HiddenAside.Wrapper open={isShow} className={cn(s.TrackList, className)}>
       <DSection.HiddenAside.Inner>
@@ -42,33 +43,21 @@ export default function TrackList({
           <SearchInput onChange={onSearchHandler} />
         </DSection.HiddenAside.Container>
         <DSection.HiddenAside.Scroller className={cn(s.inner)}>
-          {filteredTracks.map((t: ITrack) => {
-            return (
-              <Track
-                album={t.attributes.album}
-                author={author}
-                key={`strapi-track-${t.id}`}
-                track={t}
-                className={cn(s.track)}
-              />
-            );
-          })}
+          {res_tracks}
         </DSection.HiddenAside.Scroller>
       </DSection.HiddenAside.Inner>
     </DSection.HiddenAside.Wrapper>
   );
 }
 
-TrackList.defaultProps = {
-  className: '',
-  isShow: false,
-};
-
-interface ITrackListProps {
+export interface ITrackListProps<T> {
   className?: string;
-  tracks: ITrack[];
-  title: string;
-  author: IAuthor;
-  isShow: boolean;
   onClose(): any;
+  tracks: T[];
+  title: string;
+  isShow: boolean;
+}
+interface ITrackListDataProps<T> extends ITrackListProps<T> {
+  onFilter(value: T, search: string, index: number, array: T[]): boolean;
+  children(item: T, index: number, array: T[]): any;
 }

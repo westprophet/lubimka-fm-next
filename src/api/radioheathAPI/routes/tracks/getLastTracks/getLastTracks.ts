@@ -1,9 +1,8 @@
 import IChannel from '../../../../../interfaces/IChannel';
 import RadioHearthAPI from '../../../global';
 import tools from '../../../../../tools';
-import { ITrackRadioheartPrev } from '../../../../../interfaces/ITrackRadioheart';
+import { ITrackRadioheartPrev } from 'interfaces/ITrackRadioheart';
 
-//Получаем ВСЕ данные из потока радио
 export const getLastTracks = async ({
   c,
   count,

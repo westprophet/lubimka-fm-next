@@ -1,0 +1,66 @@
+.BroadcastPage {
+  h1 {
+    text-transform: uppercase;
+    @include f2_55 {
+      font-weight: 900;
+    }
+    @include for-lg {
+      font-size: 128px;
+    }
+  }
+
+  .preview {
+    display: flex;
+
+    :global(.section-background) {
+      filter: blur(10px) brightness(20%);
+    }
+
+    .previewInner {
+      display: flex;
+      justify-content: center;
+      flex-direction: column;
+      align-items: center;
+      gap: 30px;
+      margin: auto;
+      @include for-lg {
+        gap: 50px;
+      }
+
+      .now {
+        text-align: center;
+        display: grid;
+        gap: 10px;
+
+        .artist {
+
+        }
+
+        .name {
+          @include f4() {
+            font-weight: 700;
+          }
+        }
+      }
+
+      .player {
+
+      }
+    }
+  }
+
+  .content {
+    .nextTrackContainer{
+      display: grid;
+      height: 100%;
+      grid-template-rows: min-content auto;
+      align-items: center;
+      .nextTrackInner {
+        height: 100%;
+
+        display: flex;
+        justify-content: center;
+      }
+    }
+  }
+}

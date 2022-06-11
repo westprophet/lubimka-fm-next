@@ -22,13 +22,8 @@ import TracksSection from './sections/TracksSection';
 function ChannelPage({ className, channel }: IChannelPageProps) {
   const cover = getImageUrl(channel.attributes.cover);
   const stream = useGetStaticChannelStream(channel);
-  //
   const isError = stream.status === 'error';
-  //
   const title: TAudioTitle | null = getTitle(stream.data);
-  // const title: TAudioTitle | null = null;
-
-  // console.log('Render: ChannelPage');
 
   return (
     <DefaultLayout.Layout
