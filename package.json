@@ -4,7 +4,7 @@
   "scripts": {
     "dev": "next dev",
     "dev-prod": "cross-env NEXT_PUBLIC_REMOTE_API=1 next dev",
-    "build": "next build",
+    "next-build": "next build",
     "start": "next start",
     "lint": "next lint"
   },
