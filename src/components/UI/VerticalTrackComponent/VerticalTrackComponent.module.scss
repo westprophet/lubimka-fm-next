@@ -13,6 +13,9 @@
     justify-items: center;
     max-width: 180px;
   }
+  @include for-xl{
+    max-width: 240px;
+  }
   @include for-fxl{
     max-width: 280px;
   }
@@ -40,7 +43,7 @@
         display: none;
       }
     }
-    @include for-fxl{
+    @include for-xl{
       width: 120px;
       height: 120px;
     }
@@ -72,13 +75,16 @@
       display: grid;
       gap: 5px;
       overflow: hidden;
-      text-align: center;
+      @include for-lg{
+        gap: 15px;
+        text-align: center;
+      }
       .name {
         //white-space: nowrap;
         @include f5() {
           font-weight: 500;
         }
-        @include for-fxl{
+        @include for-xl{
           @include f4();
         }
       }
@@ -89,7 +95,7 @@
         @include f7() {
           font-weight: 500;
         }
-        @include for-fxl{
+        @include for-xl{
           @include f5();
         }
       }

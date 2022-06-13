@@ -2,18 +2,11 @@ import { useQuery } from 'react-query';
 import { IChannel } from 'interfaces/IChannel';
 import api from 'api/index';
 import { ITrackRadioheartPrev } from 'interfaces/ITrackRadioheart';
-import TAudioTitle from '../../../types/TAudioTitle';
+import TAudioTitle from 'types/TAudioTitle';
 
 //Получаем последние треки на канале
-export default function useGetLastTrack(
-  c: IChannel,
-  title: TAudioTitle | null
-): {
-  // isLoading: boolean;
-  isError: boolean;
-  data: null | ITrackRadioheartPrev[];
-} {
-  const { isError, data } = useQuery(
+export default function useGetLastTrack({ c, title }: IUseGetLastTrackArg): IUseGetLastTrackReturn {
+  const { isError, data, isLoading } = useQuery(
     ['getLastTrack', c.attributes.name, title],
     () => api.radio.tracks.getLastTracks({ c, count: 1 }),
     {
@@ -23,7 +16,18 @@ export default function useGetLastTrack(
     }
   );
   return {
-    data: data ?? null,
+    data: data ? data[0] : null,
     isError,
+    isLoading,
   };
+}
+interface IUseGetLastTrackArg {
+  c: IChannel;
+  title: TAudioTitle | null;
+}
+
+interface IUseGetLastTrackReturn {
+  isError: boolean;
+  isLoading: boolean;
+  data: null | ITrackRadioheartPrev;
 }

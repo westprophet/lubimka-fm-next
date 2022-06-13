@@ -34,7 +34,7 @@ function App({ Component, pageProps }: AppProps) {
             }}
           >
             <CookiesProvider>
-              <RadioPlayerManager channels={pageProps.channels}>
+              <RadioPlayerManager>
                 <Component {...pageProps} />
               </RadioPlayerManager>
             </CookiesProvider>

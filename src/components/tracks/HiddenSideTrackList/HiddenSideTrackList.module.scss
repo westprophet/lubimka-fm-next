@@ -1,13 +1,14 @@
 @import "../../../layouts/DefaultLayout/scss/mixins/index";
+
 .TrackList {
-  .inner{
-    display: flex;
-    flex-direction: column;
-    gap: 0;
-    & > *{
+  .inner {
+    ::-webkit-scrollbar{
+      display: none;
+    }
+    :global(.track) {
       cursor: pointer;
       @include layout-padding(false, true, false, true);
-      &:hover{
+      &:hover {
         background: rgba(255, 255, 255, 0.15);
         box-shadow: inset 0px 0px 60px rgba(255, 255, 255, 0.25);
       }

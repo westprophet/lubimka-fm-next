@@ -2,7 +2,7 @@
  * Created by westp on 28.03.2022
  */
 
-import React, { useContext } from 'react';
+import React from 'react';
 import s from './ToTopSection.module.scss';
 import cn from 'classnames';
 import CustomVerticalProgress from './components/CustomVerticalProgress';

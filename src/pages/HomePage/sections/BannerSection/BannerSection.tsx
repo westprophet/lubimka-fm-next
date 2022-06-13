@@ -3,7 +3,7 @@ import s from './BannerSection.module.scss';
 import cn from 'classnames';
 import FullPageSection from '../../../../layouts/DefaultLayout/components/FullPageSectionWrapper';
 import BannerMiniPlayer from './sections/BannerMiniPlayer';
-import DynamicChannelTitle from './components/DynamicChannelTitle';
+import DynamicChannelTitle from '../../../../components/DynamicChannelTitle';
 import ShineBannerSpectrum from './components/ShineBannerSpectrum';
 
 export default function BannerSection() {

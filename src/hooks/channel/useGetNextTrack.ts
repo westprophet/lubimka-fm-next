@@ -5,17 +5,13 @@ import { ITrackRadioheartNext } from 'interfaces/ITrackRadioheart';
 import TAudioTitle from 'types/TAudioTitle';
 
 //Получаем последние треки на канале
-export default function useGetNextTrack(
-  c: IChannel,
-  title: TAudioTitle | null
-): {
-  // isLoading: boolean;
-  isError: boolean;
-  data: null | ITrackRadioheartNext;
-} {
-  const { isError, data } = useQuery(
+export default function useGetNextTrack({
+  c,
+  title,
+}: IUseGetNextTracksArg): IUseGetNextTracksReturn {
+  const { isError, data, isLoading } = useQuery(
     ['getNextTrack', c.attributes.name, title],
-    () => api.radio.tracks.getNextTracks({ c, count: 1 }),
+    () => api.radio.tracks.getNextTracks({ c, count: 3 }),
     {
       retryDelay: 2000,
       enabled: !!c && !!title,
@@ -25,5 +21,16 @@ export default function useGetNextTrack(
   return {
     data: data ? data[0] : null,
     isError,
+    isLoading,
   };
+}
+interface IUseGetNextTracksArg {
+  c: IChannel;
+  title: TAudioTitle | null;
+}
+
+interface IUseGetNextTracksReturn {
+  isError: boolean;
+  isLoading: boolean;
+  data: ITrackRadioheartNext | null;
 }

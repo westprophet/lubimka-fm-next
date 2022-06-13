@@ -2,7 +2,8 @@
  * Created by westp on 02.05.2022
  */
 
-import React, { CSSProperties } from 'react';
+// @ts-ignore
+import React, { CSSProperties, startTransition, useState } from 'react';
 import s from './TrackComponent.module.scss';
 import cn from 'classnames';
 import TAudioTitle from '../../../types/TAudioTitle';
@@ -17,14 +18,26 @@ import { IconButton } from '@mui/material';
 import Marquee from 'react-double-marquee';
 
 export default function TrackComponent(p: ITrackComponentDataProps) {
-  // Запрашиваем картинку для трека
+  const [hover, setHover] = useState(false);
   const { image } = useImageState(p.title, p.isCanFetchImage && p.isShowCover);
   const isNoImg = typeof image !== 'string';
+  const marqueSpeed = hover ? 0.04 : 0;
+  const onMouseOverHandler = () => startTransition(() => setHover(true));
+  const onMouseLeaveHandler = () => startTransition(() => setHover(false));
+
   return (
     <div
-      className={cn(s.T, { [s.dsc]: !p.isShowCover }, { [s.c]: p.isClickable }, p.className)}
+      className={cn(
+        s.T,
+        'track',
+        { [s.dsc]: !p.isShowCover },
+        { [s.c]: p.isClickable },
+        p.className
+      )}
       style={p.style}
       onClick={p.isClickable ? p.onClick : () => {}}
+      onMouseOver={onMouseOverHandler}
+      onMouseLeave={onMouseLeaveHandler}
     >
       {p.isShowCover && (
         <div className={cn(s.cover, 'cover', { [s.noImageContainer]: isNoImg })}>
@@ -37,21 +50,28 @@ export default function TrackComponent(p: ITrackComponentDataProps) {
       )}
       <div className={cn(s.title, 'title')}>
         <div className={cn(s.name)}>
-          <Marquee scrollWhen="overflow" direction="left">
+          <Marquee
+            scrollWhen="overflow"
+            direction="left"
+            speed={marqueSpeed}
+            suppressHydrationWarning
+          >
             {p.title?.title}
           </Marquee>
         </div>
-        <div className={cn(s.artist, 'artist')}>
-          <Marquee scrollWhen="overflow" direction="left">
+        <div className={cn(s.artist, 'artist')} suppressHydrationWarning>
+          <Marquee scrollWhen="overflow" direction="left" speed={marqueSpeed}>
             {p.title?.artist}
           </Marquee>
         </div>
       </div>
       <div className={cn(s.actionContainer, 'actions')}>
         {p.children}
-        <IconButton>
-          <MoreHorizIcon />
-        </IconButton>
+        {p.isShowMenu && (
+          <IconButton>
+            <MoreHorizIcon />
+          </IconButton>
+        )}
       </div>
     </div>
   );
@@ -61,12 +81,14 @@ TrackComponent.defaultProps = {
   className: '',
   isCanFetchImage: true,
   isShowCover: true,
+  isShowMenu: true,
 };
 
 export interface ITrackComponentProps {
   className?: string;
   isCanFetchImage?: boolean;
   isShowCover?: boolean;
+  isShowMenu?: boolean;
   isClickable?: boolean;
   onClick?(): any;
   style?: CSSProperties;

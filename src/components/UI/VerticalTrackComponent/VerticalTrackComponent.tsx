@@ -12,7 +12,6 @@ import useImageState from 'hooks/useImageState';
 import TAudioTitle from '../../../types/TAudioTitle';
 
 // @ts-ignore
-import Marquee from 'react-double-marquee';
 import PlayButton from 'components/UI/buttons/PlayButton';
 
 export default function VerticalTrackComponent({
@@ -47,16 +46,8 @@ export default function VerticalTrackComponent({
         )}
 
         <div className={cn(s.title, 'title')}>
-          <div className={cn(s.name)}>
-            {/*<Marquee scrollWhen="overflow" direction="left">*/}
-            {title?.title}
-            {/*</Marquee>*/}
-          </div>
-          <div className={cn(s.artist, 'artist')}>
-            {/*<Marquee scrollWhen="overflow" direction="left">*/}
-            {title?.artist}
-            {/*</Marquee>*/}
-          </div>
+          <div className={cn(s.name)}>{title?.title}</div>
+          <div className={cn(s.artist, 'artist')}>{title?.artist}</div>
         </div>
       </div>
     </div>

@@ -1,6 +1,5 @@
 import isEmptyArray from 'src/utils/isEmptyArray';
-import { IChannel } from '../../../../../../../interfaces';
-import { compareIChannels } from 'src/tools/IChannel';
+import { IChannel } from 'interfaces/IChannel';
 import getCurrentIndexChannel from '../../../../../../../tools/IChannel/getCurrentIndexChannel';
 //Поиск номера канала для слайдера
 export default function useGetCurrentSlideByChannels(

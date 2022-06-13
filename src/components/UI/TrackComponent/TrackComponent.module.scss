@@ -9,12 +9,10 @@
   background-color: transparent;
   transition: background-color .3s;
   grid-column-gap: $grid-column-gap-xs;
-  padding: $padding-v-xs 4px $padding-v-xs 2px;
-
+  padding: $padding-v-xs 2px;
   &.dsc {
     grid-template-columns: auto min-content;
   }
-
   &.c {
     cursor: pointer;
     border-radius: 5px;
@@ -24,8 +22,6 @@
       transition: background-color .3s;
     }
   }
-
-
   .cover {
     width: $height-image-xs;
     height: $height-image-xs;
@@ -45,7 +41,6 @@
       }
     }
   }
-
   .title {
     display: grid;
     align-items: center;
@@ -55,16 +50,12 @@
     @include for-xxl {
       padding: 5px 0;
     }
-
-    .name {
-      white-space: nowrap;
+    :local(.name) {
       @include f5 {
         font-weight: 500;
       }
     }
-
-    .artist {
-      white-space: nowrap;
+    :local(.artist) {
       @include f7 {
         font-weight: 400;
       }
@@ -72,14 +63,28 @@
         @include f5;
       }
     }
+    :local{
+      .name,
+      .artist{
+        overflow: hidden;
+        white-space: nowrap;
+        overflow-wrap: break-word;
+        text-overflow: ellipsis;
+      }
+    }
   }
-
   .actionContainer {
     button, button > svg {
       color: var(--text-color);
     }
   }
-
+  &:hover{
+    :local{
+      .name, .artist{
+        overflow: hidden;
+      }
+    }
+  }
   @include for-lg {
     grid-column-gap: $grid-column-gap-lg;
   }
@@ -92,7 +97,5 @@
   @include for-qxl {
     grid-column-gap: 15px;
   }
-
-
 }
 

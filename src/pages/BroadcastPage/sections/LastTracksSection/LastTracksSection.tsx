@@ -17,13 +17,12 @@ export default function LastTracksSection({
   onClose,
   onOpen,
 }: INewTracksSectionProps) {
-  if (!tracks) return null;
   return (
     <>
       <QS.Container
         title="История"
         disableHorizontalPadding
-        colorType={2}
+        colorType={3}
         other={{
           title: 'Все',
           onClick: onOpen,

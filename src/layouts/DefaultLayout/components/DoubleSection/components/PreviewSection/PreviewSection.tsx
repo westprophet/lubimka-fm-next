@@ -36,5 +36,5 @@ PreviewSection.defaultProps = {
 interface IPreviewSectionProps {
   className?: string;
   children: any;
-  cover: string | null;
+  cover?: string | null;
 }

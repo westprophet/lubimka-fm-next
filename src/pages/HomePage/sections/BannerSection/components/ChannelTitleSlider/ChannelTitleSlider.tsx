@@ -7,14 +7,15 @@ import s from './ChannelTitleSlider.module.scss';
 import cn from 'classnames';
 import Slider from 'react-slick';
 // import { ChannelManagerContext } from '../../../../../../contexts/ChannelManager';
-import { IChannel } from '../../../../../../interfaces';
+import { IChannel } from 'interfaces/IChannel';
 import useGetCurrentSlideByChannels from './hooks/useGetCurrentSlideByChannels';
 import useGetSliderSettings from './hooks/useGetSliderSettings';
 import { RadioPlayerContext } from '../../../../../../contexts/RadioPlayerManager';
 
-export default function ChannelTitleSlider({ className }: IChannelTitleSliderProps) {
-  const { channel, channels } = useContext(RadioPlayerContext); // Получаем текущий канал
-  const currentSlideIndex = useGetCurrentSlideByChannels(channel, channels);
+export default function ChannelTitleSlider({ className, channel }: IChannelTitleSliderProps) {
+  const { channel: current, channels } = useContext(RadioPlayerContext); // Получаем текущий канал
+  const _channel = channel ?? current;
+  const currentSlideIndex = useGetCurrentSlideByChannels(_channel, channels);
   const { sliderRef, settings } = useGetSliderSettings();
   useEffect(() => {
     if (sliderRef.current)
@@ -41,4 +42,5 @@ ChannelTitleSlider.defaultProps = {
 
 interface IChannelTitleSliderProps {
   className?: string;
+  channel?: IChannel | null;
 }

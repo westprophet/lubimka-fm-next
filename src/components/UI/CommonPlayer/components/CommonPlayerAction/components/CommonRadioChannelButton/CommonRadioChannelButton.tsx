@@ -14,7 +14,6 @@ export default function CommonRadioChannelButton({
   onClick,
   isOpen,
 }: ICommonRadioChannelButtonProps) {
-  if (!title) return null;
   return (
     <div className={cn(s.CommonRadioChannelButton, className)}>
       <Button key={title} variant="text" onClick={onClick}>

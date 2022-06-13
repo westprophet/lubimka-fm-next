@@ -50,7 +50,9 @@ export default function ChannelComponent({
         </div>
         <Link href={`/channels/${id}`}>
           <a>
-            <h4 className={s.title}>{title}</h4>
+            <h4 className={s.title} suppressHydrationWarning>
+              {title}
+            </h4>
           </a>
         </Link>
         <h5 className="status">{!disabled ? 'Online' : 'Offline'}</h5>

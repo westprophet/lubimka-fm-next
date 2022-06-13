@@ -2,7 +2,7 @@
 import { startTransition, useCallback, useState } from 'react';
 import IChannel from 'src/interfaces/IChannel';
 import { useSnackbar } from 'notistack';
-import { TAudioManagerStatus } from '../../../types/TAudioManagerStatus';
+import { TAudioManagerStatus } from 'types/TAudioManagerStatus';
 import useChannelStream from './useChannelStream';
 import { compareIChannels } from '../../../tools/IChannel';
 import useAudio from './useAudio';

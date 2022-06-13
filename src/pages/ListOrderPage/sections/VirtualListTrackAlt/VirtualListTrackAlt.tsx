@@ -12,10 +12,15 @@ import List from 'react-virtualized/dist/commonjs/List';
 import WindowScroller from 'react-virtualized/dist/commonjs/WindowScroller';
 
 import useBreakpoint from 'hooks/useBreakpoint';
-import SearchInput from 'components/SearchInput';
+// import SearchInput from 'components/SearchInput';
 import TOrderTrackViewMode from '../../types/TOrderTrackViewMode';
 import { useRouter } from 'next/router';
 import IChannel from 'interfaces/IChannel';
+// import dynamic from 'next/dynamic';
+
+// const List = dynamic(() => import('react-virtualized/dist/commonjs/List'), {
+//   ssr: false,
+// });
 
 export default function VirtualListTrackAlt({
   className,
@@ -25,12 +30,6 @@ export default function VirtualListTrackAlt({
 }: IVirtualListProps) {
   const b = useBreakpoint();
   const r = useRouter();
-  //Формируем ключ
-  // const itemKey = useCallback((index, data) => {
-  //   const item = data[index];
-  //   return item.id;
-  // }, []);
-
   //Формируем строку
   const renderRow = useCallback(
     ({ key, index, style }) => {
@@ -67,12 +66,9 @@ export default function VirtualListTrackAlt({
                 layout="vertical"
                 height={height}
                 width={width}
-                // itemData={tracks}
-                // itemKey={itemKey}
                 scrollTop={scrollTop}
-                // overscanRowCount={10}
                 rowCount={tracks.length}
-                rowHeight={b.fxl ? 90 : b.lg ? 60 : 50}
+                rowHeight={b.fxl ? 90 : b.lg ? 72 : 50}
                 rowRenderer={renderRow}
               />
             )}

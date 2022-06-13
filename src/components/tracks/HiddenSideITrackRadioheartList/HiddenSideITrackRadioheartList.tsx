@@ -27,8 +27,15 @@ export default function HiddenSideITrackRadioheartList({
         value.name.toLocaleLowerCase().includes(String(search?.toLocaleLowerCase()))
       }
     >
-      {(t: ITrackRadioheart) => {
-        return <Track key={`radioheart-track-${t.name}`} track={t} className={cn(s.track)} />;
+      {({ data, index, style }) => {
+        return (
+          <Track
+            key={`radioheart-track-${data[index].name}`}
+            track={data[index]}
+            className={cn(s.track)}
+            style={style}
+          />
+        );
       }}
     </HiddenSideTrackList>
   );

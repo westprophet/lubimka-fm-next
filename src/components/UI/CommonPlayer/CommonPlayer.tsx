@@ -12,7 +12,7 @@ import CommonPlayerCover from './components/CommonPlayerCover';
 import CommonPlayerAction from './components/CommonPlayerAction';
 import ChannelMenuSelector from './sections/ChannelMenuSelector';
 import PlayerControlComponent from 'components/UI/buttons/PlayerControlComponent';
-import { TAudioManagerStatus } from '../../../types/TAudioManagerStatus';
+import { TAudioManagerStatus } from 'types/TAudioManagerStatus';
 import { IChannel } from '../../../interfaces';
 
 //Интерфейс плеера

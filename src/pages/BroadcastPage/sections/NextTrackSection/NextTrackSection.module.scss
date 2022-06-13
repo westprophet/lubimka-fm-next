@@ -1,0 +1,11 @@
+.NextTrackSection {
+  display: grid;
+  height: 100%;
+  grid-template-rows: min-content auto;
+  align-items: center;
+  .inner {
+    height: 100%;
+    display: flex;
+    justify-content: center;
+  }
+}

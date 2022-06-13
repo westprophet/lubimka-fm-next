@@ -35,10 +35,6 @@ export default function RadioPlayerManager({ children, channels: _channels }: IP
   return <RadioPlayerContext.Provider value={values}>{children}</RadioPlayerContext.Provider>;
 }
 
-// RadioPlayerManager.defaultProps = {
-//   channels: CHANNELS,
-// };
-
 interface IPlayerManagerProps {
   children: any;
   channels?: IChannel[];

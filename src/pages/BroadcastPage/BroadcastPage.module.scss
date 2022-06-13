@@ -1,16 +1,26 @@
 .BroadcastPage {
-  h1 {
-    text-transform: uppercase;
-    @include f2_55 {
-      font-weight: 900;
-    }
-    @include for-lg {
-      font-size: 128px;
-    }
-  }
+  position: relative;
 
   .preview {
     display: flex;
+    @include before-lg {
+      position: relative;
+    }
+
+    .cover {
+      position: absolute;
+      left: 0;
+      top: 0;
+      filter: brightness(15%) blur(12px) ;
+      transition: background 3s;
+      width: 100%;
+      height: 100%;
+      //background: transparent url(https://lubimka-media.s3.eu-central-1.amazonaws.com/hits_min_6bf1feef44.jpeg);
+      background-position: center;
+      background-repeat: no-repeat;
+      background-size: cover;
+      z-index: -1;
+    }
 
     :global(.section-background) {
       filter: blur(10px) brightness(20%);
@@ -31,9 +41,9 @@
         text-align: center;
         display: grid;
         gap: 10px;
-
-        .artist {
-
+        min-height: 60px;
+        @include for-lg {
+          gap: 15px;
         }
 
         .name {
@@ -43,24 +53,6 @@
         }
       }
 
-      .player {
-
-      }
-    }
-  }
-
-  .content {
-    .nextTrackContainer{
-      display: grid;
-      height: 100%;
-      grid-template-rows: min-content auto;
-      align-items: center;
-      .nextTrackInner {
-        height: 100%;
-
-        display: flex;
-        justify-content: center;
-      }
     }
   }
 }

@@ -1,12 +1,12 @@
 import IChannel from '../../../../../interfaces/IChannel';
 import RadioHearthAPI from '../../../global';
 import tools from '../../../../../tools';
-import { ITrackRadioheartNext } from 'interfaces/ITrackRadioheart';
+import { ITrackRadioheartNew } from 'interfaces/ITrackRadioheart';
 
 export const getNewTracks = async ({
   c,
   count,
-}: IGetNextTracksParams): Promise<null | ITrackRadioheartNext[]> => {
+}: IGetNextTracksParams): Promise<null | ITrackRadioheartNew[]> => {
   if (!c) return null;
   const baseURL = tools.IChannel.getBaseURL(c);
   const user = c.attributes.stream.user;
@@ -31,7 +31,7 @@ export interface IGetNextTracksParams {
 }
 
 export interface IGetNextTracksResponse {
-  data: ITrackRadioheartNext[];
+  data: ITrackRadioheartNew[];
 }
 
 export default getNewTracks;

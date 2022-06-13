@@ -17,7 +17,6 @@ export default function BottomPlayer({
   setIsOpenChannelMenu,
 }: IBottomCommonPlayerProps) {
   const { stream, status, toggle, channel: current, channels } = useContext(RadioPlayerContext);
-  console.log(status);
   const { image } = useImageState(stream?.current);
   if (!current) return null;
   return (

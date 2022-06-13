@@ -7,9 +7,9 @@ import s from './NewTracksSection.module.scss';
 import cn from 'classnames';
 import { QuadContentSection as QS } from 'layouts/DefaultLayout/components/DoubleSection';
 
-import HiddenSideITrackRadioheartList from 'components/tracks/HiddenSideITrackRadioheartList';
 import { ITrackRadioheartNew } from 'interfaces/ITrackRadioheart';
 import Track from 'components/tracks/RadioTrack';
+import HiddenSideITrackRadioheartList from 'components/tracks/HiddenSideITrackRadioheartList';
 
 export default function NewTracksSection({
   isShowDetail,

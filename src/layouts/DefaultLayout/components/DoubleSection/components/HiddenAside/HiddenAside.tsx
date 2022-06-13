@@ -18,6 +18,7 @@ export const HiddenAside = forwardRef(({ className, side, open, children }: IHid
     <motion.div
       animate={open ? 'show' : 'stop'}
       variants={variants}
+      initial={'stop'}
       className={cn(
         s.HiddenAside,
         { [s.left]: side === 'left', [s.right]: side === 'right' },
