@@ -40,7 +40,6 @@ export default function BroadcastPage({ channel, newTracks }: IBroadcastPageProp
 
   const { image } = useImageState(title); // Запрашиваем картинку для трека
   const cover = image ?? channelCover;
-  console.log(image);
 
   const { data: lastTracks } = useLastTracks({ c: channel, title });
   const { data: nextTrack } = useGetNextTrack({ c: channel, title });
