@@ -10,10 +10,10 @@ import { IChannel } from 'interfaces/IChannel';
 import TAudioTitle from '../../../../types/TAudioTitle';
 import { ITrackRadioheart } from 'interfaces/ITrackRadioheart';
 import { getTAudioTitleByString } from '../../../../tools/ITrack';
-import useLastTracks from 'hooks/channel/lastTracks/useLastTracks';
+import useLastTracks from 'hooks/channel/useLastTracks';
 
 export default function TracksSection({ className, channel, title }: ITracksSectionProps) {
-  const _tracks = useLastTracks(channel, title);
+  const { data: _tracks } = useLastTracks({ c: channel, title });
   return (
     <div className={cn(s.TracksSection, className)}>
       <div className={cn(s.inner)}>

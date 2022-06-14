@@ -6,7 +6,7 @@ import React from 'react';
 import s from './Track.module.scss';
 import cn from 'classnames';
 import { ITrack } from 'interfaces/ITrack';
-import TrackComponent from 'components/UI/TrackComponent';
+import TrackComponent, { ITrackComponentProps } from 'components/UI/TrackComponent';
 import TAudioTitle from '../../../types/TAudioTitle';
 import { IAlbum } from 'interfaces/IAlbum';
 import { IAuthor } from 'interfaces/IAuthor';
@@ -23,7 +23,7 @@ Track.defaultProps = {
   className: '',
 };
 
-interface ITrackProps {
+interface ITrackProps extends ITrackComponentProps {
   className?: string;
   track: ITrack;
   author?: IAuthor;

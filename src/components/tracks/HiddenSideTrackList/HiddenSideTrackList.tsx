@@ -3,7 +3,7 @@
  */
 
 // @ts-ignore
-import React, { CSSProperties, startTransition, useCallback, useState } from 'react';
+import React, { startTransition, useCallback, useState } from 'react';
 import s from './HiddenSideTrackList.module.scss';
 import cn from 'classnames';
 import DSection from 'layouts/DefaultLayout/components/DoubleSection';
@@ -79,6 +79,5 @@ export interface ITrackListProps<T> {
 
 interface ITrackListDataProps<T> extends ITrackListProps<T> {
   onFilter(value: T, search: string, index: number, array: T[]): boolean;
-
   children(arg: ListChildComponentProps): any;
 }

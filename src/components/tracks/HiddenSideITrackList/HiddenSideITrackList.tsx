@@ -29,14 +29,15 @@ export default function HiddenSideITrackList({
         value.attributes.title.toLocaleLowerCase().includes(String(search?.toLocaleLowerCase()))
       }
     >
-      {(t: ITrack) => {
+      {({ data, index, style }) => {
         return (
           <Track
-            album={t.attributes.album}
+            album={data[index].attributes.album}
             author={author}
-            key={`strapi-track-${t.id}`}
-            track={t}
+            key={`strapi-track-${data[index].id}`}
+            track={data[index]}
             className={cn(s.track)}
+            style={style}
           />
         );
       }}
