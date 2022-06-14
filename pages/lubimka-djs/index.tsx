@@ -3,8 +3,9 @@ import { GetStaticProps } from 'next';
 import { GetStaticPropsContext } from 'next/types';
 import api from '../../src/api';
 import LubimkaDJsPage from '../../src/pages/LubimkaDJsPage';
-import { IStrapiRequestPagination } from '../../src/api/strapi/types/IStrapiRequestBaseParams';
-import { IGetAuthorsReturn } from '../../src/api/strapi/routes/authors/getAuthors/getAuthors';
+import { IStrapiRequestPagination } from 'api/strapi/types/IStrapiRequestBaseParams';
+import { IGetAuthorsReturn } from 'api/strapi/routes/authors/getAuthors/getAuthors';
+import getGlobalStaticProps, { IGetGlobalStaticProps } from '../../functions/getGlobalStaticProps';
 
 const Authors: NextPage<IAuthorsProps> = ({ authors }) => {
   return <LubimkaDJsPage authors={authors} />;
@@ -17,14 +18,14 @@ export const getStaticProps: GetStaticProps = async (context: GetStaticPropsCont
   };
 
   const authors = await api.strapi.authors.getAuthors({ pagination: initialPagination });
-  return {
+  return await getGlobalStaticProps({
     props: {
       authors,
     },
-  };
+  });
 };
 
-interface IAuthorsProps {
+interface IAuthorsProps extends IGetGlobalStaticProps {
   authors: IGetAuthorsReturn;
 }
 

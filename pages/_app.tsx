@@ -16,14 +16,12 @@ import 'src/scss/index.scss'; //Коренной файл стилей (общи
 
 import { CookiesProvider } from 'react-cookie';
 
-// const queryClient = new QueryClient();
-
 function App({ Component, pageProps }: AppProps) {
   const [queryClient] = useState(() => new QueryClient());
   return (
-    <ThemeProvider theme={theme}>
-      <QueryClientProvider client={queryClient}>
-        <Hydrate state={pageProps.dehydratedState}>
+    <QueryClientProvider client={queryClient}>
+      <Hydrate state={pageProps.dehydratedState}>
+        <ThemeProvider theme={theme}>
           <SnackbarProvider
             maxSnack={3}
             preventDuplicate
@@ -34,14 +32,14 @@ function App({ Component, pageProps }: AppProps) {
             }}
           >
             <CookiesProvider>
-              <RadioPlayerManager>
+              <RadioPlayerManager channels={pageProps.channels}>
                 <Component {...pageProps} />
               </RadioPlayerManager>
             </CookiesProvider>
           </SnackbarProvider>
-        </Hydrate>
-      </QueryClientProvider>
-    </ThemeProvider>
+        </ThemeProvider>
+      </Hydrate>
+    </QueryClientProvider>
   );
 }
 

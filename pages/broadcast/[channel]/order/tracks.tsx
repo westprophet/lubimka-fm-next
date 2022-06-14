@@ -4,7 +4,8 @@ import { GetStaticPropsContext } from 'next/types';
 import api from 'api/index';
 import { ITrackRadioheart } from 'interfaces/ITrackRadioheart';
 import { IChannel } from 'interfaces/index';
-import ListOrderPage from '../../../../src/pages/ListOrderPage';
+import ListOrderPage from 'src/pages/ListOrderPage';
+import getGlobalStaticProps, { IGetGlobalStaticProps } from 'functions/getGlobalStaticProps';
 
 const TrackList: NextPage<ITrackListProps> = ({ tracks, channel }) => {
   return <ListOrderPage tracks={tracks} channel={channel} />;
@@ -20,12 +21,12 @@ export const getStaticProps: GetStaticProps = async ({
       notFound: true,
     };
   const tracks = await api.radio.tracks.getAllTrack({ c: channel ?? null });
-  return {
+  return await getGlobalStaticProps({
     props: {
       tracks,
       channel,
     },
-  };
+  });
 };
 
 //https://nextjs.org/docs/api-reference/data-fetching/get-static-paths
@@ -42,7 +43,7 @@ type ITrackListPageParams = {
   channel: string;
 };
 
-interface ITrackListProps {
+interface ITrackListProps extends IGetGlobalStaticProps {
   tracks: ITrackRadioheart[];
   channel: IChannel;
 }

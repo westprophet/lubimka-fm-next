@@ -1,9 +1,10 @@
 import type { NextPage } from 'next';
 import { GetStaticProps } from 'next';
 import { GetStaticPropsContext } from 'next/types';
-import api from '../../../../src/api';
+import api from 'src/api';
 import { IChannel } from 'interfaces/IChannel';
 import OrderTrackPage from '@pages/OrderTrackPage';
+import getGlobalStaticProps, { IGetGlobalStaticProps } from 'functions/getGlobalStaticProps';
 
 //Заказ трека
 const Track: NextPage<ITrackProps> = ({ channel }) => {
@@ -19,11 +20,11 @@ export const getStaticProps: GetStaticProps = async ({
     return {
       notFound: true,
     };
-  return {
+  return await getGlobalStaticProps({
     props: {
       channel,
     },
-  };
+  });
 };
 
 //https://nextjs.org/docs/api-reference/data-fetching/get-static-paths
@@ -35,7 +36,7 @@ export async function getStaticPaths() {
   return { paths, fallback: false };
 }
 
-interface ITrackProps {
+interface ITrackProps extends IGetGlobalStaticProps {
   channel: IChannel;
 }
 

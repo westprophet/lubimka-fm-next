@@ -4,6 +4,9 @@ import { GetStaticPropsContext } from 'next/types';
 import api from '../../../src/api';
 import { IClub, IEvent } from 'src/interfaces';
 import ClubPage from '../../../src/pages/ClubPage';
+import getGlobalStaticProps, {
+  IGetGlobalStaticProps,
+} from '../../../functions/getGlobalStaticProps';
 // import ClubsPage from '../../../src/pages/ClubsPage';
 
 const ClubDetail: NextPage<IClubDetailProps> = ({ club, nearbyEvents, recomendedEvents }) => {
@@ -19,13 +22,13 @@ export const getStaticProps: GetStaticProps = async (context: GetStaticPropsCont
   const { data: nearbyEvents } = await api.strapi.events.getNearbyEvents(club?.id);
   let recomendedEvents = null;
   if (club?.attributes.recomendedEvents) recomendedEvents = club?.attributes.recomendedEvents?.data;
-  return {
+  return await getGlobalStaticProps({
     props: {
       club,
       nearbyEvents,
       recomendedEvents,
     },
-  };
+  });
 };
 
 // @ts-ignore
@@ -41,7 +44,7 @@ export const getStaticPaths: GetStaticPaths = async () => {
   };
 };
 
-interface IClubDetailProps {
+interface IClubDetailProps extends IGetGlobalStaticProps {
   club: IClub;
   nearbyEvents: IEvent[] | null;
   recomendedEvents: IEvent[] | null;

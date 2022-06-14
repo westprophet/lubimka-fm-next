@@ -4,6 +4,7 @@ import { GetStaticPropsContext } from 'next/types';
 import api from '../../../src/api';
 import { IClub, IEvent } from 'src/interfaces';
 import EventPage from '../../../src/pages/EventPage';
+import getGlobalStaticProps, { IGetGlobalStaticProps } from 'functions/getGlobalStaticProps';
 
 const EventDetail: NextPage<IEventDetailProps> = ({ event, club }) => {
   return <EventPage event={event} club={club} />;
@@ -16,12 +17,12 @@ export const getStaticProps: GetStaticProps = async (context: GetStaticPropsCont
     id: String(id),
   });
   const club = event?.attributes.club?.data;
-  return {
+  return await getGlobalStaticProps({
     props: {
       event,
       club,
     },
-  };
+  });
 };
 
 // @ts-ignore
@@ -36,7 +37,7 @@ export const getStaticPaths: GetStaticPaths = async () => {
   };
 };
 
-interface IEventDetailProps {
+interface IEventDetailProps extends IGetGlobalStaticProps {
   event: IEvent;
   club: IClub;
 }

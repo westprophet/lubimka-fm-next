@@ -3,6 +3,7 @@ import { GetStaticProps } from 'next';
 
 import api from '../src/api';
 import PostPage from '@pages/PostPage';
+import getGlobalStaticProps, { IGetGlobalStaticProps } from '../functions/getGlobalStaticProps';
 
 const TermsAndConditions: NextPage<ITermsAndConditionsProps> = ({ content, title }) => {
   return <PostPage title={title}>{content}</PostPage>;
@@ -11,15 +12,15 @@ const TermsAndConditions: NextPage<ITermsAndConditionsProps> = ({ content, title
 export const getStaticProps: GetStaticProps = async () => {
   const content = await api.strapi.single.getTermsAndConditions();
   const title = 'Конфиденциальность информации пользователей';
-  return {
+  return await getGlobalStaticProps({
     props: {
       title,
       content,
     },
-  };
+  });
 };
 
-interface ITermsAndConditionsProps {
+interface ITermsAndConditionsProps extends IGetGlobalStaticProps {
   content: any;
   title: string;
 }

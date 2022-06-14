@@ -4,6 +4,7 @@ import { GetStaticProps } from 'next';
 import { GetStaticPropsContext } from 'next/types';
 import api from '../src/api';
 import { IAuthor, IChannel, IClub, IEvent, IPartner } from 'src/interfaces';
+import getGlobalStaticProps, { IGetGlobalStaticProps } from '../functions/getGlobalStaticProps';
 
 const Home: NextPage<IHomeProps> = ({ events, clubs, authors, partners, channels }) => {
   return (
@@ -22,19 +23,19 @@ export const getStaticProps: GetStaticProps = async (context: GetStaticPropsCont
   const { data: clubs } = await api.strapi.clubs.getClubs();
   const { data: authors } = await api.strapi.authors.getAuthors();
   const { data: partners } = await api.strapi.partners.getPartners();
-  const channels = await api.strapi.channels.getChannels();
-  return {
+  // const channels = await api.strapi.channels.getChannels();
+  return await getGlobalStaticProps({
     props: {
       events,
       clubs,
       authors,
-      channels,
+      // channels,
       partners,
     },
-  };
+  });
 };
 
-interface IHomeProps {
+interface IHomeProps extends IGetGlobalStaticProps {
   events: IEvent[];
   clubs: IClub[];
   authors: IAuthor[];

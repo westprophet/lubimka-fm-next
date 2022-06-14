@@ -1,9 +1,9 @@
 import type { NextPage } from 'next';
 import { GetStaticProps } from 'next';
-import { GetStaticPropsContext } from 'next/types';
 import api from '../src/api';
-import { IChannel, ITeamMember } from 'src/interfaces';
+import { ITeamMember } from 'src/interfaces';
 import AboutUsPage from '../src/pages/AboutUsPage';
+import getGlobalStaticProps, { IGetGlobalStaticProps } from '../functions/getGlobalStaticProps';
 
 const AboutUs: NextPage<IAboutUsProps> = ({ team }) => {
   return <AboutUsPage team={team} />;
@@ -11,17 +11,15 @@ const AboutUs: NextPage<IAboutUsProps> = ({ team }) => {
 
 export const getStaticProps: GetStaticProps = async () => {
   const { data: team } = await api.strapi.team.getTeamMembers();
-  return {
+  return await getGlobalStaticProps({
     props: {
-      // channels,
       team,
     },
-  };
+  });
 };
 
-interface IAboutUsProps {
+interface IAboutUsProps extends IGetGlobalStaticProps {
   team: ITeamMember[];
-  channels?: IChannel[];
 }
 
 export default AboutUs;

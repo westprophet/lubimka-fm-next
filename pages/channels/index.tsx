@@ -3,6 +3,7 @@ import { GetStaticProps } from 'next';
 import api from '../../src/api';
 import { IChannel } from 'src/interfaces';
 import ChannelsPage from '../../src/pages/ChannelsPage';
+import getGlobalStaticProps, { IGetGlobalStaticProps } from '../../functions/getGlobalStaticProps';
 
 const Channels: NextPage<IChannelsProps> = ({ channels }) => {
   return <ChannelsPage channels={channels} />;
@@ -10,14 +11,14 @@ const Channels: NextPage<IChannelsProps> = ({ channels }) => {
 
 export const getStaticProps: GetStaticProps = async () => {
   const channels = await api.strapi.channels.getChannels();
-  return {
+  return await getGlobalStaticProps({
     props: {
       channels,
     },
-  };
+  });
 };
 
-interface IChannelsProps {
+interface IChannelsProps extends IGetGlobalStaticProps {
   channels: IChannel[];
 }
 

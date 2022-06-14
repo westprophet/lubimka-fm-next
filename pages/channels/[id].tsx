@@ -4,6 +4,7 @@ import { GetStaticPropsContext } from 'next/types';
 import api from '../../src/api';
 import { IChannel } from 'src/interfaces';
 import ChannelPage from '../../src/pages/ChannelPage';
+import getGlobalStaticProps, { IGetGlobalStaticProps } from 'functions/getGlobalStaticProps';
 
 //Подробнее о канале
 const Channel: NextPage<IChannelPageProps> = ({ channel }) => {
@@ -34,16 +35,16 @@ export const getStaticProps: GetStaticProps = async ({
       },
     };
   else
-    return {
+    return await getGlobalStaticProps({
       props: {
         channel,
         fallback: false,
       },
-    };
+    });
 };
 
 //Данные внутренней страницы
-interface IChannelPageProps {
+interface IChannelPageProps extends IGetGlobalStaticProps {
   channel: IChannel;
 }
 

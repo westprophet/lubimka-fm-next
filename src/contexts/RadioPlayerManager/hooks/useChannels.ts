@@ -17,7 +17,7 @@ export default function useChannels(channels: IChannel[] = []): {
       }),
     {
       initialData: channels,
-      cacheTime: 24 * (60 * (60 * 1000)),
+      cacheTime: 24 * (60 * (60 * 1000)), //Сутки
       notifyOnChangeProps: 'tracked',
       refetchOnWindowFocus: false,
     }

@@ -6,6 +6,9 @@ import api from '../../../src/api';
 import { IChannel } from 'src/interfaces';
 import BroadcastPage from '@pages/BroadcastPage';
 import { ITrackRadioheartNew } from 'interfaces/ITrackRadioheart';
+import getGlobalStaticProps, {
+  IGetGlobalStaticProps,
+} from '../../../functions/getGlobalStaticProps';
 
 const Channel: NextPage<IChannelProps> = ({ channel, newTracks }) => {
   return <BroadcastPage channel={channel} newTracks={newTracks} />;
@@ -26,12 +29,12 @@ export const getStaticProps: GetStaticProps = async ({
         permanent: false,
       },
     };
-  return {
+  return await getGlobalStaticProps({
     props: {
       channel,
       newTracks,
     },
-  };
+  });
 };
 
 //https://nextjs.org/docs/api-reference/data-fetching/get-static-paths
@@ -48,7 +51,7 @@ type IChannelPageParams = {
   channel: string;
 };
 
-interface IChannelProps {
+interface IChannelProps extends IGetGlobalStaticProps {
   channel: IChannel;
   newTracks: ITrackRadioheartNew[] | null;
 }

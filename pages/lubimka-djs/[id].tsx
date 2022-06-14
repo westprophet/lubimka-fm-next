@@ -4,6 +4,7 @@ import { GetStaticPathsContext, GetStaticPropsContext } from 'next/types';
 import api from '../../src/api';
 import { IAuthor } from 'interfaces/IAuthor';
 import AuthorPage from '@pages/AuthorPage';
+import getGlobalStaticProps, { IGetGlobalStaticProps } from '../../functions/getGlobalStaticProps';
 
 const Authors: NextPage<IAuthorProps> = ({ author }) => {
   return <AuthorPage author={author} />;
@@ -21,11 +22,11 @@ export const getStaticProps: GetStaticProps = async ({
         permanent: false,
       },
     };
-  return {
+  return await getGlobalStaticProps({
     props: {
       author,
     },
-  };
+  });
 };
 
 // @ts-ignore
@@ -45,7 +46,7 @@ type IAuthorPageParams = {
   id: string;
 };
 
-interface IAuthorProps {
+interface IAuthorProps extends IGetGlobalStaticProps {
   author: IAuthor;
 }
 

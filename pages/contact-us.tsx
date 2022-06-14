@@ -1,16 +1,11 @@
 import type { NextPage } from 'next';
-
-import { IChannel } from 'src/interfaces';
-
 import ContactUsPage from '../src/pages/ContactUsPage';
+import { getStaticProps } from '../functions/getGlobalStaticProps';
 
-const AboutUs: NextPage<IAboutUsProps> = () => {
+const AboutUs: NextPage = () => {
   return <ContactUsPage />;
 };
 
-interface IAboutUsProps {
-  // team: ITeamMember[];
-  channels?: IChannel[];
-}
+export { getStaticProps };
 
 export default AboutUs;

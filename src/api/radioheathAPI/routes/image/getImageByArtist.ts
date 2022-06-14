@@ -9,7 +9,7 @@ export const getImageByArtist = async (
   if (!artist || !title) return null;
   try {
     const { data }: IFetchRadioStreamDataResponse = await RadioHearthAPI.get(
-      `http://image-fetcher.radioheart.ru/api/get-image`,
+      `https://image-fetcher.radioheart.ru/api/get-image`,
       {
         params: {
           artist,

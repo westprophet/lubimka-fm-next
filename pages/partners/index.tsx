@@ -4,8 +4,9 @@ import { GetStaticProps } from 'next';
 import { GetStaticPropsContext } from 'next/types';
 import api from '../../src/api';
 import { IAuthor, IClub, IEvent, IPartner } from 'src/interfaces';
+import { IGetGlobalStaticProps } from '../../functions/getGlobalStaticProps';
 
-const Home: NextPage<IHomeProps> = ({ events, clubs, authors, partners }) => {
+const Home: NextPage<IHomePageProps> = ({ events, clubs, authors, partners }) => {
   return <HomePage events={events} clubs={clubs} authors={authors} partners={partners} />;
 };
 
@@ -26,7 +27,7 @@ export const getStaticProps: GetStaticProps = async (context: GetStaticPropsCont
   };
 };
 
-interface IHomeProps {
+interface IHomePageProps extends IGetGlobalStaticProps {
   events: IEvent[];
   clubs: IClub[];
   authors: IAuthor[];

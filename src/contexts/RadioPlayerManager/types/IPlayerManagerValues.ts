@@ -1,5 +1,5 @@
 import IChannel from 'src/interfaces/IChannel';
-import { TAudioManagerStatus } from '../../../types/TAudioManagerStatus';
+import { TAudioManagerStatus } from 'types/TAudioManagerStatus';
 import { MutableRefObject } from 'react';
 import TCreatedStream from '../../../types/TCreatedStream';
 
@@ -16,4 +16,5 @@ export default interface IPlayerManagerValues {
   channels: IChannel[] | null;
   id: string;
   stream: TCreatedStream | null;
+  isLoadingChannel: boolean;
 }

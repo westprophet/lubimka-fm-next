@@ -3,6 +3,7 @@ import { GetStaticProps } from 'next';
 import api from '../../../src/api';
 import { IClub } from 'src/interfaces';
 import ClubsPage from '../../../src/pages/ClubsPage';
+import getGlobalStaticProps, { IGetGlobalStaticProps } from 'functions/getGlobalStaticProps';
 
 const Clubs: NextPage<IChannelsProps> = ({ clubs }) => {
   return <ClubsPage clubs={clubs} />;
@@ -10,14 +11,14 @@ const Clubs: NextPage<IChannelsProps> = ({ clubs }) => {
 
 export const getStaticProps: GetStaticProps = async () => {
   const { data: clubs } = await api.strapi.clubs.getClubs();
-  return {
+  return await getGlobalStaticProps({
     props: {
       clubs,
     },
-  };
+  });
 };
 
-interface IChannelsProps {
+interface IChannelsProps extends IGetGlobalStaticProps {
   clubs: IClub[];
 }
 

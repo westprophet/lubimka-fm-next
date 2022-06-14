@@ -29,5 +29,5 @@ DynamicChannelTitle.defaultProps = {
 interface IDynamicChannelTitleProps {
   className?: string;
   title?: string;
-  channel?: IChannel;
+  channel?: IChannel | null;
 }
