@@ -8,6 +8,7 @@ import getGlobalStaticProps, { IGetGlobalStaticProps } from '../../functions/get
 const Channels: NextPage<IChannelsPageProps> = () => {
   const rm = useContext(RadioPlayerContext);
   if (!rm.channel) return null;
+
   return <BroadcastPage channel={rm.channel} />;
 };
 
