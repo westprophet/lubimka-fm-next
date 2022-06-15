@@ -8,6 +8,7 @@ export default interface IChannelManagerValues {
   getPrev(): IChannel;
   setPrevChannel(): IChannel | undefined;
   setNextChannel(): IChannel | undefined;
+  clearDataFromLocalStorage(): any;
   isLoading: boolean;
   isError: boolean;
 }

@@ -1,6 +1,7 @@
 @import '../../../../../../scss/mixins';
 
 .SectionContainer {
+
   $slice: 18px;
   border-radius: 25px 25px 0 0;
   //@include layout-padding-xs(false, true, true, true);
@@ -34,15 +35,22 @@
     @include f7() {
       font-weight: 700;
     }
+    .loader{
+      height: 14px;
+      width: 14px;
+    }
+
     @include for-lg {
       margin-bottom: 30px;
       padding: 0 15px;
       @include f5();
+      :local(.loader){
+        height: 16px;
+        width: 16px;
+      }
     }
     @include for-qxl{
       padding: 0 20px;
-    }
-    .title {
     }
     .link{
       font-weight: 300;

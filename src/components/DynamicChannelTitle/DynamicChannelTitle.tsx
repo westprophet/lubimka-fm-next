@@ -5,8 +5,31 @@
 import React from 'react';
 import s from './DynamicChannelTitle.module.scss';
 import cn from 'classnames';
-import ChannelTitleSlider from '@pages/HomePage/sections/BannerSection/components/ChannelTitleSlider';
+import { MChannelTitleSlider as ChannelTitleSlider } from '@pages/HomePage/sections/BannerSection/components/ChannelTitleSlider';
 import IChannel from 'interfaces/IChannel';
+import { motion } from 'framer-motion';
+
+const variants = {
+  show: {
+    opacity: 1,
+    transition: { duration: 1 },
+  },
+  hidden: {
+    opacity: 1,
+  },
+};
+
+const variants2 = {
+  show: {
+    y: '0',
+    opacity: 1,
+    transition: { duration: 1, delay: 1 },
+  },
+  hidden: {
+    y: '50%',
+    opacity: 0,
+  },
+};
 
 export default function DynamicChannelTitle({
   className,
@@ -14,9 +37,18 @@ export default function DynamicChannelTitle({
   channel,
 }: IDynamicChannelTitleProps) {
   return (
-    <div className={cn(s.DynamicChannelTitle, 'fire-text-effect', className)}>
-      {title && <h1>{title}</h1>}
-      <ChannelTitleSlider channel={channel} />
+    <div className={cn(s.DynamicChannelTitle, 'fire-text-effect ', className)}>
+      <motion.h1
+        variants={variants}
+        initial="hidden"
+        animate="show"
+        viewport={{
+          once: true,
+        }}
+      >
+        {title}
+      </motion.h1>
+      <ChannelTitleSlider variants={variants2} initial="hidden" animate="show" channel={channel} />
     </div>
   );
 }

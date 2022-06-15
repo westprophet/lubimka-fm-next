@@ -21,7 +21,6 @@ import {
 } from './sections';
 
 export default function HomePage({ events, clubs, authors, partners, channels }: IHomePageProps) {
-  // console.log('HomePage');
   return (
     <DefaultLayout.Layout
       className={cn(s.HomePage)}

@@ -1,2 +1,2 @@
 //ключ хранилища для каналов
-export default 'channel';
+export const LOCAL_KEY = 'channel';

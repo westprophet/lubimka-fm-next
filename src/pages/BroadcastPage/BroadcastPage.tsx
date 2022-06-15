@@ -2,45 +2,36 @@
  * Created by westp on 11.06.2022
  */
 // suppressHydrationWarning: true,
-import React, { useState } from 'react';
+import React, { useContext, useState } from 'react';
 import s from './BroadcastPage.module.scss';
 import cn from 'classnames';
 import { IChannel } from '../../interfaces';
 import DL, { IDefaultLayoutAttributes } from 'layouts/DefaultLayout';
 import { getImageUrl } from '@tools/IWrappedStrapiImage';
-import { useGetStaticChannelStream } from 'src/contexts/RadioPlayerManager';
+import { RadioPlayerContext, useGetStaticChannelStream } from 'src/contexts/RadioPlayerManager';
 import TAudioTitle from '../../types/TAudioTitle';
-import getTitle from '@tools/IRadioHearthStreamData/getTitle';
 
 import BroadcastPlayer from 'components/BroadcastPlayer';
 import NewTracksSection from '@pages/BroadcastPage/sections/NewTracksSection';
 import useImageState from 'hooks/useImageState';
 import { ITrackRadioheartNew } from 'interfaces/ITrackRadioheart';
 import LastTracksSection from '@pages/BroadcastPage/sections/LastTracksSection';
-import useLastTracks from 'hooks/channel/useLastTracks';
-import useGetNextTrack from 'hooks/channel/useGetNextTrack';
 import NextTrackSection from '@pages/BroadcastPage/sections/NextTrackSection';
-import useGetNewTracks from 'hooks/channel/useGetNewTracks';
 import DynamicChannelTitle from 'components/DynamicChannelTitle';
+import BroadcastNow from '@pages/BroadcastPage/components/BroadcastNow';
 
 export default function BroadcastPage({ channel, newTracks }: IBroadcastPageProps) {
   const [active, setActive] = useState<'news' | 'history' | null>(null);
   const onClose = () => setActive(null);
-
+  const { isLoadingChannels } = useContext(RadioPlayerContext);
   const stream = useGetStaticChannelStream(channel); //Подтягиваем данные о канале статически
-
-  // const channelTitle = channel.attributes.title;
   const channelCover = getImageUrl(channel.attributes.cover);
-  const title: TAudioTitle | null = getTitle(stream.data);
-
+  const title: TAudioTitle | null = stream.current;
   // const radioPrograms = channel.attributes.programs.data;
 
   const { image } = useImageState(title); // Запрашиваем картинку для трека
   const cover = image ?? channelCover;
 
-  const { data: lastTracks } = useLastTracks({ c: channel, title });
-  const { data: nextTrack } = useGetNextTrack({ c: channel, title });
-  const { data: _newTracks } = useGetNewTracks({ c: channel, initialTracks: newTracks });
   return (
     <DL.Layout
       className={cn(s.BroadcastPage)}
@@ -57,24 +48,22 @@ export default function BroadcastPage({ channel, newTracks }: IBroadcastPageProp
           />
           <DL.DoubleSection.Preview.Inner className={cn(s.previewInner)}>
             <DynamicChannelTitle className={cn(s.title)} channel={channel} />
-            <div className={cn(s.now)}>
-              <div className={cn(s.name)}>{title?.title}</div>
-              <div className={cn(s.artist)}>{title?.artist}</div>
-            </div>
+            <BroadcastNow title={title} isLoading={isLoadingChannels || stream.isLoading} />
             <BroadcastPlayer channel={channel} />
           </DL.DoubleSection.Preview.Inner>
         </DL.DoubleSection.Preview.Wrapper>
         <DL.DoubleSection.QuadContent.Wrapper>
-          <NextTrackSection track={nextTrack} />
-
+          <NextTrackSection channel={channel} title={title} />
           <NewTracksSection
-            tracks={_newTracks}
+            channel={channel}
+            initialTracks={newTracks}
             isShowDetail={active === 'news'}
             onOpen={() => setActive('news')}
             onClose={onClose}
           />
           <LastTracksSection
-            tracks={lastTracks}
+            channel={channel}
+            title={title}
             isShowDetail={active === 'history'}
             onOpen={() => setActive('history')}
             onClose={onClose}

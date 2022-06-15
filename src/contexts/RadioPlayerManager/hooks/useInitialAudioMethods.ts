@@ -109,19 +109,31 @@ export default function useInitialAudioMethods(_channels?: IChannel[]) {
   const setPrev = useCallback(
     (isAndPlay: false) => {
       // Если передали аргумент канала то сравниваем каналы
+      if (isLoading) return;
+      if (isError) {
+        startTransition(() => {
+          setStatus('paused');
+        });
+      }
       const prev = cm.getPrev();
       if (prev) set(prev, isAndPlay);
     },
-    [cm, set]
+    [cm, isLoading, set]
   );
 
   const setNext = useCallback(
     (isAndPlay: false) => {
       // Если передали аргумент канала то сравниваем каналы
+      if (isLoading) return;
+      if (isError) {
+        startTransition(() => {
+          setStatus('paused');
+        });
+      }
       const next = cm.getNext();
       if (next) set(next, isAndPlay);
     },
-    [cm, set]
+    [cm, isLoading, set]
   );
 
   //Как только трек будет загружен
@@ -137,14 +149,15 @@ export default function useInitialAudioMethods(_channels?: IChannel[]) {
   //При ошибках загрузки
   _onError = useCallback(() => {
     console.error('Случилась ошибка при загрузке данных канала');
-    stream.stopStream();
+    stream.stopStream(); //Останавливаем поток
+    cm.clearDataFromLocalStorage(); // Удаляем из локального хранилища данные
     setStatus('error');
     audioRef.current?.pause();
     enqueueSnackbar(`Случилась ошибка при загрузке данных канала`, {
       variant: 'error',
       autoHideDuration: 5000,
     });
-  }, [audioRef, stream, enqueueSnackbar]);
+  }, [stream, cm, audioRef, enqueueSnackbar]);
 
   return {
     audioRef,
@@ -158,6 +171,6 @@ export default function useInitialAudioMethods(_channels?: IChannel[]) {
     setNext,
     channels: cm.channels,
     channel: cm.current,
-    isLoadingChannel: cm.isLoading,
+    isLoadingChannels: cm.isLoading,
   };
 }

@@ -4,15 +4,8 @@
 @import './animations.scss';
 @import './styles-overrides.scss';
 
-
-
 :root {
   @include DefaultTheme();
-}
-#__next{
-  //display: flex;
-  //justify-content: center;
-  //width: 100vw;
 }
 html,
 body {
@@ -63,4 +56,7 @@ a {
 
 .fire-text-effect{
   @include fire-text-effect();
+  &.fix-fire{
+    animation: none;
+  }
 }

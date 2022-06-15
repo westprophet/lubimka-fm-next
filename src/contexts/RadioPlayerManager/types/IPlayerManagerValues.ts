@@ -16,5 +16,5 @@ export default interface IPlayerManagerValues {
   channels: IChannel[] | null;
   id: string;
   stream: TCreatedStream | null;
-  isLoadingChannel: boolean;
+  isLoadingChannels: boolean;
 }

@@ -10,6 +10,7 @@
   align-items: center;
   flex-shrink: 0;
   color: var(--primary-color);
+  transition: color .5s;
   button {
     width: calc(100% - #{$stroke-width-xs + 1}px);
     height: calc(100% - #{$stroke-width-xs + 1}px);
@@ -26,9 +27,11 @@
   }
   &:local(.error){
     button svg{
+      transition: color, fill .5s;
       color: var(--error-color);
     }
     :local(.circular) {
+      transition: color .5s;
       color: var(--error-color);
       &:global(.MuiCircularProgress-indeterminate) {
         color: var(--text-color);
@@ -42,6 +45,8 @@
     height: 100% !important;
     left: 0;
     top: 0;
+    transition: color .4s;
+    transition-delay: .8s;
     svg {
       circle {
         stroke-width: $stroke-width-xs;

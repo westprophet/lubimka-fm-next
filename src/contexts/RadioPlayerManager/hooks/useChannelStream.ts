@@ -1,13 +1,10 @@
 // @ts-ignore
 import { startTransition, useCallback, useRef, useState } from 'react';
-import { radio } from '../../../api';
-import IRadioHearthStreamData from '../../../api/radioheathAPI/types/IRadioHearthStreamData';
+import { radio } from 'api/index';
 import IChannel from '../../../interfaces/IChannel';
 
 import FETCH_STREAM_TIMOUT from '../constants/FETCH_STREAM_TIMOUT';
 import TRadioHearthStreamDataStatus from '../../../types/TRadioHearthStreamDataStatus';
-import getTitle from '../../../tools/IRadioHearthStreamData/getTitle';
-import compareTAudioTitle from '../../../tools/TAudioTitle/compareTAudioTitle';
 import TCreatedStream from '../../../types/TCreatedStream';
 import IRadioHearthStreamDataMount from '../../../api/radioheathAPI/types/IRadioHearthStreamDataMount';
 import rTools from '../../../api/radioheathAPI/tools';
@@ -22,7 +19,7 @@ export default function useChannelStream(
 ): TCreatedStream {
   const [status, setStatus] = useState<TRadioHearthStreamDataStatus>('stopped'); //Состояние данных
   const isActive = status === 'active';
-  const { data } = useQuery(
+  const { data, isLoading, isError } = useQuery(
     [c],
     () => {
       return radio.stream.fetchRadioStreamData(c);
@@ -59,5 +56,7 @@ export default function useChannelStream(
     startStream,
     stopStream,
     pauseStream,
+    isLoading,
+    isError,
   };
 }

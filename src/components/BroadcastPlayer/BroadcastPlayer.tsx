@@ -2,7 +2,8 @@
  * Created by westp on 11.06.2022
  */
 
-import React, { useCallback, useContext, useState } from 'react';
+// @ts-ignore
+import React, { startTransition, useCallback, useContext, useState } from 'react';
 import s from './BroadcastPlayer.module.scss';
 import cn from 'classnames';
 import IconButton from '@mui/material/IconButton';
@@ -23,23 +24,43 @@ export default function BroadcastPlayer({ className, channel }: IBroadcastPlayer
     channel: current,
     setNext,
     setPrev,
-    isLoadingChannel,
+    isLoadingChannels,
   } = useContext(RadioPlayerContext);
+
   const [loading, setLoading] = useState<null | 'order'>(null);
   const _channel: IChannel | null = channel ?? current;
-
+  const isCurrent: boolean = compareIChannels(_channel, current);
+  const isError: boolean = status === 'error';
   const isAndPlay = status === 'played';
-  const nextHandler = useCallback(() => setNext(isAndPlay), [isAndPlay, setNext]);
-  const prevHandler = useCallback(() => setPrev(isAndPlay), [isAndPlay, setPrev]);
+
+  const nextHandler = useCallback(
+    (event) => {
+      event.preventDefault();
+      startTransition(() => {
+        setNext(isAndPlay);
+      });
+    },
+    [isAndPlay, setNext]
+  );
+  const prevHandler = useCallback(
+    (event) => {
+      event.preventDefault();
+      startTransition(() => {
+        setPrev(isAndPlay);
+      });
+    },
+    [isAndPlay, setPrev]
+  );
   const pushOrderPageHandler = useCallback(() => {
+    if (loading || isError) return;
     setLoading('order');
     // eslint-disable-next-line promise/catch-or-return
     r.push(`/broadcast/${_channel?.id}/order/tracks`).finally(() => setLoading(null));
-  }, [_channel]);
+  }, [_channel?.id, isError, loading, r]);
 
-  if (!_channel || isLoadingChannel) return null;
+  if (!_channel || isLoadingChannels) return null;
   return (
-    <div className={cn(s.BroadcastPlayer, className)}>
+    <div className={cn(s.BroadcastPlayer, { [s.error]: isError }, className)}>
       <IconButton className={cn(s.order)} onClick={pushOrderPageHandler}>
         {loading !== 'order' ? <FactCheck /> : <CircularProgress />}
       </IconButton>
@@ -48,11 +69,11 @@ export default function BroadcastPlayer({ className, channel }: IBroadcastPlayer
       </IconButton>
       <PlayButton
         className={cn(s.play)}
-        active={compareIChannels(channel, current)}
+        active={isCurrent}
+        status={status}
         onClick={() => {
           if (_channel) set(_channel, true);
         }}
-        status={status}
       />
       <IconButton className={cn(s.next)} onClick={nextHandler}>
         <ChevronRight />

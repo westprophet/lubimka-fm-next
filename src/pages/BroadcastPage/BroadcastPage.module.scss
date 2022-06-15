@@ -28,6 +28,17 @@
     }
 
     .previewInner {
+      .title{
+        @include for-lg{
+          font-size: 60px;
+        }
+        @include for-xl{
+          font-size: 80px;
+        }
+        @include for-qxl{
+          font-size: 100px;
+        }
+      }
       display: flex;
       justify-content: center;
       flex-direction: column;
@@ -37,23 +48,6 @@
       @include for-lg {
         gap: 50px;
       }
-
-      .now {
-        text-align: center;
-        display: grid;
-        gap: 10px;
-        min-height: 60px;
-        @include for-lg {
-          gap: 15px;
-        }
-
-        .name {
-          @include f4() {
-            font-weight: 700;
-          }
-        }
-      }
-
     }
   }
 }

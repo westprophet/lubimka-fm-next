@@ -26,7 +26,7 @@ export default function RadioPlayerManager({ children, channels: _channels }: IP
     set,
     setPrev,
     setNext,
-    isLoadingChannel,
+    isLoadingChannels,
   } = useInitialAudioMethods(_channels);
 
   const values: IPlayerManagerValues = {
@@ -42,7 +42,7 @@ export default function RadioPlayerManager({ children, channels: _channels }: IP
     channel,
     channels,
     stream,
-    isLoadingChannel,
+    isLoadingChannels,
   };
 
   return <RadioPlayerContext.Provider value={values}>{children}</RadioPlayerContext.Provider>;

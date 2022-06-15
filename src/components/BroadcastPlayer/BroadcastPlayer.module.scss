@@ -11,10 +11,21 @@
     height: $size;
   }
   button{
-    color: inherit;
+    color: var(--border-color);
+    transition: color .4s;
+    transition-delay: .8s;
     &:hover{
       color: white;
       transition: .25s;
+    }
+  }
+  &.error{
+    button{
+      transition: color .5s;
+      color: var(--error-color);
+    }
+    .order{
+      cursor: not-allowed;
     }
   }
 }

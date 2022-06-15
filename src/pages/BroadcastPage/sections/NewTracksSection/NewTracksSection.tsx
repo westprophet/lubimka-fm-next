@@ -10,20 +10,24 @@ import { QuadContentSection as QS } from 'layouts/DefaultLayout/components/Doubl
 import { ITrackRadioheartNew } from 'interfaces/ITrackRadioheart';
 import Track from 'components/tracks/RadioTrack';
 import HiddenSideITrackRadioheartList from 'components/tracks/HiddenSideITrackRadioheartList';
+import useGetNewTracks from 'hooks/channel/useGetNewTracks';
+import IChannel from 'interfaces/IChannel';
 
 export default function NewTracksSection({
   isShowDetail,
-  tracks,
   onClose,
   onOpen,
+  initialTracks,
+  channel,
 }: INewTracksSectionProps) {
-  if (!tracks) return null;
+  const { data: tracks, isLoading } = useGetNewTracks({ c: channel, initialTracks: initialTracks });
   return (
     <>
       <QS.Container
         title="Новинки"
         disableHorizontalPadding
         colorType={2}
+        isLoading={isLoading}
         other={{
           title: 'Все',
           onClick: onOpen,
@@ -47,7 +51,8 @@ export default function NewTracksSection({
 }
 
 interface INewTracksSectionProps {
-  tracks: ITrackRadioheartNew[] | null;
+  channel: IChannel;
+  initialTracks?: ITrackRadioheartNew[] | null;
   isShowDetail: boolean;
   onOpen(): any;
   onClose(): any;

@@ -6,7 +6,7 @@ import React from 'react';
 import s from './PlayButton.module.scss';
 import cn from 'classnames';
 
-import { TAudioManagerStatus } from '../../../../types/TAudioManagerStatus';
+import { TAudioManagerStatus } from 'types/TAudioManagerStatus';
 import { CircularProgress } from '@mui/material';
 import PlayIconButton from 'components/UI/buttons/PlayIconButton';
 import getStatusConst from '../../../../tools/TAudioManagerStatus/getStatusConst';
@@ -21,6 +21,7 @@ export default function PlayButton({
   active, // активный канал или нет. По умолчанию кнопка не привязана к каналу
 }: IPlayButtonProps) {
   const { isError: isErrorStatus, isPlayed, isLoading } = getStatusConst(status);
+  const _isError = (isErrorStatus && active) || isError;
   return (
     <div
       className={cn(
@@ -29,7 +30,8 @@ export default function PlayButton({
           [s.type2]: type === 2,
         },
         {
-          [s.error]: (isErrorStatus && active) || isError,
+          [s.error]: _isError,
+          ['error']: _isError,
         },
         {
           [s.disable]: disable,

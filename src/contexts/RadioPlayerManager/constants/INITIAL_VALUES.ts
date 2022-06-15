@@ -13,7 +13,7 @@ const INITIAL_VALUES: IPlayerManagerValues = {
   channels: null,
   id: '',
   stream: null,
-  isLoadingChannel: true,
+  isLoadingChannels: true,
 };
 
 export default INITIAL_VALUES;

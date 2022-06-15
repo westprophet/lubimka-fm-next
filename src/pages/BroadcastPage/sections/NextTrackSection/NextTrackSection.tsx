@@ -7,15 +7,22 @@ import s from './NextTrackSection.module.scss';
 import cn from 'classnames';
 import VerticalTrackRadioheart from 'components/tracks/VerticalTrackRadioheart';
 import { QuadContentSection as QS } from 'layouts/DefaultLayout/components/DoubleSection';
-import { ITrackRadioheartNext } from 'interfaces/ITrackRadioheart';
+import useGetNextTrack from 'hooks/channel/useGetNextTrack';
+import IChannel from 'interfaces/IChannel';
+import TAudioTitle from 'types/TAudioTitle';
 
 //Следующий трек
-export default function NextTrackSection({ className, track }: INextTrackSectionProps) {
-  // if (!track) return null;
+export default function NextTrackSection({ className, channel, title }: INextTrackSectionProps) {
+  const { data, isLoading } = useGetNextTrack({ c: channel, title });
   return (
-    <QS.Container title={'Следующий'} colorType={1} className={cn(s.NextTrackSection, className)}>
+    <QS.Container
+      title={'Следующий'}
+      colorType={1}
+      className={cn(s.NextTrackSection, className)}
+      isLoading={isLoading}
+    >
       <QS.Inner className={cn(s.inner)}>
-        <VerticalTrackRadioheart track={track} className={cn(s.track)} />
+        <VerticalTrackRadioheart track={data} className={cn(s.track)} />
       </QS.Inner>
     </QS.Container>
   );
@@ -27,5 +34,6 @@ NextTrackSection.defaultProps = {
 
 interface INextTrackSectionProps {
   className?: string;
-  track: ITrackRadioheartNext | null;
+  channel: IChannel;
+  title: TAudioTitle | null;
 }

@@ -6,6 +6,7 @@ import React from 'react';
 import s from './SectionContainer.module.scss';
 import cn from 'classnames';
 import { useRouter } from 'next/router';
+import { CircularProgress } from '@mui/material';
 
 export default function SectionContainer({
   className,
@@ -13,9 +14,25 @@ export default function SectionContainer({
   colorType,
   title,
   other,
+  isLoading,
   enableLine,
 }: ISectionContainerProps) {
   const r = useRouter();
+  let rightSector = null;
+  if (isLoading) rightSector = <CircularProgress className={cn(s.loader)} size="small" />;
+  else if (other) {
+    rightSector = (
+      <div
+        className={cn(s.link, 'link-arrow')}
+        onClick={() => {
+          if (other.onClick) other.onClick();
+          else if (other.href) r.push(other.href);
+        }}
+      >
+        {other.title}
+      </div>
+    );
+  }
   return (
     <div
       className={cn(
@@ -35,17 +52,7 @@ export default function SectionContainer({
       </div>
       <div className={cn(s.head)}>
         {title && <div className={cn(s.title)}>{title}</div>}
-        {other && (
-          <div
-            className={cn(s.link, 'link-arrow')}
-            onClick={() => {
-              if (other.onClick) other.onClick();
-              else if (other.href) r.push(other.href);
-            }}
-          >
-            {other.title}
-          </div>
-        )}
+        {rightSector}
       </div>
       {children}
     </div>
@@ -56,6 +63,7 @@ SectionContainer.defaultProps = {
   className: '',
   colorType: 1,
   enableLine: true,
+  isLoading: false,
   disableHorizontalPadding: false,
 };
 
@@ -65,6 +73,7 @@ interface ISectionContainerProps {
   enableLine?: boolean;
   colorType?: 1 | 2 | 3;
   title?: any;
+  isLoading?: boolean;
   other?: {
     onClick?(): any;
     href?: string;

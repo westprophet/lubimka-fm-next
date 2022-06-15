@@ -1,4 +1,6 @@
-import React from 'react';
-import ChannelTitleSlider from './ChannelTitleSlider';
+import { ChannelTitleSlider } from './ChannelTitleSlider';
+import { motion } from 'framer-motion';
 
-export default React.memo(ChannelTitleSlider);
+export const MChannelTitleSlider = motion(ChannelTitleSlider);
+
+export default ChannelTitleSlider;

@@ -2,23 +2,36 @@
  * Created by westp on 08.06.2022
  */
 
-import React, { forwardRef } from 'react';
+import React from 'react';
 import s from './HiddenAside.module.scss';
 import cn from 'classnames';
 import { motion } from 'framer-motion';
 
 const variants = {
-  show: { x: '0', transition: { duration: 0.3 } },
-  // You can do whatever you want here, if you just want it to stop completely use `rotate: 0`
-  stop: { x: '120%', transition: { duration: 0.3 } },
+  show: {
+    x: '0',
+    transition: { duration: 0.5 },
+  },
+  hidden: {
+    x: '100%',
+    transition: {
+      duration: 0.5,
+    },
+    transitionEnd: {
+      display: 'none',
+      transition: {
+        delay: 1,
+      },
+    },
+  },
 };
 
-export const HiddenAside = forwardRef(({ className, side, open, children }: IHiddenAsideProps) => {
+export const HiddenAside = ({ className, side, open, children }: IHiddenAsideProps) => {
   return (
     <motion.div
-      animate={open ? 'show' : 'stop'}
+      animate={open ? 'show' : 'hidden'}
       variants={variants}
-      initial={'stop'}
+      initial={'hidden'}
       className={cn(
         s.HiddenAside,
         { [s.left]: side === 'left', [s.right]: side === 'right' },
@@ -28,7 +41,7 @@ export const HiddenAside = forwardRef(({ className, side, open, children }: IHid
       {children}
     </motion.div>
   );
-});
+};
 
 HiddenAside.defaultProps = {
   className: '',

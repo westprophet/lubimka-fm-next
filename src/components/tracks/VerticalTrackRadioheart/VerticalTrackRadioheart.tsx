@@ -11,8 +11,7 @@ import { ITrackRadioheartNext } from 'interfaces/ITrackRadioheart';
 import { getTAudioTitleByString } from '@tools/ITrack';
 
 export default function VerticalTrackRadioheart({ className, track }: IVerticalTrackProps) {
-  if (!track) return null;
-  const _title = getTAudioTitleByString(track.name);
+  const _title = track ? getTAudioTitleByString(track.name) : null;
   return (
     <VerticalTrackComponent
       className={cn(s.VerticalTrack, className)}

@@ -10,5 +10,7 @@ type TCreatedStream = {
   pauseStream(): any;
   current: TAudioTitle | null;
   isCurrentChannel?: boolean;
+  isLoading: boolean;
+  isError: boolean;
 };
 export default TCreatedStream;
