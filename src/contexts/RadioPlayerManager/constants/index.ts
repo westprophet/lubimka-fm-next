@@ -1,6 +1,6 @@
 import INITIAL_VALUES from './INITIAL_VALUES';
 import RADIO_PLAYER_ID from './RADIO_PLAYER_ID';
-import LOCAL_KEY from './LOCAL_KEY';
+import { LOCAL_KEY } from './LOCAL_KEY';
 import CHANNELS from './CHANNELS';
 import { FIELD_KEY } from './FIELD_KEY';
 import DEFAULT_CHANNEL_KEY from './DEFAULT_CHANNEL_KEY';
