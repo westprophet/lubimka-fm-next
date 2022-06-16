@@ -9,11 +9,16 @@ import TAudioTitle from 'types/TAudioTitle';
 import DotsLoader from 'components/DotsLoader';
 
 export default function BroadcastNow({ className, title, isLoading }: IBroadcastNowProps) {
-  if (isLoading) return <DotsLoader className={cn(s.loading)} />;
   return (
     <div className={cn(s.BroadcastNow, className)}>
-      <div className={cn(s.name)}>{title?.title}</div>
-      <div className={cn(s.artist)}>{title?.artist}</div>
+      {!isLoading ? (
+        <>
+          <div className={cn(s.name)}>{title?.title}</div>
+          <div className={cn(s.artist)}>{title?.artist}</div>
+        </>
+      ) : (
+        <DotsLoader className={cn(s.loading)} />
+      )}
     </div>
   );
 }

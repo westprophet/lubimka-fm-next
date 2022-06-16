@@ -1,17 +1,20 @@
 .BroadcastNow {
-    text-align: center;
-    display: grid;
-    gap: 10px;
-    min-height: 60px;
-    @include for-lg {
-      gap: 15px;
+  text-align: center;
+  display: grid;
+  gap: 10px;
+  height: 60px;
+  position: relative;
+  @include for-lg {
+    gap: 15px;
+  }
+
+  .name {
+    @include f4() {
+      font-weight: 700;
     }
-    .name {
-      @include f4() {
-        font-weight: 700;
-      }
-    }
+  }
 }
-.loading{
-  min-height: 60px;
+
+.loading {
+  height: 100%;
 }

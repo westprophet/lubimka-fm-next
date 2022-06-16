@@ -28,14 +28,21 @@
     border-radius: 50%;
     overflow: hidden;
     position: relative;
-    @include for-xxl {
+    @include for-lg {
       width: $height-image-lg;
       height: $height-image-lg;
+    }
+    @include for-xl {
+      width: $height-image-xl;
+      height: $height-image-xl;
+    }
+    @include for-xxl {
+      width: $height-image-xxl;
+      height: $height-image-xxl;
     }
 
     &.noImageContainer {
       border: 1px solid var(--border-color);
-
       .noImg {
         padding-top: 25%;
       }
@@ -47,7 +54,7 @@
     justify-self: left;
     height: 100%;
     letter-spacing: 0.08em;
-    @include for-xxl {
+    @include for-xl {
       padding: 5px 0;
     }
     :local(.name) {
@@ -59,7 +66,7 @@
       @include f7 {
         font-weight: 400;
       }
-      @include for-xxl {
+      @include for-fxl {
         @include f5;
       }
     }
@@ -87,15 +94,19 @@
   }
   @include for-lg {
     grid-column-gap: $grid-column-gap-lg;
+    height: $height-xl;
+  }
+  @include for-xl {
+    grid-column-gap: $grid-column-gap-xl;
+    height: $height-xl;
   }
   @include for-xxl {
-    padding-right: 5px;
-    padding-left: 5px;
-    grid-column-gap: 10px;
-    height: $height-lg;
+    grid-column-gap: $grid-column-gap-xl;
+    height: $height-xxl;
   }
   @include for-qxl {
-    grid-column-gap: 15px;
+    padding-right: 5px;
+    padding-left: 5px;
   }
 }
 

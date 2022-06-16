@@ -21,12 +21,10 @@ const variants = {
 
 const variants2 = {
   show: {
-    y: '0',
     opacity: 1,
     transition: { duration: 1, delay: 1 },
   },
   hidden: {
-    y: '50%',
     opacity: 0,
   },
 };

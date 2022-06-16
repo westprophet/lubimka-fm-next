@@ -4,9 +4,7 @@
   flex-direction: column;
   .track{
     cursor: pointer;
-    @include for-lg{
-      padding: 10px;
-    }
+    padding: 5px 10px;
     @include for-qxl{
       padding: 10px 15px;
     }
