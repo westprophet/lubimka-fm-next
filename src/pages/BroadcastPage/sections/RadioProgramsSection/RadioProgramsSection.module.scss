@@ -1,0 +1,15 @@
+.RadioProgramsSection {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  .programm{
+    cursor: pointer;
+    padding: 5px 10px;
+    @include for-qxl{
+      padding: 10px 15px;
+    }
+    &:hover{
+      background: rgba(255, 255, 255, 0.15);
+    }
+  }
+}

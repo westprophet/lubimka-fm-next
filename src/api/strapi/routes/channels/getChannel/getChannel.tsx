@@ -7,7 +7,7 @@
 
 import StrapiAxios from '../../../global';
 import { IGetChannelResponse } from './types';
-import { IChannel } from '../../../../../interfaces';
+import { IChannel } from 'interfaces/IChannel';
 import getParamsObject from './utils/getParamsObject';
 
 export default async function getChannel(id: string | number): Promise<IGetChannelReturn> {

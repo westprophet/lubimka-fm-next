@@ -55,10 +55,6 @@ export default function TracksSection({
   );
 }
 
-TracksSection.defaultProps = {
-  className: undefined,
-};
-
 interface IAlbumsSectionProps {
   className?: string;
   tracks: ITrack[];

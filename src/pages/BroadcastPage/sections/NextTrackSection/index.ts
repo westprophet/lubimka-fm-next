@@ -1,3 +1,4 @@
 import NextTrackSection from './NextTrackSection';
+import React from 'react';
 
-export default NextTrackSection;
+export default React.memo(NextTrackSection);

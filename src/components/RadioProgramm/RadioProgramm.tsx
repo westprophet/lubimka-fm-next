@@ -6,27 +6,22 @@ import React from 'react';
 import s from './RadioProgramm.module.scss';
 import cn from 'classnames';
 
-import RadioProgrammComponent, {
-  TRadioProgrammSizes,
-  TRadioProgrammType,
-} from 'components/UI/RadioProgrammComponent';
+import RadioProgrammComponent from 'components/UI/RadioProgrammComponent';
 
-import { IRadioProgramm } from '../../interfaces';
+import { IRadioProgram } from '../../interfaces';
 import { getImageUrl } from '../../tools/IWrappedStrapiImage';
-import { IDaySchedule } from '../../interfaces/IRadioProgramm';
+import { IDaySchedule } from 'interfaces/IRadioProgram';
 
-export default function RadioProgramm({ className, size, sizes, rp }: IRadioProgrammProps) {
+export default function RadioProgramm({ className, rp, disableSchedule }: IRadioProgramProps) {
   const _cover: string | null = getImageUrl(rp.attributes.cover);
   const _schedule: string[] = rp.attributes.DaySchedule?.map((ds: IDaySchedule) => ds.title);
   return (
     <RadioProgrammComponent
       className={cn(s.RadioProgramm, className)}
       cover={_cover}
-      schedule={_schedule}
+      schedule={!disableSchedule ? _schedule : null}
       subtitle={rp.attributes.subtitle}
       title={rp.attributes.title}
-      size={size}
-      sizes={sizes}
     />
   );
 }
@@ -35,9 +30,8 @@ RadioProgramm.defaultProps = {
   className: '',
 };
 
-interface IRadioProgrammProps {
+interface IRadioProgramProps {
   className?: string;
-  rp: IRadioProgramm;
-  size?: TRadioProgrammType | null;
-  sizes?: TRadioProgrammSizes;
+  disableSchedule?: boolean;
+  rp: IRadioProgram;
 }

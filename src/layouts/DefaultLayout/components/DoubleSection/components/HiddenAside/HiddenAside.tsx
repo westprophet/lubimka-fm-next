@@ -10,18 +10,12 @@ import { motion } from 'framer-motion';
 const variants = {
   show: {
     x: '0',
-    transition: { duration: 0.5 },
+    transition: { duration: 0.3 },
   },
   hidden: {
     x: '100%',
     transition: {
-      duration: 0.5,
-    },
-    transitionEnd: {
-      display: 'none',
-      transition: {
-        delay: 1,
-      },
+      duration: 0.3,
     },
   },
 };

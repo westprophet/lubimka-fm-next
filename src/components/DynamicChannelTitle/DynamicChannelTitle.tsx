@@ -7,17 +7,16 @@ import s from './DynamicChannelTitle.module.scss';
 import cn from 'classnames';
 import { MChannelTitleSlider as ChannelTitleSlider } from '@pages/HomePage/sections/BannerSection/components/ChannelTitleSlider';
 import IChannel from 'interfaces/IChannel';
-import { motion } from 'framer-motion';
 
-const variants = {
-  show: {
-    opacity: 1,
-    transition: { duration: 1 },
-  },
-  hidden: {
-    opacity: 1,
-  },
-};
+// const variants = {
+//   show: {
+//     opacity: 1,
+//     transition: { duration: 1 },
+//   },
+//   hidden: {
+//     opacity: 1,
+//   },
+// };
 
 const variants2 = {
   show: {
@@ -36,16 +35,7 @@ export default function DynamicChannelTitle({
 }: IDynamicChannelTitleProps) {
   return (
     <div className={cn(s.DynamicChannelTitle, 'fire-text-effect ', className)}>
-      <motion.h1
-        variants={variants}
-        initial="hidden"
-        animate="show"
-        viewport={{
-          once: true,
-        }}
-      >
-        {title}
-      </motion.h1>
+      <h1>{title}</h1>
       <ChannelTitleSlider variants={variants2} initial="hidden" animate="show" channel={channel} />
     </div>
   );

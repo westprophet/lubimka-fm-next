@@ -21,10 +21,10 @@ export default function TrackComponent(p: ITrackComponentDataProps) {
   const [hover, setHover] = useState(false);
   const { image } = useImageState(p.title, p.isCanFetchImage && p.isShowCover);
   const isNoImg = typeof image !== 'string';
-  const marqueSpeed = hover ? 0.04 : 0;
   const onMouseOverHandler = () => startTransition(() => setHover(true));
   const onMouseLeaveHandler = () => startTransition(() => setHover(false));
-
+  const speed = 0.04,
+    delay = 500;
   return (
     <div
       className={cn(
@@ -50,19 +50,22 @@ export default function TrackComponent(p: ITrackComponentDataProps) {
       )}
       <div className={cn(s.title, 'title')}>
         <div className={cn(s.name)}>
-          <Marquee
-            scrollWhen="overflow"
-            direction="left"
-            speed={marqueSpeed}
-            suppressHydrationWarning
-          >
-            {p.title?.title}
-          </Marquee>
+          {hover ? (
+            <Marquee scrollWhen="overflow" direction="left" speed={speed} delay={delay}>
+              {p.title?.title}
+            </Marquee>
+          ) : (
+            p.title?.title
+          )}
         </div>
         <div className={cn(s.artist, 'artist')} suppressHydrationWarning>
-          <Marquee scrollWhen="overflow" direction="left" speed={marqueSpeed}>
-            {p.title?.artist}
-          </Marquee>
+          {hover ? (
+            <Marquee scrollWhen="overflow" direction="left" speed={speed} delay={delay}>
+              {p.title?.artist}
+            </Marquee>
+          ) : (
+            p.title?.artist
+          )}
         </div>
       </div>
       <div className={cn(s.actionContainer, 'actions')}>

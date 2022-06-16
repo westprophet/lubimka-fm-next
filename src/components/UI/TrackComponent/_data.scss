@@ -2,21 +2,24 @@ $padding-v-xs: 5px;
 $padding-v-lg: 5px;
 $padding-v-xl: 5px;
 $padding-v-xxl: 5px;
+$padding-v-qxl: 7px;
 
 $grid-column-gap-xs: 10px;
 $grid-column-gap-lg: 10px;
 $grid-column-gap-xl: 10px;
 $grid-column-gap-xxl: 15px;
 
-$height-image-xs: 35px;
-$height-image-lg: 40px;
-$height-image-xl: 40px;
+$height-image-xs: 45px;
+$height-image-lg: 45px;
+$height-image-xl: 45px;
+
 $height-image-xxl: 50px;
 $height-image-fxl: 50px;
-$height-image-qxl: 60px;
+$height-image-qxl: 55px;
 
 $height-xs: $height-image-xs + ($padding-v-xs * 2);
 $height-lg: $height-image-lg + ($padding-v-lg * 2);
 $height-xl: $height-image-xl + ($padding-v-xl * 2);
 $height-xxl: $height-image-xxl + ($padding-v-xxl * 2);
+$height-qxl: $height-image-qxl + ($padding-v-qxl * 2);
 

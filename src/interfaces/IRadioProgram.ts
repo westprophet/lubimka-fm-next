@@ -1,7 +1,7 @@
 import { TStrapiResponseContainer, IWrappedStrapiImage } from '../api/strapi/types';
 // import { ISchedule } from './others';
 
-export default interface IRadioProgrammInner {
+export default interface IRadioProgramInner {
   title: string;
   description: string;
   order: number;
@@ -15,4 +15,4 @@ export interface IDaySchedule {
   // schedule: ISchedule;
 }
 
-export type IRadioProgramm = TStrapiResponseContainer<IRadioProgrammInner>;
+export type IRadioProgram = TStrapiResponseContainer<IRadioProgramInner>;

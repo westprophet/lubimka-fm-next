@@ -44,7 +44,7 @@ export default function HiddenSideTrackList<T>({
       <DSection.HiddenAside.Inner>
         <DSection.HiddenAside.Container>
           <DSection.HiddenAside.Title onClick={onClose}>{title}</DSection.HiddenAside.Title>
-          <SearchInput onChange={onSearchHandler} />
+          <SearchInput onChange={onSearchHandler} white />
         </DSection.HiddenAside.Container>
         <DSection.HiddenAside.Scroller className={cn(s.inner)}>
           <AutoSizer>
@@ -53,7 +53,7 @@ export default function HiddenSideTrackList<T>({
                 className={cn(s.inner)}
                 height={height}
                 itemCount={filteredTracks.length}
-                itemSize={b.fxl ? 90 : b.lg ? 72 : 50}
+                itemSize={b.fxl ? 70 : b.lg ? 60 : 50}
                 itemData={filteredTracks}
                 width={width}
               >

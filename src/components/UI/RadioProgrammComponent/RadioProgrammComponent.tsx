@@ -5,20 +5,11 @@
 import React from 'react';
 import s from './RadioProgrammComponent.module.scss';
 import cn from 'classnames';
-
 import Image from 'next/image';
-
 import DATA_FOR_BLUR from '../../../constants/DATA_FOR_BLUR';
-
-import TRadioProgrammType, { TRadioProgrammSizes } from './types/TRadioProgrammType';
-
 import NoImage from 'components/UI/NoImage';
-
 // @ts-ignore
 import Marquee from 'react-double-marquee';
-
-import useComponentSize from '../../../hooks/useComponentSize';
-
 //Компонент отображения радиопрограммы
 export default function RadioProgrammComponent({
   className,
@@ -26,11 +17,10 @@ export default function RadioProgrammComponent({
   subtitle,
   schedule,
   cover,
-  sizes,
-}: IRadioProgrammComponentProps) {
-  const _size = useComponentSize<TRadioProgrammType>(sizes);
+  resizable,
+}: IRadioProgramComponentProps) {
   return (
-    <div className={cn(s.RadioProgrammComponent, _size, className)}>
+    <div className={cn(s.RadioProgrammComponent, className)}>
       {cover ? (
         <div className={cn(s.cover)}>
           <Image
@@ -42,7 +32,7 @@ export default function RadioProgrammComponent({
           />
         </div>
       ) : (
-        <NoImage className={cn(s.cover)} />
+        <NoImage className={cn(s.cover, s.noImg)} />
       )}
       <div className={cn(s.desc)}>
         <h3>{title}</h3>
@@ -65,18 +55,14 @@ export default function RadioProgrammComponent({
 
 RadioProgrammComponent.defaultProps = {
   className: '',
-  sizes: {
-    xs: 'small',
-    xxxl: 'small',
-  },
+  resizable: true,
 };
 
-interface IRadioProgrammComponentProps {
+interface IRadioProgramComponentProps {
   className?: string;
   title: string;
   cover: string | null;
+  resizable?: boolean;
   subtitle: string;
   schedule: string[] | null;
-  size?: TRadioProgrammType | null;
-  sizes?: TRadioProgrammSizes;
 }

@@ -1,3 +1,4 @@
 import NewTracksSection from './NewTracksSection';
+import React from 'react';
 
-export default NewTracksSection;
+export default React.memo(NewTracksSection);

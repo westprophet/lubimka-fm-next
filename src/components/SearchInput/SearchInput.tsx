@@ -9,8 +9,24 @@ import { InputAdornment, TextField } from '@mui/material';
 import SearchIcon from '@mui/icons-material/Search';
 import SEARCH_INPUT_DELAY from '../../constants/SEARCH_INPUT_DELAY';
 
+const style = {
+  white: {
+    '& .MuiOutlinedInput-root': {
+      backgroundColor: 'transparent',
+    },
+    '& .MuiOutlinedInput-notchedOutline': {
+      borderColor: '#99D3FB',
+    },
+  },
+};
+
 //Компонент строки поиска, передается стейт. Используется на нескольких страницах
-export default function SearchInput({ className, onChange, placeholder }: ISearchInputProps) {
+export default function SearchInput({
+  className,
+  onChange,
+  placeholder,
+  white,
+}: ISearchInputProps) {
   const t = useRef<any>();
   const handlerOnChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     clearTimeout(t.current);
@@ -21,6 +37,7 @@ export default function SearchInput({ className, onChange, placeholder }: ISearc
   return (
     <TextField
       placeholder={placeholder}
+      color={white ? 'secondary' : 'primary'}
       InputProps={{
         startAdornment: (
           <InputAdornment position="start">
@@ -28,8 +45,8 @@ export default function SearchInput({ className, onChange, placeholder }: ISearc
           </InputAdornment>
         ),
       }}
+      sx={white ? style.white : undefined}
       fullWidth
-      // value={searchValue}
       onChange={handlerOnChange}
       className={cn(s.SearchInput, className)}
     />
@@ -39,10 +56,12 @@ export default function SearchInput({ className, onChange, placeholder }: ISearc
 SearchInput.defaultProps = {
   className: '',
   placeholder: 'Поиск',
+  white: false,
 };
 
 interface ISearchInputProps {
   className?: string;
   onChange(e: React.ChangeEvent<HTMLInputElement>): any;
   placeholder?: string;
+  white?: boolean;
 }

@@ -9,6 +9,10 @@
     grid-column: 3/4;
     width: $size;
     height: $size;
+    svg:global(.MuiSvgIcon-root){
+      width: 70%;
+      height: 70%;
+    }
   }
   button{
     color: var(--border-color);

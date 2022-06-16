@@ -19,6 +19,7 @@ export const getStaticProps: GetStaticProps = async ({
 }: GetStaticPropsContext<IChannelPageParams>) => {
   const id = params ? params['channel'] : 0; //Получаем id
   const channel = await api.strapi.channels.getChannel(id);
+
   const newTracks = channel
     ? await api.radio.tracks.getNewTracks({ c: channel, count: 100 })
     : null;

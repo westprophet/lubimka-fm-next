@@ -1,19 +1,22 @@
+$padding-v-xs: 5px;
+$padding-v-xxl: 10px;
+
 $width-xs: 240px;
-$height-xs: 90px;
-
 $width-md: 470px;
-$height-md: 176px;
 
 
-$width-xxl: 505px;
-$height-xxl: 220px;
-
-
-
-$grid-gap-xs: 10px;
+$grid-gap-xs: 5px;
 $grid-gap-md: 20px;
 $grid-gap-xxl: 25px;
 
 
 $border-radius-xs: 8px;
 $border-radius-md: 16px;
+
+
+$height-img-xs: 80px;
+$height-img-xxl: 90px;
+
+$height-xs: $height-img-xs + ($padding-v-xs * 2);
+$height-xxl: $height-img-xxl + ($padding-v-xxl * 2);
+

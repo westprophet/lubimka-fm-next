@@ -7,7 +7,7 @@ import IImage from './IImage';
 import { IChannel } from './IChannel';
 import IStrapiImage from '../api/strapi/types/IStrapiImage';
 import ICompany from './ICompany';
-import { IRadioProgramm } from './IRadioProgramm';
+import { IRadioProgram } from './IRadioProgram';
 import { IEvent } from './IEvent';
 import { IClub } from './IClub';
 import { IPartner } from './IPartner';
@@ -25,9 +25,9 @@ export type {
   ISocial,
   ICompany,
   IIcon,
-  IRadioProgramm,
   IPhone,
   IEvent,
   IPartner,
+  IRadioProgram,
   ITeamMember,
 };

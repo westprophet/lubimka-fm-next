@@ -6,33 +6,16 @@
 export default function getParamsObject() {
   return {
     populate: {
-      stream: '*',
       programs: {
         populate: {
           cover: '*',
           DaySchedule: '*',
         },
       },
-      Socials: {
-        populate: {
-          icon: {
-            populate: '*',
-          },
-        },
-      },
+      stream: '*',
       cover: {
-        fields: ['url'],
+        populate: '*',
       },
     },
   };
 }
-
-//EXAMPLE
-// return {
-//    sort: p?.sort ?? ['order:asc'],
-//    populate: {
-//      avatar: {
-//        fields: ['url'],
-//      },
-//    },
-//  };

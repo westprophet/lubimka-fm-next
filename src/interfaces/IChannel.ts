@@ -6,7 +6,7 @@ import {
   IWrappedStrapiImage,
 } from '../api/strapi/types';
 
-import { IRadioProgramm } from './IRadioProgramm';
+import { IRadioProgram } from './IRadioProgram';
 
 import TLanguages from 'src/types/TLanguages';
 
@@ -19,7 +19,7 @@ export interface IChannelInner {
   description: string;
   stream: IStream;
   online: boolean;
-  programs: IStrapiDataContainer<IRadioProgramm[]>;
+  programs: IStrapiDataContainer<IRadioProgram[]>;
   createdAt: string;
   updatedAt: string;
   publishedAt: string;

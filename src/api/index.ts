@@ -5,6 +5,7 @@ import * as events from './strapi/routes/events';
 import * as clubs from './strapi/routes/clubs';
 import * as partners from './strapi/routes/partners';
 import * as team from './strapi/routes/team';
+import * as programs from './strapi/routes/programs';
 
 import * as stream from './radioheathAPI/routes/stream';
 import * as image from './radioheathAPI/routes/image';
@@ -20,6 +21,7 @@ const strapi = {
   clubs,
   partners,
   team,
+  programs,
   single,
 };
 

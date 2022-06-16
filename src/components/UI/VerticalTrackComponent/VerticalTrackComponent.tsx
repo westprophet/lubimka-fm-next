@@ -3,7 +3,7 @@
  */
 
 // @ts-ignore
-import React, { startTransition, useState } from 'react';
+import React, { startTransition, useEffect, useState } from 'react';
 import s from './VerticalTrackComponent.module.scss';
 import cn from 'classnames';
 import Image from 'next/image';
@@ -33,6 +33,8 @@ export default function VerticalTrackComponent({
   const _cover = image ?? cover;
   const isNoImg = typeof image !== 'string' || !_cover;
   const [isLoadImage, setIsLoadImage] = useState<boolean>(false);
+  // useEffect(() => startTransition(() => setIsLoadImage(false)), [title]);
+
   return (
     <AnimatePresence onExitComplete={() => setIsLoadImage(false)}>
       {title && (
@@ -69,13 +71,7 @@ export default function VerticalTrackComponent({
               <PlayButton status="paused" type={2} onClick={() => {}} className={cn(s.playD)} />
             )}
 
-            <div
-              // variants={variantsText}
-              // animate={isNoImg || isLoadImage ? 'show' : 'hidden'}
-              // initial={'hidden'}
-              // exit="hidden"
-              className={cn(s.title, 'title')}
-            >
+            <div className={cn(s.title, 'title')}>
               <div className={cn(s.name)}>{title?.title}</div>
               <div className={cn(s.artist, 'artist')}>{title?.artist}</div>
             </div>

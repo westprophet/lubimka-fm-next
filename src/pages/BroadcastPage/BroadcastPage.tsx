@@ -5,7 +5,7 @@
 import React, { useContext, useState } from 'react';
 import s from './BroadcastPage.module.scss';
 import cn from 'classnames';
-import { IChannel } from '../../interfaces';
+import { IChannel, IRadioProgram } from '../../interfaces';
 import DL, { IDefaultLayoutAttributes } from 'layouts/DefaultLayout';
 import { getImageUrl } from '@tools/IWrappedStrapiImage';
 import { RadioPlayerContext, useGetStaticChannelStream } from 'src/contexts/RadioPlayerManager';
@@ -19,19 +19,17 @@ import LastTracksSection from '@pages/BroadcastPage/sections/LastTracksSection';
 import NextTrackSection from '@pages/BroadcastPage/sections/NextTrackSection';
 import DynamicChannelTitle from 'components/DynamicChannelTitle';
 import BroadcastNow from '@pages/BroadcastPage/components/BroadcastNow';
+import RadioProgramsSection from '@pages/BroadcastPage/sections/RadioProgramsSection';
 
-export default function BroadcastPage({ channel, newTracks }: IBroadcastPageProps) {
+export default function BroadcastPage({ channel, newTracks, radioPrograms }: IBroadcastPageProps) {
   const [active, setActive] = useState<'news' | 'history' | null>(null);
   const onClose = () => setActive(null);
   const { isLoadingChannels } = useContext(RadioPlayerContext);
   const stream = useGetStaticChannelStream(channel); //Подтягиваем данные о канале статически
   const channelCover = getImageUrl(channel.attributes.cover);
   const title: TAudioTitle | null = stream.current;
-  // const radioPrograms = channel.attributes.programs.data;
-
   const { image } = useImageState(title); // Запрашиваем картинку для трека
   const cover = image ?? channelCover;
-
   return (
     <DL.Layout
       className={cn(s.BroadcastPage)}
@@ -68,6 +66,7 @@ export default function BroadcastPage({ channel, newTracks }: IBroadcastPageProp
             onOpen={() => setActive('history')}
             onClose={onClose}
           />
+          <RadioProgramsSection channel={channel} programs={radioPrograms} />
         </DL.DoubleSection.QuadContent.Wrapper>
       </DL.DoubleSection.Wrapper>
     </DL.Layout>
@@ -77,4 +76,5 @@ export default function BroadcastPage({ channel, newTracks }: IBroadcastPageProp
 interface IBroadcastPageProps extends IDefaultLayoutAttributes {
   channel: IChannel;
   newTracks?: ITrackRadioheartNew[] | null;
+  radioPrograms?: IRadioProgram[] | null;
 }

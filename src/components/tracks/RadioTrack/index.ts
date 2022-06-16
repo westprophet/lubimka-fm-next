@@ -1,3 +1,4 @@
 import RadioTrack from './RadioTrack';
+import React from 'react';
 
-export default RadioTrack;
+export default React.memo(RadioTrack);
