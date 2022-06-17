@@ -24,11 +24,11 @@ const MENU_ITEMS: IHeaderMenuItem[] = [
     link: '/news',
     key: 'news',
   },
-  // {
-  //   title: 'Реклама',
-  //   link: 'ads',
-  //   key: 'ads',
-  // },
+  {
+    title: 'Реклама',
+    link: '/advertising',
+    key: 'advertising',
+  },
   {
     title: 'О нас',
     link: '/about-us',

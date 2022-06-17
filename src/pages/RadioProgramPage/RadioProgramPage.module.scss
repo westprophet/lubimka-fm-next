@@ -1,0 +1,44 @@
+.RadioProgramPage {
+  .previewContainer{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+  }
+  .previewInner {
+    .title {
+      font-weight: 700;
+      font-size: 18px;
+      line-height: 140%;
+      @include for-sm {
+        font-weight: 700;
+        font-size: 32px;
+      }
+      @include for-lg {
+        font-size: 50px;
+      }
+      @include for-xxl {
+        font-size: 82px;
+      }
+    }
+  }
+
+  .content {
+    .description {
+      @include f8 {
+        line-height: 140%;
+        letter-spacing: 0.02em;
+      }
+      @include for-lg {
+        @include f5() {
+          font-weight: 500;
+          line-height: 140%;
+        }
+      }
+      @include for-xxl {
+        @include f4() {
+          line-height: 140%;
+        }
+      }
+    }
+  }
+}

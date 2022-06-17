@@ -1,2 +1,3 @@
-import getRadioProgramsByChannel from './getRadioProgramsByChannel';
-export { getRadioProgramsByChannel };
+import getRadioPrograms from './getRadioPrograms';
+import getRadioProgram from './getRadioProgram';
+export { getRadioPrograms, getRadioProgram };

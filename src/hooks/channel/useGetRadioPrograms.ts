@@ -9,7 +9,7 @@ export default function useGetRadioPrograms({
 }: IUseGetRadioProgramsArg): IUseGetRadioProgramsReturn {
   const { isError, data, isLoading } = useQuery(
     ['getRadioPrograms', c.attributes.name],
-    () => api.strapi.programs.getRadioProgramsByChannel({ channelID: c.id }),
+    () => api.strapi.programs.getRadioPrograms({ channelID: c.id }),
     {
       retryDelay: 2000,
       enabled: !!c && !disabled,

@@ -11,6 +11,7 @@ import { IRadioProgram } from './IRadioProgram';
 import { IEvent } from './IEvent';
 import { IClub } from './IClub';
 import { IPartner } from './IPartner';
+import IAdvertising from './IAdvertising';
 import { ITeamMember } from './ITeamMember';
 
 export type {
@@ -30,4 +31,5 @@ export type {
   IPartner,
   IRadioProgram,
   ITeamMember,
+  IAdvertising,
 };

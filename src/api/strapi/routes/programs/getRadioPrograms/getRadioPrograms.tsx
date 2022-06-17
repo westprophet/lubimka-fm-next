@@ -7,24 +7,18 @@
 
 import StrapiAxios from '../../../global';
 
-import {
-  IGetRadioProgramsByChannelResponse,
-  IGetRadioProgramsByChannelRequestParams,
-} from './types';
+import { IGetRadioProgramsResponse, IGetRadioProgramsRequestParams } from './types';
 import { IRadioProgram } from 'interfaces/IRadioProgram';
 
 import getParamsObject from './utils/getParamsObject';
 
 export default async function getRadioProgramsByChannel(
-  p: IGetRadioProgramsByChannelRequestParams
+  p?: IGetRadioProgramsRequestParams
 ): Promise<IGetRadioProgramsByChannelReturn> {
   try {
-    const { data }: { data: IGetRadioProgramsByChannelResponse } = await StrapiAxios.get(
-      '/radio-programs',
-      {
-        params: getParamsObject(p),
-      }
-    );
+    const { data }: { data: IGetRadioProgramsResponse } = await StrapiAxios.get('/radio-programs', {
+      params: getParamsObject(p),
+    });
 
     return data.data;
   } catch (e) {

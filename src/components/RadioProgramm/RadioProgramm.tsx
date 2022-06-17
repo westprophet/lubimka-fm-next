@@ -19,6 +19,7 @@ export default function RadioProgramm({ className, rp, disableSchedule }: IRadio
     <RadioProgrammComponent
       className={cn(s.RadioProgramm, className)}
       cover={_cover}
+      link={`/radio-programs/${rp.id}/`}
       schedule={!disableSchedule ? _schedule : null}
       subtitle={rp.attributes.subtitle}
       title={rp.attributes.title}

@@ -1,6 +1,6 @@
 @import "data";
 
-.RadioProgrammComponent {
+.RP {
   min-width: $width-xs;
   height: $height-xs;
   display: grid;
@@ -13,12 +13,25 @@
   &.r{
     width: 100%;
   }
-  .cover {
+  .coverContainer {
     position: relative;
     border-radius: $border-radius-xs;
     overflow: hidden;
     width: $height-img-xs;
     height: $height-img-xs;
+
+    .loader{
+      width: 100%;
+      height: 100%;
+      position: absolute;
+      display: flex;
+      z-index: 2;
+      & > span{
+        width: 50%;
+        height: 50%;
+        margin: auto;
+      }
+    }
     &.noImg{
       border: 1px solid var(--border-color);
     }
@@ -69,7 +82,7 @@
   }
 
   &:hover {
-    :local(.cover) {
+    :local(.coverContainer) {
       img {
         @include zoom-effect-on-hover();
       }

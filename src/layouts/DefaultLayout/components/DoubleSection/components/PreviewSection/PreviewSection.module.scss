@@ -16,6 +16,9 @@
     height: 100%;
     z-index: -1;
     filter: brightness(80%);
+    @include before-lg{
+      height: 150%;
+    }
   }
   @include for-lg{
     margin-bottom: initial;

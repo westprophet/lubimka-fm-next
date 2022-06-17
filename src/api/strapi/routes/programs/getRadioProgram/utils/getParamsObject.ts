@@ -1,4 +1,4 @@
-import { IGetRadioProgramsByChannelRequestParams } from '../types';
+import { IGetRadioProgramRequestParams } from '../types';
 
 /***
  *
@@ -6,11 +6,8 @@ import { IGetRadioProgramsByChannelRequestParams } from '../types';
  *   Формируем параметры для запроса на основе переданных аргументов
  */
 
-export default function getParamsObject(p: IGetRadioProgramsByChannelRequestParams) {
+export default function getParamsObject(p: IGetRadioProgramRequestParams) {
   return {
-    filter: {
-      channel: p.channelID,
-    },
     populate: {
       DaySchedule: '*',
       cover: '*',

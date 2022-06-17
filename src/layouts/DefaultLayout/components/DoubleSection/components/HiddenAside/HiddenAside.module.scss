@@ -12,7 +12,7 @@
     backdrop-filter: blur(60px);
     width: 50vw;
     box-shadow: inset 0 2px 4px rgba(255, 255, 255, 0.25), inset 0 0 60px rgba(255, 255, 255, 0.25);
-    background: rgba(255, 255, 255, 0.13);
+    background: rgba(255, 255, 255, 0.05);
   }
   @include for-xl{
     width: 50vw;

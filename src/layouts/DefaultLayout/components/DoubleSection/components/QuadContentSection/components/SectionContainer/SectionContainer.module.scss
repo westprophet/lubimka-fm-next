@@ -63,7 +63,7 @@
 
 
   @include for-lg {
-    background: rgba(255, 255, 255, 0.13);
+    background: rgba(255, 255, 255, 0.1);
     border-radius: 5px;
     backdrop-filter: blur(60px);
     margin-top: 0;
@@ -74,18 +74,24 @@
 
   &.colorType1 {
     @include before-lg {
-      @include lubimka-bg-gradient();
+      backdrop-filter: blur(40px);
+      box-shadow: inset 0px 0px 4px rgba(255, 255, 255, 0.1), inset 0px 0px 60px rgba(255, 255, 255, 0.05);
+      //@include lubimka-bg-gradient();
     }
   }
 
   &.colorType2 {
+
     @include before-lg {
+      backdrop-filter: blur(1px);
       background: var(--bg-deep-color);
     }
   }
 
   &.colorType3 {
+
     @include before-lg {
+      backdrop-filter: blur(1px);
       background: var(--bg-panel-color);
     }
   }

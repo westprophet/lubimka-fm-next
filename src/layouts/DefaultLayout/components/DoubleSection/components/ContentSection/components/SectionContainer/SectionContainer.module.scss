@@ -5,6 +5,7 @@
   @include layout-padding(false, true, true, true);
   padding-top: $slice - 3px;
   margin-top: -$slice;
+  position: relative;
   .line{
     display: flex;
     width: 100%;
@@ -21,13 +22,6 @@
     }
   }
 
-  //.title{
-  //  margin-bottom: 15px;
-  //  @include f7(){
-  //    font-weight: 700;
-  //  }
-  //}
-
   @include for-sm{
     @include layout-padding-md(false, true, false, true);
   }
@@ -41,16 +35,19 @@
   }
   &.colorType1{
     @include before-lg{
-      @include lubimka-bg-gradient();
+      backdrop-filter: blur(40px);
+      box-shadow: inset 0px 0px 4px rgba(255, 255, 255, 0.1), inset 0px 0px 60px rgba(255, 255, 255, 0.05);
     }
   }
   &.colorType2{
     @include before-lg {
+      backdrop-filter: blur(1px);
       background: var(--bg-deep-color);
     }
   }
   &.colorType3{
     @include before-lg {
+      backdrop-filter: blur(1px);
       background: var(--bg-panel-color);
     }
   }
