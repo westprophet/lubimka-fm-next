@@ -13,9 +13,11 @@ import { IClub } from './IClub';
 import { IPartner } from './IPartner';
 import IAdvertising from './IAdvertising';
 import { ITeamMember } from './ITeamMember';
+import { IFAQItem } from './IFAQItem';
 
 export type {
   ITrackRadioheart,
+  IFAQItem,
   IClub,
   IEmail,
   IAuthor,

@@ -27,8 +27,8 @@ export default function DefaultFooter({ className }: IDefaultFooterProps) {
           <ul className={cn(s.column)}>
             <CustomLink link="/privacy-policy">Соглашение об использовании Cookies</CustomLink>
             <CustomLink link="/terms-and-conditions">Политика конфиденциальности</CustomLink>
-            <li>Как нас слушать?</li>
-            <li>Реклама</li>
+            <CustomLink link="/how-to-listen-radio">Как нас слушать?</CustomLink>
+            <CustomLink link="/advertising/order">Заказать рекламу</CustomLink>
           </ul>
         </div>
         <div className={cn(s.contactsUs)}>

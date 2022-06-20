@@ -4,5 +4,6 @@ import * as authors from './authors';
 import * as events from './events';
 import * as clubs from './clubs';
 import * as team from './team';
+import * as requisitions from './requisitions';
 
-export { companies, channels, authors, events, clubs, team };
+export { companies, channels, authors, events, clubs, team, requisitions };

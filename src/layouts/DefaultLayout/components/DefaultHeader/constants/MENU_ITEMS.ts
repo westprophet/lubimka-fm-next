@@ -26,8 +26,8 @@ const MENU_ITEMS: IHeaderMenuItem[] = [
   },
   {
     title: 'Реклама',
-    link: '/advertising',
-    key: 'advertising',
+    link: '/advertising/order',
+    key: 'advertising/order',
   },
   {
     title: 'О нас',
