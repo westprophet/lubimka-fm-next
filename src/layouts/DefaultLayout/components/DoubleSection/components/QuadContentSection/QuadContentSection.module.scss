@@ -32,10 +32,17 @@
         padding: 0;
       }
       @include for-lg{
+        gap: 10px;
         display: grid;
         grid-template-columns: 1fr 1fr;
         grid-template-rows: 1fr 1fr;
         height: 100%;
+      }
+      @include for-xxl{
+        gap: 20px;
+      }
+      @include for-fxl{
+        gap: 30px;
       }
     }
   }

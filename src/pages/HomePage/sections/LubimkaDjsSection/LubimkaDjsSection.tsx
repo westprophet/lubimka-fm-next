@@ -17,15 +17,19 @@ export default function LubimkaDjsSection({ authors }: ILubimkaDjsSectionProps) 
     <SectionSlider.Wrapper className={cn(s.LubimkaDjsSection)} title="Любимка DJ’s">
       {authors?.map((a: IAuthor, index: number) => {
         return (
-          <SectionSlider.MSlide
-            variants={MSlideAnimationVariants}
-            custom={index}
-            whileInView="visible"
-            initial="hidden"
+          <SectionSlider.Slide
+            // variants={MSlideAnimationVariants}
+            // custom={index}
+            // whileInView="visible"
+            // viewport={{
+            //   amount: 0,
+            //   once: true,
+            // }}
+            // initial="hidden"
             key={`author-${a.attributes.name}`}
           >
             <Author author={a} />
-          </SectionSlider.MSlide>
+          </SectionSlider.Slide>
         );
       })}
 

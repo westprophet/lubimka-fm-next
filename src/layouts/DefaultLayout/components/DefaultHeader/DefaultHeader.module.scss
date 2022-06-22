@@ -24,12 +24,15 @@
   @include before-sm{
     padding-right: 0!important;
   }
-  @include for-sm{
-    height: $height-sm;
-  }
-  @include for-md{
-    height: $height-md;
-  }
+  //@include for-sm{
+  //  height: $height-sm;
+  //}
+  //@include for-md{
+  //  height: $height-md;
+  //}
+  //@include for-lg{
+  //  height: $height-lg;
+  //}
   @include for-xxl{
     height: $height-xxl;
   }
@@ -47,6 +50,9 @@
     @include for-lg{
       display: block;
     }
+  }
+  .logo{
+    padding: 10px 0;
   }
 }
 

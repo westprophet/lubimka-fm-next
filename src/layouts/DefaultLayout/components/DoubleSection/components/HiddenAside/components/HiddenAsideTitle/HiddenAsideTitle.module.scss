@@ -6,7 +6,7 @@
     gap: 10px;
   }
 
-  @include f5() {
+  @include f6() {
     font-weight: 700;
   }
   @include for-lg {

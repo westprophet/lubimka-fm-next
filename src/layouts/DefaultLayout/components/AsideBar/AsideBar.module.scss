@@ -3,14 +3,14 @@
 
 .AsideBar {
   width: $width-sm;
-  height: 100vh;
+  height: 100%;
   z-index: 3;
   top: 0;
   bottom: 0;
-
   @include layout-padding(true,false,true,false);
   @include for-sm{
-    display: block;
+    display: flex;
+    flex-direction: column;
     width: $width-sm;
   }
   @include for-md{

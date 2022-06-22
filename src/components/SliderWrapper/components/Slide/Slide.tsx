@@ -12,12 +12,12 @@ export const animationVariants = {
     opacity: 1,
     y: 0,
     transition: {
-      delay: custom * 0.2,
+      delay: custom * 0.05,
     },
   }),
   hidden: {
     opacity: 0,
-    y: '100%',
+    y: '70%',
   },
 };
 

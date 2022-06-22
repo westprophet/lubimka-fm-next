@@ -3,8 +3,8 @@
   display: flex;
   align-items: center;
   overflow: hidden;
+  width: 100%;
   .oneLine{
-    width: 100%;
     white-space: nowrap;
   }
   .twoLine{
@@ -17,7 +17,7 @@
       font-weight: 300;
     }
   }
-  @include for-sm(){
-   @include f5()
+  @include for-xxl(){
+   @include f6()
   }
 }

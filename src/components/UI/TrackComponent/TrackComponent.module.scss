@@ -29,8 +29,8 @@
     overflow: hidden;
     position: relative;
     @include for-xxl {
-      width: $height-image-xxl;
-      height: $height-image-xxl;
+      width: $height-image-fxl;
+      height: $height-image-fxl;
     }
     @include for-qxl {
       width: $height-image-qxl;
@@ -54,16 +54,19 @@
       padding: 5px 0;
     }
     :local(.name) {
-      @include f5 {
+      @include f7 {
         font-weight: 500;
+      }
+      @include for-fxl {
+        @include f6;
       }
     }
     :local(.artist) {
-      @include f7 {
+      @include f8 {
         font-weight: 400;
       }
       @include for-fxl {
-        @include f5;
+        @include f6;
       }
     }
     :local{
@@ -88,16 +91,7 @@
       }
     }
   }
-  @include for-lg {
-    grid-column-gap: $grid-column-gap-lg;
-    height: $height-xl;
-  }
-  @include for-xl {
-    grid-column-gap: $grid-column-gap-xl;
-    height: $height-xl;
-  }
   @include for-xxl {
-    grid-column-gap: $grid-column-gap-xl;
     height: $height-xxl;
   }
   @include for-qxl {

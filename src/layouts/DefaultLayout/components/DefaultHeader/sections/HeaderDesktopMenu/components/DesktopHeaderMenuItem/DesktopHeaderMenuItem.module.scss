@@ -1,6 +1,9 @@
 .DesktopHeaderMenuItem {
-  @include f5(){
+  @include f7(){
     font-weight: 700;
     letter-spacing: 0.05em;
+  }
+  @include for-xxl{
+    @include f6();
   }
 }

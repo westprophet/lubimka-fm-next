@@ -13,9 +13,12 @@
   transition: .25s;
   text-align: center;
   -webkit-text-stroke: .4px var(--grey-light-color);
-  @include f5(){
+  @include f8(){
     font-weight: 700;
     text-transform: uppercase;
+  }
+  @include for-xxl{
+    @include f6;
   }
   &.active,
   &:hover{

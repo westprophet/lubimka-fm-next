@@ -8,15 +8,16 @@
   .inner {
     position: relative;
     height: $size-img-xs;
+    width: $size-img-xs;
     overflow: hidden;
     border-radius: 10px;
-    @include for-md {
-      height: $size-img-md;
-      width: $size-img-md;
+    @include for-lg {
+      height: $size-img-lg;
+      width: $size-img-lg;
     }
-    @include for-xl {
-      height: $size-img-xl;
-      width: $size-img-xl;
+    @include for-xxl {
+      height: $size-img-xxl;
+      width: $size-img-xxl;
     }
 
     .cover {
@@ -50,10 +51,10 @@
       line-height: 13px;
       font-weight: 400;
     }
-    @include for-md {
+    @include for-xxl {
       @include f4();
     }
-    @include for-xl {
+    @include for-qxl {
       @include f3();
     }
   }

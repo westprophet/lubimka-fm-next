@@ -7,15 +7,21 @@ $gap: 4vh;
   align-items: center;
   justify-content: center;
   grid-gap:$gap;
-
+  @include for-xxl{
+  }
   .inner {
     display: grid;
-    height: 120px;
+    height:100px;
     align-items: center;
     justify-content: right;
-
+    @include for-xxl{
+      height: 120px;
+    }
     .socialItem {
-      @include f4;
+      @include f6;
+      @include for-xxl{
+        @include f4;
+      }
     }
   }
 
@@ -26,12 +32,18 @@ $gap: 4vh;
     gap: $gap;
     justify-content: space-between;
     align-items: center;
-    height: 175px;
+    height: 135px;
+    @include for-xxl{
+      height: 175px;
+    }
     .label {
-      @include f5_16 {
+      @include f7 {
         writing-mode: vertical-rl;
         transform: rotate(180deg);
         text-orientation: mixed;
+      }
+      @include for-xxl{
+          @include f5();
       }
     }
     .line{

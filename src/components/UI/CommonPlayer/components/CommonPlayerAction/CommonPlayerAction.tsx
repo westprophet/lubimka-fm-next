@@ -20,14 +20,15 @@ export default function CommonPlayerAction({
   pinned,
   setPinned,
 }: ICommonPlayerActionProps) {
+  const onClick = () => {
+    setPinned(!pinned);
+  };
   return (
     <div className={cn(s.CommonPlayerAction, className)}>
       <IconButton
         disabled={Boolean(isOpenChannelMenu)}
         className={cn(s.pinned, { [s.isPinned]: !pinned })}
-        onClick={() => {
-          setPinned(!pinned);
-        }}
+        onClick={onClick}
       >
         {pinned ? <PushPinIcon /> : <KeyboardArrowUpIcon />}
       </IconButton>

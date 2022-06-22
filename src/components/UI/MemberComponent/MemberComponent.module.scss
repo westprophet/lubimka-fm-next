@@ -9,7 +9,7 @@
   @include for-sm{
     width: $width-sm;
   }
-  @include for-xl{
+  @include for-xxl{
     width: $width-xl;
   }
   @include for-qxl{
@@ -31,7 +31,7 @@
     @include for-sm{
       height: $width-sm;
     }
-    @include for-xl{
+    @include for-xxl{
       height: $width-xl;
     }
     @include for-qxl{
@@ -43,14 +43,16 @@
   h3 {
     @include f7{
       font-weight: 400;
-      letter-spacing: 0.2em;
-      line-height: 20px;
-    }
-    @include for-md{
-      white-space: nowrap;
-      @include f5();
+      letter-spacing: 0.1em;
+
+      text-wrap: avoid;
     }
     @include for-xl{
+      @include f6(){
+        line-height: 140%;
+      }
+    }
+    @include for-xxl{
       @include f3(){
         letter-spacing: 0.1em;
       }
@@ -60,11 +62,8 @@
     @include f8{
       line-height: 140%;
     }
-    @include for-md{
-      @include f7();
-    }
-    @include for-xl{
-      @include f5();
+    @include for-xxl{
+      @include f6();
     }
   }
 

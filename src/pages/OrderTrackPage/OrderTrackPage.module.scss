@@ -48,7 +48,7 @@
       }
 
       .title {
-        @include f5() {
+        @include f6() {
           font-weight: 500;
         }
         @include for-xxl {

@@ -16,15 +16,15 @@ export default function ClubLifeSection({ clubs }: IClubLifeSectionProps) {
     <SectionSlider.Wrapper className={cn(s.ClubLifeSection)} title="Club Life">
       {clubs?.map((club: IClub, index: number) => {
         return (
-          <SectionSlider.MSlide
+          <SectionSlider.Slide
             key={`club-${club.id}`}
-            variants={MSlideAnimationVariants}
-            custom={index}
-            whileInView="visible"
-            initial="hidden"
+            // variants={MSlideAnimationVariants}
+            // custom={index}
+            // whileInView="visible"
+            // initial="hidden"
           >
             <Club club={club} />
-          </SectionSlider.MSlide>
+          </SectionSlider.Slide>
         );
       })}
     </SectionSlider.Wrapper>

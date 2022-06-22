@@ -17,6 +17,7 @@ export default function MemberComponent({
   subtitle,
   cover,
 }: IPartnerComponentProps) {
+  const name = title.split(' ', 2);
   return (
     <div className={cn(s.MemberComponent, className)}>
       <div className={cn(s.inner)}>
@@ -33,11 +34,10 @@ export default function MemberComponent({
           <NoImage className={cn(s.cover)} />
         )}
       </div>
-
       <h3>
-        <Marquee speed={0.02} direction="left" scrollWhen={'overflow'} delay={7000}>
-          {title}
-        </Marquee>
+        {name[0]}
+        <br />
+        {name[1]}
       </h3>
       <h4>{subtitle}</h4>
     </div>

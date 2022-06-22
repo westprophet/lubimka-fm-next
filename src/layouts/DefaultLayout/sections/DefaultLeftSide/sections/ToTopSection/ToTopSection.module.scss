@@ -2,7 +2,10 @@
   color: var(--text-color);
   display: grid;
   align-items: center;
-  grid-gap: 50px;
+  grid-gap: 30px;
+  @include for-fxl{
+    grid-gap: 50px;
+  }
   button {
     cursor: pointer;
     margin: auto;
@@ -10,11 +13,14 @@
     padding: 5px 0;
     color: white;
     .label {
-      @include f5_16 {
+      @include f7 {
         font-weight: 600;
         writing-mode: vertical-rl;
         transform: rotate(180deg);
         text-orientation: mixed;
+      }
+      @include for-xxl{
+        @include f6;
       }
     }
   }

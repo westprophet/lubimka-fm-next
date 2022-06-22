@@ -22,15 +22,15 @@ export default function ChannelsSection({ className, channels }: IChannelsSectio
       link="/channels"
     >
       {channels?.map((c: IChannel, index: number) => (
-        <SectionSlider.MSlide
+        <SectionSlider.Slide
           key={`channel-${c.id}`}
-          variants={MSlideAnimationVariants}
-          custom={index}
-          whileInView="visible"
-          initial="hidden"
+          // variants={MSlideAnimationVariants}
+          // custom={index}
+          // whileInView="visible"
+          // initial="hidden"
         >
           <Channel channel={c} />
-        </SectionSlider.MSlide>
+        </SectionSlider.Slide>
       ))}
     </SectionSlider.Wrapper>
   );

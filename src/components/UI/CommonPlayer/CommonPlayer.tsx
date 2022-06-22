@@ -14,6 +14,20 @@ import ChannelMenuSelector from './sections/ChannelMenuSelector';
 import PlayerControlComponent from 'components/UI/buttons/PlayerControlComponent';
 import { TAudioManagerStatus } from 'types/TAudioManagerStatus';
 import { IChannel } from '../../../interfaces';
+import { motion } from 'framer-motion';
+
+export const variants = {
+  visible: {
+    y: 0,
+    transition: {
+      duration: 0.3,
+      delay: 0.4,
+    },
+  },
+  hidden: {
+    y: '100%',
+  },
+};
 
 //Интерфейс плеера
 export default function CommonPlayer({
@@ -28,7 +42,10 @@ export default function CommonPlayer({
   title,
 }: ICommonPlayerProps) {
   return (
-    <aside
+    <motion.aside
+      variants={variants}
+      initial="hidden"
+      animate="visible"
       className={cn(
         s.CommonPlayer,
         'with-screen-padding',
@@ -41,7 +58,7 @@ export default function CommonPlayer({
     >
       <CommonPlayerCover className={cn(s.cover)} image={cover.url} />
       <PlayerControlComponent
-        className={cn(s.controls)}
+        className={cn(s.control)}
         status={control.status}
         onClick={control.onClick}
       />
@@ -63,7 +80,7 @@ export default function CommonPlayer({
         isOpen={channels.isOpenChannelMenu}
         className={cn(s.channelMenuSelector)}
       />
-    </aside>
+    </motion.aside>
   );
 }
 

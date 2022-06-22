@@ -3,7 +3,7 @@
   .inner {
 
     p.description {
-      @include f5() {
+      @include f6() {
         font-weight: 400;
         line-height: 140%;
       }

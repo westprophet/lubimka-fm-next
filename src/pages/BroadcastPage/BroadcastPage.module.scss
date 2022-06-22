@@ -28,25 +28,25 @@
     }
 
     .previewInner {
+      display: flex;
+      justify-content: center;
+      flex-direction: column;
+      align-items: center;
+      gap: 25px;
+      margin: auto;
+      @include for-lg {
+        gap: 50px;
+      }
       .title{
         @include for-lg{
           font-size: 60px;
         }
-        @include for-xl{
+        @include for-xxl{
           font-size: 80px;
         }
         @include for-qxl{
           font-size: 100px;
         }
-      }
-      display: flex;
-      justify-content: center;
-      flex-direction: column;
-      align-items: center;
-      gap: 30px;
-      margin: auto;
-      @include for-lg {
-        gap: 50px;
       }
     }
   }

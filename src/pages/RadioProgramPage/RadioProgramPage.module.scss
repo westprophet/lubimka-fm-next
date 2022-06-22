@@ -29,7 +29,7 @@
         letter-spacing: 0.02em;
       }
       @include for-lg {
-        @include f5() {
+        @include f6() {
           font-weight: 500;
           line-height: 140%;
         }

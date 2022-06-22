@@ -6,10 +6,6 @@
   gap: 10px;
   cursor: pointer;
   width: 100%;
-  //min-height: $height-1;
-  &.hover{
-
-  }
   @include for-xl {
     grid-template-columns: $height-2 auto;
   }
@@ -23,7 +19,7 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    @include for-xl {
+    @include for-xxl {
       height: $height-2;
       width: $height-2;
     }
@@ -32,14 +28,11 @@
       margin: auto;
       position: absolute;
       z-index: 2;
-      @include before-xl {
-        width: 20px;
-        height: 20px;
-        min-width: 20px;
-        svg {
-          width: 10px;
-          height: 10px;
-        }
+      @include before-xxl {
+        $size: 29px;
+        width: $size;
+        height: $size;
+        min-width: $size;
       }
     }
   }
@@ -53,8 +46,8 @@
         font-weight: 500;
         line-height: 140%;
       }
-      @include for-xl {
-        @include f5_16;
+      @include for-xxl {
+        @include f5;
       }
     }
 
@@ -63,7 +56,7 @@
         font-weight: 500;
         line-height: 11px;
       }
-      @include for-xl {
+      @include for-xxl {
         @include f7;
       }
     }

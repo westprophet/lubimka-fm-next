@@ -3,7 +3,7 @@
  */
 
 import React from 'react';
-import { TAudioManagerStatus } from '../../../../types/TAudioManagerStatus';
+import { TAudioManagerStatus } from 'types/TAudioManagerStatus';
 import PlayButton from 'components/UI/buttons/PlayButton';
 
 export default function PlayerControlComponent({

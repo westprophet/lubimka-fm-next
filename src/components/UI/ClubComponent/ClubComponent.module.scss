@@ -89,7 +89,7 @@
         white-space: nowrap;
       }
       @include for-lg{
-        @include f5();
+        @include f6();
       }
       @include for-xxl{
         @include f4();
@@ -113,7 +113,7 @@
           @include f7();
         }
         @include for-xxl{
-          @include f5();
+          @include f6();
         }
         @include for-fxl{
           @include f4();

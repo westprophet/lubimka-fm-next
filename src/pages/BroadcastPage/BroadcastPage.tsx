@@ -20,6 +20,7 @@ import NextTrackSection from '@pages/BroadcastPage/sections/NextTrackSection';
 import DynamicChannelTitle from 'components/DynamicChannelTitle';
 import BroadcastNow from '@pages/BroadcastPage/components/BroadcastNow';
 import RadioProgramsSection from '@pages/BroadcastPage/sections/RadioProgramsSection';
+import useDynamicPageTitle from 'hooks/channel/useDynamicPageTitle';
 
 export default function BroadcastPage({ channel, newTracks, radioPrograms }: IBroadcastPageProps) {
   const [active, setActive] = useState<'news' | 'history' | null>(null);
@@ -30,6 +31,7 @@ export default function BroadcastPage({ channel, newTracks, radioPrograms }: IBr
   const title: TAudioTitle | null = stream.current;
   const { image } = useImageState(title); // Запрашиваем картинку для трека
   const cover = image ?? channelCover;
+  useDynamicPageTitle(channel, title); //Вставляем Заголовок документа
   return (
     <DL.Layout
       className={cn(s.BroadcastPage)}

@@ -22,7 +22,7 @@
       color: var(--primary-color);
     }
     h2{
-      @include f5_16(){
+      @include f5(){
         font-weight: 800;
       }
       @include for-xl{
@@ -34,12 +34,12 @@
   }
   .detail{
     padding-left: 70px;//30px gap + button weight 40px
-    @include f5(){
+    @include f6(){
       font-weight: 400;
       line-height: 150%;
     }
     @include for-xl{
-      @include f5_16(){
+      @include f5(){
         line-height: 150%;
       }
     }

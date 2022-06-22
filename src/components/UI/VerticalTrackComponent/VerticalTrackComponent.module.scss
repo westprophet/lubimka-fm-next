@@ -6,6 +6,7 @@
   height: 50px;
   gap: 10px;
   align-items: center;
+
   @include for-lg {
     width: auto;
     grid-template-columns: 1fr;
@@ -13,9 +14,11 @@
     justify-items: center;
     max-width: 180px;
   }
+
   @include for-xxl{
     max-width: 240px;
   }
+
   @include for-fxl{
     max-width: 280px;
   }
@@ -38,12 +41,13 @@
     @include for-lg {
       width: 90px;
       height: 90px;
-      margin-bottom: 30px;
+
       :local(.playA){
         display: none;
       }
     }
     @include for-xxl{
+      margin-bottom: 30px;
       width: 120px;
       height: 120px;
     }
@@ -81,7 +85,7 @@
       }
       .name {
         //white-space: nowrap;
-        @include f5() {
+        @include f6() {
           font-weight: 500;
         }
         @include for-xl{
@@ -96,7 +100,7 @@
           font-weight: 500;
         }
         @include for-xl{
-          @include f5();
+          @include f6();
         }
       }
     }

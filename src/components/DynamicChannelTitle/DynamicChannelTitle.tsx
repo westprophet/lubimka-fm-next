@@ -8,16 +8,6 @@ import cn from 'classnames';
 import { MChannelTitleSlider as ChannelTitleSlider } from '@pages/HomePage/sections/BannerSection/components/ChannelTitleSlider';
 import IChannel from 'interfaces/IChannel';
 
-// const variants = {
-//   show: {
-//     opacity: 1,
-//     transition: { duration: 1 },
-//   },
-//   hidden: {
-//     opacity: 1,
-//   },
-// };
-
 const variants2 = {
   show: {
     opacity: 1,

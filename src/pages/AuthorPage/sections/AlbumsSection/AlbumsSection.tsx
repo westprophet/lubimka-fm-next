@@ -11,6 +11,7 @@ import Album from 'components/Album';
 // import DSection from 'layouts/DefaultLayout/components/DoubleSection';
 import { IAuthor } from 'interfaces/IAuthor';
 import HiddenSideTrackList from 'components/tracks/HiddenSideITrackList';
+import isEmptyArray from 'utils/isEmptyArray';
 
 export default function AlbumsSection({
   className,
@@ -21,6 +22,7 @@ export default function AlbumsSection({
   onOpen,
 }: IAlbumsSectionProps) {
   const [currentAlbum, setCurrentAlbum] = useState<IAlbum | null>(null);
+  if (isEmptyArray(albums)) return null;
   return (
     <>
       <QS.Container

@@ -1,4 +1,5 @@
 @import 'data';
+
 .CommonPlayer {
   position: relative;
   width: $width;
@@ -7,7 +8,7 @@
   background: var(--bg-panel-color);
   color: var(--text-color);
   align-items: center;
-  height: $height;
+  height: $height-xs;
   display: flex;
   gap: 10px;
   z-index: 4;
@@ -15,59 +16,79 @@
   border-top: 1px solid transparent;
   transform: translateY(100%);
   box-shadow: 0px 0px 21px #000;
-  @include for-sm{
-    height: $height-sm;
-    //gap: 15px;
-  }
-  @include for-lg{
-    padding-top: 2px;
-    padding-bottom: 2px;
-    height: $height-lg;
-    //gap: 15px;
-  }
-  @include for-md{
+  //@include for-sm{
+  //  height: $height-sm;
+  //}
+  @include for-md {
     gap: 30px;
   }
-  &.fixed{
-    bottom:0;
+  @include for-lg {
+    height: $height-lg;
+  }
+  @include for-xxl {
+    padding-top: 2px;
+    padding-bottom: 2px;
+    height: $height-xxl;
+  }
+
+  &.fixed {
+    bottom: 0;
     position: fixed;
   }
-  &.show{
+
+  &.show {
     transition: .25s;
     transform: translateY(0);
   }
-  &.openChannelMenu{
+
+  &.openChannelMenu {
     transition: .2s;
     border-top: 1px solid var(--border-color);
   }
-  &.transparent{
+
+  &.transparent {
     background-color: transparent;
-    :local{
-      .openChannelMenu{
-        background-color: transparent!important;
+
+    :local {
+      .openChannelMenu {
+        background-color: transparent !important;
       }
     }
   }
 
-  .cover{
+  .cover {
     flex-shrink: 0;
-    width: $height-sm;
-    height: $height-sm;
+    width: $height-xs;
+    height: $height-xs;
+    @include for-lg{
+      width: $height-lg;
+      height: $height-lg;
+    }
+    @include for-xxl{
+      width: $height-xxl;
+      height: $height-xxl;
+    }
   }
-  .title{
+
+  .title {
     width: 100%;
   }
-  .controls{
-    //margin: auto auto auto 0;
+
+  .control {
+    width: 35px !important;
+    height: 35px !important;
   }
-  .actions{
+
+  .actions {
     margin: auto 0 auto auto;
     flex-shrink: 0;
-    button{
+
+    button {
       color: var(--text-color);
     }
   }
-  .channelMenuSelector{
+
+  .channelMenuSelector {
     position: absolute;
     top: -1px;
     left: 0;

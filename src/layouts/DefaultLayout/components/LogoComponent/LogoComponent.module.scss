@@ -16,33 +16,35 @@
     justify-content: center;
     align-items: center;
     display: flex;
-    //padding-right: 2px;
     @include for-md {
       width: $logo-container-size-md;
     }
-    @include for-lg {
-      width: $logo-container-size-lg;
+    @include for-xxl {
+      width: $logo-container-size-xxl;
     }
-    @include for-xl {
-      width: $logo-container-size-xl;
+    @include for-qxl {
+      width: $logo-container-size-qxl;
+    }
+    .logoImg {
+      width: $logo-size-xs;
+      @include for-xxl{
+        width: $logo-size-xxl;
+      }
     }
   }
 
 
-  .logoImg {
-    width: $logo-size-xs;
-    @include for-lg{
-      width: $logo-size-lg;
-    }
-  }
 
   .logoTitle {
-    @include f5() {
+    @include f7() {
       font-weight: 700;
       line-height: 150%;
     }
+    @include for-xxl{
+      @include f5;
+    }
 
-    @include for-lg {
+    @include for-qxl {
       @include f4(){
         line-height: 170%;
       }

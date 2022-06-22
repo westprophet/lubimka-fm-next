@@ -10,6 +10,7 @@ import { ITrack } from 'interfaces/ITrack';
 import Track from 'components/tracks/Track';
 import { IAuthor } from 'interfaces/IAuthor';
 import HiddenSideTrackList from 'components/tracks/HiddenSideITrackList';
+import isEmptyArray from 'utils/isEmptyArray';
 
 export default function TracksSection({
   className,
@@ -19,6 +20,7 @@ export default function TracksSection({
   onOpen,
   author,
 }: IAlbumsSectionProps) {
+  if (isEmptyArray(tracks)) return null;
   return (
     <>
       <QS.Container

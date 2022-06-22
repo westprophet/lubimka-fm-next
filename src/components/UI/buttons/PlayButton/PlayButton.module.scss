@@ -3,7 +3,7 @@
 .PlayButton {
   height: $size-xs;
   width: $size-xs;
-  min-width: $size-xs;
+  //min-width: $size-xs;
   position: relative;
   display: flex;
   justify-content: center;
@@ -15,14 +15,14 @@
     width: calc(100% - #{$stroke-width-xs + 1}px);
     height: calc(100% - #{$stroke-width-xs + 1}px);
     color: currentColor;
-    position: relative;
-    svg{
-      width: 70%;
-      height: 70%;
-    }
     @include for-lg{
       width: calc(100% - #{$stroke-width-lg + 1}px);
       height: calc(100% - #{$stroke-width-lg + 1}px);
+    }
+
+    svg{
+      width:0.60em;
+      height:0.60em;
     }
   }
   &:local(.error){

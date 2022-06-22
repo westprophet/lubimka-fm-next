@@ -1,4 +1,4 @@
-import { TAudioManagerStatus } from '../../types/TAudioManagerStatus';
+import { TAudioManagerStatus } from 'types/TAudioManagerStatus';
 
 export default function getStatusConst(status: TAudioManagerStatus) {
   const isError = status === 'error',

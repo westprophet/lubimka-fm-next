@@ -1,8 +1,13 @@
 .GetApplicationButton {
-  width: 180px;
-  height: 60px;
+  width: 100px;
+  height: 33px;
+  background-color: red;
   border: 1px solid transparent;
   //transition: .25s;
+  @include for-xxl{
+    width: 180px;
+    height: 60px;
+  }
   &.appstore{
     background: url('../../../assets/buttons/app-store.svg') no-repeat;
     background-size: 100% 100%;

@@ -18,7 +18,7 @@
       line-height: 200%;
     }
     @include for-lg{
-      @include f5(){
+      @include f6(){
         line-height: 180%;
       }
     }

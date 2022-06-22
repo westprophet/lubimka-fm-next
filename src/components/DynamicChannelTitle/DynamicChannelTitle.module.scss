@@ -18,6 +18,9 @@
   }
 
   @include for-lg {
+    font-size: 60px;
+  }
+  @include for-xxl {
     letter-spacing: 0.1em;
     font-size: 100px;
   }

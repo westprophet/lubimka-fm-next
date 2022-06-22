@@ -12,7 +12,7 @@ import PlayButton from 'components/UI/buttons/PlayButton';
 import Marquee from 'react-double-marquee';
 import DATA_FOR_BLUR from '../../../constants/DATA_FOR_BLUR';
 import { useRouter } from 'next/router';
-import { TAudioManagerStatus } from '../../../types/TAudioManagerStatus';
+import { TAudioManagerStatus } from 'types/TAudioManagerStatus';
 
 // import NoCover from 'assets/no-photo-heath.svg';
 
@@ -26,8 +26,20 @@ export default function AuthorComponent({
 }: IAuthorComponent) {
   const r = useRouter();
   const [status, setStatus] = useState<TAudioManagerStatus>('paused');
+  const onPlay = () => {
+    if (link) {
+      setStatus('loading');
+      // eslint-disable-next-line promise/catch-or-return
+      r.push(link)
+        .catch(() => setStatus('error'))
+        .finally(() => setStatus('paused'));
+    } else if (onClick) onClick();
+  };
   return (
-    <div className={cn(s.AuthorComponent, { [s.resizable]: resizable }, className)}>
+    <div
+      className={cn(s.AuthorComponent, { [s.resizable]: resizable }, className)}
+      onClick={onPlay}
+    >
       <div className={cn(s.inner)}>
         {cover ? (
           <Image
@@ -42,20 +54,7 @@ export default function AuthorComponent({
           <NoImage className={cn(s.cover, 'zoom-effect')} />
         )}
         <div className={cn(s.front)}>
-          <PlayButton
-            className={cn(s.button)}
-            onClick={() => {
-              if (link) {
-                setStatus('loading');
-                // eslint-disable-next-line promise/catch-or-return
-                r.push(link)
-                  .catch(() => setStatus('error'))
-                  .finally(() => setStatus('paused'));
-              } else if (onClick) onClick();
-            }}
-            status={status}
-            type={2}
-          />
+          <PlayButton className={cn(s.button)} onClick={onPlay} status={status} type={2} />
         </div>
       </div>
       <h3>

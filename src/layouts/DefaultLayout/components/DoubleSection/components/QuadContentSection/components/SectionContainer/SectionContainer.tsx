@@ -5,6 +5,7 @@
 import React from 'react';
 import s from './SectionContainer.module.scss';
 import cn from 'classnames';
+
 import { useRouter } from 'next/router';
 import { CircularProgress } from '@mui/material';
 
@@ -48,7 +49,7 @@ export default function SectionContainer({
       )}
     >
       <div className={cn(s.line)}>
-        <span></span>
+        <span />
       </div>
       <div className={cn(s.head)}>
         {title && <div className={cn(s.title)}>{title}</div>}

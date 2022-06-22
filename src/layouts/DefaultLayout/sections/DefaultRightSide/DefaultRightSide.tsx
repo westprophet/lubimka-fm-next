@@ -8,17 +8,36 @@ import cn from 'classnames';
 import AsideBar from '../../components/AsideBar';
 import SocialsSection from './sections/SocialsSection';
 import AsideMiniPlayer from '../../components/AsideBar/components/AsideMiniPlayer';
+export const variants = {
+  visible: {
+    opacity: 1,
+    x: 0,
+    transition: {
+      duration: 0.3,
+      delay: 1,
+    },
+  },
+  hidden: {
+    x: '100%',
+  },
+};
 
 export default function DefaultRightSide({ className, showPlayer }: IDefaultRightSideProps) {
   return (
-    <AsideBar.Wrapper className={cn(s.DefaultRightSide, className)} position="right">
+    <AsideBar.MWrapper
+      variants={variants}
+      initial="hidden"
+      animate="visible"
+      className={cn(s.DefaultRightSide, className)}
+      position="right"
+    >
       <AsideBar.Top>
         <AsideMiniPlayer show={showPlayer} />
       </AsideBar.Top>
       <AsideBar.Inner>
         <SocialsSection />
       </AsideBar.Inner>
-    </AsideBar.Wrapper>
+    </AsideBar.MWrapper>
   );
 }
 

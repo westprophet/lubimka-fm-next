@@ -20,7 +20,6 @@ export default function ChannelComponent({
   onPlayClick,
   status,
   isError,
-  isDetail,
   typeSize,
   disabled,
   resizable,
@@ -76,7 +75,6 @@ export interface IChannelProps {
   className?: string;
   typeSize?: 'small';
   resizable?: boolean;
-  isDetail?: boolean;
 }
 
 interface IChannelDataProps extends IChannelProps {
@@ -84,7 +82,6 @@ interface IChannelDataProps extends IChannelProps {
   title: string;
   cover: string | null | undefined;
   onPlayClick(): any;
-  isNew?: boolean;
   isError?: boolean;
   isActive?: boolean;
   status: TAudioManagerStatus;

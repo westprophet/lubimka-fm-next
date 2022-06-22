@@ -16,15 +16,15 @@ export default function PartnersSection({ partners }: IPartnersSectionProps) {
     <SectionSlider.Wrapper className={cn(s.PartnersSection)} title="Партнеры" link={`/partners`}>
       {partners?.map((p: IPartner, index: number) => {
         return (
-          <SectionSlider.MSlide
+          <SectionSlider.Slide
             key={`partner-${p.id}`}
-            variants={MSlideAnimationVariants}
-            custom={index}
-            whileInView="visible"
-            initial="hidden"
+            // variants={MSlideAnimationVariants}
+            // custom={index}
+            // whileInView="visible"
+            // initial="hidden"
           >
             <Partner p={p} />
-          </SectionSlider.MSlide>
+          </SectionSlider.Slide>
         );
       })}
     </SectionSlider.Wrapper>

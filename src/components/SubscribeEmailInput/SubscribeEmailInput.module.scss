@@ -1,7 +1,7 @@
 .SubscribeEmailInput {
   color: var(--border-color);
   & > span {
-    @include f5 {
+    @include f6 {
       color: #FFF;
       opacity: 0.4;
 

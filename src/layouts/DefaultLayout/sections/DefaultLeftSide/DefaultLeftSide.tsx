@@ -11,11 +11,32 @@ import ToTopSection from './sections/ToTopSection';
 import ToBackArrow from '../../components/AsideBar/components/ToPageArrow';
 import { useRouter } from 'next/router';
 
+export const variants = {
+  visible: {
+    opacity: 1,
+    x: 0,
+    transition: {
+      duration: 0.3,
+      delay: 1,
+    },
+  },
+  hidden: {
+    x: '-100%',
+  },
+};
+
 //Левое бар
 export default function DefaultLeftSide({ className, arrow }: IDefaultLeftSideProps) {
   const r = useRouter();
   return (
-    <AsideBar.Wrapper position="left" fixed className={cn(s.DefaultLeftSide, className)}>
+    <AsideBar.MWrapper
+      variants={variants}
+      initial="hidden"
+      animate="visible"
+      position="left"
+      fixed
+      className={cn(s.DefaultLeftSide, className)}
+    >
       <AsideBar.Top>
         <ToBackArrow
           show={arrow?.show ?? false}
@@ -27,7 +48,7 @@ export default function DefaultLeftSide({ className, arrow }: IDefaultLeftSidePr
         <LanguageSelector />
         <ToTopSection />
       </AsideBar.Inner>
-    </AsideBar.Wrapper>
+    </AsideBar.MWrapper>
   );
 }
 
