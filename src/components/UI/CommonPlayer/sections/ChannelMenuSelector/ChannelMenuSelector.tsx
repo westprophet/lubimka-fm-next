@@ -5,13 +5,13 @@
 import React from 'react';
 import s from './ChannelMenuSelector.module.scss';
 import cn from 'classnames';
-import Slider from 'react-slick';
 import SlickControlArrow from 'components/SlickControlArrow';
 import IChannel from '../../../../../interfaces/IChannel';
 import useIsMobile from 'src/hooks/useIsMobile';
 import useChannelMenuSliderSetting from './hooks/useChannelMenuSliderSetting';
 import Channel from 'components/Channel';
 
+import Slider from 'react-slick';
 //Селектор каналов в плеере
 export default function ChannelMenuSelector({
   className,

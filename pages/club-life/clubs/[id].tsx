@@ -18,6 +18,7 @@ export const getStaticProps: GetStaticProps = async (context: GetStaticPropsCont
     id: context.params?.id,
     withRecomendedEvents: true,
   });
+
   //Ближайшие мироприятия этого клуба
   const { data: nearbyEvents } = await api.strapi.events.getNearbyEvents(club?.id);
   let recomendedEvents = null;

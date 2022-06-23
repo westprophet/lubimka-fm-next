@@ -23,13 +23,11 @@ export const getStaticProps: GetStaticProps = async (context: GetStaticPropsCont
   const { data: clubs } = await api.strapi.clubs.getClubs();
   const { data: authors } = await api.strapi.authors.getAuthors();
   const { data: partners } = await api.strapi.partners.getPartners();
-  // const channels = await api.strapi.channels.getChannels();
   return await getGlobalStaticProps({
     props: {
       events,
       clubs,
       authors,
-      // channels,
       partners,
     },
   });

@@ -4,7 +4,7 @@ import { ITrack } from 'interfaces/ITrack';
 //Получаем все треки из альбомов
 export default function useAlbumsTracks(
   albums: IAlbum[],
-  callback: (t: ITrack, i: number, a: IAlbum) => any = (t: ITrack, i: number, a: IAlbum) => t
+  callback: (t: ITrack, i: number, a: IAlbum) => any = (t: ITrack) => t
 ) {
   const res = [];
   let index = 0;

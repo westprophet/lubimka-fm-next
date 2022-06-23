@@ -3,7 +3,10 @@
   @include f7() {
     font-weight: 700;
   }
-  @include for-lg {
+  @include for-lg{
+    @include f6();
+  }
+  @include for-xxl {
     @include f3();
     margin-bottom: 30px;
   }

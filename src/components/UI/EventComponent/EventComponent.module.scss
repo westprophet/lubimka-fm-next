@@ -6,6 +6,7 @@
   gap: $gap-xs;
   position: relative;
   height: $height-xs;
+  cursor: pointer;
   @include for-lg {
     height: $height-lg;
     width: $width-lg;
@@ -47,7 +48,7 @@
     .title {
       margin-bottom: 10px;
       @include f7();
-      @include for-lg {
+      @include for-xxl {
         @include f4();
         margin-bottom: 20px;
       }
@@ -59,13 +60,13 @@
       gap: 5px;
       align-items: center;
       @include f8();
-      @include for-lg {
+      @include for-xxl {
         @include f7();
       }
 
       svg {
         font-size: 1rem;
-        @include for-lg {
+        @include for-xxl {
           font-size: 1.5rem;
         }
       }

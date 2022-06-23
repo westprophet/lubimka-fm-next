@@ -45,7 +45,6 @@ export default function ContactUsPage({ className }: IContactUsPageProps) {
               initialValues={{ email: '', name: '', phone: '', city: '', message: '' }}
               validationSchema={validationSchema}
               onSubmit={(values, { setSubmitting }) => {
-                console.log('safdsdfsf');
                 setTimeout(() => {
                   alert(JSON.stringify(values, null, 2));
                   setSubmitting(false);

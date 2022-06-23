@@ -3,7 +3,7 @@
  */
 
 // @ts-ignore
-import React, { startTransition, useEffect, useState } from 'react';
+import React, { startTransition, useState } from 'react';
 import s from './VerticalTrackComponent.module.scss';
 import cn from 'classnames';
 import Image from 'next/image';

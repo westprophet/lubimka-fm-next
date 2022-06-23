@@ -36,10 +36,10 @@
     position: fixed;
   }
 
-  &.show {
-    transition: .25s;
-    transform: translateY(0);
-  }
+  //&.show {
+  //  transition: .25s;
+  //  transform: translateY(0);
+  //}
 
   &.openChannelMenu {
     transition: .2s;

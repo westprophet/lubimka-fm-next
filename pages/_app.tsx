@@ -6,13 +6,11 @@ import RadioPlayerManager from '../src/contexts/RadioPlayerManager';
 import theme from '../mui-theme';
 import { QueryClient, QueryClientProvider, Hydrate } from 'react-query';
 import { ThemeProvider } from '@mui/material';
-import 'moment/locale/ru';
-
 import 'styles/reset.css'; // Обнуляем стили
-
 import 'slick-carousel/slick/slick.css';
 import 'slick-carousel/slick/slick-theme.css';
 import 'src/scss/index.scss'; //Коренной файл стилей (общий)
+import 'moment/locale/ru';
 
 import { CookiesProvider } from 'react-cookie';
 

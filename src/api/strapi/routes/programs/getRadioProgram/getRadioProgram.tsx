@@ -29,4 +29,4 @@ export default async function getRadioProgram(
   }
 }
 
-export type IGetRadioProgramReturn = IRadioProgram | null;
+export type IGetRadioProgramReturn = IRadioProgram[] | null;

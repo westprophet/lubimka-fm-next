@@ -15,7 +15,7 @@ export default function ChannelTitle({ className, title, isLoading, isError }: I
   const isEmptyTitle = !title;
   useEffect(() => {
     if (!isEmptyTitle) prevTitle.current = { ...title };
-  }, [title]);
+  }, [isEmptyTitle, title]);
 
   const _artist = !isEmptyTitle ? title?.artist : prevTitle.current?.artist;
   const _title = !isEmptyTitle ? title?.title : prevTitle.current?.title;

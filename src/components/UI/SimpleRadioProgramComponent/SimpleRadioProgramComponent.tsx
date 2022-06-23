@@ -3,7 +3,7 @@
  */
 
 // @ts-ignore
-import React, { startTransition, useState } from 'react';
+import React from 'react';
 import s from './SimpleRadioProgramComponent.module.scss';
 import cn from 'classnames';
 import Image from 'next/image';
@@ -15,7 +15,7 @@ export default function SimpleRadioProgramComponent({
   cover,
 }: ISimpleRadioProgramComponentProps) {
   const isNoImg = !cover;
-  const [isLoadImage, setIsLoadImage] = useState<boolean>(false);
+  // const [isLoadImage, setIsLoadImage] = useState<boolean>(false);
   return (
     <div className={cn(s.SimpleRadioProgramComponent, className)}>
       <div className={cn(s.cover, 'cover', { [s.noImageContainer]: isNoImg })}>
@@ -26,7 +26,7 @@ export default function SimpleRadioProgramComponent({
             placeholder="blur"
             blurDataURL={DATA_FOR_BLUR_ALT}
             loading="eager"
-            onLoadingComplete={() => startTransition(() => setIsLoadImage(true))}
+            // onLoadingComplete={() => startTransition(() => setIsLoadImage(true))}
           />
         ) : (
           <NoImage className={cn(s.noImg)} />

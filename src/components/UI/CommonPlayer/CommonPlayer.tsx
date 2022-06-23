@@ -17,15 +17,17 @@ import { IChannel } from '../../../interfaces';
 import { motion } from 'framer-motion';
 
 export const variants = {
-  visible: {
+  show: {
     y: 0,
     transition: {
-      duration: 0.3,
-      delay: 0.4,
+      duration: 0.1,
     },
   },
   hidden: {
     y: '100%',
+    transition: {
+      duration: 0.1,
+    },
   },
 };
 
@@ -45,7 +47,7 @@ export default function CommonPlayer({
     <motion.aside
       variants={variants}
       initial="hidden"
-      animate="visible"
+      animate={show && pinned.pinned ? 'show' : 'hidden'}
       className={cn(
         s.CommonPlayer,
         'with-screen-padding',

@@ -14,12 +14,14 @@ export const variants = {
   visible: {
     y: 0,
     transition: {
-      duration: 0.3,
-      delay: 0.4,
+      duration: 0.1,
     },
   },
   hidden: {
     y: '-100%',
+    transition: {
+      duration: 0.2,
+    },
   },
 };
 
@@ -28,7 +30,7 @@ function DefaultHeader({ className, show, transparent, fixed }: IDefaultHeaderPr
     <motion.header
       variants={variants}
       initial="hidden"
-      animate="visible"
+      animate={show ? 'visible' : 'hidden'}
       className={cn(
         s.DefaultHeader,
         { [s.show]: show },

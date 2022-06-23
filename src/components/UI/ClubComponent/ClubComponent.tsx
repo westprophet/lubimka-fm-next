@@ -12,6 +12,8 @@ import DATA_FOR_BLUR from '../../../constants/DATA_FOR_BLUR';
 import NoImage from 'components/UI/NoImage';
 import PlaceIcon from '@mui/icons-material/Place';
 import Link from 'next/link';
+import useHover from 'hooks/useHover';
+import IconString from 'components/UI/others/IconString';
 
 export default function ClubComponent({
   className,
@@ -21,8 +23,13 @@ export default function ClubComponent({
   link,
   resizable,
 }: IClubComponentProps) {
+  const { onMouseOverHandler, onMouseLeaveHandler, hover } = useHover();
   return (
-    <div className={cn(s.ClubComponent, { [s.notResizable]: resizable }, className)}>
+    <div
+      className={cn(s.ClubComponent, { [s.notResizable]: resizable }, className)}
+      onMouseOver={onMouseOverHandler}
+      onMouseLeave={onMouseLeaveHandler}
+    >
       {cover ? (
         <Image
           className={cn(s.bg, 'zoom-effect')}
@@ -57,20 +64,23 @@ export default function ClubComponent({
       <div className={cn(s.body)}>
         <Link href={link}>
           <h3>
-            <Marquee speed={0.02} direction="left" scrollWhen={'overflow'} delay={3000}>
-              {title}
-            </Marquee>
+            {hover ? (
+              <Marquee speed={0.02} direction="left" scrollWhen={'overflow'} delay={100}>
+                {title}
+              </Marquee>
+            ) : (
+              title
+            )}
           </h3>
         </Link>
-
-        <div className={cn(s.addressContainer)}>
-          <PlaceIcon fontSize="large" />
-          <div className={cn(s.address)}>
-            <Marquee speed={0.02} direction="left" scrollWhen={'overflow'} delay={7000}>
-              {address ?? 'Город, улица, номер  в две строки город, улица, номер в две строки'}
-            </Marquee>
-          </div>
-        </div>
+        <IconString
+          inline={hover}
+          icon={<PlaceIcon />}
+          className={cn(s.addressContainer)}
+          delay={100}
+        >
+          {address}
+        </IconString>
       </div>
     </div>
   );

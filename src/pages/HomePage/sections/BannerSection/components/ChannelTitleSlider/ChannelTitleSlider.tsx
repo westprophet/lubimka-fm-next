@@ -6,7 +6,6 @@ import React, { forwardRef, LegacyRef, useContext, useEffect } from 'react';
 import s from './ChannelTitleSlider.module.scss';
 import cn from 'classnames';
 import Slider from 'react-slick';
-// import { ChannelManagerContext } from '../../../../../../contexts/ChannelManager';
 import { IChannel } from 'interfaces/IChannel';
 import useGetCurrentSlideByChannels from './hooks/useGetCurrentSlideByChannels';
 import useGetSliderSettings from './hooks/useGetSliderSettings';

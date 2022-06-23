@@ -34,7 +34,7 @@ export default function HomePage({ events, clubs, authors, partners, channels }:
       <AppSection />
       <LubimkaDjsSection authors={authors} />
       <PromoOrderMusicSection />
-      <ClubLifeSection clubs={clubs} />
+      <ClubLifeSection clubs={clubs} events={events} />
       <PromoComeSection />
       <ChannelsSection channels={channels} />
       <PromoDownloadSection />

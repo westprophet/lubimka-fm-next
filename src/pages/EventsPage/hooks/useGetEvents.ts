@@ -1,7 +1,6 @@
 import { useQuery } from 'react-query';
 import api from '../../../api';
-import { IGetEventsReturn } from '../../../api/strapi/routes/events/getEvents/getEvents';
-import moment from 'moment';
+import { IGetEventsReturn } from 'api/strapi/routes/events/getEvents/getEvents';
 
 export default function useGetEvents(
   search: string,
@@ -13,8 +12,9 @@ export default function useGetEvents(
 ) {
   return useQuery<IGetEventsReturn>(
     ['getEventsPages', search, fromDate, toDate, page, pageSize],
-    () =>
-      api.strapi.events.getEvents({
+    async () => {
+      const { default: moment } = await import('moment');
+      return await api.strapi.events.getEvents({
         search,
         fromDate: fromDate ?? moment().utc().format(),
         toDate,
@@ -22,7 +22,8 @@ export default function useGetEvents(
           page: page,
           pageSize: pageSize,
         },
-      }),
+      });
+    },
     {
       initialData,
       retryDelay: 1000,

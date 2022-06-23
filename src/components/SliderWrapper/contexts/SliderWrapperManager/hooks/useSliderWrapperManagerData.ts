@@ -1,9 +1,10 @@
 import ISliderWrapperManagerValues from './../types/ISliderWrapperManagerValues';
 import { useCallback, useRef, useState } from 'react';
-import Slider from 'react-slick';
+// import Slider from 'react-slick';
+// const Slider = import('react-slick');
 
 export default function useSliderWrapperManagerData(): ISliderWrapperManagerValues {
-  const ref = useRef<Slider>();
+  const ref = useRef<any>();
   const count = useRef<number | null>(null);
   const [currentSlideIndex, setCurrentSlideIndex] = useState<number>(1);
   const next = useCallback(() => {

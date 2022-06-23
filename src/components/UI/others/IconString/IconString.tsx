@@ -8,21 +8,28 @@ import cn from 'classnames';
 
 // @ts-ignore
 import Marquee from 'react-double-marquee';
+
 export default function IconString({
   className,
   icon,
   children,
   direction,
+  inline,
   delay,
 }: IIconStringProps) {
   return (
     <div className={cn(s.IconString, className)}>
       {icon}
-      <span>
-        <Marquee speed={0.02} direction={direction} scrollWhen={'overflow'} delay={delay}>
-          {children}
-        </Marquee>
-      </span>
+
+      {inline ? (
+        <span>
+          <Marquee speed={0.02} direction={direction} scrollWhen={'overflow'} delay={delay}>
+            {children}
+          </Marquee>
+        </span>
+      ) : (
+        <span>{children}</span>
+      )}
     </div>
   );
 }
@@ -30,12 +37,14 @@ export default function IconString({
 IconString.defaultProps = {
   className: '',
   direction: 'left',
-  delay: 3000,
+  delay: 100,
   speed: 0.02,
+  inline: true,
 };
 
 interface IIconStringProps {
   className?: string;
+  inline: boolean;
   icon: any;
   children: any;
   direction?: 'left' | 'right';

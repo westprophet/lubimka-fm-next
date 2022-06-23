@@ -7,15 +7,12 @@ import s from './ChannelPlayer.module.scss';
 import cn from 'classnames';
 import PlayButton from 'components/UI/buttons/PlayButton';
 import { RadioPlayerContext } from '../../../../contexts/RadioPlayerManager';
-import { IChannel } from '../../../../interfaces';
+import { IChannel } from 'interfaces/IChannel';
 import compareIChannels from '../../../../tools/IChannel/compareIChannels';
 import TAudioTitle from '../../../../types/TAudioTitle';
 
-import useStaticChannelStream from '../../hooks/useStaticChannelStream';
 import ChannelTitle from './components/ChannelTitle';
-import getTitle from '../../../../tools/IRadioHearthStreamData/getTitle';
 import Cover from './components/Cover';
-import CoverAlternate from './components/CoverAlternate';
 
 //Плеер канала
 function ChannelPlayer({

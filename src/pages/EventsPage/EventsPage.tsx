@@ -1,16 +1,22 @@
 /**
  * Created by westp on 10.05.2022
  */
-import React, { useState } from 'react';
+import React, { Suspense, useState } from 'react';
+import dynamic from 'next/dynamic';
+
 import s from './EventsPage.module.scss';
 import cn from 'classnames';
 import DefaultLayout from 'src/layouts/DefaultLayout';
 import ViewSection from './sections/ViewSection';
 
-import FilterSection from './sections/FilterSection';
 import useGetEvents from './hooks/useGetEvents';
 import { TablePagination } from '@mui/material';
-import { IGetEventsReturn } from '../../api/strapi/routes/events/getEvents/getEvents';
+import { IGetEventsReturn } from 'api/strapi/routes/events/getEvents/getEvents';
+
+const FilterSection = dynamic(() => import('./sections/FilterSection'), {
+  suspense: true,
+  ssr: false,
+});
 
 //Страница мероприятий
 export default function EventsPage({ events }: IEventsPageProps) {
@@ -41,7 +47,15 @@ export default function EventsPage({ events }: IEventsPageProps) {
     <DefaultLayout.Layout className={cn(s.EventsPage)}>
       <DefaultLayout.PageWrapper>
         <DefaultLayout.PageTitle url="/club-life">Мероприятия</DefaultLayout.PageTitle>
-        <FilterSection setSearch={setSearch} setFrom={setFrom} from={from} setTo={setTo} to={to} />
+        <Suspense fallback={`Loading...`}>
+          <FilterSection
+            setSearch={setSearch}
+            setFrom={setFrom}
+            from={from}
+            setTo={setTo}
+            to={to}
+          />
+        </Suspense>
 
         <ViewSection events={data?.data} />
         <DefaultLayout.Section.Wrapper>

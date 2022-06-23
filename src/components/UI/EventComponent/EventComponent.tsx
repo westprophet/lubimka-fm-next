@@ -2,20 +2,19 @@
  * Created by westprophet on 11.05.2022
  */
 
+// @ts-ignore
 import React from 'react';
 import s from './EventComponent.module.scss';
 import cn from 'classnames';
 import Image from 'next/image';
 import DATA_FOR_BLUR from '../../../constants/DATA_FOR_BLUR';
 import NoImage from 'components/UI/NoImage';
-import TextPlaceholder from 'components/UI/TextPlaceholder';
 import FmdGoodIcon from '@mui/icons-material/FmdGood';
 import AccessTimeIcon from '@mui/icons-material/AccessTime';
 
-// @ts-ignore
-// import Marquee from 'react-double-marquee';
 import Link from 'next/link';
 import IconString from 'components/UI/others/IconString';
+import useHover from 'hooks/useHover';
 
 //Визуальный UI компонент который отображает сущность "Мероприятие" в чистом виде
 export default function EventComponent({
@@ -27,8 +26,13 @@ export default function EventComponent({
   link,
   resizable,
 }: IEventComponent) {
+  const { onMouseOverHandler, onMouseLeaveHandler, hover } = useHover();
   return (
-    <div className={cn(s.EventComponent, { [s.resizable]: resizable }, className)}>
+    <div
+      className={cn(s.EventComponent, { [s.resizable]: resizable }, className)}
+      onMouseOver={onMouseOverHandler}
+      onMouseLeave={onMouseLeaveHandler}
+    >
       {cover ? (
         <div className={cn(s.cover)}>
           <Image
@@ -44,23 +48,14 @@ export default function EventComponent({
       )}
       <div className={cn(s.desc)}>
         <Link href={link}>
-          <a>
-            <TextPlaceholder className={cn(s.title)} placeholder="Подробнее">
-              {title}
-            </TextPlaceholder>
-          </a>
+          <a className={cn(s.title)}>{title}</a>
         </Link>
-
-        <IconString icon={<AccessTimeIcon />}>{date}</IconString>
-        <IconString icon={<FmdGoodIcon />}>{address}</IconString>
-        {/*<div className={cn(s.address)}>*/}
-        {/*  <FmdGoodIcon />*/}
-        {/*  <span>*/}
-        {/*    <Marquee speed={0.02} direction="right" scrollWhen={'overflow'} delay={3000}>*/}
-        {/*      {address}*/}
-        {/*    </Marquee>*/}
-        {/*  </span>*/}
-        {/*</div>*/}
+        <IconString inline={hover} icon={<AccessTimeIcon />} delay={500}>
+          {date}
+        </IconString>
+        <IconString inline={hover} icon={<FmdGoodIcon />} delay={500}>
+          {address}
+        </IconString>
       </div>
     </div>
   );

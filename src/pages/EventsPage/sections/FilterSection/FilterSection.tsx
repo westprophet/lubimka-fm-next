@@ -3,16 +3,19 @@
  */
 
 // @ts-ignore
-import React, { useEffect, useRef, startTransition, useState } from 'react';
+import React, { startTransition, useState } from 'react';
 import s from './FilterSection.module.scss';
 import cn from 'classnames';
 import DefaultLayout from '../../../../layouts/DefaultLayout';
 import SearchInput from 'components/SearchInput';
 
-import { FormControl, MenuItem, Select, TextField } from '@mui/material';
-import { DateTimePicker, LocalizationProvider } from '@mui/x-date-pickers';
-import { AdapterMoment } from '@mui/x-date-pickers/AdapterMoment';
 import moment from 'moment';
+import 'moment/locale/ru';
+
+import { AdapterMoment } from '@mui/x-date-pickers/AdapterMoment';
+import { DateTimePicker, LocalizationProvider } from '@mui/x-date-pickers';
+
+import { FormControl, MenuItem, Select, TextField } from '@mui/material';
 import { DATE_FORMAT, DATE_MASK } from '../../../../constants/DATE_INPUT';
 
 interface IFilterSectionProps {
@@ -23,6 +26,7 @@ interface IFilterSectionProps {
   setFrom(v: any): any;
   setTo(v: any): any;
 }
+// let moment: null | any = null;
 
 export default function FilterSection({
   className,
@@ -33,7 +37,6 @@ export default function FilterSection({
   setTo,
 }: IFilterSectionProps) {
   const [range, setRange] = useState<RangeTypes>('day');
-  // const [loader, setLoader] = useState<boolean>(false);
   const handleChangeSearch = (e: React.ChangeEvent<HTMLInputElement>) => {
     startTransition(() => {
       setSearch(e.target.value);
@@ -41,31 +44,34 @@ export default function FilterSection({
   };
 
   const handleChangeRange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    // @ts-ignore
-    setRange(e.target.value);
-  };
-
-  useEffect(() => {
-    // setFrom(moment());
+    const range = e.target.value;
+    let to: moment.Moment | null = null;
+    let _from: string | null = null;
     switch (range) {
       case 'day':
-        setTo(moment().endOf('day'));
+        to = moment().endOf('day');
         break;
       case 'week':
-        setTo(moment().endOf('week'));
+        to = moment().endOf('week');
         break;
       case 'tomorrow':
-        setTo(moment().add(1, 'day').endOf('day'));
+        to = moment().add(1, 'day').endOf('day');
         break;
       case 'month':
-        setTo(moment().endOf('month'));
+        to = moment().endOf('month');
         break;
       case 'all':
-        setTo(null);
-        setFrom(null);
+        to = null;
+        _from = null;
         break;
     }
-  }, [range]);
+    startTransition(() => {
+      setTo(to);
+      setFrom(_from);
+      // @ts-ignore
+      setRange(range);
+    });
+  };
   return (
     <DefaultLayout.Section.Wrapper>
       <DefaultLayout.Section.Inner
@@ -73,16 +79,11 @@ export default function FilterSection({
         className={cn(s.FilterSection, className)}
       >
         <div className={cn(s.searchContainer)}>
-          <SearchInput
-            onChange={handleChangeSearch}
-            // searchValue={search}
-            className={cn(s.searchInput)}
-          />
+          <SearchInput onChange={handleChangeSearch} className={cn(s.searchInput)} />
         </div>
         <div className={cn(s.filterPanel)}>
           <div className={cn(s.date)}>
             <FormControl className={cn(s.selector)}>
-              {/*<InputLabel>Диапазон</InputLabel>*/}
               <Select label="Диапазон" onChange={handleChangeRange} value={range}>
                 <MenuItem value="day">Сегодня</MenuItem>
                 <MenuItem value="tomorrow">Завтра</MenuItem>
@@ -96,7 +97,7 @@ export default function FilterSection({
             <LocalizationProvider dateAdapter={AdapterMoment} locale="ru">
               <DateTimePicker
                 renderInput={(props) => <TextField {...props} />}
-                // label="От"
+                label="От"
                 disabled={range !== 'custom'}
                 value={from}
                 ampm={false}
@@ -107,7 +108,7 @@ export default function FilterSection({
               />
               <DateTimePicker
                 renderInput={(props) => <TextField {...props} />}
-                // label="До"
+                label="До"
                 disabled={range !== 'custom'}
                 value={to}
                 ampm={false}

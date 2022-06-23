@@ -1,17 +1,16 @@
 import ISliderWrapperManagerValues from './../types/ISliderWrapperManagerValues';
-import Slider from 'react-slick';
 
 const INITIAL_VALUE: ISliderWrapperManagerValues = {
   next: () => {},
   prev: () => {},
   play: () => {},
   pause: () => {},
-  goTo: (index: number) => {},
-  setCount: (index: number) => {},
+  goTo: () => {},
+  setCount: () => {},
   count: 0,
-  setCurrentSlideIndex: (index: number) => {},
+  setCurrentSlideIndex: () => {},
   currentSlideIndex: 1,
-  ref: Slider,
+  ref: null,
 };
 
 export default INITIAL_VALUE;

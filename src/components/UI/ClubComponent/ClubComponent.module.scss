@@ -99,25 +99,19 @@
       }
     }
     .addressContainer{
-      display: flex;
-      align-items: center;
-      gap: 5px;
+      @include f8();
+      width: 100%;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      line-height: 140%!important;
+      @include for-xxl{
+        @include f6();
+      }
+      @include for-fxl{
+        @include f4();
+      }
       .address {
-        @include f8();
-        width: 100%;
-        white-space: nowrap;
-        overflow: hidden;
-        text-overflow: ellipsis;
-        line-height: 140%!important;
-        @include for-lg{
-          @include f7();
-        }
-        @include for-xxl{
-          @include f6();
-        }
-        @include for-fxl{
-          @include f4();
-        }
       }
     }
   }

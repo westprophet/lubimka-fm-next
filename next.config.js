@@ -3,6 +3,9 @@ const withOptimizedImages = require('next-optimized-images');
 // const withImages = require('next-images');
 const path = require('path');
 
+const withBundleAnalyzer = require('@next/bundle-analyzer')({
+  enabled: process.env.ANALYZE === 'true',
+});
 const isProduction =
   process.env.NODE_ENV === 'production' && process.env.REACT_APP_MODE === 'production';
 
@@ -90,4 +93,7 @@ const imagesOptimizePluginSettings = [
 ];
 
 //обьеденяем плагины и конфигурацию
-module.exports = withPlugins([imagesPluginSetting, sassPluginSetting], nextConfig);
+module.exports = withPlugins(
+  [withBundleAnalyzer, imagesPluginSetting, sassPluginSetting],
+  nextConfig
+);
