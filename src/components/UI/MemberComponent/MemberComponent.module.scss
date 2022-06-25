@@ -1,15 +1,24 @@
 @import "data";
+@import "mixins";
 
 .MemberComponent {
   width: $width-xs;
   display: grid;
   gap: 10px;
   cursor: pointer;
-
+  box-sizing: content-box;
+  @include get-padding(10px);
+  transition: .3s;
+  border-radius: 2%;
+  &:hover {
+    transition: .3s;
+    background-color: rgba(#fff, .04);
+  }
   @include for-sm{
     width: $width-sm;
   }
   @include for-xxl{
+    @include get-padding(20px);
     width: $width-xl;
   }
   @include for-qxl{
@@ -25,7 +34,7 @@
     position: relative;
     width: 100%;
     height: $width-xs;
-    border-radius: 5px;
+    border-radius: 2%;
     overflow: hidden;
     margin-bottom: 15px;
     @include for-sm{
@@ -41,10 +50,15 @@
 
 
   h3 {
+    line-height: 140% !important;
+    br{
+      @include for-qxl{
+          display: none;
+      }
+    }
     @include f7{
       font-weight: 400;
-      letter-spacing: 0.1em;
-
+      //letter-spacing: 0.1em;
       text-wrap: avoid;
     }
     @include for-xl{
@@ -53,9 +67,7 @@
       }
     }
     @include for-xxl{
-      @include f3(){
-        letter-spacing: 0.1em;
-      }
+      @include f4();
     }
   }
   h4{

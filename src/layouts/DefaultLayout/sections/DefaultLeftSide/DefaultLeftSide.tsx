@@ -11,7 +11,7 @@ import ToTopSection from './sections/ToTopSection';
 import ToBackArrow from '../../components/AsideBar/components/ToPageArrow';
 import { useRouter } from 'next/router';
 
-export const variants = {
+const variants = {
   visible: {
     opacity: 1,
     x: 0,

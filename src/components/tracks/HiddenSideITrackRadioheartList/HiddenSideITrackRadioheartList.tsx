@@ -6,7 +6,7 @@ import React from 'react';
 import s from './HiddenSideITrackRadioheartList.module.scss';
 import cn from 'classnames';
 import HiddenSideTrackList, { ITrackListProps } from 'components/tracks/HiddenSideTrackList';
-import Track from 'components/tracks/RadioTrack';
+import RadioTrack from 'components/tracks/RadioTrack';
 import { ITrackRadioheart } from 'interfaces/ITrackRadioheart';
 
 export default function HiddenSideITrackRadioheartList({
@@ -29,7 +29,7 @@ export default function HiddenSideITrackRadioheartList({
     >
       {({ data, index, style }) => {
         return (
-          <Track
+          <RadioTrack
             key={`radioheart-track-${data[index].name}`}
             track={data[index]}
             className={cn(s.track)}

@@ -18,6 +18,7 @@ export default interface IClubInner {
   createdAt: string;
   locale: string;
   updatedAt: string;
+  schedule: string[];
   recomendedEvents?: TWrappedData<IEvent[]>;
 }
 

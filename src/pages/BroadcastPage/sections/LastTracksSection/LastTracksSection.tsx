@@ -25,6 +25,7 @@ export default function LastTracksSection({
   return (
     <>
       <QS.Container
+        index={3}
         title="История"
         disableHorizontalPadding
         colorType={3}

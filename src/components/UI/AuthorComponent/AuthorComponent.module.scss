@@ -1,21 +1,39 @@
 @import './data';
+@import './mixins';
 
 .AuthorComponent {
   display: grid;
   grid-gap: 20px;
   color: var(--text-color);
   width: min-content;
+  box-sizing: content-box;
+  padding: 10px 15px;
+  transition: .3s;
+  border-radius: 2%;
+  position: relative;
+  cursor: pointer;
+  @include get-padding(10px);
+  @include for-xxl {
+    @include get-padding(20px);
+  }
+
+  &:hover {
+    transition: .3s;
+    background-color: rgba(#fff, .04);
+  }
+
   .inner {
     position: relative;
     height: $size-img-xs;
     width: $size-img-xs;
     overflow: hidden;
-    border-radius: 10px;
+    border-radius: 2%;
     @include for-lg {
       height: $size-img-lg;
       width: $size-img-lg;
     }
     @include for-xxl {
+      //border-radius: 15px;
       height: $size-img-xxl;
       width: $size-img-xxl;
     }
@@ -43,6 +61,7 @@
       }
     }
   }
+
   h3 {
     width: 100%;
     white-space: nowrap;
@@ -54,13 +73,14 @@
     @include for-xxl {
       @include f4();
     }
-    @include for-qxl {
-      @include f3();
-    }
+    //@include for-qxl {
+    //  @include f3();
+    //}
   }
+
   &.resizable {
-    //width: max-content;
-    width:100%;
+    width: 100%;
+
     :local(.inner) {
       width: 100%;
     }

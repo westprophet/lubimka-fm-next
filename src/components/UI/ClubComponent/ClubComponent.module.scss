@@ -9,17 +9,25 @@
   padding: $padding-xs;
   overflow: hidden;
   cursor: pointer;
+  box-sizing: content-box;
+  margin: 10px;
+  grid-template-rows: 6fr 4fr;
   @include size();
-  &.notResizable{
+
+  &.notResizable {
     width: 100% !important;
   }
-  *{
-    letter-spacing: 0.02em!important;
-  }
-  @include for-fxl{
-    padding: $padding-xxl;
+
+  * {
+    letter-spacing: 0.02em !important;
   }
 
+  @include for-xxl {
+    border-radius: 10.2699px;
+  }
+  @include for-fxl {
+    padding: $padding-xxl;
+  }
 
 
   .bg {
@@ -42,38 +50,39 @@
     display: flex;
     justify-content: space-between;
     z-index: 1;
-    .avatar{
+
+    .avatar {
       border-radius: 50%;
       width: $avatar-size-xs;
       height: $avatar-size-xs;
       background: var(--bg-panel-color);
       overflow: hidden;
       position: relative;
-      @include for-lg{
+      @include for-lg {
         width: $avatar-size-lg;
         height: $avatar-size-lg;
 
       }
-      @include for-fxl{
+      @include for-fxl {
         width: $avatar-size-xxl;
         height: $avatar-size-xxl;
       }
-      .no{
+
+      .no {
         padding: 15% 10% 10% 10%;
       }
     }
 
     .schedule {
+      line-height: 150% !important;
       @include f8() {
         font-weight: 500;
       }
-      @include for-lg{
-          @include f7();
+      @include for-xxl {
+        @include f7();
       }
-      @include for-fxl{
-        @include f4(){
-          line-height: 150%!important;
-        }
+      @include for-qxl {
+        @include f6();
       }
     }
   }
@@ -82,43 +91,48 @@
     display: grid;
     grid-gap: 5px;
     z-index: 1;
+    grid-template-rows: 30px auto;
+
     h3 {
       @include f8 {
         width: 100%;
-        font-weight: 900;
+        font-weight: 800;
         white-space: nowrap;
       }
-      @include for-lg{
+      @include for-lg {
         @include f6();
       }
-      @include for-xxl{
+      @include for-xxl {
         @include f4();
       }
-      @include for-fxl{
-        @include f3();
-      }
+      //@include for-qxl {
+      //  @include f3();
+      //}
     }
-    .addressContainer{
+
+    .addressContainer {
       @include f8();
       width: 100%;
-      white-space: nowrap;
-      overflow: hidden;
-      text-overflow: ellipsis;
-      line-height: 140%!important;
-      @include for-xxl{
+      line-height: 140% !important;
+
+      &.longAddr {
+        span {
+          white-space: pre-wrap;
+        }
+      }
+
+      @include for-xxl {
         @include f6();
       }
-      @include for-fxl{
-        @include f4();
-      }
-      .address {
-      }
+      //@include for-fxl {
+      //  @include f4();
+      //}
     }
   }
 
   &:hover {
-    :local{
-      .bg{
+    :local {
+      .bg {
         @include zoom-effect-on-hover()
       }
     }

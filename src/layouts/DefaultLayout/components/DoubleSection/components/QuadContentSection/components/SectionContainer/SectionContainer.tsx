@@ -8,6 +8,39 @@ import cn from 'classnames';
 
 import { useRouter } from 'next/router';
 import { CircularProgress } from '@mui/material';
+import { motion } from 'framer-motion';
+const variants = {
+  show: (i: number) => ({
+    opacity: 1,
+    y: 0,
+    transition: {
+      delay: 0.5 + i * 0.2,
+      duration: 0.3,
+      staggerChildren: 0.5,
+      delayChildren: 0.7 + i * 0.2,
+    },
+    default: {
+      transition: {
+        delay: 0.5,
+      },
+    },
+  }),
+  hidden: {
+    y: '10%',
+    opacity: 0,
+  },
+};
+
+const variantHead = {
+  show: {
+    opacity: 1,
+    y: 0,
+  },
+  hidden: {
+    y: '-100%',
+    opacity: 0,
+  },
+};
 
 export default function SectionContainer({
   className,
@@ -17,6 +50,7 @@ export default function SectionContainer({
   other,
   isLoading,
   enableLine,
+  index,
 }: ISectionContainerProps) {
   const r = useRouter();
   let rightSector = null;
@@ -35,7 +69,11 @@ export default function SectionContainer({
     );
   }
   return (
-    <div
+    <motion.div
+      variants={variants}
+      animate="show"
+      initial="hidden"
+      custom={index}
       className={cn(
         s.SectionContainer,
         {
@@ -48,15 +86,15 @@ export default function SectionContainer({
         className
       )}
     >
-      <div className={cn(s.line)}>
+      <motion.div className={cn(s.line)} variants={variantHead}>
         <span />
-      </div>
-      <div className={cn(s.head)}>
+      </motion.div>
+      <motion.div className={cn(s.head)} variants={variantHead}>
         {title && <div className={cn(s.title)}>{title}</div>}
         {rightSector}
-      </div>
+      </motion.div>
       {children}
-    </div>
+    </motion.div>
   );
 }
 
@@ -74,6 +112,7 @@ interface ISectionContainerProps {
   enableLine?: boolean;
   colorType?: 1 | 2 | 3;
   title?: any;
+  index?: number;
   isLoading?: boolean;
   other?: {
     onClick?(): any;

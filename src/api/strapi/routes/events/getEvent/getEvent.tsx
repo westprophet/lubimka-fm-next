@@ -6,9 +6,8 @@
  */
 
 import StrapiAxios from '../../../global';
-import isValidGetEventResponse from './validators/isValidGetEventResponse';
 import { IGetEventResponse } from './types/IGetEventResponse';
-import { IEvent } from '../../../../../interfaces';
+import { IEvent } from 'interfaces/IEvent';
 import { IGetEventRequestParams } from './types/IGetEventRequestParams';
 import getParamsObject from './utils/getParamsObject';
 
@@ -19,9 +18,7 @@ export default async function getEvent(p?: IGetEventRequestParams): Promise<IGet
     const { data }: { data: IGetEventResponse } = await StrapiAxios.get(`/events/${p?.id}/`, {
       params: getParamsObject(p),
     });
-    if (isValidGetEventResponse(data)) {
-      return data.data;
-    } else throw '';
+    return data.data;
   } catch (e) {
     console.error('STRAPI: GetEvent:', e);
     return null;

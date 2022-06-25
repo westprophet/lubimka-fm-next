@@ -44,16 +44,16 @@ export default function EventComponent({
           />
         </div>
       ) : (
-        <NoImage className={cn(s.cover)} />
+        <NoImage className={cn(s.cover, s.noIMG)} />
       )}
       <div className={cn(s.desc)}>
         <Link href={link}>
           <a className={cn(s.title)}>{title}</a>
         </Link>
-        <IconString inline={hover} icon={<AccessTimeIcon />} delay={500}>
+        <IconString inline={hover} icon={<AccessTimeIcon fontSize="small" />} delay={500}>
           {date}
         </IconString>
-        <IconString inline={hover} icon={<FmdGoodIcon />} delay={500}>
+        <IconString inline={hover} icon={<FmdGoodIcon fontSize="small" />} delay={500}>
           {address}
         </IconString>
       </div>

@@ -15,7 +15,7 @@ export default function getParamsObject(p: IGetPartnersRequestParams | undefined
         },
       },
       avatar: {
-        fields: ['url'],
+        populate: '*',
       },
       company: p?.withCompany
         ? {

@@ -23,9 +23,9 @@ export default function getParamsObject(p: IGetEventRequestParams | undefined) {
           },
         },
       },
-      preview: {
-        fields: ['url'],
-      },
+      // preview: {
+      //   fields: ['url'],
+      // },
     },
   };
 

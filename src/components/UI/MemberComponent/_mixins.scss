@@ -1,5 +1,5 @@
 @import "data";
 
 @mixin get-padding($p: 10px){
-  padding: $p $p $p*1.5 $p;
+  padding: $p $p $p*2 $p;
 }

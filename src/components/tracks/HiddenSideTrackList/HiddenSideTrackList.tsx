@@ -3,7 +3,7 @@
  */
 
 // @ts-ignore
-import React, { startTransition, useCallback, useState } from 'react';
+import React, { forwardRef, LegacyRef, startTransition, useCallback, useState } from 'react';
 import s from './HiddenSideTrackList.module.scss';
 import cn from 'classnames';
 import DSection from 'layouts/DefaultLayout/components/DoubleSection';
@@ -13,15 +13,10 @@ import { FixedSizeList as List, ListChildComponentProps } from 'react-window';
 import AutoSizer from 'react-virtualized-auto-sizer';
 import useBreakpoint from 'hooks/useBreakpoint';
 
-export default function HiddenSideTrackList<T>({
-  className,
-  tracks,
-  isShow,
-  title,
-  onClose,
-  onFilter,
-  children,
-}: ITrackListDataProps<T>) {
+export function _HiddenSideTrackList<T>(
+  { className, tracks, isShow, title, onClose, onFilter, children }: ITrackListDataProps<T>,
+  ref: LegacyRef<HTMLDivElement> | undefined
+) {
   const [searchValue, setSearchValue] = useState('');
   const allTracks: T[] = tracks;
   const b = useBreakpoint();
@@ -40,7 +35,11 @@ export default function HiddenSideTrackList<T>({
   // const res_tracks = filteredTracks.map(children);
 
   return (
-    <DSection.HiddenAside.Wrapper open={isShow} className={cn(s.TrackList, className)}>
+    <DSection.HiddenAside.Wrapper
+      forwardedRef={ref}
+      open={isShow}
+      className={cn(s.TrackList, className)}
+    >
       <DSection.HiddenAside.Inner>
         <DSection.HiddenAside.Container>
           <DSection.HiddenAside.Title onClick={onClose}>{title}</DSection.HiddenAside.Title>
@@ -66,6 +65,7 @@ export default function HiddenSideTrackList<T>({
     </DSection.HiddenAside.Wrapper>
   );
 }
+const HiddenSideTrackList = forwardRef(_HiddenSideTrackList);
 
 export interface ITrackListProps<T> {
   className?: string;
@@ -81,3 +81,4 @@ interface ITrackListDataProps<T> extends ITrackListProps<T> {
   onFilter(value: T, search: string, index: number, array: T[]): boolean;
   children(arg: ListChildComponentProps): any;
 }
+export default HiddenSideTrackList;

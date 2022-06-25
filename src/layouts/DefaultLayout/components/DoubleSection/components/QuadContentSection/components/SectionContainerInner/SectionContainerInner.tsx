@@ -2,21 +2,21 @@
  * Created by westp on 08.06.2022
  */
 
-import React from 'react';
+import React, { forwardRef } from 'react';
 import s from './SectionContainerInner.module.scss';
 import cn from 'classnames';
 
-export default function SectionContainerInner({
-  className,
-  children,
-  withHorizontalPadding,
-}: ISectionContainerInnerProps) {
-  return (
-    <div className={cn(s.SCI, { [s.withHorizontalPadding]: withHorizontalPadding })}>
-      <div className={cn(s.content, className)}>{children}</div>
-    </div>
-  );
-}
+export const SectionContainerInner = forwardRef(
+  ({ className, children, withHorizontalPadding }: ISectionContainerInnerProps, ref: any) => {
+    return (
+      <div className={cn(s.SCI, { [s.withHorizontalPadding]: withHorizontalPadding })}>
+        <div ref={ref} className={cn(s.content, className)}>
+          {children}
+        </div>
+      </div>
+    );
+  }
+);
 
 SectionContainerInner.defaultProps = {
   className: '',
@@ -26,5 +26,7 @@ SectionContainerInner.defaultProps = {
 interface ISectionContainerInnerProps {
   className?: string;
   children: any;
-  withHorizontalPadding: boolean;
+  withHorizontalPadding?: boolean;
 }
+
+export default SectionContainerInner;

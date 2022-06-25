@@ -34,8 +34,7 @@ export default function MemberComponent({
         )}
       </div>
       <h3>
-        {name[0]}
-        <br />
+        {name[0]} <br />
         {name[1]}
       </h3>
       <h4>{subtitle}</h4>

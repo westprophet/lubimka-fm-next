@@ -21,6 +21,7 @@ export default function RadioProgramsSection({ programs, channel }: IRadioProgra
   const _programs: IRadioProgram[] | null = disabledFetch ? programs : result;
   return (
     <QS.Container
+      index={4}
       title="Радиопрограммы"
       colorType={2}
       className={cn(s.RadioProgramsSection)}

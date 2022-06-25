@@ -1,6 +1,6 @@
 .GetApplicationButton {
-  width: 100px;
-  height: 33px;
+  width: 120px;
+  height: 40px;
   background-color: red;
   border: 1px solid transparent;
   //transition: .25s;
@@ -18,7 +18,5 @@
   }
   &:hover{
     border: 1px solid grey;
-    //transition: .25s;
-    //transform: scale(1.05);
   }
 }

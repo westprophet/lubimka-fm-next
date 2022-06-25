@@ -10,7 +10,7 @@ import { IPartner } from '../../interfaces';
 import { getImageUrl } from '../../tools/IWrappedStrapiImage';
 
 export default function Partner({ className, p }: IPartnerProps) {
-  const _cover = getImageUrl(p.attributes.avatar);
+  const _cover = getImageUrl(p.attributes.avatar, 'small');
   return (
     <MemberComponent
       className={cn(s.Partner, className)}

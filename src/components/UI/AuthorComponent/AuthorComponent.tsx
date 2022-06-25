@@ -13,6 +13,7 @@ import Marquee from 'react-double-marquee';
 import DATA_FOR_BLUR from '../../../constants/DATA_FOR_BLUR';
 import { useRouter } from 'next/router';
 import { TAudioManagerStatus } from 'types/TAudioManagerStatus';
+import useHover from 'hooks/useHover';
 
 // import NoCover from 'assets/no-photo-heath.svg';
 
@@ -26,6 +27,7 @@ export default function AuthorComponent({
 }: IAuthorComponent) {
   const r = useRouter();
   const [status, setStatus] = useState<TAudioManagerStatus>('paused');
+  const { onMouseOverHandler, onMouseLeaveHandler, hover } = useHover();
   const onPlay = () => {
     if (link) {
       setStatus('loading');
@@ -39,6 +41,8 @@ export default function AuthorComponent({
     <div
       className={cn(s.AuthorComponent, { [s.resizable]: resizable }, className)}
       onClick={onPlay}
+      onMouseOver={onMouseOverHandler}
+      onMouseLeave={onMouseLeaveHandler}
     >
       <div className={cn(s.inner)}>
         {cover ? (
@@ -58,9 +62,13 @@ export default function AuthorComponent({
         </div>
       </div>
       <h3>
-        <Marquee speed={0.02} direction="left">
-          {name}
-        </Marquee>
+        {hover ? (
+          <Marquee speed={0.02} direction="left" scrollWhen="overflow" delay={0}>
+            {name}
+          </Marquee>
+        ) : (
+          name
+        )}
       </h3>
     </div>
   );

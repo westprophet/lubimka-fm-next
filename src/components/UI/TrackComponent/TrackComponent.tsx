@@ -3,11 +3,10 @@
  */
 
 // @ts-ignore
-import React, { CSSProperties, startTransition, useState } from 'react';
+import React, { CSSProperties, forwardRef, LegacyRef, Ref } from 'react';
 import s from './TrackComponent.module.scss';
 import cn from 'classnames';
 import TAudioTitle from '../../../types/TAudioTitle';
-import useImageState from '../../../hooks/useImageState';
 import Image from 'next/image';
 import { DATA_FOR_BLUR_ALT } from '../../../constants/DATA_FOR_BLUR';
 import NoImage from 'components/UI/NoImage';
@@ -16,89 +15,98 @@ import { IconButton } from '@mui/material';
 
 // @ts-ignore
 import Marquee from 'react-double-marquee';
+import useHover from 'hooks/useHover';
+// import { motion } from 'framer-motion';
+// const variants = {
+//   visible: (i: number) => ({
+//     opacity: 1,
+//     transition: {
+//       delay: 2 + i * 0.3,
+//     },
+//   }),
+//   hidden: { opacity: 0 },
+// };
 
-export default function TrackComponent(p: ITrackComponentDataProps) {
-  const [hover, setHover] = useState(false);
-  const { image } = useImageState(p.title, p.isCanFetchImage && p.isShowCover);
-  const isNoImg = typeof image !== 'string';
-  const onMouseOverHandler = () => startTransition(() => setHover(true));
-  const onMouseLeaveHandler = () => startTransition(() => setHover(false));
-  const speed = 0.04,
-    delay = 500;
-  return (
-    <div
-      className={cn(
-        s.T,
-        'track',
-        { [s.dsc]: !p.isShowCover },
-        { [s.c]: p.isClickable },
-        p.className
-      )}
-      style={p.style}
-      onClick={p.isClickable ? p.onClick : () => {}}
-      onMouseOver={onMouseOverHandler}
-      onMouseLeave={onMouseLeaveHandler}
-    >
-      {p.isShowCover && (
+const TrackComponent = forwardRef(
+  (p: ITrackComponentDataProps, ref?: LegacyRef<HTMLDivElement>) => {
+    const isNoImg = !p.cover;
+    const { onMouseOverHandler, onMouseLeaveHandler, hover } = useHover();
+    const speed = 0.04,
+      delay = 500;
+    return (
+      <div
+        // layout
+        // variants={variants}
+        // initial="hidden"
+        // animate="visible"
+        // custom={p.index}
+        className={cn(s.T, 'track', { [s.c]: p.isClickable }, p.className)}
+        style={p.style}
+        onClick={p.isClickable ? p.onClick : () => {}}
+        onMouseOver={onMouseOverHandler}
+        onMouseLeave={onMouseLeaveHandler}
+      >
         <div className={cn(s.cover, 'cover', { [s.noImageContainer]: isNoImg })}>
           {!isNoImg ? (
-            <Image src={image} layout="fill" placeholder="blur" blurDataURL={DATA_FOR_BLUR_ALT} />
+            // @ts-ignore
+            <Image src={p.cover} layout="fill" placeholder="blur" blurDataURL={DATA_FOR_BLUR_ALT} />
           ) : (
             <NoImage className={cn(s.noImg)} />
           )}
         </div>
-      )}
-      <div className={cn(s.title, 'title')}>
-        <div className={cn(s.name)}>
-          {hover ? (
-            <Marquee scrollWhen="overflow" direction="left" speed={speed} delay={delay}>
-              {p.title?.title}
-            </Marquee>
-          ) : (
-            p.title?.title
-          )}
+        <div className={cn(s.title, 'title')}>
+          <div className={cn(s.name)}>
+            {hover ? (
+              <Marquee scrollWhen="overflow" direction="left" speed={speed} delay={delay}>
+                {p.title?.title}
+              </Marquee>
+            ) : (
+              p.title?.title
+            )}
+          </div>
+          <div className={cn(s.artist, 'artist')} suppressHydrationWarning>
+            {hover ? (
+              <Marquee scrollWhen="overflow" direction="left" speed={speed} delay={delay}>
+                {p.title?.artist}
+              </Marquee>
+            ) : (
+              p.title?.artist
+            )}
+          </div>
         </div>
-        <div className={cn(s.artist, 'artist')} suppressHydrationWarning>
-          {hover ? (
-            <Marquee scrollWhen="overflow" direction="left" speed={speed} delay={delay}>
-              {p.title?.artist}
-            </Marquee>
-          ) : (
-            p.title?.artist
+        <div className={cn(s.actionContainer, 'actions')}>
+          {p.children}
+          {p.isShowMenu && (
+            <IconButton>
+              <MoreHorizIcon />
+            </IconButton>
           )}
         </div>
       </div>
-      <div className={cn(s.actionContainer, 'actions')}>
-        {p.children}
-        {p.isShowMenu && (
-          <IconButton>
-            <MoreHorizIcon />
-          </IconButton>
-        )}
-      </div>
-    </div>
-  );
-}
+    );
+  }
+);
 
 TrackComponent.defaultProps = {
   className: '',
-  isCanFetchImage: true,
-  isShowCover: true,
   isShowMenu: true,
 };
 
 export interface ITrackComponentProps {
   className?: string;
-  isCanFetchImage?: boolean;
-  isShowCover?: boolean;
   isShowMenu?: boolean;
   isClickable?: boolean;
   onClick?(): any;
   style?: CSSProperties;
   children?: any;
+  index?: number;
+  cover?: string | null;
+  forwardedRef?: LegacyRef<HTMLDivElement>;
 }
 
 interface ITrackComponentDataProps extends ITrackComponentProps {
   title: TAudioTitle | null;
   source?: string;
 }
+
+export default TrackComponent;

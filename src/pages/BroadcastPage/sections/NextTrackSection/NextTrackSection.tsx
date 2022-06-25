@@ -16,6 +16,7 @@ export default function NextTrackSection({ className, channel, title }: INextTra
   const { data, isLoading } = useGetNextTrack({ c: channel, title });
   return (
     <QS.Container
+      index={1}
       title={'Следующий'}
       colorType={1}
       className={cn(s.NextTrackSection, className)}

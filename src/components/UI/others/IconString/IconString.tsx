@@ -20,7 +20,6 @@ export default function IconString({
   return (
     <div className={cn(s.IconString, className)}>
       {icon}
-
       {inline ? (
         <span>
           <Marquee speed={0.02} direction={direction} scrollWhen={'overflow'} delay={delay}>

@@ -16,8 +16,39 @@ import { AnimatePresence, motion } from 'framer-motion';
 import PlayButton from 'components/UI/buttons/PlayButton';
 
 const variantsImage = {
-  show: { opacity: 1, transition: { duration: 0.3, delay: 0 } },
-  hidden: { opacity: 0, transition: { duration: 0.2, delay: 0.2 } },
+  show: {
+    opacity: 1,
+    transition: {
+      duration: 0.3,
+      delay: 0,
+      staggerChildren: 0.5,
+    },
+  },
+  hidden: {
+    opacity: 0,
+    transition: {
+      duration: 0.2,
+      delay: 0.2,
+    },
+  },
+};
+
+const variantsText = {
+  show: {
+    opacity: 1,
+    transition: {
+      duration: 0.3,
+      delay: 0,
+      staggerChildren: 0.2,
+    },
+  },
+  hidden: {
+    opacity: 0,
+    transition: {
+      duration: 0.2,
+      delay: 0.2,
+    },
+  },
 };
 
 export default function VerticalTrackComponent({
@@ -47,7 +78,10 @@ export default function VerticalTrackComponent({
           className={cn(s.VerticalTrack, className)}
         >
           {isShowCover && (
-            <div className={cn(s.cover, 'cover', { [s.noImageContainer]: isNoImg })}>
+            <motion.div
+              variants={variantsImage}
+              className={cn(s.cover, 'cover', { [s.noImageContainer]: isNoImg })}
+            >
               {!disablePlayButton ? (
                 <PlayButton status="paused" type={2} onClick={() => {}} className={cn(s.playA)} />
               ) : null}
@@ -63,7 +97,7 @@ export default function VerticalTrackComponent({
               ) : (
                 <NoImage className={cn(s.noImg)} />
               )}
-            </div>
+            </motion.div>
           )}
 
           <div className={cn(s.content)}>
@@ -71,10 +105,10 @@ export default function VerticalTrackComponent({
               <PlayButton status="paused" type={2} onClick={() => {}} className={cn(s.playD)} />
             )}
 
-            <div className={cn(s.title, 'title')}>
+            <motion.div variants={variantsText} className={cn(s.title, 'title')}>
               <div className={cn(s.name)}>{title?.title}</div>
               <div className={cn(s.artist, 'artist')}>{title?.artist}</div>
-            </div>
+            </motion.div>
           </div>
         </motion.div>
       )}

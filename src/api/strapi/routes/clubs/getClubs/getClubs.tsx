@@ -12,7 +12,7 @@ import StrapiAxios from '../../../global';
 import IStrapiReturn from '../../../types/IStrapiReturn';
 import isValidGetClubsResponse from './validators/isValidGetClubsResponse';
 import { IGetClubsResponse } from './types/IGetClubsResponse';
-import { IClub } from '../../../../../interfaces';
+import { IClub } from 'interfaces/IClub';
 
 export default async function getClubs(): Promise<IGetClubsReturn> {
   try {

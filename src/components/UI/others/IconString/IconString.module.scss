@@ -2,20 +2,22 @@
   display: flex;
   gap: 5px;
   align-items: center;
-  margin-bottom: 12px;
-  @include f8();
+  //margin-bottom: 12px;
+  overflow: hidden;
+  @include f8(){
+    line-height: 150%;
+  }
   @include for-xxl {
     @include f7();
   }
 
   svg {
-    font-size: 1rem;
-    @include for-lg {
-      font-size: 1.5rem;
-    }
+    font-size: 140%;
   }
 
   & > span {
+    overflow: hidden;
+    text-overflow: ellipsis;
     white-space: nowrap;
   }
 }

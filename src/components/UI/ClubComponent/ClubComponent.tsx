@@ -24,6 +24,7 @@ export default function ClubComponent({
   resizable,
 }: IClubComponentProps) {
   const { onMouseOverHandler, onMouseLeaveHandler, hover } = useHover();
+  const isAddressLong = address.length > 100;
   return (
     <div
       className={cn(s.ClubComponent, { [s.notResizable]: resizable }, className)}
@@ -74,9 +75,9 @@ export default function ClubComponent({
           </h3>
         </Link>
         <IconString
-          inline={hover}
+          inline={isAddressLong && hover}
           icon={<PlaceIcon />}
-          className={cn(s.addressContainer)}
+          className={cn(s.addressContainer, { [s.longAddr]: !isAddressLong })}
           delay={100}
         >
           {address}
@@ -93,8 +94,6 @@ ClubComponent.defaultProps = {
   resizable: false,
 };
 
-export type TSizes = 'small' | 'middle' | 'large';
-
 interface IClubComponentProps {
   className?: string;
   title: string;
@@ -102,6 +101,5 @@ interface IClubComponentProps {
   address: string;
   cover: string | null;
   avatar?: string | null;
-  isLongType?: boolean;
   resizable?: boolean;
 }

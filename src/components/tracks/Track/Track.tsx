@@ -10,13 +10,22 @@ import TrackComponent, { ITrackComponentProps } from 'components/UI/TrackCompone
 import TAudioTitle from '../../../types/TAudioTitle';
 import { IAlbum } from 'interfaces/IAlbum';
 import { IAuthor } from 'interfaces/IAuthor';
+import useImageState from 'hooks/useImageState';
 
-export default function Track({ author, album, track, className }: ITrackProps) {
+export default function Track({
+  author,
+  album,
+  track,
+  className,
+  isCanFetchImage,
+  isShowCover,
+}: ITrackProps) {
   const title: TAudioTitle = {
     artist: track.attributes.author ?? album?.attributes.creators ?? author?.attributes.name,
     title: track.attributes.title,
   };
-  return <TrackComponent title={title} className={cn(s.Track, className)} />;
+  const { image: cover } = useImageState(title, isCanFetchImage && isShowCover);
+  return <TrackComponent title={title} className={cn(s.Track, className)} cover={cover} />;
 }
 
 Track.defaultProps = {
@@ -28,4 +37,6 @@ interface ITrackProps extends ITrackComponentProps {
   track: ITrack;
   author?: IAuthor;
   album?: IAlbum;
+  isCanFetchImage?: boolean;
+  isShowCover?: boolean;
 }

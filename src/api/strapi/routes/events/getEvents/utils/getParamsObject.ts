@@ -11,9 +11,7 @@ export default function getParamsObject(p: IGetEventsRequestParams | undefined) 
       $and: [],
     },
     populate: {
-      preview: {
-        fields: ['url'],
-      },
+      preview: '*',
     },
   };
   if (p?.search) obj.filters['$and'].push({ title: { $containsi: p.search } });
