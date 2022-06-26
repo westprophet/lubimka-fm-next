@@ -1,2 +1,2 @@
-type TOrderTrackStatusType = 'ordersDisabled';
+type TOrderTrackStatusType = 'ordersDisabled' | 'alreadyOrdered' | 'ok';
 export default TOrderTrackStatusType;

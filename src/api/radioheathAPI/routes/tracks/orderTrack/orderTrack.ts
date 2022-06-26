@@ -8,7 +8,7 @@ export const orderTrack = async ({
   c,
   id,
   comment,
-}: IGetAllTracksParams): Promise<TOrderTrackStatusType | null> => {
+}: IGetAllTracksParams): Promise<IOrderTrackResponse | null> => {
   if (!c || !id) return null;
 
   const baseURL = tools.IChannel.getBaseURL(c);
@@ -22,12 +22,12 @@ export const orderTrack = async ({
           api: 'newsongorder',
           song_id: id,
           confirm: true,
-          comment: comment,
+          comment: comment ?? 'Быстрый заказ',
         },
       }
     );
-    if (data.status === 'ordersDisabled') throw data.status;
-    return data.status;
+    if (data.status === 'ordersDisabled' || data.user_deny_duration) throw data;
+    return data;
   } catch (err) {
     console.error(err);
     throw err;
@@ -35,7 +35,7 @@ export const orderTrack = async ({
 };
 
 export interface IGetAllTracksParams {
-  c?: IChannel;
+  c?: IChannel | null;
   id?: string | number;
   comment?: string;
 }

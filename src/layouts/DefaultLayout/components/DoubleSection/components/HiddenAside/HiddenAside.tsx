@@ -12,12 +12,12 @@ const variants = {
     x: '0',
     transition: { duration: 0.3 },
   },
-  hidden: {
-    x: '100%',
+  hidden: (side: 'left' | 'right') => ({
+    x: side === 'right' ? '-100%' : '100%',
     transition: {
       duration: 0.3,
     },
-  },
+  }),
 };
 
 export const HiddenAside = ({ className, side, open, children }: IHiddenAsideProps) => {
@@ -25,6 +25,7 @@ export const HiddenAside = ({ className, side, open, children }: IHiddenAsidePro
     <motion.div
       animate={open ? 'show' : 'hidden'}
       variants={variants}
+      custom="left"
       initial={'hidden'}
       className={cn(
         s.HiddenAside,

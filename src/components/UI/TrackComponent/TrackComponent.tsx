@@ -3,7 +3,7 @@
  */
 
 // @ts-ignore
-import React, { CSSProperties, forwardRef, LegacyRef, Ref } from 'react';
+import React, { CSSProperties, forwardRef, LegacyRef } from 'react';
 import s from './TrackComponent.module.scss';
 import cn from 'classnames';
 import TAudioTitle from '../../../types/TAudioTitle';
@@ -16,16 +16,6 @@ import { IconButton } from '@mui/material';
 // @ts-ignore
 import Marquee from 'react-double-marquee';
 import useHover from 'hooks/useHover';
-// import { motion } from 'framer-motion';
-// const variants = {
-//   visible: (i: number) => ({
-//     opacity: 1,
-//     transition: {
-//       delay: 2 + i * 0.3,
-//     },
-//   }),
-//   hidden: { opacity: 0 },
-// };
 
 const TrackComponent = forwardRef(
   (p: ITrackComponentDataProps, ref?: LegacyRef<HTMLDivElement>) => {
@@ -35,11 +25,7 @@ const TrackComponent = forwardRef(
       delay = 500;
     return (
       <div
-        // layout
-        // variants={variants}
-        // initial="hidden"
-        // animate="visible"
-        // custom={p.index}
+        ref={ref}
         className={cn(s.T, 'track', { [s.c]: p.isClickable }, p.className)}
         style={p.style}
         onClick={p.isClickable ? p.onClick : () => {}}
@@ -76,11 +62,11 @@ const TrackComponent = forwardRef(
         </div>
         <div className={cn(s.actionContainer, 'actions')}>
           {p.children}
-          {p.isShowMenu && (
-            <IconButton>
-              <MoreHorizIcon />
-            </IconButton>
-          )}
+          {/*{p.isShowMenu && (*/}
+          {/*  <IconButton>*/}
+          {/*    <MoreHorizIcon />*/}
+          {/*  </IconButton>*/}
+          {/*)}*/}
         </div>
       </div>
     );

@@ -13,7 +13,7 @@
         padding-right: 15px;
       }
       &:hover{
-        background: rgba(255, 255, 255, 0.15);
+        background: rgba(255, 255, 255, $global-opacity-alt);
       }
     }
   }

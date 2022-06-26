@@ -9,11 +9,23 @@ import TrackComponent, { ITrackComponentProps } from 'components/UI/TrackCompone
 import { ITrackRadioheart } from 'interfaces/ITrackRadioheart';
 import useGetTAudioByString from 'hooks/others/useGetTAudioByString';
 import useImageState from 'hooks/useImageState';
+import isValidITrackRadioheartPrev from '../../../validations/isValidITrackRadioheartPrev';
+import AdditionalMenu from 'components/tracks/RadioTrack/components/AdditionalMenu';
 
 const RadioTrack = forwardRef((p: IRadioTrackProps, ref: LegacyRef<HTMLDivElement> | undefined) => {
   const title = useGetTAudioByString(p.track.name); //Получаем название трека и автора
   const { image: cover } = useImageState(title, p.isCanFetchImage && p.isShowCover);
   if (!p.track) return null;
+  const isTrackRadioPrev = isValidITrackRadioheartPrev(p.track);
+
+  let children = p.children;
+  if (!children)
+    if (isTrackRadioPrev)
+      // @ts-ignore
+      children = <AdditionalMenu trackID={p.track?.id} />;
+    // @ts-ignore
+    else if (p.track?.time) children = <span className={cn(s.time)}>{p.track.time}</span>;
+
   return (
     <TrackComponent
       forwardedRef={ref}
@@ -24,7 +36,7 @@ const RadioTrack = forwardRef((p: IRadioTrackProps, ref: LegacyRef<HTMLDivElemen
       cover={cover}
       isClickable={p.isClickable}
     >
-      {p.children}
+      {children}
     </TrackComponent>
   );
 });

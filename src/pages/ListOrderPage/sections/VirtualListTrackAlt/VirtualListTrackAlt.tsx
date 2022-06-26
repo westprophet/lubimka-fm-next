@@ -12,15 +12,11 @@ import List from 'react-virtualized/dist/commonjs/List';
 import WindowScroller from 'react-virtualized/dist/commonjs/WindowScroller';
 
 import useBreakpoint from 'hooks/useBreakpoint';
-// import SearchInput from 'components/SearchInput';
+
 import TOrderTrackViewMode from '../../types/TOrderTrackViewMode';
 import { useRouter } from 'next/router';
 import IChannel from 'interfaces/IChannel';
-// import dynamic from 'next/dynamic';
-
-// const List = dynamic(() => import('react-virtualized/dist/commonjs/List'), {
-//   ssr: false,
-// });
+import { Button } from '@mui/material';
 
 export default function VirtualListTrackAlt({
   className,
@@ -43,7 +39,12 @@ export default function VirtualListTrackAlt({
             style={style}
             isClickable
             onClick={() => r.push(url)}
-          />
+            className={cn(s.t)}
+          >
+            <Button size="small" className={cn(s.a)}>
+              заказать
+            </Button>
+          </RadioTrack>
         );
       else
         return (

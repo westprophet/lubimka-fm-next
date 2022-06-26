@@ -6,3 +6,20 @@
   //  top: 30px;
   //}
 }
+
+.t {
+  &:hover {
+    :local(.a){
+      transition: 0.25s;
+      opacity: 1;
+    }
+  }
+  .a {
+    margin: auto 5px;
+    opacity: 0.05;
+    transition: 0.25s;
+    @media (pointer:coarse) {
+      opacity: .8;
+    }
+  }
+}

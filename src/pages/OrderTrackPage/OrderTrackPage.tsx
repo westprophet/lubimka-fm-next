@@ -15,6 +15,7 @@ import Image from 'next/image';
 import DATA_FOR_BLUR from '../../constants/DATA_FOR_BLUR';
 import NoImage from 'components/UI/NoImage';
 import FormSection from '@pages/OrderTrackPage/section/FormSection';
+import Link from 'next/link';
 
 export default function OrderTrackPage({ channel }: ITrackPageProps) {
   const r = useRouter();
@@ -60,7 +61,12 @@ export default function OrderTrackPage({ channel }: ITrackPageProps) {
               )}
             </div>
             <p>
-              Вы заказываете трек на канале: <b>{channel.attributes.title}</b>
+              Вы заказываете трек на канале:{' '}
+              <b>
+                <Link href={`/channels/${channel.id}/`}>
+                  <a>{channel.attributes.title}</a>
+                </Link>
+              </b>
             </p>
             <div className={cn(s.name)}>
               <div className={cn(s.title)}>{title?.title}</div>
