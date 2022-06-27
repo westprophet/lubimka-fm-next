@@ -20,7 +20,7 @@ const RadioTrack = forwardRef((p: IRadioTrackProps, ref: LegacyRef<HTMLDivElemen
 
   let children = p.children;
   if (!children)
-    if (isTrackRadioPrev)
+    if (!isTrackRadioPrev)
       // @ts-ignore
       children = <AdditionalMenu trackID={p.track?.id} />;
     // @ts-ignore

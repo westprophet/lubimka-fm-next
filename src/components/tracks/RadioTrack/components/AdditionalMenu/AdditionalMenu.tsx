@@ -52,7 +52,7 @@ export default function AdditionalMenu({ trackID }: IAdditionalMenuProps) {
         //если пользователь заказал свой трек уже
         if (e.user_deny_duration) {
           enqueueSnackbar(
-            `Заказ можно делать не чаще чем раз в ${e.user_deny_duration} мин. для одного пользователя`,
+            `Этот трек недавно играл или Вы уже заказывали другой трек в последние ${e.user_deny_duration} мин. `,
             {
               variant: 'warning',
               autoHideDuration: 5000,
@@ -61,8 +61,8 @@ export default function AdditionalMenu({ trackID }: IAdditionalMenuProps) {
           timer.current = setTimeout(() => {
             enqueueSnackbar(
               <div>
-                Просто зайдите с другого устройства или зайдите на другой канал. И закажите! <br />
-                <br /> PS: с ув. Администратор сайта
+                Что бы заказать прямо сейчас вы можете попробовать зайти с другого устройства,
+                выбрать другой трек или заказать на другом канале
               </div>,
               {
                 variant: 'info',
@@ -71,12 +71,12 @@ export default function AdditionalMenu({ trackID }: IAdditionalMenuProps) {
             );
           }, 5000);
         } else if (e.status === 'ordersDisabled') {
-          enqueueSnackbar(`Во время эфирных блоков заказ треков не работает`, {
+          enqueueSnackbar(`Во время или перед эфирными блоками заказ треков не работает`, {
             variant: 'warning',
             autoHideDuration: 5000,
           });
           timer.current = setTimeout(() => {
-            enqueueSnackbar(`Подождите как пройдут пару треков в эфире и закажите трек повторно`, {
+            enqueueSnackbar(`Просто попробуйте через 5-10 минут. Спасибо за понимание!`, {
               variant: 'info',
               autoHideDuration: 7000,
             });
