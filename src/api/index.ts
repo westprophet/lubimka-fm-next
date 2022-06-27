@@ -8,6 +8,7 @@ import * as team from './strapi/routes/team';
 import * as programs from './strapi/routes/programs';
 import * as requisitions from './strapi/routes/requisitions';
 import * as faq from './strapi/routes/faq';
+import * as posts from './strapi/routes/posts';
 
 import * as stream from './radioheathAPI/routes/stream';
 import * as image from './radioheathAPI/routes/image';
@@ -26,6 +27,7 @@ const strapi = {
   programs,
   single,
   faq,
+  posts,
   requisitions,
 };
 

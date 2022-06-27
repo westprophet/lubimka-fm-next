@@ -11,9 +11,7 @@ export default function getParamsObject(p: IGetAuthorsRequestParams | undefined)
       $and: [],
     },
     populate: {
-      avatar: {
-        fields: ['url'],
-      },
+      avatar: '*',
       Socials: {
         populate: {
           icon: {
@@ -21,9 +19,6 @@ export default function getParamsObject(p: IGetAuthorsRequestParams | undefined)
           },
         },
       },
-      // albums: {
-      //   fields: ['url'],
-      // },
     },
   };
   if (p?.search) obj.filters['$and'].push({ name: { $containsi: p.search } });

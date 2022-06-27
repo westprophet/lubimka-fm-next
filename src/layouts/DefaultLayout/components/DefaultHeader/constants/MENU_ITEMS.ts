@@ -5,9 +5,6 @@ const MENU_ITEMS: IHeaderMenuItem[] = [
     title: 'Эфир',
     link: '/broadcast',
     key: 'broadcast',
-    // getLink: (channelID: string) => {
-    //   return `/broadcast/${channelID}`;
-    // },
   },
   {
     title: 'Club Life',
@@ -20,9 +17,9 @@ const MENU_ITEMS: IHeaderMenuItem[] = [
     key: 'lubimka-djs',
   },
   {
-    title: 'Новости',
-    link: '/news',
-    key: 'news',
+    title: 'Блог',
+    link: '/blog',
+    key: 'blog',
   },
   {
     title: 'Реклама',

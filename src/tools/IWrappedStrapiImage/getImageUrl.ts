@@ -7,27 +7,26 @@ export default function getImageUrl(
 ): string | null {
   let res = null;
   if (!d) return res;
-  // try {
-  switch (type) {
-    case 'small':
-      res = d.data?.attributes.formats.small.url;
-      break;
-    case 'middle':
-      res = d.data?.attributes.formats.middle.url;
-      break;
-    case 'large':
-      res = d.data?.attributes.formats.large.url;
-      break;
-    case 'thumbnail':
-      res = d.data?.attributes.formats.thumbnail.url;
-      break;
-    default:
-      res = d.data?.attributes.url;
-      break;
+  try {
+    switch (type) {
+      case 'small':
+        res = d.data?.attributes.formats.small.url;
+        break;
+      case 'middle':
+        res = d.data?.attributes.formats.middle.url;
+        break;
+      case 'large':
+        res = d.data?.attributes.formats.large.url;
+        break;
+      case 'thumbnail':
+        res = d.data?.attributes.formats.thumbnail.url;
+        break;
+      default:
+        res = d.data?.attributes.url;
+        break;
+    }
+  } catch (e) {
+    res = d.data?.attributes.url;
   }
-  // } catch (e) {
-  //   console.error('Нет данных о картинке взята картинка по умолчанию');
-  //   res = d.data?.attributes.url;
-  // }
   return res;
 }

@@ -12,15 +12,7 @@ import Track, { MRadioTrack } from 'components/tracks/RadioTrack';
 import HiddenSideITrackRadioheartList from 'components/tracks/HiddenSideITrackRadioheartList';
 import useGetNewTracks from 'hooks/channel/useGetNewTracks';
 import IChannel from 'interfaces/IChannel';
-// const variants = {
-//   visible: (i: number) => ({
-//     opacity: 1,
-//     transition: {
-//       delay: i * 0.3 + 4,
-//     },
-//   }),
-//   hidden: { opacity: 0 },
-// };
+
 export default function NewTracksSection({
   isShowDetail,
   onClose,

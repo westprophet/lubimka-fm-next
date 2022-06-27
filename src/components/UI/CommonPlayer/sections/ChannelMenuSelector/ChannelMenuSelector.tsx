@@ -19,7 +19,6 @@ export default function ChannelMenuSelector({
   channels,
 }: IChannelMenuSelectorProps) {
   const isMobile = useIsMobile();
-
   //Прячем настройки и прочую штуку сюда
   const { settings, length, curSlide, sliderRef } = useChannelMenuSliderSetting(channels);
   return (

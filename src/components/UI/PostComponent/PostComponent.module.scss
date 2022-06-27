@@ -1,0 +1,46 @@
+@import "data";
+.PostComponent {
+  width: $size-xs;
+  display: grid;
+  grid-gap: $gap-xs;
+  @include for-md{
+    width: $size-md;
+  }
+  @include for-lg{
+    width: $size-lg;
+    grid-gap: $gap-lg;
+  }
+  @include for-xxl{
+    width: $size-xxl;
+  }
+  &.resizable{
+    width: 100%;
+  }
+  .coverContainer{
+    border-radius: $radius;
+    height: 100%;
+    width: inherit;
+    overflow: hidden;
+    position: relative;
+  }
+  .title{
+    @include f7{
+      font-weight: 500;
+      line-height: 140%!important;
+    }
+    @include for-lg{
+      @include f6();
+    }
+    @include for-xxl{
+      @include f4();
+    }
+  }
+  .other{
+    @include f8{
+      font-weight: 400;
+    }
+    @include for-xxl{
+        @include f6();
+    }
+  }
+}

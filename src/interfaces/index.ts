@@ -14,6 +14,8 @@ import { IPartner } from './IPartner';
 import IAdvertising from './IAdvertising';
 import { ITeamMember } from './ITeamMember';
 import { IFAQItem } from './IFAQItem';
+import { IPost } from './IPost';
+import { IBlogCategory } from './IBlogCategory';
 
 export type {
   ITrackRadioheart,
@@ -28,9 +30,11 @@ export type {
   ISocial,
   ICompany,
   IIcon,
+  IPost,
   IPhone,
   IEvent,
   IPartner,
+  IBlogCategory,
   IRadioProgram,
   ITeamMember,
   IAdvertising,

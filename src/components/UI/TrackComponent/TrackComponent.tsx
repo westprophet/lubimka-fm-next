@@ -10,8 +10,6 @@ import TAudioTitle from '../../../types/TAudioTitle';
 import Image from 'next/image';
 import { DATA_FOR_BLUR_ALT } from '../../../constants/DATA_FOR_BLUR';
 import NoImage from 'components/UI/NoImage';
-import MoreHorizIcon from '@mui/icons-material/MoreHoriz';
-import { IconButton } from '@mui/material';
 
 // @ts-ignore
 import Marquee from 'react-double-marquee';
@@ -60,14 +58,7 @@ const TrackComponent = forwardRef(
             )}
           </div>
         </div>
-        <div className={cn(s.actionContainer, 'actions')}>
-          {p.children}
-          {/*{p.isShowMenu && (*/}
-          {/*  <IconButton>*/}
-          {/*    <MoreHorizIcon />*/}
-          {/*  </IconButton>*/}
-          {/*)}*/}
-        </div>
+        <div className={cn(s.actionContainer, 'actions')}>{p.children}</div>
       </div>
     );
   }
@@ -75,12 +66,10 @@ const TrackComponent = forwardRef(
 
 TrackComponent.defaultProps = {
   className: '',
-  isShowMenu: true,
 };
 
 export interface ITrackComponentProps {
   className?: string;
-  isShowMenu?: boolean;
   isClickable?: boolean;
   onClick?(): any;
   style?: CSSProperties;

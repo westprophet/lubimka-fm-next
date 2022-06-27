@@ -1,0 +1,17 @@
+.ViewPostsSection {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr;
+  gap: 60px;
+  @include for-xxl{
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+  }
+  @include for-qxl{
+    grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
+  }
+  .item{
+    &:nth-child(8n-7){
+      grid-column: span 2;
+      grid-row: span 2;
+    }
+  }
+}

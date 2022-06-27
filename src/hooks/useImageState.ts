@@ -26,7 +26,7 @@ export default function useGetImage(
       enabled: !lock && isCanFetchImage,
       cacheTime: 864000,
       staleTime: 864000,
-      notifyOnChangeProps: ['data'],
+      // notifyOnChangeProps: ['data'],
       refetchOnWindowFocus: false,
       refetchOnReconnect: false,
     }
