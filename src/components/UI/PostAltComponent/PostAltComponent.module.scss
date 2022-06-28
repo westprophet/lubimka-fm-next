@@ -1,0 +1,98 @@
+@import "data";
+
+.PostComponent {
+  width: $size-xs;
+  display: grid;
+  grid-gap: $gap-xs;
+  position: relative;
+  z-index: 2;
+  padding: $padding-xs;
+  grid-template-rows: 1fr;
+  cursor: pointer;
+  &:hover {
+    :local(.cover) {
+      @include zoom-effect-on-hover();
+    }
+  }
+  @include for-md {
+    width: $size-md;
+    height: $size-md;
+  }
+  @include for-lg {
+    width: $size-lg;
+    height: $size-lg;
+    grid-gap: $gap-lg;
+    padding: $padding-lg;
+  }
+  @include for-xxl {
+    width: $size-xxl;
+    height: $size-xxl;
+    grid-gap: $gap-xxl;
+    padding: $padding-xxl;
+  }
+
+  &.resizable {
+    width: 100%;
+  }
+
+  .member{
+
+  }
+  .coverContainer {
+    border-radius: $radius;
+    height: 100%;
+    width: inherit;
+    overflow: hidden;
+    position: absolute;
+    z-index: -1;
+    filter: brightness(70%);
+    :local(.cover) {
+      @include zoom-effect-on-leave();
+    }
+  }
+
+  .inner {
+    display: grid;
+    gap: 15px;
+
+    .title {
+      @include f7 {
+        font-weight: 500;
+        line-height: 140% !important;
+      }
+      @include for-lg {
+        @include f6();
+      }
+      @include for-xxl {
+        @include f4();
+      }
+    }
+
+    .other {
+      strong {
+        color: var(--primary-color);
+        font-weight: bold;
+      }
+
+      @include f8 {
+        font-weight: 400;
+      }
+      @include for-xxl {
+        @include f6();
+      }
+    }
+
+    .readMore {
+      width: min-content;
+      color: inherit;
+      text-transform: capitalize;
+      @include f8 {
+        font-weight: 400;
+      }
+      @include for-xxl {
+        @include f6();
+      }
+    }
+  }
+
+}

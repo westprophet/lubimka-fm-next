@@ -1,17 +1,30 @@
 .ViewPostsSection {
   display: grid;
-  grid-template-columns: 1fr 1fr 1fr 1fr;
-  gap: 60px;
-  @include for-xxl{
+  gap: 30px;
+  @include before-qxl{
+    .item{
+      &:nth-child(5n){
+        grid-column: span 2;
+        grid-row: span 1;
+      }
+    }
+  }
+  @include for-lg{
     grid-template-columns: 1fr 1fr 1fr 1fr;
   }
-  @include for-qxl{
-    grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
+  @include for-xxl{
+    grid-template-columns: 1fr 1fr 1fr;
   }
-  .item{
-    &:nth-child(8n-7){
-      grid-column: span 2;
-      grid-row: span 2;
+  @include for-qxl{
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+  }
+  @include for-uxl{
+    grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
+    :local(.item){
+      &:nth-child(7n - 1){
+        grid-column: span 2;
+        grid-row: span 1;
+      }
     }
   }
 }

@@ -1,0 +1,25 @@
+.SmallMemberComponent {
+  width: 100%;
+  display: grid;
+  grid-template-columns: min-content auto;
+  align-content: flex-start;
+  gap: 10px;
+
+  .avatar {
+    width: 40px;
+    height: 40px;
+    @include for-xxl {
+      width: 50px;
+      height: 50px;
+    }
+  }
+
+  .name {
+    padding: 3px 0;
+    display: grid;
+    @include f7;
+    @include for-xxl{
+      @include f6;
+    }
+  }
+}

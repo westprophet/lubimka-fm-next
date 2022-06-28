@@ -24,6 +24,7 @@
     position: relative;
   }
   .title{
+    width: 100%;
     @include f7{
       font-weight: 500;
       line-height: 140%!important;
@@ -36,6 +37,7 @@
     }
   }
   .other{
+    width: 100%;
     @include f8{
       font-weight: 400;
     }

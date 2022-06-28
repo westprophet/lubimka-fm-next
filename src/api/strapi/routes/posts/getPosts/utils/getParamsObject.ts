@@ -6,7 +6,7 @@ import { IGetPostsRequestParams } from '../types';
  *   Формируем параметры для запроса на основе переданных аргументов
  */
 
-export default function getParamsObject(p: IGetPostsRequestParams) {
+export default function getParamsObject(p?: IGetPostsRequestParams) {
   const obj: any = {
     sort: p?.sort ?? ['createdAt:asc'],
     filters: {
@@ -15,6 +15,11 @@ export default function getParamsObject(p: IGetPostsRequestParams) {
     fields: ['title', 'order', 'url', 'timeRead', 'createdAt'],
     populate: {
       cover: '*',
+      authors: {
+        populate: {
+          avatar: '*',
+        },
+      },
     },
   };
   if (p?.categoryId)

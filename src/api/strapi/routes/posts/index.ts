@@ -1,3 +1,4 @@
 import getCategories from './getCategories';
 import getPosts from './getPosts';
-export { getCategories, getPosts };
+import getPost from './getPost';
+export { getCategories, getPosts, getPost };

@@ -13,7 +13,7 @@ import { IPost } from 'interfaces/IPost';
 
 import getParamsObject from './utils/getParamsObject';
 
-export default async function getPosts(p: IGetPostsRequestParams): Promise<IGetPostsReturn> {
+export default async function getPosts(p?: IGetPostsRequestParams): Promise<IGetPostsReturn> {
   try {
     const { data }: { data: IGetPostsResponse } = await StrapiAxios.get('/news-posts', {
       params: getParamsObject(p),

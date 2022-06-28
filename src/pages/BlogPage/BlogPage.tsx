@@ -6,7 +6,7 @@ import React from 'react';
 import s from './BlogPage.module.scss';
 import cn from 'classnames';
 import DefaultLayout, { IDefaultLayoutAttributes } from '../../layouts/DefaultLayout';
-import { IBlogCategory, IPost } from 'interfaces/index';
+import { IBlogCategory } from 'interfaces/index';
 import { Tab, Tabs } from '@mui/material';
 import useGetPosts from '@pages/BlogPage/hooks/useGetPosts';
 import ViewPostsSection from '@pages/BlogPage/sections/ViewPostsSection';
@@ -18,22 +18,20 @@ export default function BlogPage({ categories }: IBlogPageProps) {
   };
   const { data: posts, isLoading } = useGetPosts({ categoryID: category });
   const _posts = posts?.data;
-  let __posts = _posts;
-  if (_posts) __posts = [..._posts, ..._posts, ..._posts, ..._posts, ..._posts, ..._posts];
+  const __post = _posts;
+  // if (_posts) __post = [..._posts, ..._posts, ..._posts, ..._posts, ..._posts, ..._posts];
   return (
     <DefaultLayout.Layout
       className={cn(s.BlogPage)}
-      player={{
-        isTransparent: false,
-      }}
+      header={{ isFix: false, isFixedShow: true, isTransparent: true, isShow: true }}
+      player={{ isDisable: true }}
     >
       <DefaultLayout.PageWrapper>
         <DefaultLayout.PageTitle url="/">Блог</DefaultLayout.PageTitle>
         <DefaultLayout.Section.Wrapper>
-          <DefaultLayout.Section.Inner disableHorizontalPadding className={cn(s.tabs)}>
+          <DefaultLayout.Section.Inner className={cn(s.tabs)}>
             <Tabs
               value={category}
-              // allowScrollButtonsMobile
               onChange={handleChange}
               variant="fullWidth"
               scrollButtons="auto"
@@ -45,8 +43,7 @@ export default function BlogPage({ categories }: IBlogPageProps) {
             </Tabs>
           </DefaultLayout.Section.Inner>
         </DefaultLayout.Section.Wrapper>
-        {/* eslint-disable-next-line no-unsafe-optional-chaining */}
-        <ViewPostsSection isLoading={isLoading} posts={__posts} />
+        <ViewPostsSection isLoading={isLoading} posts={__post} />
       </DefaultLayout.PageWrapper>
     </DefaultLayout.Layout>
   );

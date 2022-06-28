@@ -1,10 +1,12 @@
 import TStrapiResponseContainer from '../api/strapi/types/TStrapiResponseContainer';
-import { IWrappedStrapiImage } from 'api/strapi/types';
+import { IStrapiDataContainer, IWrappedStrapiImage } from 'api/strapi/types';
+import { ITeamMember } from 'interfaces/ITeamMember';
 
 interface IPostInner {
   title: string;
   order: number;
   url: string;
+  authors: IStrapiDataContainer<ITeamMember>;
   createdAt: string;
   timeRead: string | null;
   cover: IWrappedStrapiImage;
