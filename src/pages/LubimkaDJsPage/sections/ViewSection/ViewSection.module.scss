@@ -1,6 +1,6 @@
 .ViewSection {
   display: grid;
-  gap: 50px 30px;
+  gap: 50px 10px;
   @include for-xxs{
     grid-template-columns: repeat(2, 1fr);
   }
@@ -23,11 +23,10 @@
     grid-template-columns: repeat(5, 1fr);
   }
   @include for-qxl{
-    grid-template-columns: repeat(6, 1fr);
-    gap: 4vh 30px;
+    grid-template-columns: repeat(5, 1fr);
+    gap: 4vh 10px;
   }
   @include for-uxl{
-    grid-template-columns: repeat(7, 1fr);
-
+    grid-template-columns: repeat(6, 1fr);
   }
 }

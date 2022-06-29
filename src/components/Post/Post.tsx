@@ -8,13 +8,20 @@ import cn from 'classnames';
 // import PostComponent, { IPostComponentProps } from 'components/UI/PostComponent';
 import PostAltComponent, { IPostComponentProps } from 'components/UI/PostAltComponent';
 import { IPost } from 'interfaces/IPost';
-import { getImageUrl } from '@tools/IWrappedStrapiImage';
+import { getImageUrl, TSizeType } from '@tools/IWrappedStrapiImage';
 import useBreakpoint from 'hooks/useBreakpoint';
 
 export default function Post({ post, className, resizable }: IPostProps) {
   const b = useBreakpoint();
+  let sizeImage: TSizeType;
+
+  if (b.lg) sizeImage = 'large';
+  else if (b.md) sizeImage = 'middle';
+  else if (b.sm) sizeImage = 'small';
+  else sizeImage = 'thumbnail';
+
   const { title, cover, timeRead, createdAt, authors } = post.attributes;
-  const _cover = getImageUrl(cover, b.lg ? 'large' : 'thumbnail');
+  const _cover = getImageUrl(cover, sizeImage);
   return (
     <PostAltComponent
       className={cn(s.Post, className)}

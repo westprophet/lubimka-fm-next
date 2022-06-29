@@ -2,7 +2,6 @@
 
 .SCI {
   height: min-content;
-  overflow: scroll;
   @include layout-padding(true, true, true, true);
   @include for-lg {
     margin-bottom: 15px;

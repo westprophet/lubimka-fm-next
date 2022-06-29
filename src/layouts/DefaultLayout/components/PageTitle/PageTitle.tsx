@@ -2,67 +2,90 @@
  * Created by westp on 23.04.2022
  */
 
-import React, { useCallback, useEffect, useState } from 'react';
+import React, { useEffect } from 'react';
 import s from './PageTitle.module.scss';
 import cn from 'classnames';
-import ArrowButton from 'components/UI/buttons/ArrowButton';
-import TextPlaceholder from 'components/UI/TextPlaceholder';
 import { useRouter } from 'next/router';
-import useBreakpoint from 'hooks/useBreakpoint';
-import useIsMobile from 'hooks/useIsMobile';
+import { Breadcrumbs, Link } from '@mui/material';
+
+import NextLink from 'next/link';
 
 //Выполняет функцию заголовка и текста по котором можно возвратится обратно нв предыдущую страницу
 //или на определенную страницу если нет истории
 export default function PageTitle({
   className,
-  children,
-  onClick,
-  placeholder,
-  url,
+  breadcrumbs,
+  title,
+  backURL,
+  withPadding,
+  leftMargin,
 }: IPageTitleProps) {
   const r = useRouter();
-  const isMobile = useIsMobile();
-
   useEffect(() => {
-    if (url) r.prefetch(url);
-  }, [url]);
+    if (backURL) r.prefetch(backURL);
+  }, [backURL, r]);
 
-  const onClickHandler = () => {
-    if (onClick) onClick(); // Исполняем функциюю если такая указана
-    else if (url) r.push(url);
-    else r.back();
-  };
+  // const onClickHandler = () => {
+  //   if (onClick) onClick(); // Исполняем функциюю если такая указана
+  //   else if (backURL) r.push(backURL);
+  //   else r.back();
+  // };
 
-  if (!placeholder || isMobile)
-    return (
-      <div className={cn(s.PageTitle, s.simple, className)} onClick={onClickHandler}>
-        <ArrowButton side="left" size="small" />
-        <h2>{children}</h2>
-      </div>
-    );
-  else {
-    return (
-      <TextPlaceholder
-        className={cn(s.PageTitle, className)}
-        placeholder={placeholder}
-        side="left"
-        onClick={onClickHandler}
-      >
-        <h2>{children}</h2>
-      </TextPlaceholder>
-    );
-  }
+  return (
+    <div className={cn(s.PageTitle, { [s.wP]: withPadding, [s.lM]: leftMargin }, className)}>
+      {/*<LoadingButton*/}
+      {/*  onClick={onClickHandler}*/}
+      {/*  className={cn(s.back)}*/}
+      {/*  loading={loading}*/}
+      {/*  loadingPosition="start"*/}
+      {/*  size="small"*/}
+      {/*  startIcon={<ChevronLeft fontSize="small" />}*/}
+      {/*>*/}
+      {/*  Назад*/}
+      {/*</LoadingButton>*/}
+      {title ? <h1>{title}</h1> : null}
+      {breadcrumbs ? (
+        <Breadcrumbs aria-label="breadcrumb" className={cn(s.breadcrumbs)}>
+          <Link underline="hover" color="inherit">
+            <NextLink href={'/'}>Главная</NextLink>
+          </Link>
+          {breadcrumbs?.map((i: IBreadCrumbsItem) => {
+            if (i.link)
+              return (
+                <Link key={i.link} underline="hover" color="inherit">
+                  <NextLink href={i.link}>{i.title}</NextLink>
+                </Link>
+              );
+            else
+              return (
+                <Link key={i.title} underline="none" color="inherit">
+                  {i.title}
+                </Link>
+              );
+          })}
+        </Breadcrumbs>
+      ) : null}
+    </div>
+  );
 }
 
 PageTitle.defaultProps = {
   className: '',
-  placeholder: 'Назад',
+  withPadding: true,
+  leftMargin: true,
 };
+
+export interface IBreadCrumbsItem {
+  title: string;
+  link?: string;
+}
 
 interface IPageTitleProps {
   className?: string;
-  children: any;
-  onClick?(): any;
-  placeholder?: string | false;
-  url?: string;
+  // onClick?(): any;
+  title?: any;
+  backURL?: string;
+  breadcrumbs?: IBreadCrumbsItem[];
+  withPadding?: boolean;
+  leftMargin?: boolean;
 }

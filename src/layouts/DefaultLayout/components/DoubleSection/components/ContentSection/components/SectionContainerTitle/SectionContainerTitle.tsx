@@ -2,16 +2,22 @@
  * Created by westp on 28.04.2022
  */
 
-import React from 'react';
+import React, { forwardRef, LegacyRef } from 'react';
 import s from './SectionContainerTitle.module.scss';
 import cn from 'classnames';
 
-export default function SectionContainerTitle({
-  className,
-  children,
-}: ISectionContainerTitleProps) {
-  return <div className={cn(s.SectionContainerTitle, className)}>{children}</div>;
-}
+const SectionContainerTitle = forwardRef(
+  (
+    { className, children }: ISectionContainerTitleProps,
+    ref: LegacyRef<HTMLDivElement> | undefined
+  ) => {
+    return (
+      <div ref={ref} className={cn(s.SectionContainerTitle, className)}>
+        {children}
+      </div>
+    );
+  }
+);
 
 SectionContainerTitle.defaultProps = {
   className: '',
@@ -21,3 +27,5 @@ interface ISectionContainerTitleProps {
   className?: string;
   children: any;
 }
+
+export default SectionContainerTitle;

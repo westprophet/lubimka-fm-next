@@ -6,15 +6,55 @@ import React from 'react';
 import s from './SectionContainer.module.scss';
 import cn from 'classnames';
 import SectionContainerTitle from '../SectionContainerTitle';
+import { motion } from 'framer-motion';
+
+const variantHead = {
+  show: {
+    opacity: 1,
+    y: 0,
+  },
+  hidden: {
+    y: '-100%',
+    opacity: 0,
+  },
+};
 
 export default function SectionContainer({
   className,
   children,
   colorType,
   title,
+  index,
+  delay,
 }: ISectionContainerProps) {
+  const _delay = delay ?? 0.5;
+  const variants = {
+    show: (i: number) => ({
+      opacity: 1,
+      y: 0,
+      transition: {
+        delay: _delay + i * 0.2,
+        duration: 0.3,
+        staggerChildren: _delay,
+        delayChildren: 0.7 + i * 0.2,
+      },
+      default: {
+        transition: {
+          delay: 0.5,
+        },
+      },
+    }),
+    hidden: {
+      y: '10%',
+      opacity: 0,
+    },
+  };
   return (
-    <div
+    <motion.div
+      variants={variants}
+      animate="show"
+      initial="hidden"
+      custom={index}
       className={cn(
         s.SectionContainer,
         {
@@ -25,18 +65,19 @@ export default function SectionContainer({
         className
       )}
     >
-      <div className={cn(s.line)}>
+      <motion.div className={cn(s.line)} variants={variantHead}>
         <span></span>
-      </div>
+      </motion.div>
       {title && <SectionContainerTitle>{title}</SectionContainerTitle>}
       {children}
-    </div>
+    </motion.div>
   );
 }
 
 SectionContainer.defaultProps = {
   className: '',
   colorType: 1,
+  delay: 0.5,
 };
 
 interface ISectionContainerProps {
@@ -44,4 +85,6 @@ interface ISectionContainerProps {
   children: any;
   colorType?: 1 | 2 | 3;
   title?: any;
+  delay?: number;
+  index?: number;
 }

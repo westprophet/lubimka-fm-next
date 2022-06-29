@@ -6,7 +6,7 @@
   grid-gap: 20px;
   color: var(--text-color);
   width: min-content;
-  box-sizing: content-box;
+  //box-sizing: content-box;
   padding: 10px 15px;
   transition: .3s;
   border-radius: 2%;
@@ -33,7 +33,6 @@
       width: $size-img-lg;
     }
     @include for-xxl {
-      //border-radius: 15px;
       height: $size-img-xxl;
       width: $size-img-xxl;
     }
@@ -49,6 +48,9 @@
       height: 100%;
       padding: 8px;
       display: flex;
+      position: absolute;
+      left: 0;
+      top: 0;
       @include for-md {
         padding: 10px 16px;
       }
@@ -80,9 +82,14 @@
 
   &.resizable {
     width: 100%;
-
     :local(.inner) {
       width: 100%;
+    }
+  }
+  &.resizableHeight {
+    height: auto;
+    :local(.inner) {
+      height: auto;
     }
   }
 }

@@ -2,7 +2,8 @@
  * Created by westp on 30.05.2022
  */
 
-import React, { useState } from 'react';
+// @ts-ignore
+import React, { startTransition, useState } from 'react';
 import s from './AuthorPage.module.scss';
 import cn from 'classnames';
 import DefaultLayout from 'layouts/DefaultLayout';
@@ -17,9 +18,29 @@ import VerticalTrack from 'components/tracks/VerticalTrack';
 import useAlbumsTracks from '@pages/AuthorPage/hooks/useAlbumsTracks';
 import AlbumsSection from '@pages/AuthorPage/sections/AlbumsSection';
 import TracksSection from '@pages/AuthorPage/sections/TracksSection';
+import { motion } from 'framer-motion';
+import Image from 'next/image';
+import DATA_FOR_BLUR from '../../constants/DATA_FOR_BLUR';
+
+const variantsImage = {
+  show: (i: number) => ({
+    opacity: 1,
+    // y: 0,
+    transition: {
+      delay: 1.5,
+      duration: 0.5,
+    },
+  }),
+  hidden: {
+    // y: '70%',
+    opacity: 0,
+  },
+};
 
 export default function AuthorPage({ author }: IAuthorPageProps) {
-  const [active, setActive] = useState<'tracks' | 'albums' | null>(null);
+  const [active, setActive] = useState<TSector>(null);
+  // const [show, setShow] = useState<boolean>(true);
+
   const onClose = () => setActive(null);
   const cover = getImageUrl(author?.attributes.avatar);
   const albums = author.attributes.albums.data;
@@ -32,6 +53,9 @@ export default function AuthorPage({ author }: IAuthorPageProps) {
     return { ...t, attributes: { ...t.attributes, album: a } };
   });
 
+  // const onClickHandler = (t: TSector) => {
+  //    startTransition(()=>setActive(t));
+  // };
   return (
     <DefaultLayout.Layout
       className={cn(s.AuthorPage)}
@@ -40,14 +64,42 @@ export default function AuthorPage({ author }: IAuthorPageProps) {
     >
       <DSection.Wrapper>
         <DSection.Preview.Wrapper cover={cover} className={cn(s.previewContainer)}>
-          <DefaultLayout.PageTitle placeholder={'К Lubimka DJs'}>Назад</DefaultLayout.PageTitle>
-          <DSection.Preview.Inner className={cn(s.previewInner)}>
+          <DefaultLayout.PageTitle
+            leftMargin={false}
+            breadcrumbs={[
+              {
+                title: "Lubimka DJ's",
+                link: '/lubimka-djs',
+              },
+              {
+                title: author.attributes.name,
+              },
+            ]}
+          />
+          <DSection.Preview.Inner className={cn(s.titleContainer)}>
+            {cover ? (
+              <motion.div
+                className={cn(s.cover)}
+                variants={variantsImage}
+                animate="show"
+                initial="hidden"
+              >
+                <Image
+                  src={cover}
+                  layout="fill"
+                  objectFit="cover"
+                  blurDataURL={DATA_FOR_BLUR}
+                  placeholder="blur"
+                />
+              </motion.div>
+            ) : null}
             <h1 className={cn(s.title)}>{author.attributes.name}</h1>
           </DSection.Preview.Inner>
         </DSection.Preview.Wrapper>
         <DSection.QuadContent.Wrapper className={cn(s.content)}>
           {recommendedTrack && (
             <DSection.QuadContent.Container
+              index={1}
               title={recommendedTrack ? 'Рекомендуем' : 'Новый трек'}
               colorType={1}
               className={cn(s.sector)}
@@ -75,6 +127,7 @@ export default function AuthorPage({ author }: IAuthorPageProps) {
             title="Описание"
             colorType={3}
             className={cn(s.description)}
+            index={4}
           >
             <DSection.QuadContent.Inner>
               <ReactMarkdown>{author.attributes.description}</ReactMarkdown>
@@ -86,6 +139,7 @@ export default function AuthorPage({ author }: IAuthorPageProps) {
   );
 }
 
+type TSector = 'tracks' | 'albums' | null;
 interface IAuthorPageProps {
   author: IAuthor;
 }

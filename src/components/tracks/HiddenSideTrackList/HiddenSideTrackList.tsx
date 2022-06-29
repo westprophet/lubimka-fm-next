@@ -35,7 +35,11 @@ export function _HiddenSideTrackList<T>(
   // const res_tracks = filteredTracks.map(children);
 
   return (
-    <DSection.HiddenAside.Wrapper open={isShow} className={cn(s.TrackList, className)}>
+    <DSection.HiddenAside.Wrapper
+      open={isShow}
+      className={cn(s.TrackList, className)}
+      onClose={onClose}
+    >
       <DSection.HiddenAside.Inner>
         <DSection.HiddenAside.Container>
           <DSection.HiddenAside.Title onClick={onClose}>{title}</DSection.HiddenAside.Title>

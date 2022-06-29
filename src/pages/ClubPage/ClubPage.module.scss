@@ -3,21 +3,43 @@
     display: flex;
     flex-direction: column;
     justify-content: space-between;
-    .title {
-      @include f3() {
-        font-weight: 700;
-        letter-spacing: 0.02em;
+
+    :global(.section-background) {
+      filter: blur(8px) brightness(70%);
+    }
+
+    .titleContainer {
+      display: grid;
+      gap: 20px;
+      @include for-qxl {
+        gap: 50px;
       }
-      @include for-sm{
-        @include f2();
+
+      .cover {
+        width: 200px;
+        height: 200px;
+        border-radius: 4%;
+        overflow: hidden;
+        position: relative;
       }
-      @include for-lg{
-        @include f2_55();
+
+      .title {
+        @include f3() {
+          font-weight: 700;
+          letter-spacing: 0.02em;
+        }
+        @include for-sm {
+          @include f2();
+        }
+        @include for-lg {
+          @include f2_55();
+        }
       }
     }
 
-    //.tabs {
-    //
-    //}
+  }
+
+  .description {
+
   }
 }

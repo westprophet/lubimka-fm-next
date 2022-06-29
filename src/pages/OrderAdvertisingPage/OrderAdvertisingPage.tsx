@@ -27,25 +27,31 @@ export default function OrderAdvertisingPage() {
         isShow: true,
       }}
     >
-      <DefaultLayout.PageWrapper>
-        <DefaultLayout.PageTitle url={`/`} placeholder={'На главную'}>
-          Заявка на рекламу
-        </DefaultLayout.PageTitle>
+      <DefaultLayout.PageWrapper className={cn(s.wrapper)}>
+        <DefaultLayout.PageTitle
+          title="Заявка на рекламу"
+          breadcrumbs={[
+            {
+              title: 'Заявка на рекламу',
+            },
+          ]}
+        />
         <DefaultLayout.Section.Wrapper>
-          <DefaultLayout.Section.Inner className={cn(s.inner)} disableHorizontalPadding>
-            <h2>Реклама в эфире и онлайн</h2>
-            <p className={cn(s.description)}>
-              Аудитория Радио Lubimka – это современные молодые люди 20-35 лет, наиболее активные
-              потребители товаров, услуг и технологий. Более 5 миллионов подписчиков в соцсетях, 500
-              тысяч уникальных посетителей сайта, десятки тысяч слушателей подкастов и
-              онлайн-радиостанций – это аудитория, которая ежедневно взаимодействует с ресурсами
-              Радио Lubimka.
-            </p>
-          </DefaultLayout.Section.Inner>
-        </DefaultLayout.Section.Wrapper>
-        <DefaultLayout.Section.Wrapper>
-          <DefaultLayout.Section.Inner className={cn(s.from)} disableHorizontalPadding>
-            <div>
+          <DefaultLayout.Section.Inner className={cn(s.main)}>
+            <div className={cn(s.description)}>
+              <h2>Реклама в эфире и онлайн</h2>
+              <p className={cn(s.description)}>
+                Аудитория Радио Lubimka – это современные молодые люди 20-35 лет, наиболее активные
+                потребители товаров, услуг и технологий.
+              </p>
+              <br />
+              <p>
+                Более 5 миллионов подписчиков в соцсетях, 500 тысяч уникальных посетителей сайта,
+                десятки тысяч слушателей подкастов и онлайн-радиостанций – это аудитория, которая
+                ежедневно взаимодействует с ресурсами Lubimka FM.
+              </p>
+            </div>
+            <div className={cn(s.formContainer)}>
               <h2>Оставьте заявку</h2>
               <AnyContactForm
                 className={cn(s.form)}
@@ -54,7 +60,7 @@ export default function OrderAdvertisingPage() {
               />
             </div>
             <div className={cn(s.contacts)}>
-              <h2>Или свяжитесь с нами</h2>
+              <h2>Cвяжитесь с нами</h2>
               <div className={cn(s.innerContacts)}>
                 <a href="tel:08921558595">0 (89) 21 55 85 95</a>
                 <div>In der Kirchtanne 27, 64297 Darmstadt</div>

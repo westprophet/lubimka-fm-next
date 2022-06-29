@@ -13,9 +13,14 @@ export default function ClubLifePage({ clubs }: IClubLifePageProps) {
   return (
     <DefaultLayout.Layout className={cn(s.ClubLifePage)}>
       <DefaultLayout.PageWrapper>
-        <DefaultLayout.PageTitle url="/" placeholder="На главную">
-          Club Life
-        </DefaultLayout.PageTitle>
+        <DefaultLayout.PageTitle
+          title="Club Life"
+          breadcrumbs={[
+            {
+              title: 'Club Life',
+            },
+          ]}
+        />
         <ClubsSection clubs={clubs} />
       </DefaultLayout.PageWrapper>
     </DefaultLayout.Layout>

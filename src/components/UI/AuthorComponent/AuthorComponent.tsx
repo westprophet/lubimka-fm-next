@@ -23,6 +23,7 @@ export default function AuthorComponent({
   cover,
   resizable,
   link,
+  resizableHeight,
   onClick,
 }: IAuthorComponent) {
   const r = useRouter();
@@ -39,7 +40,11 @@ export default function AuthorComponent({
   };
   return (
     <div
-      className={cn(s.AuthorComponent, { [s.resizable]: resizable }, className)}
+      className={cn(
+        s.AuthorComponent,
+        { [s.resizable]: resizable, [s.resizableHeight]: resizableHeight },
+        className
+      )}
       onClick={onPlay}
       onMouseOver={onMouseOverHandler}
       onMouseLeave={onMouseLeaveHandler}
@@ -49,8 +54,10 @@ export default function AuthorComponent({
           <Image
             src={cover}
             className={cn(s.cover, 'zoom-effect')}
-            layout="fill"
+            layout="responsive"
             objectFit="cover"
+            width="100%"
+            height="100%"
             placeholder="blur"
             blurDataURL={DATA_FOR_BLUR}
           />
@@ -80,6 +87,7 @@ AuthorComponent.defaultProps = {
 
 export interface IAuthorComponentProps {
   resizable?: boolean;
+  resizableHeight?: boolean;
 }
 
 interface IAuthorComponent extends IAuthorComponentProps {

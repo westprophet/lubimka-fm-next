@@ -19,7 +19,6 @@ export default function BlogPage({ categories }: IBlogPageProps) {
   const { data: posts, isLoading } = useGetPosts({ categoryID: category });
   const _posts = posts?.data;
   const __post = _posts;
-  // if (_posts) __post = [..._posts, ..._posts, ..._posts, ..._posts, ..._posts, ..._posts];
   return (
     <DefaultLayout.Layout
       className={cn(s.BlogPage)}
@@ -27,7 +26,14 @@ export default function BlogPage({ categories }: IBlogPageProps) {
       player={{ isDisable: true }}
     >
       <DefaultLayout.PageWrapper>
-        <DefaultLayout.PageTitle url="/">Блог</DefaultLayout.PageTitle>
+        <DefaultLayout.PageTitle
+          title="Блог"
+          breadcrumbs={[
+            {
+              title: 'Блог',
+            },
+          ]}
+        />
         <DefaultLayout.Section.Wrapper>
           <DefaultLayout.Section.Inner className={cn(s.tabs)}>
             <Tabs

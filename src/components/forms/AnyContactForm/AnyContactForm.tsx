@@ -122,6 +122,7 @@ export default function AnyContactForm({
             helperText={touched.message ? errors.message : '  '}
           />
           <LoadingButton
+            className={cn(s.sendButton)}
             type="submit"
             loading={isSubmitting}
             variant="contained"

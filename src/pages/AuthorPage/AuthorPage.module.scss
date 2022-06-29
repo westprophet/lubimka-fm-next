@@ -4,27 +4,42 @@
     flex-direction: column;
     justify-content: space-between;
 
-    .title {
-      font-weight: 700;
-      font-size: 18px;
-      line-height: 140%;
-      @include for-sm {
+    :global(.section-background) {
+      filter: blur(12px) brightness(50%);
+    }
+
+    .titleContainer {
+      display: grid;
+      gap: 20px;
+      @include for-qxl {
+        gap: 50px;
+      }
+
+      .cover {
+        width: 200px;
+        height: 200px;
+        border-radius: 4%;
+        overflow: hidden;
+        position: relative;
+      }
+
+      .title {
         font-weight: 700;
-        font-size: 32px;
-      }
-      @include for-lg {
-        font-size: 50px;
-      }
-      @include for-xxl {
-        font-size: 82px;
+        font-size: 18px;
+        line-height: 140%;
+        @include for-sm {
+          font-weight: 700;
+          font-size: 32px;
+        }
+        @include for-lg {
+          font-size: 50px;
+        }
+        @include for-xxl {
+          font-size: 82px;
+        }
       }
     }
 
-    .previewInner {
-      //height: 100%;
-      //display: flex;
-      //flex-direction: column-reverse;
-    }
   }
 
   .content {

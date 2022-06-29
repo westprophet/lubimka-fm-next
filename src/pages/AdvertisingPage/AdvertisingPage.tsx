@@ -19,7 +19,7 @@ export default function AdvertisingPage({ className, adv }: IAdvertisingPageProp
       }}
     >
       <DefaultLayout.PageWrapper>
-        <DefaultLayout.PageTitle url="/">Каталог рекламы</DefaultLayout.PageTitle>
+        <div></div>
       </DefaultLayout.PageWrapper>
     </DefaultLayout.Layout>
   );

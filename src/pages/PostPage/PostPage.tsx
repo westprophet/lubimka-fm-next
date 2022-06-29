@@ -18,7 +18,14 @@ export default function PostPage({ children, title }: IPostPageProps) {
       }}
     >
       <DefaultLayout.PageWrapper>
-        <DefaultLayout.PageTitle url="/">{title}</DefaultLayout.PageTitle>
+        <DefaultLayout.PageTitle
+          title={title}
+          breadcrumbs={[
+            {
+              title: title,
+            },
+          ]}
+        />
         <DefaultLayout.Section.Wrapper>
           <ReactMarkdown>{children}</ReactMarkdown>
         </DefaultLayout.Section.Wrapper>

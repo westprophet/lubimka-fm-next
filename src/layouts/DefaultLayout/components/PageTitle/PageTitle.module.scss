@@ -2,43 +2,47 @@
 @import "../../scss/mixins";
 
 .PageTitle {
-  //$line-height-xs: 52px;
-  height: $height-xs;
+  //height: $height-xs;
   display: grid;
-  grid-auto-flow: column;
-  grid-template-columns: $height-xs auto;
   gap: $gap-xs;
   align-items: center;
   justify-content: left;
   z-index: 2;
   cursor: pointer;
-  @include f6() {
-    font-weight: 700;
-    line-height: $height-xs;
+  @include for-xxl{
+    gap: $gap-xxl;
   }
-  @include layout-padding(true, true, true, true, margin);
+  @include for-qxl{
+    gap: $gap-qxl;
+  }
+  &.wP{
+    @include layout-padding(true, true, true, true, margin);
+  }
+  &.lM{
+    @include inner-section-padding(false, false, false, true);
+  }
 
-  &.simple {
-    @include before-sm {
-      margin-left: 2px;
+  //.back{
+  //  @include f8();
+  //  width: min-content;
+  //  color: inherit;
+  //  @include for-sm{
+  //    display: none;
+  //  }
+  //}
+  .breadcrumbs{
+    @include f7();
+    @include for-xxl{
+      @include f6();
     }
   }
-
-  @include for-sm {
-    //padding-left: $gap-sm;
-    height: $height-sm;
-    grid-template-columns: auto;
+  h1{
     @include f3() {
-      line-height: $height-sm;
+      font-weight: 700;
     }
-  }
-  @include for-lg {
-    //padding-left: $gap-lg;
-  }
-
-  & > button {
-    @include for-md {
-      display: none;
+    @include for-sm {
+      grid-template-columns: auto;
+      @include f2();
     }
   }
 }

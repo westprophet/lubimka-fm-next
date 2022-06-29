@@ -1,7 +1,7 @@
 .ViewPostsSection {
   display: grid;
   gap: 30px;
-  @include before-qxl{
+  @include before-xl{
     .item{
       &:nth-child(5n){
         grid-column: span 2;
@@ -9,17 +9,26 @@
       }
     }
   }
+  @include for-sm{
+    grid-template-columns: repeat(3, 1fr);
+  }
+  @include for-md{
+    grid-template-columns: repeat(2, 1fr);
+  }
   @include for-lg{
-    grid-template-columns: 1fr 1fr 1fr 1fr;
+    grid-template-columns: repeat(3, 1fr);
+  }
+  @include for-xl{
+    grid-template-columns: repeat(4, 1fr);
   }
   @include for-xxl{
-    grid-template-columns: 1fr 1fr 1fr;
+    grid-template-columns: repeat(3, 1fr);
   }
   @include for-qxl{
-    grid-template-columns: 1fr 1fr 1fr 1fr;
+    grid-template-columns: repeat(4, 1fr);
   }
   @include for-uxl{
-    grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
+    grid-template-columns: repeat(5, 1fr);
     :local(.item){
       &:nth-child(7n - 1){
         grid-column: span 2;

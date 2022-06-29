@@ -3,7 +3,7 @@ import { IWrappedStrapiImage } from 'api/strapi/types';
 //Возвращаем урл картиноки
 export default function getImageUrl(
   d: IWrappedStrapiImage | null,
-  type?: 'large' | 'small' | 'middle' | 'thumbnail'
+  type?: TSizeType
 ): string | null {
   let res = null;
   if (!d) return res;
@@ -30,3 +30,4 @@ export default function getImageUrl(
   }
   return res;
 }
+export type TSizeType = 'large' | 'small' | 'middle' | 'thumbnail';

@@ -30,6 +30,7 @@ export default function TracksSection({
           onClick: onOpen,
         }}
         colorType={3}
+        index={2}
         className={cn(s.TracksSection, className)}
       >
         <QS.Inner className={cn(s.inner)} withHorizontalPadding={false}>

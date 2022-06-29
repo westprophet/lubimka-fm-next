@@ -37,9 +37,20 @@ export default function ClubsPage({ clubs }: IClubsPageProps) {
   return (
     <DefaultLayout.Layout className={cn(s.ClubsPage)}>
       <DefaultLayout.PageWrapper>
-        <DefaultLayout.PageTitle url="/">Клубы</DefaultLayout.PageTitle>
+        <DefaultLayout.PageTitle
+          title="Клубы"
+          breadcrumbs={[
+            {
+              title: 'Club Life',
+              link: '/club-life',
+            },
+            {
+              title: 'Клубы',
+            },
+          ]}
+        />
         <DefaultLayout.Section.Wrapper>
-          <DefaultLayout.Section.Inner disableHorizontalPadding>
+          <DefaultLayout.Section.Inner>
             <TextField
               placeholder="Поиск"
               InputProps={{

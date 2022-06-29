@@ -3,32 +3,40 @@
   .MainSection {
     display: grid;
     grid-gap: 40px;
-    h2{
+
+    h2 {
       margin-bottom: 50px;
-      @include f4(){
+      @include f4() {
         font-weight: 700;
       }
     }
+
     @include for-xl {
       grid-template-columns: 1fr 1fr;
     }
 
     .promo {
       justify-self: center;
+      display: none;
+      @include for-sm {
+        display: flex;
+        grid-row: 2/3;
+      }
     }
 
     .formContainer {
       margin: auto;
       width: 100%;
-      .form{
+
+      .form {
         display: grid;
         grid-gap: 20px 20px;
         grid-template-columns: 1fr;
-        @include for-md{
+        @include for-md {
           max-width: 440px;
           grid-template-columns: 1fr 1fr;
           grid-gap: 35px 20px;
-          .message{
+          .message {
             margin-top: 15px;
             grid-column: 1/3;
           }

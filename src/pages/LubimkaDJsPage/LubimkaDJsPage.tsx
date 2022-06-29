@@ -17,7 +17,7 @@ export default function LubimkaDJsPage({ authors }: ILubimkaDJsPageProps) {
   const [search, setSearch] = useState<string>('');
   const [page, setPage] = React.useState(authors?.meta?.pagination.page ?? 1);
   const [rowsPerPage, setRowsPerPage] = React.useState(authors?.meta?.pagination.pageSize ?? 25);
-  const { data } = useGetAuthors(search, authors, page, rowsPerPage);
+  const { data, isLoading } = useGetAuthors(search, authors, page, rowsPerPage);
 
   const handleChangeSearch = (e: React.ChangeEvent<HTMLInputElement>) => {
     setSearch(e.target.value);
@@ -38,27 +38,40 @@ export default function LubimkaDJsPage({ authors }: ILubimkaDJsPageProps) {
   return (
     <DefaultLayout.Layout className={cn(s.LubimkaDJsPage)}>
       <DefaultLayout.PageWrapper>
-        <DefaultLayout.PageTitle url="/">Lubimka DJs</DefaultLayout.PageTitle>
+        <DefaultLayout.PageTitle
+          title="Lubimka DJs"
+          breadcrumbs={[
+            {
+              title: 'Club Life',
+              link: '/club-life',
+            },
+            {
+              title: "Lubimka DJ's",
+            },
+          ]}
+        />
         <DefaultLayout.Section.Wrapper>
-          <DefaultLayout.Section.Inner disableHorizontalPadding className={cn(s.searchSection)}>
+          <DefaultLayout.Section.Inner className={cn(s.searchSection)}>
             <div className={cn(s.searchContainer)}>
               <SearchInput onChange={handleChangeSearch} className={cn(s.searchInput)} />
             </div>
           </DefaultLayout.Section.Inner>
         </DefaultLayout.Section.Wrapper>
-        <ViewSection authors={data?.data} />
+        <ViewSection authors={data?.data} isLoading={isLoading} />
         <DefaultLayout.Section.Wrapper>
-          <TablePagination
-            component="div"
-            count={total}
-            // className={cn(s.pagination)}
-            labelRowsPerPage="Показать"
-            rowsPerPageOptions={[25, 50, 100]}
-            page={page - 1}
-            onPageChange={handleChangePage}
-            rowsPerPage={rowsPerPage}
-            onRowsPerPageChange={handleChangeRowsPerPage}
-          />
+          <DefaultLayout.Section.Inner>
+            <TablePagination
+              component="div"
+              count={total}
+              // className={cn(s.pagination)}
+              labelRowsPerPage="Показать"
+              rowsPerPageOptions={[25, 50, 100]}
+              page={page - 1}
+              onPageChange={handleChangePage}
+              rowsPerPage={rowsPerPage}
+              onRowsPerPageChange={handleChangeRowsPerPage}
+            />
+          </DefaultLayout.Section.Inner>
         </DefaultLayout.Section.Wrapper>
       </DefaultLayout.PageWrapper>
     </DefaultLayout.Layout>

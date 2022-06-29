@@ -29,6 +29,7 @@ export default function AlbumsSection({
         title="Альбомы"
         disableHorizontalPadding
         colorType={2}
+        index={3}
         className={cn(s.AlbumsSection, className)}
       >
         <QS.Inner className={cn(s.albumsInner)} withHorizontalPadding={false}>

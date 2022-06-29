@@ -19,7 +19,14 @@ export default function AboutUsPage({ team }: IAboutUsPageProps) {
       }}
     >
       <DefaultLayout.PageWrapper>
-        <DefaultLayout.PageTitle url="/">О нас</DefaultLayout.PageTitle>
+        <DefaultLayout.PageTitle
+          title="О нас"
+          breadcrumbs={[
+            {
+              title: 'О нас',
+            },
+          ]}
+        />
         <MainSection />
         <TeamSection team={team} />
       </DefaultLayout.PageWrapper>
