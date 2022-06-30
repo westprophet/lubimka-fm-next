@@ -46,7 +46,18 @@ export default function EventsPage({ events }: IEventsPageProps) {
   return (
     <DefaultLayout.Layout className={cn(s.EventsPage)}>
       <DefaultLayout.PageWrapper>
-        <DefaultLayout.PageTitle url="/club-life">Мероприятия</DefaultLayout.PageTitle>
+        <DefaultLayout.PageTitle
+          title="Мероприятия"
+          breadcrumbs={[
+            {
+              title: 'Club Life',
+              link: '/club-life',
+            },
+            {
+              title: 'Мероприятия',
+            },
+          ]}
+        />
         <Suspense fallback={`Loading...`}>
           <FilterSection
             setSearch={setSearch}
