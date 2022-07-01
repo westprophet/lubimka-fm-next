@@ -13,6 +13,7 @@ export const getStaticProps: GetStaticProps = async () => {
   const content = await api.strapi.single.getPrivacyPolicy();
   const title = 'Соглашение об использовании Cookies';
   return await getGlobalStaticProps({
+    revalidate: Number(process.env['NEXT_PUBLIC_REVALIDATE_INTERVAl']),
     props: {
       title,
       content,

@@ -21,6 +21,7 @@ export const getStaticProps: GetStaticProps = async ({
       notFound: true,
     };
   return await getGlobalStaticProps({
+    revalidate: Number(process.env['NEXT_PUBLIC_REVALIDATE_INTERVAl']),
     props: {
       channel,
     },

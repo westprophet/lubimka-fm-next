@@ -2,7 +2,6 @@
 @mixin f8{
   font-size: 10px;
   font-style: normal;
-  line-height: 120%;
   @content;
 }
 
@@ -10,8 +9,6 @@
 @mixin f7{
   font-size: 12px;
   font-style: normal;
-  line-height: 120%;
-  //line-height: 14px;
   @content;
 }
 
@@ -19,8 +16,6 @@
 @mixin f6{
   font-size: 14px;
   font-style: normal;
-  line-height: 120%;
-  //line-height: 18px;
   @content;
 }
 

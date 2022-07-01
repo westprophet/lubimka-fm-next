@@ -12,6 +12,7 @@ const Clubs: NextPage<IChannelsProps> = ({ clubs }) => {
 export const getStaticProps: GetStaticProps = async () => {
   const { data: clubs } = await api.strapi.clubs.getClubs();
   return await getGlobalStaticProps({
+    revalidate: Number(process.env['NEXT_PUBLIC_REVALIDATE_INTERVAl']),
     props: {
       clubs,
     },

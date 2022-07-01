@@ -18,6 +18,7 @@ export const getStaticProps: GetStaticProps = async () => {
 
   const events = await api.strapi.events.getEvents({ pagination: initialPagination });
   return await getGlobalStaticProps({
+    revalidate: Number(process.env['NEXT_PUBLIC_REVALIDATE_INTERVAl']),
     props: {
       events,
     },

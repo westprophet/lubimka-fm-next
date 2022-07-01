@@ -22,26 +22,31 @@ export default function ClubComponent({
   address,
   link,
   resizable,
+  resizableHeight,
 }: IClubComponentProps) {
   const { onMouseOverHandler, onMouseLeaveHandler, hover } = useHover();
   const isAddressLong = address.length > 100;
   return (
     <div
-      className={cn(s.ClubComponent, { [s.notResizable]: resizable }, className)}
+      className={cn(s.ClubComponent, { [s.res]: resizable, [s.resH]: resizableHeight }, className)}
       onMouseOver={onMouseOverHandler}
       onMouseLeave={onMouseLeaveHandler}
     >
       {cover ? (
-        <Image
-          className={cn(s.bg, 'zoom-effect')}
-          src={cover}
-          layout="fill"
-          objectFit="cover"
-          blurDataURL={DATA_FOR_BLUR}
-          placeholder={'blur'}
-        />
+        <div className={cn(s.cover)}>
+          <Image
+            className={cn(s.bg, 'zoom-effect')}
+            src={cover}
+            layout="responsive"
+            objectFit="cover"
+            width="100%"
+            height="100%"
+            blurDataURL={DATA_FOR_BLUR}
+            placeholder={'blur'}
+          />
+        </div>
       ) : (
-        <div className={cn(s.bg)} />
+        <div className={cn(s.cover, s.noImg)} />
       )}
 
       <div className={cn(s.head)}>
@@ -102,4 +107,5 @@ interface IClubComponentProps {
   cover: string | null;
   avatar?: string | null;
   resizable?: boolean;
+  resizableHeight?: boolean;
 }

@@ -29,6 +29,7 @@ export default function CommonPlayerAction({
         disabled={Boolean(isOpenChannelMenu)}
         className={cn(s.pinned, { [s.isPinned]: !pinned })}
         onClick={onClick}
+        size="small"
       >
         {pinned ? <PushPinIcon /> : <KeyboardArrowUpIcon />}
       </IconButton>

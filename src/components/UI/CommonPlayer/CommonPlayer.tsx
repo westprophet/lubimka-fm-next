@@ -10,7 +10,14 @@ import CommonPlayerTitle from './components/CommonPlayerTitle';
 import TAudioTitle from '../../../types/TAudioTitle';
 import CommonPlayerCover from './components/CommonPlayerCover';
 import CommonPlayerAction from './components/CommonPlayerAction';
-import ChannelMenuSelector from './sections/ChannelMenuSelector';
+import dynamic from 'next/dynamic';
+
+// import ChannelMenuSelector from './sections/ChannelMenuSelector';
+
+const ChannelMenuSelector = dynamic(() => import('./sections/ChannelMenuSelector'), {
+  ssr: false,
+});
+
 import PlayerControlComponent from 'components/UI/buttons/PlayerControlComponent';
 import { TAudioManagerStatus } from 'types/TAudioManagerStatus';
 import { IChannel } from '../../../interfaces';

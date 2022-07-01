@@ -18,6 +18,7 @@ export const getStaticProps: GetStaticProps = async (context: GetStaticPropsCont
   });
   const club = event?.attributes.club?.data;
   return await getGlobalStaticProps({
+    revalidate: Number(process.env['NEXT_PUBLIC_REVALIDATE_INTERVAl']),
     props: {
       event,
       club,

@@ -16,7 +16,7 @@ export default function CommonRadioChannelButton({
 }: ICommonRadioChannelButtonProps) {
   return (
     <div className={cn(s.CommonRadioChannelButton, className)}>
-      <Button key={title} variant="text" onClick={onClick}>
+      <Button key={title} variant="text" onClick={onClick} size="small">
         <ExpandLessIcon className={cn(s.arrow, { [s.open]: isOpen })} />
         <span suppressHydrationWarning>{title}</span>
       </Button>

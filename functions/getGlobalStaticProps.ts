@@ -12,7 +12,10 @@ export default async function getGlobalStaticProps<P>(
     channels,
   };
   if (d && 'props' in d) return { ...d, props: { ...d.props, ..._props } };
-  else if (!d) return { props: { ..._props } };
+  else if (!d)
+    return {
+      props: { ..._props },
+    };
   else return d;
 }
 

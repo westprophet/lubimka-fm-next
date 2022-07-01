@@ -7,8 +7,6 @@ import s from './RadioProgramsPage.module.scss';
 import cn from 'classnames';
 import { IRadioProgram } from 'interfaces/IRadioProgram';
 import DefaultLayout from 'layouts/DefaultLayout';
-import DSection from '../../layouts/DefaultLayout/components/DoubleSection';
-import ChannelPlayer from '@pages/ChannelPage/components/ChannelPlayer';
 
 export default function RadioProgramsPage({ className, programs }: IRadioProgramsPageProps) {
   return (
@@ -18,7 +16,14 @@ export default function RadioProgramsPage({ className, programs }: IRadioProgram
       player={{ isDisable: true }}
     >
       <DefaultLayout.PageWrapper>
-        <DefaultLayout.PageTitle url="/">Программы эфира</DefaultLayout.PageTitle>
+        <DefaultLayout.PageTitle
+          title="Программы эфира"
+          breadcrumbs={[
+            {
+              title: 'Программы эфира',
+            },
+          ]}
+        />
       </DefaultLayout.PageWrapper>
     </DefaultLayout.Layout>
   );

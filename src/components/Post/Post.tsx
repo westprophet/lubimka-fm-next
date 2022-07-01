@@ -18,7 +18,7 @@ export default function Post({ post, className, resizable }: IPostProps) {
   if (b.lg) sizeImage = 'large';
   else if (b.md) sizeImage = 'middle';
   else if (b.sm) sizeImage = 'small';
-  else sizeImage = 'thumbnail';
+  else sizeImage = 'small';
 
   const { title, cover, timeRead, createdAt, authors } = post.attributes;
   const _cover = getImageUrl(cover, sizeImage);

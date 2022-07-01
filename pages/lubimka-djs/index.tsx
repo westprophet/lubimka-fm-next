@@ -19,6 +19,7 @@ export const getStaticProps: GetStaticProps = async (context: GetStaticPropsCont
 
   const authors = await api.strapi.authors.getAuthors({ pagination: initialPagination });
   return await getGlobalStaticProps({
+    revalidate: Number(process.env['NEXT_PUBLIC_REVALIDATE_INTERVAl']),
     props: {
       authors,
     },

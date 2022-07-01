@@ -23,9 +23,9 @@
   }
   .channelButton{
     visibility: hidden;
+    height: 35px;
     @include for-sm{
       visibility: visible;
-      height: 35px;
     }
   }
 }

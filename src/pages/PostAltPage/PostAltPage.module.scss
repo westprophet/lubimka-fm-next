@@ -1,0 +1,29 @@
+.PostAltPage {
+  z-index: 1;
+  .coverContainer {
+    position: absolute;
+    z-index: -1;
+    height: 280px;
+    overflow: hidden;
+    top: 0;
+    width: 100%;
+    @include for-xxl{
+      height: 30vh;
+    }
+    img{
+      filter: brightness(55%);
+    }
+
+  }
+
+  .content {
+    line-height: 140%;
+    @include f7();
+    @include for-xxl {
+      @include f5();
+    }
+    p {
+      text-indent: 1em;
+    }
+  }
+}

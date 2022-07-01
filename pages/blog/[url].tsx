@@ -3,10 +3,11 @@ import { GetStaticProps } from 'next';
 import { GetStaticPropsContext } from 'next/types';
 import api from '../../src/api';
 import getGlobalStaticProps, { IGetGlobalStaticProps } from '../../functions/getGlobalStaticProps';
-import { IPost } from 'interfaces/IPost';
+import { IPost, IPostDetail } from 'interfaces/IPost';
+import PostAltPage from '@pages/PostAltPage';
 
 const Blog: NextPage<IBlogProps> = ({ post }) => {
-  return <div></div>;
+  return <PostAltPage post={post} />;
 };
 
 export const getStaticProps: GetStaticProps = async ({
@@ -14,6 +15,7 @@ export const getStaticProps: GetStaticProps = async ({
 }: GetStaticPropsContext<IBlogParams>) => {
   const post = await api.strapi.posts.getPost({ url: params?.url });
   return await getGlobalStaticProps({
+    revalidate: Number(process.env['NEXT_PUBLIC_REVALIDATE_INTERVAl']),
     props: {
       post,
     },
@@ -35,7 +37,7 @@ type IBlogParams = {
 
 //Данные внутренней страницы
 interface IBlogProps extends IGetGlobalStaticProps {
-  post: IPost;
+  post: IPostDetail;
 }
 
 export default Blog;

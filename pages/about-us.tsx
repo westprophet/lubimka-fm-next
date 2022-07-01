@@ -12,6 +12,7 @@ const AboutUs: NextPage<IAboutUsProps> = ({ team }) => {
 export const getStaticProps: GetStaticProps = async () => {
   const { data: team } = await api.strapi.team.getTeamMembers();
   return await getGlobalStaticProps({
+    revalidate: Number(process.env['NEXT_PUBLIC_REVALIDATE_INTERVAl']),
     props: {
       team,
     },
