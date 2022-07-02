@@ -3,11 +3,14 @@
  */
 
 import React, { useState } from 'react';
+
 import s from './AuthorComponent.module.scss';
+
 import cn from 'classnames';
 import Image from 'next/image';
 import NoImage from 'components/UI/NoImage';
 import PlayButton from 'components/UI/buttons/PlayButton';
+
 // @ts-ignore
 import Marquee from 'react-double-marquee';
 import DATA_FOR_BLUR from '../../../constants/DATA_FOR_BLUR';
@@ -50,6 +53,7 @@ export default function AuthorComponent({
       onMouseLeave={onMouseLeaveHandler}
     >
       <div className={cn(s.inner)}>
+        <NoImage className={cn(s.cover, 'zoom-effect')} />
         {cover ? (
           <Image
             src={cover}

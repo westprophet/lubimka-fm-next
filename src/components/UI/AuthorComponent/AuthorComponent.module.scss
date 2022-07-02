@@ -9,7 +9,7 @@
   //box-sizing: content-box;
   padding: 10px 15px;
   transition: .3s;
-  border-radius: 2%;
+  border-radius: 5px;
   position: relative;
   cursor: pointer;
   @include get-padding(10px);
@@ -27,8 +27,9 @@
     height: $size-img-xs;
     width: $size-img-xs;
     overflow: hidden;
-    border-radius: 2%;
+    border-radius: 5px;
     @include for-lg {
+      border-radius: 10px;
       height: $size-img-lg;
       width: $size-img-lg;
     }
@@ -75,9 +76,6 @@
     @include for-xxl {
       @include f4();
     }
-    //@include for-qxl {
-    //  @include f3();
-    //}
   }
 
   &.resizable {
