@@ -1,11 +1,11 @@
 .HeaderDesktopMenu {
-  color: var(--text-color);
+  color: inherit!important;
   .inner{
     .items{
       display: flex;
       justify-content: space-between;
       gap: 20px 5px;
-      color: currentColor;
+      color: inherit;
     }
   }
 }

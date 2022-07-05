@@ -1,11 +1,13 @@
-.DesktopHeaderMenuItem {
-  color: inherit;
-  text-transform: capitalize;
+.item {
+  text-transform: capitalize!important;
   @include f7(){
     font-weight: 700;
     letter-spacing: 0.05em;
   }
   @include for-xxl{
     @include f6();
+  }
+  &:disabled{
+    color: transparent!important;
   }
 }

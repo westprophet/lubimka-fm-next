@@ -69,9 +69,7 @@ const HiddenSideTrackList = forwardRef(_HiddenSideTrackList);
 
 export interface ITrackListProps<T> {
   className?: string;
-
   onClose(): any;
-
   tracks: T[];
   title: string;
   isShow: boolean;

@@ -7,7 +7,6 @@ import s from './DesktopHeaderMenuItem.module.scss';
 import cn from 'classnames';
 import { useRouter } from 'next/router';
 import LoadingButton from '@mui/lab/LoadingButton';
-import animatedScrollTo from 'animated-scroll-to';
 
 export default function DesktopHeaderMenuItem({
   className,
@@ -21,11 +20,7 @@ export default function DesktopHeaderMenuItem({
     r.push(link).finally(() => setLoad(false));
   };
   return (
-    <LoadingButton
-      className={cn(s.DesktopHeaderMenuItem, className)}
-      loading={load}
-      onClick={onClickHandler}
-    >
+    <LoadingButton className={cn(s.item, className)} loading={load} onClick={onClickHandler}>
       {title}
     </LoadingButton>
   );
