@@ -14,7 +14,14 @@ export default function ChannelsPage({ channels }: IChannelsPageProps) {
   return (
     <DefaultLayout.Layout className={cn(s.ChannelsPage)}>
       <DefaultLayout.PageWrapper>
-        <DefaultLayout.PageTitle url="/">Каналы</DefaultLayout.PageTitle>
+        <DefaultLayout.PageTitle
+          title="Каналы"
+          breadcrumbs={[
+            {
+              title: 'Каналы',
+            },
+          ]}
+        />
         <DefaultLayout.Section.Wrapper>
           <DefaultLayout.Section.Inner disableHorizontalPadding className={cn(s.viewSection)}>
             {channels.map((c: IChannel) => (

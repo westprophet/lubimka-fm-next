@@ -11,10 +11,51 @@ import bg from './images/background-min.webp';
 import phone from './images/Phone-min.webp';
 import AppStoreButton from 'components/buttons/AppStoreButton';
 import GooglePlayButton from 'components/buttons/GooglePlayButton';
+import { motion } from 'framer-motion';
+
+const variants = {
+  visible: {
+    opacity: 1,
+    transition: {
+      duration: 0.5,
+      staggerChildren: 0.2,
+    },
+  },
+  hidden: {
+    opacity: 0,
+  },
+};
+const variantsChildren = {
+  visible: {
+    opacity: 1,
+  },
+  hidden: {
+    opacity: 0,
+  },
+};
+const variantsButton = {
+  visible: {
+    opacity: 1,
+    x: 0,
+  },
+  hidden: (custom: 'left' | 'right') => ({
+    x: custom === 'left' ? '-100%' : '100%',
+    opacity: 0,
+  }),
+};
 
 export default function PromoDownloadSection({ className }: IPromoDownloadSectionProps) {
   return (
-    <SectionWrapper.Wrapper className={cn(s.PromoDownloadSection, className)}>
+    <SectionWrapper.MWrapper
+      className={cn(s.PromoDownloadSection, className)}
+      variants={variants}
+      initial="hidden"
+      whileInView="visible"
+      viewport={{
+        amount: 0.6,
+        once: true,
+      }}
+    >
       <Image
         src={bg}
         className="bg"
@@ -23,32 +64,38 @@ export default function PromoDownloadSection({ className }: IPromoDownloadSectio
         objectFit="cover"
         quality={50}
       />
-      <div className={cn(s.phoneContainer)}>
+      <motion.div className={cn(s.phoneContainer)} variants={variantsChildren}>
         <Image
           src={phone}
           className="phone"
           width={615}
           height={574}
-          layout="fill"
+          layout="responsive"
           placeholder="blur"
           objectFit="cover"
-          quality={100}
+          // quality={100}
         />
-      </div>
+      </motion.div>
       <SectionWrapper.Inner>
         <div className={cn(s.description)}>
-          <h2 className="title">Между нами химия</h2>
-          <p>
+          <motion.h2 variants={variantsChildren} className="title">
+            Между нами химия
+          </motion.h2>
+          <motion.p variants={variantsChildren}>
             Скачивай приложение, <br />
             будь с <span>Lubimka FM</span>
-          </p>
+          </motion.p>
           <div>
-            <AppStoreButton />
-            <GooglePlayButton />
+            <motion.div variants={variantsButton} custom="left">
+              <AppStoreButton />
+            </motion.div>
+            <motion.div variants={variantsButton} custom="right">
+              <GooglePlayButton />
+            </motion.div>
           </div>
         </div>
       </SectionWrapper.Inner>
-    </SectionWrapper.Wrapper>
+    </SectionWrapper.MWrapper>
   );
 }
 

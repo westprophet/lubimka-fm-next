@@ -19,7 +19,14 @@ export default function FAQPage({ className, faqItems }: IFAQPageProps) {
       }}
     >
       <DefaultLayout.PageWrapper>
-        <DefaultLayout.PageTitle placeholder="Назад">FAQ</DefaultLayout.PageTitle>
+        <DefaultLayout.PageTitle
+          title="FAQ"
+          breadcrumbs={[
+            {
+              title: 'FAQ',
+            },
+          ]}
+        />
         <DefaultLayout.Section.Wrapper className={cn(s.MainSection, className)}>
           <DefaultLayout.Section.Inner disableHorizontalPadding>
             {faqItems.map((fi: IFAQItem) => {

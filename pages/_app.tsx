@@ -1,5 +1,5 @@
 import type { AppProps } from 'next/app';
-import { useState } from 'react';
+import React, { useState } from 'react';
 
 import { SnackbarProvider } from 'notistack';
 import RadioPlayerManager from '../src/contexts/RadioPlayerManager';
@@ -20,21 +20,21 @@ function App({ Component, pageProps }: AppProps) {
     <QueryClientProvider client={queryClient}>
       <Hydrate state={pageProps.dehydratedState}>
         <ThemeProvider theme={theme}>
-          <SnackbarProvider
-            maxSnack={3}
-            preventDuplicate
-            hideIconVariant={false}
-            anchorOrigin={{
-              vertical: 'bottom',
-              horizontal: 'center',
-            }}
-          >
-            <CookiesProvider>
+          <CookiesProvider>
+            <SnackbarProvider
+              maxSnack={3}
+              preventDuplicate
+              hideIconVariant={false}
+              anchorOrigin={{
+                vertical: 'bottom',
+                horizontal: 'center',
+              }}
+            >
               <RadioPlayerManager channels={pageProps.channels}>
                 <Component {...pageProps} />
               </RadioPlayerManager>
-            </CookiesProvider>
-          </SnackbarProvider>
+            </SnackbarProvider>
+          </CookiesProvider>
         </ThemeProvider>
       </Hydrate>
     </QueryClientProvider>

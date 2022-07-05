@@ -12,7 +12,6 @@ export default async function getAuthor(p?: IGetAuthorRequestParams): Promise<IG
     });
     return data.data;
   } catch (e) {
-    s;
     console.error('STRAPI: getAuthor:', e);
     return null;
   }

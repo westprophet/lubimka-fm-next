@@ -18,12 +18,13 @@ export default function VirtualListTrack({ className, tracks }: IVirtualListProp
   const b = useBreakpoint();
 
   //Формируем ключ
-  const itemKey = useCallback((index, data) => {
+  const itemKey = useCallback((index: string | number, data: { [x: string]: any }) => {
     const item = data[index];
     return item.id;
   }, []);
 
   //Формируем строку
+  // @ts-ignore
   const renderRow = useCallback(({ data, key, index, style }) => {
     return <RadioTrack key={key} track={data[index]} style={style} isClickable />;
   }, []);

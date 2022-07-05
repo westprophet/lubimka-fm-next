@@ -1,7 +1,7 @@
 /**
  * Created by westp on 10.05.2022
  */
-import React, { Suspense, useState } from 'react';
+import React, { useState } from 'react';
 import dynamic from 'next/dynamic';
 
 import s from './EventsPage.module.scss';
@@ -14,7 +14,7 @@ import { TablePagination } from '@mui/material';
 import { IGetEventsReturn } from 'api/strapi/routes/events/getEvents/getEvents';
 
 const FilterSection = dynamic(() => import('./sections/FilterSection'), {
-  suspense: true,
+  suspense: false,
   ssr: false,
 });
 
@@ -43,6 +43,7 @@ export default function EventsPage({ events }: IEventsPageProps) {
   };
 
   const total = data?.meta?.pagination.total ?? 0;
+
   return (
     <DefaultLayout.Layout className={cn(s.EventsPage)}>
       <DefaultLayout.PageWrapper>
@@ -58,15 +59,10 @@ export default function EventsPage({ events }: IEventsPageProps) {
             },
           ]}
         />
-        <Suspense fallback={`Loading...`}>
-          <FilterSection
-            setSearch={setSearch}
-            setFrom={setFrom}
-            from={from}
-            setTo={setTo}
-            to={to}
-          />
-        </Suspense>
+        {/*<Suspense fallback={`Loading...`}>*/}
+        {/*// @ts-ignore*/}
+        <FilterSection setSearch={setSearch} setFrom={setFrom} from={from} setTo={setTo} to={to} />
+        {/*</Suspense>*/}
 
         <ViewSection events={data?.data} />
         <DefaultLayout.Section.Wrapper>

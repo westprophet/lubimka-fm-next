@@ -53,9 +53,10 @@ export default function ListOrderPage({ tracks, channel }: IListOrderPageProps) 
       }}
     >
       <DefaultLayout.PageWrapper>
-        <DefaultLayout.PageTitle url="/broadcast" className={cn(s.title)}>
-          Заказ трека на канале: {channel.attributes.title}
-        </DefaultLayout.PageTitle>
+        <DefaultLayout.PageTitle
+          title={`Заказ трека на канале: ${channel.attributes.title}`}
+          className={cn(s.title)}
+        />
 
         <DefaultLayout.Section.Wrapper>
           <DefaultLayout.Section.Inner className={cn(s.searchInnerContainer)}>

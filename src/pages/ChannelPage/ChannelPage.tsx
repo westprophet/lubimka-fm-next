@@ -33,9 +33,18 @@ function ChannelPage({ className, channel }: IChannelPageProps) {
     >
       <DSection.Wrapper>
         <DSection.Preview.Wrapper cover={cover} className={cn(s.previewContainer)}>
-          <DefaultLayout.PageTitle className={cn(s.title)}>
-            {channel.attributes.title}
-          </DefaultLayout.PageTitle>
+          <DefaultLayout.PageTitle
+            className={cn(s.title)}
+            breadcrumbs={[
+              {
+                title: 'Каналы',
+                link: '/channels',
+              },
+              {
+                title: channel.attributes.title,
+              },
+            ]}
+          />
           <DSection.Preview.Inner className={cn(s.player)}>
             <ChannelPlayer
               channel={channel}

@@ -17,15 +17,11 @@ const variants = {
     transition: {
       duration: 0.5,
       delay: 0.2,
+      staggerChildren: 0.5,
     },
   },
   hidden: {
     opacity: 0,
-    y: '-30%',
-  },
-  hiddenTop: {
-    opacity: 0,
-    y: '30%',
   },
 };
 
@@ -35,7 +31,6 @@ function SectionSliderWrapper({
   title,
   children,
   link,
-  placeholder,
   detail,
   id,
 }: ISectionSliderWrapperProps) {
@@ -45,40 +40,29 @@ function SectionSliderWrapper({
   }
   return (
     <SectionWrapper.Wrapper className={cn(s.SectionSliderWrapper, className)} id={id}>
-      <div className={cn(s.head)}>
+      <motion.div
+        className={cn(s.head)}
+        initial="hidden"
+        variants={variants}
+        whileInView="visible"
+        viewport={{
+          amount: 0.6,
+          once: true,
+        }}
+      >
         {title && (
-          <SectionWrapper.MTitle
-            variants={variants}
-            initial="hidden"
-            whileInView="visible"
-            viewport={{
-              amount: 0.6,
-              once: true,
-            }}
-            className={cn(s.title)}
-            placeholder={placeholder}
-            link={link}
-          >
+          <SectionWrapper.MTitle className={cn(s.title)} link={link}>
             {title}
           </SectionWrapper.MTitle>
         )}
         {detail && (
-          <motion.div
-            variants={variants}
-            initial="hiddenTop"
-            whileInView="visible"
-            viewport={{
-              amount: 0.6,
-              once: true,
-            }}
-            className={cn(s.additional)}
-          >
+          <div className={cn(s.additional)}>
             <Link href={detail.link}>
-              <a>{detail.title}</a>
+              <a className={cn('link-arrow')}>{detail.title}</a>
             </Link>
-          </motion.div>
+          </div>
         )}
-      </div>
+      </motion.div>
       <SectionWrapper.Inner className={cn(s.inner)}>
         <Slider.SideBar className={cn(s.arrow, s.leftArrow)} side="left" />
         <Slider.Wrapper swipe className={cn(s.slider)}>
@@ -92,7 +76,6 @@ function SectionSliderWrapper({
 
 SectionSliderWrapper.defaultProps = {
   className: '',
-  placeholder: 'Подробнее',
 };
 
 interface ISectionSliderWrapperProps {
@@ -100,7 +83,6 @@ interface ISectionSliderWrapperProps {
   title?: string;
   children?: any;
   link?: string;
-  placeholder?: string;
   id: string;
   detail: {
     title: string;

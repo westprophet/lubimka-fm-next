@@ -29,7 +29,17 @@ export default function EventPage({ event, club }: IEventPageProps) {
     >
       <DSection.Wrapper>
         <DSection.Preview.Wrapper cover={cover} className={cn(s.previewContainer)}>
-          <DefaultLayout.PageTitle placeholder={'На главную'}>Назад</DefaultLayout.PageTitle>
+          <DefaultLayout.PageTitle
+            breadcrumbs={[
+              {
+                title: 'Мероприятия',
+                link: '/club-life/events',
+              },
+              {
+                title: event.attributes.title,
+              },
+            ]}
+          />
           <DSection.Preview.Inner>
             <h1 className={cn(s.title)}>{event.attributes.title}</h1>
           </DSection.Preview.Inner>

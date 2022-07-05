@@ -3,6 +3,7 @@
  */
 
 import React from 'react';
+
 import AuthorComponent, { IAuthorComponentProps } from 'components/UI/AuthorComponent';
 import tools from '../../tools';
 import { IAuthor } from '../../interfaces';

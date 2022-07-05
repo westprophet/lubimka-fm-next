@@ -6,7 +6,7 @@ import React from 'react';
 import s from './scss/ChannelComponent.module.scss';
 import cn from 'classnames';
 import Image from 'next/image';
-import { TAudioManagerStatus } from '../../../types/TAudioManagerStatus';
+import { TAudioManagerStatus } from 'types/TAudioManagerStatus';
 import PlayerControlComponent from 'components/UI/buttons/PlayerControlComponent';
 import Link from 'next/link';
 import getStatusConst from '../../../tools/TAudioManagerStatus/getStatusConst';

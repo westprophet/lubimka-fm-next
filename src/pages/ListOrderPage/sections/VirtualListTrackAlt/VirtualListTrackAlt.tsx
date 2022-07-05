@@ -28,6 +28,7 @@ export default function VirtualListTrackAlt({
   const r = useRouter();
   //Формируем строку
   const renderRow = useCallback(
+    // @ts-ignore
     ({ key, index, style }) => {
       // @ts-ignore
       const url = `/broadcast/${channel.id}/order/track?id=${tracks[index].id}&name=${tracks[index].name}`;
@@ -58,10 +59,12 @@ export default function VirtualListTrackAlt({
 
   return (
     <div className={cn(s.VirtualList, className)}>
+      {/*// @ts-ignore*/}
       <WindowScroller>
         {({ height, scrollTop }) => (
           <AutoSizer disableHeight>
             {({ width }) => (
+              // @ts-ignore
               <List
                 autoHeight
                 layout="vertical"

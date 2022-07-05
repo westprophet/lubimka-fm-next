@@ -2,7 +2,7 @@
  * Created by westp on 31.03.2022
  */
 
-import React, { Children, Suspense } from 'react';
+import React, { Children } from 'react';
 import s from './SliderWrapper.module.scss';
 import cn from 'classnames';
 import useSliderData from './hooks/useSliderData';
@@ -14,12 +14,9 @@ export default function SliderWrapper({ className, children, swipe }: ISliderWra
   const { settings, ref } = useSliderData(count, swipe); //Прячем настройки и прочую штуку сюда
   if (!children) return null;
   return (
-    <Suspense fallback={`Loading...`}>
-      {/*// @ts-ignore*/}
-      <Slider ref={ref} {...settings} className={cn(s.SliderWrapper, className)}>
-        {children}
-      </Slider>
-    </Suspense>
+    <Slider ref={ref} {...settings} className={cn(s.SliderWrapper, className)}>
+      {children}
+    </Slider>
   );
 }
 

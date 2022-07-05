@@ -34,7 +34,7 @@ export default function BroadcastPlayer({ className, channel }: IBroadcastPlayer
   const isAndPlay = status === 'played';
 
   const nextHandler = useCallback(
-    (event) => {
+    (event: any) => {
       event.preventDefault();
       startTransition(() => {
         setNext(isAndPlay);
@@ -43,7 +43,7 @@ export default function BroadcastPlayer({ className, channel }: IBroadcastPlayer
     [isAndPlay, setNext]
   );
   const prevHandler = useCallback(
-    (event) => {
+    (event: any) => {
       event.preventDefault();
       startTransition(() => {
         setPrev(isAndPlay);

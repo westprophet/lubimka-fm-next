@@ -52,15 +52,14 @@
 
   :local(.description) {
     display: grid;
-    $blur: 30px;
+    $blur: 2px;
     grid-template-columns: 3fr 6fr;
     grid-column-gap: $gap-column-md;
     grid-row-gap: $gap-row-xs;
     z-index: 3;
-    background: linear-gradient(0, rgba(30, 31, 35, 0.9) 7.98%, rgba(30, 31, 35, 0.846) 34.08%, rgba(30, 31, 35, 0.684) 63.43%, rgba(30, 31, 35, 0.36988) 84.36%, rgba(30, 31, 35, 0) 98.07%);
     padding: $padding-xs;
     transition: .2s;
-
+    background: linear-gradient(0, rgba(30, 31, 35, 0.4) 7.98%, rgba(30, 31, 35, .3) 34.08%, rgba(30, 31, 35, 0.2) 63.43%, rgba(30, 31, 35, 0.1) 84.36%, rgba(30, 31, 35, 0) 100%);
     @supports ((-webkit-backdrop-filter:  blur($blur)) or (backdrop-filter:  blur($blur))) {
       backdrop-filter: blur($blur);
     }

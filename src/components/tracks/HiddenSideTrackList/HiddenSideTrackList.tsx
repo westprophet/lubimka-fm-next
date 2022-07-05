@@ -9,7 +9,7 @@ import cn from 'classnames';
 import DSection from 'layouts/DefaultLayout/components/DoubleSection';
 import SearchInput from 'components/SearchInput';
 import isEmptyString from 'utils/isEmptyString';
-import { FixedSizeList as List, ListChildComponentProps } from 'react-window';
+import { FixedSizeList as List } from 'react-window';
 import AutoSizer from 'react-virtualized-auto-sizer';
 import useBreakpoint from 'hooks/useBreakpoint';
 
@@ -79,6 +79,6 @@ export interface ITrackListProps<T> {
 
 interface ITrackListDataProps<T> extends ITrackListProps<T> {
   onFilter(value: T, search: string, index: number, array: T[]): boolean;
-  children(arg: ListChildComponentProps): any;
+  children(arg: any): any;
 }
 export default HiddenSideTrackList;

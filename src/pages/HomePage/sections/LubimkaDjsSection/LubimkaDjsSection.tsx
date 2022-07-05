@@ -12,8 +12,15 @@ import Author from 'components/Author';
 
 export default function LubimkaDjsSection({ authors }: ILubimkaDjsSectionProps) {
   return (
-    <SectionSlider.Wrapper className={cn(s.LubimkaDjsSection)} title="Любимка DJ’s">
-      {authors?.map((a: IAuthor, index: number) => {
+    <SectionSlider.Wrapper
+      className={cn(s.LubimkaDjsSection)}
+      title="Любимка DJ’s"
+      detail={{
+        title: 'Все',
+        link: '/lubimka-djs',
+      }}
+    >
+      {authors?.map((a: IAuthor) => {
         return (
           <SectionSlider.Slide key={`author-${a.attributes.name}`}>
             <Author author={a} />

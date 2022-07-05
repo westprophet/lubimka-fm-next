@@ -41,6 +41,7 @@ export default function AuthorComponent({
         .finally(() => setStatus('paused'));
     } else if (onClick) onClick();
   };
+
   return (
     <div
       className={cn(

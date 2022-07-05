@@ -44,12 +44,9 @@ export default function OrderTrackPage({ channel }: ITrackPageProps) {
     >
       <DefaultLayout.PageWrapper>
         <DefaultLayout.PageTitle
-          url={`/broadcast/${channel.id}/order/tracks`}
           className={cn(s.title)}
-          placeholder={'К списку треков'}
-        >
-          Заказ на канале: <b>{channel.attributes.title}</b>
-        </DefaultLayout.PageTitle>
+          title={`Заказ на канале: <b>{channel.attributes.title}</b>`}
+        />
 
         <DefaultLayout.Section.Wrapper>
           <DefaultLayout.Section.Inner className={cn(s.inner)}>

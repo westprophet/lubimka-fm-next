@@ -1,3 +1,5 @@
+import React from 'react';
+
 import type { NextPage } from 'next';
 import HomePage from '../src/pages/HomePage';
 import { GetStaticProps } from 'next';
