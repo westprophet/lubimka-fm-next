@@ -12,6 +12,14 @@ export interface IAuthorInner {
   albums: TWrappedData<IAlbum[]>;
   createdAt: string;
   updatedAt: string;
+  SpotifyApi: {
+    uri: string;
+    images: {
+      large: string;
+      middle: string;
+      small: string;
+    };
+  } | null;
   socials: ISocial[];
   avatar: IWrappedStrapiImage;
 }

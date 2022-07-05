@@ -13,7 +13,7 @@ export const getStaticProps: GetStaticProps = async () => {
   const content = await api.strapi.single.getTermsAndConditions();
   const title = 'Конфиденциальность информации пользователей';
   return await getGlobalStaticProps({
-    revalidate: Number(process.env['NEXT_PUBLIC_REVALIDATE_INTERVAl']),
+    revalidate: Number(process.env['NEXT_PUBLIC_REVALIDATE_INTERVAL']),
     props: {
       title,
       content,

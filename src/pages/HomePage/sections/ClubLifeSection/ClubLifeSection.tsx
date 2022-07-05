@@ -15,7 +15,7 @@ import isEmptyArray from 'utils/isEmptyArray';
 export default function ClubLifeSection({ clubs, events }: IClubLifeSectionProps) {
   return (
     <>
-      <SectionSlider.Wrapper className={cn(s.ClubLifeSection)} title="Club Life">
+      <SectionSlider.Wrapper className={cn(s.ClubLifeSection)} title="Club Life" id="club-life">
         {clubs?.map((club: IClub) => {
           return (
             <SectionSlider.Slide key={`club-${club.id}`}>

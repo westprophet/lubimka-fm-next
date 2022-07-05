@@ -42,7 +42,6 @@ const nextConfig = {
 //Image next config
 const imagesPluginSetting = {
   images: {
-    // disableStaticImages: true,
     formats: ['image/avif', 'image/webp'],
     dangerouslyAllowSVG: true,
     contentSecurityPolicy: "default-src 'self'; script-src 'none'; sandbox;",
@@ -50,6 +49,7 @@ const imagesPluginSetting = {
       'lubimka-fm.redw.me',
       'localhost',
       'image-fetcher.radioheart.ru',
+      'i.scdn.co',
       'lubimka-media.s3.eu-central-1.amazonaws.com',
     ],
   },
@@ -63,34 +63,6 @@ const sassPluginSetting = {
     prependData: `@import "src/scss/global.scss";`,
   },
 };
-
-//Image Optimizer
-const imagesOptimizePluginSettings = [
-  withOptimizedImages,
-  {
-    inlineImageLimit: 1024, // если размер картинки будет больше чем это значение тогда будет вставлятся ссылка, если меньше то бинарник
-    imagesFolder: 'images',
-    imagesName: '[name]-[hash].[ext]',
-    handleImages: ['jpeg', 'png', 'svg', 'webp', 'ico', 'gif', 'jpg'],
-    removeOriginalExtension: true,
-    optimizeImages: false,
-    optimizeImagesInDev: false,
-    svgo: {
-      plugins: [{ removeComments: true }],
-    },
-    mozjpeg: {
-      quality: 70,
-    },
-    optipng: {
-      optimizationLevel: 5,
-    },
-    pngquant: false,
-    webp: {
-      preset: 'default',
-      quality: 70,
-    },
-  },
-];
 
 //обьеденяем плагины и конфигурацию
 module.exports = withPlugins(

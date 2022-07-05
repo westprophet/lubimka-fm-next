@@ -41,10 +41,10 @@ export default function LubimkaDJsPage({ authors }: ILubimkaDJsPageProps) {
         <DefaultLayout.PageTitle
           title="Lubimka DJs"
           breadcrumbs={[
-            {
-              title: 'Club Life',
-              link: '/club-life',
-            },
+            // {
+            //   title: 'Club Life',
+            //   link: '/club-life',
+            // },
             {
               title: "Lubimka DJ's",
             },

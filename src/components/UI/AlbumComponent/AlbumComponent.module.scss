@@ -1,4 +1,4 @@
-@import "./data";
+@import './data';
 
 .AlbumComponent {
   display: grid;
@@ -6,28 +6,30 @@
   gap: 10px;
   cursor: pointer;
   width: 100%;
+  height: min-content;
   @include for-xl {
     grid-template-columns: $height-2 auto;
   }
 
   .cover {
-    position: relative;
     overflow: hidden;
     border-radius: 5px;
-    height:$height-1;
-    width: $height-1;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    @include for-xxl {
-      height: $height-2;
-      width: $height-2;
-    }
-
-    .play {
-      margin: auto;
+    position: relative;
+    height: 100%;
+    width: inherit;
+    .front{
+      display: flex;
+      width: 100%;
+      height: 100%;
+      left: 0;
+      top: 0;
+      justify-content: center;
+      align-items: center;
       position: absolute;
       z-index: 2;
+    }
+    .play {
+      margin: auto;
       @include before-xxl {
         $size: 29px;
         width: $size;

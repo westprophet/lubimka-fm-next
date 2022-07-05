@@ -8,7 +8,7 @@ const MENU_ITEMS: IHeaderMenuItem[] = [
   },
   {
     title: 'Club Life',
-    link: '/club-life',
+    link: '/#club-life',
     key: 'club-life',
   },
   {

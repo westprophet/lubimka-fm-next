@@ -15,7 +15,7 @@ export const getStaticProps: GetStaticProps = async ({
 }: GetStaticPropsContext<IBlogParams>) => {
   const post = await api.strapi.posts.getPost({ url: params?.url });
   return await getGlobalStaticProps({
-    revalidate: Number(process.env['NEXT_PUBLIC_REVALIDATE_INTERVAl']),
+    revalidate: Number(process.env['NEXT_PUBLIC_REVALIDATE_INTERVAL']),
     props: {
       post,
     },

@@ -10,6 +10,9 @@ export default function getParamsObject(p: IGetAuthorRequestParams | undefined) 
       avatar: {
         fields: ['url'],
       },
+      SpotifyApi: {
+        fields: ['uri', 'images'],
+      },
       Socials: {
         populate: {
           icon: {
@@ -25,6 +28,9 @@ export default function getParamsObject(p: IGetAuthorRequestParams | undefined) 
               cover: '*',
               source: '*',
             },
+          },
+          SpotifyApi: {
+            fields: ['uri', 'images'],
           },
         },
       },

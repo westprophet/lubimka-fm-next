@@ -8,22 +8,24 @@ import cn from 'classnames';
 import AlbumComponent, { IAlbumComponentProps } from 'components/UI/AlbumComponent';
 import { IAlbum } from 'interfaces/IAlbum';
 import { getImageUrl } from '@tools/IWrappedStrapiImage';
-// import { useRouter } from 'next/router';
 
 export default function Album({ className, album, onClick, hover }: IAlbumProps) {
-  const cover = getImageUrl(album.attributes.cover);
-  // const r = useRouter();
+  const SpotifyAPI = album.attributes.SpotifyApi;
+  let cover: string | null = null;
+  if (SpotifyAPI?.images) cover = SpotifyAPI?.images.middle;
+  else cover = getImageUrl(album.attributes.cover);
+
   const onClickHandle = () => {
     if (onClick) onClick();
   };
   return (
     <AlbumComponent
+      className={cn(s.Album, className)}
       title={album.attributes.title}
       cover={cover}
       hover={hover}
       onClick={onClickHandle}
       year={album.attributes.year}
-      className={cn(s.Album, className)}
     />
   );
 }

@@ -6,8 +6,12 @@ import React from 'react';
 import s from './SectionWrapper.module.scss';
 import cn from 'classnames';
 
-export default function SectionWrapper({ className, children }: ISectionWrapperProps) {
-  return <section className={cn(s.SectionWrapper, className)}>{children}</section>;
+export default function SectionWrapper({ className, children, id }: ISectionWrapperProps) {
+  return (
+    <section className={cn(s.SectionWrapper, className)} id={id}>
+      {children}
+    </section>
+  );
 }
 
 SectionWrapper.defaultProps = {
@@ -17,4 +21,5 @@ SectionWrapper.defaultProps = {
 interface ISectionWrapperProps {
   className?: string;
   children?: any;
+  id?: string;
 }

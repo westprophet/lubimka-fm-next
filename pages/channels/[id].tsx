@@ -29,7 +29,7 @@ export const getStaticProps: GetStaticProps = async ({
   if (id) channel = await api.strapi.channels.getChannel(id);
   if (!channel)
     return {
-      revalidate: Number(process.env['NEXT_PUBLIC_REVALIDATE_INTERVAl']),
+      revalidate: Number(process.env['NEXT_PUBLIC_REVALIDATE_INTERVAL']),
       redirect: {
         destination: '/',
         permanent: false,

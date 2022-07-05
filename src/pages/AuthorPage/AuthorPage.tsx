@@ -3,13 +3,12 @@
  */
 
 // @ts-ignore
-import React, { startTransition, useState } from 'react';
+import React, { useState } from 'react';
 import s from './AuthorPage.module.scss';
 import cn from 'classnames';
 import DefaultLayout from 'layouts/DefaultLayout';
 import { IAuthor } from 'interfaces/IAuthor';
 import DSection from 'layouts/DefaultLayout/components/DoubleSection';
-import { getImageUrl } from '@tools/IWrappedStrapiImage';
 import ReactMarkdown from 'react-markdown';
 import { ITrack } from 'interfaces/ITrack';
 import { IAlbum } from 'interfaces/IAlbum';
@@ -21,28 +20,25 @@ import TracksSection from '@pages/AuthorPage/sections/TracksSection';
 import { motion } from 'framer-motion';
 import Image from 'next/image';
 import DATA_FOR_BLUR from '../../constants/DATA_FOR_BLUR';
+import { getCover } from '@tools/IAuthor';
 
 const variantsImage = {
   show: (i: number) => ({
     opacity: 1,
-    // y: 0,
     transition: {
       delay: 1.5,
       duration: 0.5,
     },
   }),
   hidden: {
-    // y: '70%',
     opacity: 0,
   },
 };
 
 export default function AuthorPage({ author }: IAuthorPageProps) {
   const [active, setActive] = useState<TSector>(null);
-  // const [show, setShow] = useState<boolean>(true);
 
   const onClose = () => setActive(null);
-  const cover = getImageUrl(author?.attributes.avatar);
   const albums = author.attributes.albums.data;
   let recommendedTrack = author.attributes.recommendedTrack?.data;
   if (!author) return null;
@@ -53,9 +49,8 @@ export default function AuthorPage({ author }: IAuthorPageProps) {
     return { ...t, attributes: { ...t.attributes, album: a } };
   });
 
-  // const onClickHandler = (t: TSector) => {
-  //    startTransition(()=>setActive(t));
-  // };
+  const cover = getCover(author);
+
   return (
     <DefaultLayout.Layout
       className={cn(s.AuthorPage)}
@@ -123,16 +118,18 @@ export default function AuthorPage({ author }: IAuthorPageProps) {
             onClose={onClose}
             onOpen={() => setActive('albums')}
           />
-          <DSection.QuadContent.Container
-            title="Описание"
-            colorType={3}
-            className={cn(s.description)}
-            index={4}
-          >
-            <DSection.QuadContent.Inner>
-              <ReactMarkdown>{author.attributes.description}</ReactMarkdown>
-            </DSection.QuadContent.Inner>
-          </DSection.QuadContent.Container>
+          {author.attributes.description ? (
+            <DSection.QuadContent.Container
+              title="Описание"
+              colorType={3}
+              className={cn(s.description)}
+              index={4}
+            >
+              <DSection.QuadContent.Inner>
+                <ReactMarkdown>{author.attributes.description}</ReactMarkdown>
+              </DSection.QuadContent.Inner>
+            </DSection.QuadContent.Container>
+          ) : null}
         </DSection.QuadContent.Wrapper>
       </DSection.Wrapper>
     </DefaultLayout.Layout>

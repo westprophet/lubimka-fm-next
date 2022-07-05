@@ -11,6 +11,14 @@ export interface IAlbumInner {
   authors?: TWrappedData<IAuthor[]>;
   creators: string;
   year: number;
+  SpotifyApi: {
+    uri: string;
+    images: {
+      large: string;
+      middle: string;
+      small: string;
+    };
+  } | null;
   tracks: TWrappedData<ITrack[]>;
 }
 

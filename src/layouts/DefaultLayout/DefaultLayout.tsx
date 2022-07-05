@@ -18,6 +18,8 @@ import { IDefaultLayoutAttributes, IDefaultManagerValues } from './types';
 
 export const DefaultLayoutManagerContext = createContext<IDefaultManagerValues>(INITIAL_VALUES);
 
+import { NextSeo } from 'next-seo';
+
 function DefaultLayout({
   className,
   children,

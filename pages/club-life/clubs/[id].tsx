@@ -24,7 +24,7 @@ export const getStaticProps: GetStaticProps = async (context: GetStaticPropsCont
   let recomendedEvents = null;
   if (club?.attributes.recomendedEvents) recomendedEvents = club?.attributes.recomendedEvents?.data;
   return await getGlobalStaticProps({
-    revalidate: Number(process.env['NEXT_PUBLIC_REVALIDATE_INTERVAl']),
+    revalidate: Number(process.env['NEXT_PUBLIC_REVALIDATE_INTERVAL']),
     props: {
       club,
       nearbyEvents,

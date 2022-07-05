@@ -11,6 +11,7 @@ import TAudioTitle from '../../../types/TAudioTitle';
 import { IAlbum } from 'interfaces/IAlbum';
 import { IAuthor } from 'interfaces/IAuthor';
 import useImageState from 'hooks/useImageState';
+import tools from '@tools/index';
 
 export default function Track({
   author,
@@ -24,8 +25,9 @@ export default function Track({
     artist: track.attributes.author ?? album?.attributes.creators ?? author?.attributes.name,
     title: track.attributes.title,
   };
-  const { image: cover } = useImageState(title, isCanFetchImage && isShowCover);
-  return <TrackComponent title={title} className={cn(s.Track, className)} cover={cover} />;
+  const cover = tools.IAlbum.getCover(album, 'small');
+  const { image } = useImageState(title, isCanFetchImage && isShowCover && !cover);
+  return <TrackComponent title={title} className={cn(s.Track, className)} cover={cover ?? image} />;
 }
 
 Track.defaultProps = {

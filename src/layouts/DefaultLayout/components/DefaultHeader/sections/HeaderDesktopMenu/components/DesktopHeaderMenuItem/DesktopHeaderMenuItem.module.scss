@@ -1,4 +1,6 @@
 .DesktopHeaderMenuItem {
+  color: inherit;
+  text-transform: capitalize;
   @include f7(){
     font-weight: 700;
     letter-spacing: 0.05em;

@@ -15,7 +15,12 @@ export default function HeaderDesktopMenu({ className }: IHeaderDesctopMenuProps
       <div className={cn(s.inner)}>
         <div className={cn(s.items)}>
           {MENU_ITEMS.map((mi: IHeaderMenuItem) => (
-            <DesktopHeaderMenuItem key={mi.key} title={mi.title} link={mi.link} />
+            <DesktopHeaderMenuItem
+              key={mi.key}
+              title={mi.title}
+              link={mi.link}
+              anchor={mi.anchor}
+            />
           ))}
         </div>
       </div>

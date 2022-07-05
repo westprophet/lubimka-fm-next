@@ -23,7 +23,7 @@ export const getStaticProps: GetStaticProps = async ({
       },
     };
   return await getGlobalStaticProps({
-    revalidate: Number(process.env['NEXT_PUBLIC_REVALIDATE_INTERVAl']),
+    revalidate: Number(process.env['NEXT_PUBLIC_REVALIDATE_INTERVAL']),
     props: {
       author,
     },

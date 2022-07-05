@@ -24,7 +24,7 @@ export const getStaticProps: GetStaticProps = async (context: GetStaticPropsCont
   const { data: authors } = await api.strapi.authors.getAuthors();
   const { data: partners } = await api.strapi.partners.getPartners();
   return await getGlobalStaticProps({
-    revalidate: Number(process.env['NEXT_PUBLIC_REVALIDATE_INTERVAl']),
+    revalidate: Number(process.env['NEXT_PUBLIC_REVALIDATE_INTERVAL']),
     props: {
       events,
       clubs,

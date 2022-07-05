@@ -11,6 +11,9 @@ export default function getParamsObject(p: IGetAuthorsRequestParams | undefined)
       $and: [],
     },
     populate: {
+      SpotifyApi: {
+        fields: ['uri', 'images'],
+      },
       avatar: '*',
       Socials: {
         populate: {

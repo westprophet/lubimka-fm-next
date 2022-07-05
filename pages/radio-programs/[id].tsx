@@ -15,7 +15,7 @@ export const getStaticProps: GetStaticProps = async ({
 }: GetStaticPropsContext<IRadioProgramsPageParams>) => {
   const program = await api.strapi.programs.getRadioProgram({ id: String(params?.id) });
   return await getGlobalStaticProps({
-    revalidate: Number(process.env['NEXT_PUBLIC_REVALIDATE_INTERVAl']),
+    revalidate: Number(process.env['NEXT_PUBLIC_REVALIDATE_INTERVAL']),
     props: {
       program,
     },

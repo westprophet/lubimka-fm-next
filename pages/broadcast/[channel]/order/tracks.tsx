@@ -22,7 +22,7 @@ export const getStaticProps: GetStaticProps = async ({
     };
   const tracks = await api.radio.tracks.getAllTrack({ c: channel ?? null });
   return await getGlobalStaticProps({
-    revalidate: Number(process.env['NEXT_PUBLIC_REVALIDATE_INTERVAl']),
+    revalidate: Number(process.env['NEXT_PUBLIC_REVALIDATE_INTERVAL']),
     props: {
       tracks,
       channel,

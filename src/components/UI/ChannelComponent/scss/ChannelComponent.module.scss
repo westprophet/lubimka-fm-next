@@ -52,6 +52,7 @@
 
   :local(.description) {
     display: grid;
+    $blur: 30px;
     grid-template-columns: 3fr 6fr;
     grid-column-gap: $gap-column-md;
     grid-row-gap: $gap-row-xs;
@@ -60,6 +61,9 @@
     padding: $padding-xs;
     transition: .2s;
 
+    @supports ((-webkit-backdrop-filter:  blur($blur)) or (backdrop-filter:  blur($blur))) {
+      backdrop-filter: blur($blur);
+    }
     @include for-md {
       padding: $padding-md;
       grid-template-columns: 50px 7fr;

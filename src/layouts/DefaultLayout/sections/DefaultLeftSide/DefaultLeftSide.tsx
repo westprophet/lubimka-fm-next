@@ -5,11 +5,20 @@
 import React from 'react';
 import s from './DefaultLeftSide.module.scss';
 import cn from 'classnames';
-import LanguageSelector from './components/LanguageSelector';
+// import LanguageSelector from './components/LanguageSelector';
 import AsideBar from '../../components/AsideBar';
-import ToTopSection from './sections/ToTopSection';
+
+const LanguageSelector = dynamic(() => import('./components/LanguageSelector'), {
+  ssr: false,
+});
+
+const ToTopSection = dynamic(() => import('./sections/ToTopSection'), {
+  ssr: false,
+});
+
 import ToBackArrow from '../../components/AsideBar/components/ToPageArrow';
 import { useRouter } from 'next/router';
+import dynamic from 'next/dynamic';
 
 const variants = {
   visible: {

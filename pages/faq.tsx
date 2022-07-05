@@ -12,7 +12,7 @@ const FAQ: NextPage<IFAQProps> = ({ faqItems }) => {
 export const getStaticProps: GetStaticProps = async () => {
   const { data: faqItems } = await api.strapi.faq.getFAQItems();
   return await getGlobalStaticProps({
-    revalidate: Number(process.env['NEXT_PUBLIC_REVALIDATE_INTERVAl']),
+    revalidate: Number(process.env['NEXT_PUBLIC_REVALIDATE_INTERVAL']),
     props: {
       faqItems,
     },

@@ -8,9 +8,14 @@ import cn from 'classnames';
 import Image from 'next/image';
 import DATA_FOR_BLUR from '../../../../../../constants/DATA_FOR_BLUR';
 
-export default function PreviewSection({ className, children, cover }: IPreviewSectionProps) {
+export default function PreviewSection({
+  className,
+  children,
+  cover,
+  color,
+}: IPreviewSectionProps) {
   return (
-    <section className={cn(s.PreviewSection, className)}>
+    <section className={cn(s.PreviewSection, className)} style={{ background: color }}>
       {cover ? (
         <div className={cn(s.cover)}>
           <Image
@@ -36,5 +41,6 @@ PreviewSection.defaultProps = {
 interface IPreviewSectionProps {
   className?: string;
   children: any;
+  color?: string;
   cover?: string | null;
 }

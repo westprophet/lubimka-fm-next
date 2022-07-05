@@ -37,13 +37,14 @@ function SectionSliderWrapper({
   link,
   placeholder,
   detail,
+  id,
 }: ISectionSliderWrapperProps) {
   if (!children) {
     console.warn('SectionSliderWrapper: slide none', title);
     return null;
   }
   return (
-    <SectionWrapper.Wrapper className={cn(s.SectionSliderWrapper, className)}>
+    <SectionWrapper.Wrapper className={cn(s.SectionSliderWrapper, className)} id={id}>
       <div className={cn(s.head)}>
         {title && (
           <SectionWrapper.MTitle
@@ -100,6 +101,7 @@ interface ISectionSliderWrapperProps {
   children?: any;
   link?: string;
   placeholder?: string;
+  id: string;
   detail: {
     title: string;
     link: string;

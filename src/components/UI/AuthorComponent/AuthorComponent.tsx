@@ -53,7 +53,6 @@ export default function AuthorComponent({
       onMouseLeave={onMouseLeaveHandler}
     >
       <div className={cn(s.inner)}>
-        <NoImage className={cn(s.cover, 'zoom-effect')} />
         {cover ? (
           <Image
             src={cover}
@@ -66,7 +65,7 @@ export default function AuthorComponent({
             blurDataURL={DATA_FOR_BLUR}
           />
         ) : (
-          <NoImage className={cn(s.cover, 'zoom-effect')} />
+          <NoImage className={cn(s.cover, s.noImg, 'zoom-effect')} />
         )}
         <div className={cn(s.front)}>
           <PlayButton className={cn(s.button)} onClick={onPlay} status={status} type={2} />
@@ -99,5 +98,5 @@ interface IAuthorComponent extends IAuthorComponentProps {
   name: string;
   link: string;
   onClick?(): any;
-  cover: string | null;
+  cover?: string | null;
 }

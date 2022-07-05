@@ -22,10 +22,21 @@ export default function AlbumComponent({
   return (
     <div className={cn(s.AlbumComponent, { [s.hover]: hover }, className)}>
       <div className={cn(s.cover, 'cover', { [s.noImageContainer]: isNoImg })}>
-        <PlayButton status="paused" type={2} onClick={onClick} className={cn(s.play)} />
+        <div className={cn(s.front)}>
+          <PlayButton status="paused" type={2} onClick={onClick} className={cn(s.play)} />
+        </div>
+
         {!isNoImg ? (
           // @ts-ignore
-          <Image src={cover} layout="fill" placeholder="blur" blurDataURL={DATA_FOR_BLUR} />
+          <Image
+            src={cover}
+            layout="responsive"
+            width="100%"
+            height="100%"
+            objectFit="cover"
+            placeholder="blur"
+            blurDataURL={DATA_FOR_BLUR}
+          />
         ) : (
           <NoImage className={cn(s.noImg)} />
         )}

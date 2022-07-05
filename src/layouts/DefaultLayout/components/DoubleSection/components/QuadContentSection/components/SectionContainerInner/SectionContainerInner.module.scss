@@ -2,6 +2,7 @@
 
 .SCI {
   height: min-content;
+  overflow: auto;
   @include layout-padding(true, true, true, true);
   @include for-lg {
     margin-bottom: 15px;
@@ -17,6 +18,6 @@
 
   .content {
     display: grid;
-    height: 100%;
+    //height: 100%;
   }
 }

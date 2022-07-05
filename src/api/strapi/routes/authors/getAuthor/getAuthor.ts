@@ -1,6 +1,5 @@
 import StrapiAxios from '../../../global';
 import { IAuthor } from 'interfaces/IAuthor';
-import isValidGetAuthorResponse from './validators/isValidGetAuthorResponse';
 import { TGetAuthorResponse } from './types/IGetAuthorResponse';
 import getParamsObject from './utils/getParamsObject';
 import { IGetAuthorRequestParams } from './types/IGetAuthorRequestParams';
@@ -11,10 +10,9 @@ export default async function getAuthor(p?: IGetAuthorRequestParams): Promise<IG
     const { data }: { data: TGetAuthorResponse } = await StrapiAxios.get(`/authors/${p.id}/`, {
       params: getParamsObject(p),
     });
-    if (isValidGetAuthorResponse(data)) {
-      return data.data;
-    } else throw '';
+    return data.data;
   } catch (e) {
+    s;
     console.error('STRAPI: getAuthor:', e);
     return null;
   }

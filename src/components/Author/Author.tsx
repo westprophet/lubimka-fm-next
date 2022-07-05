@@ -8,13 +8,11 @@ import tools from '../../tools';
 import { IAuthor } from '../../interfaces';
 
 export default function Author({ className, author, resizable, resizableHeight }: IAuthorProps) {
-  const avatar = author.attributes.avatar; // получаем данные о картинке
-  let url: string | null = tools.IWrappedStrapiImage.getImageUrl(avatar);
-  if (!url) url = '/public/logo.svg'; //ставим заглушку если нет картинки
+  const cover = tools.IAuthor.getCover(author, 'middle');
   return (
     <AuthorComponent
       link={`/lubimka-djs/${author.id}/`}
-      cover={url}
+      cover={cover}
       name={author.attributes.name}
       className={className}
       resizable={resizable}

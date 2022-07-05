@@ -12,7 +12,7 @@ const Channels: NextPage<IChannelsProps> = ({ channels }) => {
 export const getStaticProps: GetStaticProps = async () => {
   const channels = await api.strapi.channels.getChannels();
   return await getGlobalStaticProps({
-    revalidate: Number(process.env['NEXT_PUBLIC_REVALIDATE_INTERVAl']),
+    revalidate: Number(process.env['NEXT_PUBLIC_REVALIDATE_INTERVAL']),
     props: {
       channels,
     },
