@@ -1,4 +1,5 @@
 .item {
+  color: inherit!important;
   text-transform: capitalize!important;
   @include f7(){
     font-weight: 700;
