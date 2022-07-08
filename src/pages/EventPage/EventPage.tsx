@@ -15,11 +15,12 @@ import useGetEventDate from '../../hooks/others/useGetEventDate';
 import IconString from 'components/UI/others/IconString';
 import AccessTimeIcon from '@mui/icons-material/AccessTime';
 import FmdGoodIcon from '@mui/icons-material/FmdGood';
-// import { Map, GoogleApiWrapper } from 'google-maps-react';
-import MiniMap from './sections/MiniMap';
+import { motion } from 'framer-motion';
+import Image from 'next/image';
+import DATA_FOR_BLUR from '../../constants/DATA_FOR_BLUR';
 
 export default function EventPage({ event, club }: IEventPageProps) {
-  const cover = getImageUrl(event.attributes.preview);
+  const cover = getImageUrl(event.attributes.preview ?? club.attributes.cover);
   const date = useGetEventDate(event.attributes.startDate, event.attributes.endDate);
   return (
     <DefaultLayout.Layout
@@ -41,6 +42,17 @@ export default function EventPage({ event, club }: IEventPageProps) {
             ]}
           />
           <DSection.Preview.Inner>
+            {cover ? (
+              <motion.div className={cn(s.cover)}>
+                <Image
+                  src={cover}
+                  layout="fill"
+                  objectFit="cover"
+                  blurDataURL={DATA_FOR_BLUR}
+                  placeholder="blur"
+                />
+              </motion.div>
+            ) : null}
             <h1 className={cn(s.title)}>{event.attributes.title}</h1>
           </DSection.Preview.Inner>
         </DSection.Preview.Wrapper>
@@ -50,26 +62,33 @@ export default function EventPage({ event, club }: IEventPageProps) {
               <SimpleClubComponent club={club} />
             </DSection.Content.Container>
           )}
-          {
+
+          {event.attributes.description && (
             <DSection.Content.Container
-              title="Музыкальный фестиваль"
-              colorType={3}
-              className={cn(s.about)}
+              colorType={1}
+              className={cn(s.description)}
+              title="Описание"
             >
-              <IconString icon={<AccessTimeIcon />}>{date}</IconString>
-              <IconString icon={<FmdGoodIcon />}>{event.attributes.address}</IconString>
-              <MiniMap />
-              {event.attributes.description && (
-                <DSection.Content.Container
-                  colorType={1}
-                  className={cn(s.description)}
-                  title="Описание"
-                >
-                  <ReactMarkdown>{event.attributes.description}</ReactMarkdown>
-                </DSection.Content.Container>
-              )}
+              <ReactMarkdown>{event.attributes.description}</ReactMarkdown>
             </DSection.Content.Container>
-          }
+          )}
+          <DSection.Content.Container colorType={2} className={cn(s.additional)} title="Информация">
+            <div className={cn(s.additionalInner)}>
+              <a
+                href={`https://www.google.com/maps/search/?api=1&query=${club.attributes.address}`}
+                target="_blank"
+                rel="noreferrer"
+              >
+                <IconString className={cn(s.address)} icon={<FmdGoodIcon />}>
+                  {event.attributes.address}
+                </IconString>
+              </a>
+              <IconString className={cn(s.date)} icon={<AccessTimeIcon />}>
+                {date}
+              </IconString>
+            </div>
+            <div className={cn(s.map)}></div>
+          </DSection.Content.Container>
         </DSection.Content.Wrapper>
       </DSection.Wrapper>
     </DefaultLayout.Layout>

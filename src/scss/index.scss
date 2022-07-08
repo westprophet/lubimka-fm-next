@@ -18,22 +18,14 @@ body {
   color: var(--text-color);
 }
 
-//h1{
-//  line-height: 100%;
-//
-//}
-
 a {
   color: inherit;
   text-decoration: none;
   cursor: pointer;
+  line-height: 130%;
 }
-//p{
-//  margin-bottom: 20px;
-//}
 
 * {
-  //fontFamily: Montserrat, sans-serif,
   box-sizing: border-box;
   min-height: 0;
   min-width: 0;

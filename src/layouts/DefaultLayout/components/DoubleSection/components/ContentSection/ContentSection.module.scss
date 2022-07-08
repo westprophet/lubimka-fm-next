@@ -5,10 +5,17 @@
   @include layout-padding();
   overflow: hidden;
   @include for-lg {
+    $blur: 60px;
     height: 100vh;
-    background: rgba(255, 255, 255, 0.05);
-    box-shadow: inset 0 2px 4px rgba(255, 255, 255, 0.15), inset 0 0 60px rgba(255, 255, 255, 0.05);
-    backdrop-filter: blur(60px);
+    @supports ((-webkit-backdrop-filter:  blur($blur)) or (backdrop-filter:  blur($blur))) {
+      backdrop-filter: blur(60px);
+      background: rgba(255, 255, 255, 0.05);
+      box-shadow: inset 0 2px 4px rgba(255, 255, 255, 0.15), inset 0 0 60px rgba(255, 255, 255, 0.05);
+    }
+    @supports (not ((-webkit-backdrop-filter:  blur($blur)) or (backdrop-filter:  blur($blur)))) {
+      background: rgba(255, 255, 255, 0.15);
+      box-shadow: inset 0 2px 4px rgba(255, 255, 255, 0.15), inset 0 0 60px rgba(255, 255, 255, 0.05);
+    }
   }
   @include before-lg {
     padding: 0;

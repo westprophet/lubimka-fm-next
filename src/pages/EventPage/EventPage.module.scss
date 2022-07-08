@@ -15,5 +15,33 @@
         @include f2_55();
       }
     }
+    :global(.section-background) {
+      filter: blur(8px) brightness(70%);
+    }
+    .cover {
+      width: 100px;
+      height: 100px;
+      border-radius: 10px;
+      overflow: hidden;
+      position: relative;
+      margin-bottom: 20px;
+      @include for-lg{
+        width: 200px;
+        height: 200px;
+      }
+    }
+  }
+  .additional{
+    .additionalInner{
+      display: grid;
+      gap: 15px;
+      .date,
+      .address{
+        @include f7();
+        @include for-lg{
+          @include f6();
+        }
+      }
+    }
   }
 }

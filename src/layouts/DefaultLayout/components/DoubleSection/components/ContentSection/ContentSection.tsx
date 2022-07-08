@@ -6,24 +6,29 @@ import React from 'react';
 import s from './ContentSection.module.scss';
 import cn from 'classnames';
 import { motion } from 'framer-motion';
+import useBreakpoint from 'hooks/useBreakpoint';
 
 const variants = {
   show: {
     x: 0,
+    y: 0,
     transition: {
       duration: 0.8,
     },
   },
-  hidden: {
-    x: '100%',
-  },
+  hidden: (direction: boolean) => ({
+    x: direction ? '100%' : 0,
+    y: !direction ? '100%' : 0,
+  }),
 };
 export default function ContentSection({ className, children, resizable }: IContentSectionProps) {
+  const b = useBreakpoint();
   return (
     <motion.section
       variants={variants}
       animate="show"
       initial="hidden"
+      custom={b.lg}
       className={cn(s.ContentSectionContainer, { [s.resizable]: resizable }, className)}
     >
       <div className={cn(s.ContentSection)}>

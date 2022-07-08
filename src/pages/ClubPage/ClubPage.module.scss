@@ -16,11 +16,15 @@
       }
 
       .cover {
-        width: 200px;
-        height: 200px;
-        border-radius: 4%;
+        width: 100px;
+        height: 100px;
+        border-radius: 10px;
         overflow: hidden;
         position: relative;
+        @include for-lg{
+          width: 200px;
+          height: 200px;
+        }
       }
 
       .title {
@@ -40,6 +44,18 @@
   }
 
   .description {
-
+    @include f6();
+    line-height: 140%;
+  }
+  .address{
+    @include f7();
+    line-height: 140%;
+    .addressContainer {
+      font-size: inherit;
+      margin-bottom: 30px;
+    }
+    @include for-lg{
+      @include f6();
+    }
   }
 }

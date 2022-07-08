@@ -14,18 +14,21 @@ import EventsSlider from './components/EventsSlider';
 import Image from 'next/image';
 import DATA_FOR_BLUR from '../../constants/DATA_FOR_BLUR';
 import { motion } from 'framer-motion';
+import IconString from 'components/UI/others/IconString';
+import PlaceIcon from '@mui/icons-material/Place';
+import isEmptyArray from 'utils/isEmptyArray';
+import MiniMap from '@pages/ClubPage/sections/MiniMap';
+import ClubMapMarker from 'components/ClubMapMarker';
 
 const variantsImage = {
   show: (i: number) => ({
     opacity: 1,
-    // y: 0,
     transition: {
       delay: 1.5,
       duration: 0.5,
     },
   }),
   hidden: {
-    // y: '70%',
     opacity: 0,
   },
 };
@@ -42,12 +45,11 @@ export default function ClubPage({ club, nearbyEvents, recomendedEvents }: IClub
       <DSection.Wrapper>
         <DSection.Preview.Wrapper cover={cover} className={cn(s.previewContainer)}>
           <DefaultLayout.PageTitle
-            // title="Блог"
             leftMargin={false}
             breadcrumbs={[
               {
                 title: 'Club Life',
-                link: '/club-life',
+                link: '/#club-life',
               },
               {
                 title: 'Клубы',
@@ -55,7 +57,6 @@ export default function ClubPage({ club, nearbyEvents, recomendedEvents }: IClub
               },
               {
                 title: club.attributes.title,
-                // link: '/club-life/clubs',
               },
             ]}
           />
@@ -81,21 +82,50 @@ export default function ClubPage({ club, nearbyEvents, recomendedEvents }: IClub
         </DSection.Preview.Wrapper>
         <DSection.Content.Wrapper className={cn(s.tabs)}>
           <DSection.Content.Container
-            colorType={1}
-            className={cn(s.description)}
-            title="Описание"
+            colorType={2}
+            className={cn(s.address)}
+            title="Адрес"
             index={1}
           >
-            <ReactMarkdown>{club.attributes.description}</ReactMarkdown>
+            <a
+              href={`https://www.google.com/maps/search/?api=1&query=${club.attributes.address}`}
+              target="_blank"
+              rel="noreferrer"
+            >
+              <IconString icon={<PlaceIcon />} delay={100} className={cn(s.addressContainer)}>
+                {club.attributes.address}
+              </IconString>
+            </a>
+            <MiniMap
+              coords={{
+                lat: 59.955413,
+                lng: 30.337844,
+              }}
+            >
+              <ClubMapMarker lat={59.955413} lng={30.337844} />
+              {/* @ts-ignore*/}
+              {/*<AnyReactComponent lat={59.955413} lng={30.337844} text="My Marker" />*/}
+            </MiniMap>
           </DSection.Content.Container>
-          {recomendedEvents && (
+
+          {recomendedEvents && !isEmptyArray(recomendedEvents) && (
             <DSection.Content.Container title="Рекомендуем посетить" colorType={2} index={2}>
               <EventsSlider events={recomendedEvents} />
             </DSection.Content.Container>
           )}
-          {nearbyEvents && (
+          {nearbyEvents && !isEmptyArray(nearbyEvents) && (
             <DSection.Content.Container title="Ближайшие" colorType={3} index={3}>
               <EventsSlider events={nearbyEvents} />
+            </DSection.Content.Container>
+          )}
+          {club.attributes.description && (
+            <DSection.Content.Container
+              colorType={3}
+              className={cn(s.description)}
+              title="Описание"
+              index={1}
+            >
+              <ReactMarkdown>{club.attributes.description}</ReactMarkdown>
             </DSection.Content.Container>
           )}
         </DSection.Content.Wrapper>

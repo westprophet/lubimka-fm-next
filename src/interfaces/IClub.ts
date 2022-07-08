@@ -5,6 +5,7 @@ import IPhone from './others/IPhone';
 import { IWrappedStrapiImage } from 'api/strapi/types';
 import { IEvent } from './IEvent';
 import TWrappedData from '../types/TWrappedData';
+import TCoords from 'types/TCoords';
 
 export default interface IClubInner {
   title: string;
@@ -18,7 +19,7 @@ export default interface IClubInner {
   createdAt: string;
   locale: string;
   updatedAt: string;
-
+  coords: TCoords;
   schedule: string[];
   recomendedEvents?: TWrappedData<IEvent[]>;
 }
