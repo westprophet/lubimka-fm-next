@@ -47,7 +47,7 @@ export default function AnyContactForm({
               else {
                 enqueueSnackbar(`Ваш запрос успешно отправлен!`, {
                   variant: 'success',
-                  autoHideDuration: 5000,
+                  autoHideDuration: 3000,
                 });
               }
               resetForm();
@@ -148,6 +148,8 @@ interface IAnyContactFormProps {
   disablePhoneField?: boolean;
   disableCityField?: boolean;
   type: TRequisitionType;
+
   onSuccess?(r: IStrapiReturn<IRequisition | null>): any;
+
   onError?(r: IStrapiReturn<IRequisition | null>): any;
 }

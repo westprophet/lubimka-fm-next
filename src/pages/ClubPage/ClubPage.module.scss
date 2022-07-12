@@ -21,7 +21,7 @@
         border-radius: 10px;
         overflow: hidden;
         position: relative;
-        @include for-lg{
+        @include for-lg {
           width: 200px;
           height: 200px;
         }
@@ -43,19 +43,31 @@
 
   }
 
-  .description {
-    @include f6();
-    line-height: 140%;
-  }
-  .address{
+  .contentContainer {
     @include f7();
     line-height: 140%;
-    .addressContainer {
-      font-size: inherit;
-      margin-bottom: 30px;
-    }
-    @include for-lg{
+    @include for-lg {
       @include f6();
     }
+    .iconLine {
+      font-size: inherit;
+    }
+
+    .address {
+      :local(.iconLine) {
+        margin-bottom: 30px;
+      }
+    }
+    .information{
+      display: grid;
+      gap: 30px;
+      .emails,
+      .phones{
+        display: grid;
+        gap: 10px;
+      }
+    }
   }
+
+
 }

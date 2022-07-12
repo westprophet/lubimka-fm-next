@@ -15,10 +15,12 @@
   width: $width-xs;
   @include get-padding(10px);
   background-color: rgba(#fff, .01);
-  &:hover{
+
+  &:hover {
     transition: .3s;
     background-color: rgba(#fff, .04);
   }
+
   @include for-lg {
     border-radius: 5px;
     height: $height-lg;
@@ -56,7 +58,8 @@
       min-width: $height-qxl;
       border-radius: 10px;
     }
-    &.noIMG{
+
+    &.noIMG {
       padding: 0;
     }
   }
@@ -65,17 +68,26 @@
     height: 100%;
     display: grid;
     align-items: center;
-    gap: 3px;
-    grid-template-rows: 35% auto auto;
+    gap: 5px;
+    justify-content: space-between;
+    grid-template-rows: min-content auto auto;
+
     .title {
       //margin-bottom: 10px;
       @include f7();
-      @include for-xl{
+      @include for-xl {
         @include f6();
       }
       @include for-xxl {
         @include f4();
         margin-bottom: 20px;
+      }
+    }
+
+    .address {
+      display: none;
+      @include for-lg {
+        display: block;
       }
     }
   }

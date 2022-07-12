@@ -11,6 +11,7 @@ export default interface IClubInner {
   title: string;
   address: string;
   description: string;
+  avatar: IWrappedStrapiImage;
   Socials: ISocial[];
   siteURL: string;
   Emails: IEmail[];

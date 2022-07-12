@@ -9,11 +9,12 @@ import EventComponent, { IEventComponentProps } from 'components/UI/EventCompone
 import { IEvent } from '../../interfaces';
 import { getImageUrl } from '../../tools/IWrappedStrapiImage';
 import useGetEventDate from 'src/hooks/others/useGetEventDate';
+import useBreakpoint from 'hooks/useBreakpoint';
 
 export default function Event(p: IEventProps) {
   const cover = getImageUrl(p.event.attributes.preview, 'thumbnail');
-  const date = useGetEventDate(p.event.attributes.startDate, p.event.attributes.endDate);
-
+  const b = useBreakpoint();
+  const date = useGetEventDate(p.event.attributes.startDate, p.event.attributes.endDate, !b.lg);
   return (
     <EventComponent
       className={cn(s.Event, p.className)}

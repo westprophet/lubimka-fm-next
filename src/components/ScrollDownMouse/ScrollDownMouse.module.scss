@@ -1,0 +1,13 @@
+.ScrollDownMouse {
+  @include before-lg{
+    display: none;
+  }
+  $width: 25px;
+  width: $width;
+  height: min-content;
+  position: absolute;
+  left: calc(50% - #{$width / 2});
+  bottom: 25px;
+  z-index: 3;
+  cursor: pointer;
+}

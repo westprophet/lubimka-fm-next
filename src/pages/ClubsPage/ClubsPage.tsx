@@ -3,7 +3,7 @@
  */
 
 // @ts-ignore
-import React, { useState, useTransition } from 'react';
+import React, { useState, startTransition } from 'react';
 import s from './ClubsPage.module.scss';
 import cn from 'classnames';
 import DefaultLayout from 'src/layouts/DefaultLayout';
@@ -16,7 +16,6 @@ import isEmptyArray from '../../utils/isEmptyArray';
 
 export default function ClubsPage({ clubs }: IClubsPageProps) {
   const [search, setSearch] = useState<string>();
-  const [inTransition, startTransition] = useTransition();
 
   const handleChange = (e: { target: { value: React.SetStateAction<string | undefined> } }) => {
     startTransition(() => {
@@ -24,7 +23,6 @@ export default function ClubsPage({ clubs }: IClubsPageProps) {
     });
   };
 
-  // let _clubs = clubs;
   let _clubs = [...clubs, ...clubs, ...clubs, ...clubs, ...clubs];
 
   if (!isEmptyString(search))
@@ -68,10 +66,12 @@ export default function ClubsPage({ clubs }: IClubsPageProps) {
         </DefaultLayout.Section.Wrapper>
 
         {!isEmpty ? (
-          <DefaultLayout.Section.Wrapper className={cn(s.ViewSection)}>
-            {_clubs.map((c: IClub, i: number) => (
-              <Club key={`club-${c.id}-${i}`} club={c} resizable />
-            ))}
+          <DefaultLayout.Section.Wrapper>
+            <DefaultLayout.Section.Inner className={cn(s.ViewSection)}>
+              {_clubs.map((c: IClub, i: number) => (
+                <Club key={`club-${c.id}-${i}`} club={c} resizable />
+              ))}
+            </DefaultLayout.Section.Inner>
           </DefaultLayout.Section.Wrapper>
         ) : (
           <DefaultLayout.Section.Inner>

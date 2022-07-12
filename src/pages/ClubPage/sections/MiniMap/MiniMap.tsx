@@ -18,8 +18,11 @@ export default function MiniMap({ className, coords, children }: IMiniMapProps) 
     <div className={cn(s.MiniMap, className)}>
       <GoogleMapReact
         bootstrapURLKeys={{ key: String(key) }}
-        defaultCenter={coords}
-        defaultZoom={10}
+        defaultCenter={{
+          lat: Number(coords.lat),
+          lng: Number(coords.lng),
+        }}
+        defaultZoom={17}
       >
         {children}
       </GoogleMapReact>

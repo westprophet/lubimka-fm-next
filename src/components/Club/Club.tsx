@@ -6,11 +6,13 @@ import React from 'react';
 import { IClub } from '../../interfaces';
 import ClubComponent from 'components/UI/ClubComponent';
 import getImageUrl from '../../tools/IWrappedStrapiImage/getImageUrl';
+import useBreakpoint from 'hooks/useBreakpoint';
 
 export default function Club({ className, club, resizable }: IClubProps) {
+  const b = useBreakpoint();
   if (!club) return null;
   const { address, cover, title } = club.attributes;
-  const _cover = getImageUrl(cover);
+  const _cover = getImageUrl(cover, b.xxl ? 'middle' : 'small');
   return (
     <ClubComponent
       className={className}

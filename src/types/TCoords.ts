@@ -1,5 +1,5 @@
 type TCoords = {
-  lat: number;
-  lng: number;
+  lat: string;
+  lng: string;
 };
 export default TCoords;

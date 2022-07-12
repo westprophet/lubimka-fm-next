@@ -22,7 +22,8 @@ export default async function getClubs(): Promise<IGetClubsReturn> {
         'populate[Socials][populate][icon][populate]': '*',
         'populate[Phones]': '*',
         'populate[cover]': '*',
-        'populate[avatar]': '*',
+        'populate[coords]': '*',
+        'populate[schedule]': '*',
       },
     });
     if (isValidGetClubsResponse(data)) {

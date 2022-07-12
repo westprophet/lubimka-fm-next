@@ -14,6 +14,8 @@ export default function getParamsObject(p: IGetClubRequestParams | undefined) {
       cover: {
         fields: ['url'],
       },
+      schedule: '*',
+      coords: '*',
       Emails: '*',
       PhoneNumbers: '*',
       Socials: {
@@ -30,8 +32,6 @@ export default function getParamsObject(p: IGetClubRequestParams | undefined) {
         : null,
     },
   };
-
-  // if (p?.search) obj.filters['$and'].push({ title: { $containsi: p.search } });
 
   return obj;
 }

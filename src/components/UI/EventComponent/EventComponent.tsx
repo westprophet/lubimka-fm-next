@@ -53,9 +53,16 @@ export default function EventComponent({
         <IconString inline={hover} icon={<AccessTimeIcon fontSize="small" />} delay={500}>
           {date}
         </IconString>
-        <IconString inline={hover} icon={<FmdGoodIcon fontSize="small" />} delay={500}>
-          {address}
-        </IconString>
+        <a
+          href={`https://www.google.com/maps/search/?api=1&query=${address}`}
+          target="_blank"
+          className={cn(s.address)}
+          rel="noreferrer"
+        >
+          <IconString inline={hover} icon={<FmdGoodIcon fontSize="small" />} delay={500}>
+            {address}
+          </IconString>
+        </a>
       </div>
     </div>
   );

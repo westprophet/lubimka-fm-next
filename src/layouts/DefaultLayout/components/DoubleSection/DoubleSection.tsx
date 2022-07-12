@@ -5,6 +5,7 @@
 import React from 'react';
 import s from './DoubleSection.module.scss';
 import cn from 'classnames';
+import ScrollDownMouse from 'components/ScrollDownMouse';
 
 export default function DoubleSection({
   className,
@@ -18,6 +19,7 @@ export default function DoubleSection({
       style={{ background: color }}
     >
       <div className={cn(s.inner)}>{children}</div>
+      <ScrollDownMouse />
     </section>
   );
 }

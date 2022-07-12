@@ -3,7 +3,6 @@
 .ContentSectionContainer {
   z-index: 1;
   @include layout-padding();
-  overflow: hidden;
   @include for-lg {
     $blur: 60px;
     height: 100vh;
@@ -22,15 +21,18 @@
   }
   .ContentSection {
     max-height: inherit;
-    overflow: auto;
+    overflow-y: auto;
+    &::-webkit-scrollbar {
+      display: none;
+    }
+    &::-webkit-scrollbar-thumb {
+      background: #000;
+    }
     @include for-lg{
       height: inherit;
       z-index: 2;
     }
     @include layout-padding(true, false, false, false);
-    &::-webkit-scrollbar {
-      display: none;
-    }
     .inner {
       @include layout-padding(false, false, true, false);
       @include before-lg {

@@ -25,7 +25,6 @@ export default function ClubComponent({
   resizableHeight,
 }: IClubComponentProps) {
   const { onMouseOverHandler, onMouseLeaveHandler, hover } = useHover();
-  const isAddressLong = address.length > 100;
   return (
     <div
       className={cn(s.ClubComponent, { [s.res]: resizable, [s.resH]: resizableHeight }, className)}
@@ -37,7 +36,7 @@ export default function ClubComponent({
           <Image
             className={cn(s.bg, 'zoom-effect')}
             src={cover}
-            layout="responsive"
+            layout={resizable ? 'fill' : 'responsive'}
             objectFit="cover"
             width="100%"
             height="100%"
@@ -80,9 +79,9 @@ export default function ClubComponent({
           </h3>
         </Link>
         <IconString
-          inline={isAddressLong && hover}
+          inline={hover}
           icon={<PlaceIcon />}
-          className={cn(s.addressContainer, { [s.longAddr]: !isAddressLong })}
+          className={cn(s.addressContainer)}
           delay={100}
         >
           {address}

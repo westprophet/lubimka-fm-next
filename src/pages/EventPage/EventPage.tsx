@@ -20,7 +20,7 @@ import Image from 'next/image';
 import DATA_FOR_BLUR from '../../constants/DATA_FOR_BLUR';
 
 export default function EventPage({ event, club }: IEventPageProps) {
-  const cover = getImageUrl(event.attributes.preview ?? club.attributes.cover);
+  const cover = getImageUrl(event.attributes.preview ?? club?.attributes.cover);
   const date = useGetEventDate(event.attributes.startDate, event.attributes.endDate);
   return (
     <DefaultLayout.Layout

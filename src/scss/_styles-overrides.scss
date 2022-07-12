@@ -1,5 +1,12 @@
-//.MuiLoadingButton-root {
-//  &.Mui-disabled {
-//    //color: #4F4F4F;
-//  }
-//}
+.slick-dots{
+  bottom: -35px;
+  li{
+    button:before{
+      color: var(--text-color);
+    }
+    &.slick-active button:before{
+      color: var(--text-color);
+    }
+  }
+}
+

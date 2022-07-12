@@ -18,11 +18,11 @@
       grid-template-columns: repeat(3, 1fr);
     }
     @include for-xl{
-      grid-template-columns: repeat(4, 1fr);
+      grid-template-columns: repeat(3, 1fr);
       gap: 30px;
     }
     @include for-uxl{
-      grid-template-columns: repeat(5, 1fr);
+      grid-template-columns: repeat(4, 1fr);
     }
   }
 }

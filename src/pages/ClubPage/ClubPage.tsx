@@ -19,6 +19,9 @@ import PlaceIcon from '@mui/icons-material/Place';
 import isEmptyArray from 'utils/isEmptyArray';
 import MiniMap from '@pages/ClubPage/sections/MiniMap';
 import ClubMapMarker from 'components/ClubMapMarker';
+import IPhone from '../../interfaces/others/IPhone';
+import LocalPhoneIcon from '@mui/icons-material/LocalPhone';
+import IEmail from '../../interfaces/others/IEmail';
 
 const variantsImage = {
   show: (i: number) => ({
@@ -35,7 +38,8 @@ const variantsImage = {
 
 export default function ClubPage({ club, nearbyEvents, recomendedEvents }: IClubPageProps) {
   const cover = getImageUrl(club.attributes.cover);
-
+  const lat = club.attributes.coords.lat,
+    lng = club.attributes.coords.lng;
   return (
     <DefaultLayout.Layout
       className={cn(s.ClubPage)}
@@ -80,7 +84,7 @@ export default function ClubPage({ club, nearbyEvents, recomendedEvents }: IClub
             <h1 className={cn(s.title)}>{club.attributes.title}</h1>
           </DSection.Preview.Inner>
         </DSection.Preview.Wrapper>
-        <DSection.Content.Wrapper className={cn(s.tabs)}>
+        <DSection.Content.Wrapper className={cn(s.contentContainer)}>
           <DSection.Content.Container
             colorType={2}
             className={cn(s.address)}
@@ -92,19 +96,18 @@ export default function ClubPage({ club, nearbyEvents, recomendedEvents }: IClub
               target="_blank"
               rel="noreferrer"
             >
-              <IconString icon={<PlaceIcon />} delay={100} className={cn(s.addressContainer)}>
+              <IconString icon={<PlaceIcon />} delay={100} className={cn(s.iconLine)}>
                 {club.attributes.address}
               </IconString>
             </a>
+
             <MiniMap
               coords={{
-                lat: 59.955413,
-                lng: 30.337844,
+                lat,
+                lng,
               }}
             >
-              <ClubMapMarker lat={59.955413} lng={30.337844} />
-              {/* @ts-ignore*/}
-              {/*<AnyReactComponent lat={59.955413} lng={30.337844} text="My Marker" />*/}
+              <ClubMapMarker club={club} lat={lat} lng={lng} />
             </MiniMap>
           </DSection.Content.Container>
 
@@ -116,6 +119,45 @@ export default function ClubPage({ club, nearbyEvents, recomendedEvents }: IClub
           {nearbyEvents && !isEmptyArray(nearbyEvents) && (
             <DSection.Content.Container title="Ближайшие" colorType={3} index={3}>
               <EventsSlider events={nearbyEvents} />
+            </DSection.Content.Container>
+          )}
+          {club.attributes.description && (
+            <DSection.Content.Container
+              colorType={2}
+              className={cn(s.information)}
+              title="Информация"
+              index={1}
+            >
+              <div className={cn(s.phones)}>
+                {club.attributes.PhoneNumbers && !isEmptyArray(club.attributes.PhoneNumbers)
+                  ? club.attributes.PhoneNumbers.map((p: IPhone) => (
+                      <a key={`phone-${p.phone}`} href={`tel:${p.phone}`}>
+                        <IconString
+                          icon={<LocalPhoneIcon />}
+                          delay={100}
+                          className={cn(s.iconLine)}
+                        >
+                          {p.phone} {p.title ? `- ${p.title}` : ''}
+                        </IconString>
+                      </a>
+                    ))
+                  : null}
+              </div>
+              <div className={cn(s.emails)}>
+                {club.attributes.Emails && !isEmptyArray(club.attributes.Emails)
+                  ? club.attributes.Emails.map((p: IEmail) => (
+                      <a key={`email-${p.email}`} href={`mailto:${p.email}`}>
+                        <IconString
+                          icon={<LocalPhoneIcon />}
+                          delay={100}
+                          className={cn(s.iconLine)}
+                        >
+                          {p.email} {p.title ? `- ${p.title}` : ''}
+                        </IconString>
+                      </a>
+                    ))
+                  : null}
+              </div>
             </DSection.Content.Container>
           )}
           {club.attributes.description && (

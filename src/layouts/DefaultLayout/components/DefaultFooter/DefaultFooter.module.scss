@@ -25,7 +25,7 @@
   .menu {
     display: grid;
     grid-template-columns: 1fr;
-    @include for-lg {
+    @include for-md {
       grid-area: 2/1/2/2;
       grid-template-columns: 1fr 1fr;
     }
@@ -49,8 +49,9 @@
     display: grid;
     grid-gap: 35px;
     max-width: 300px;
-    justify-self: right;
+    margin-bottom: 20px;
     @include for-lg {
+      justify-self: right;
       grid-template-rows: $head-height-lg;
       grid-area: 1/2/3/2;
     }

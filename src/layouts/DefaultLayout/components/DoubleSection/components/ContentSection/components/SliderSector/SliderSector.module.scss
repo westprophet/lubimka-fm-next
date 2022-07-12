@@ -5,7 +5,6 @@
   position: relative;
   $padding: 25px;
   display: flex;
-  overflow: hidden;
   .arrow {
     position: absolute;
     width: $padding;
@@ -15,7 +14,10 @@
       color: white;
     }
     &.leftArrow {
-      left: 0;
+      transform: translateX(-100%);
+      @include for-lg{
+        transform: translateX(0);
+      }
     }
 
     &.rightArrow {
@@ -24,18 +26,7 @@
   }
   .inner{
     overflow: hidden;
-    padding: 0 $padding;
-
+    padding: 0;
   }
 
-  .slider {
-    overflow: hidden;
-    :global {
-      .slick-list {
-        margin-right: -$padding;
-        margin-left: -$padding;
-        padding: 0 $padding;
-      }
-    }
-  }
 }

@@ -8,9 +8,14 @@ import cn from 'classnames';
 import { ITeamMember } from '../../interfaces';
 import { getImageUrl } from '../../tools/IWrappedStrapiImage';
 import MemberComponent from 'components/UI/MemberComponent';
+import useBreakpoint from 'hooks/useBreakpoint';
 
 export default function TeamMember({ className, member }: ITeamMemberProps) {
-  const _cover = getImageUrl(member.attributes.avatar);
+  const b = useBreakpoint();
+  const _cover = getImageUrl(
+    member.attributes.avatar,
+    b.xxl ? 'middle' : b.md ? 'small' : 'thumbnail'
+  );
   return (
     <MemberComponent
       className={cn(s.TeamMember, className)}

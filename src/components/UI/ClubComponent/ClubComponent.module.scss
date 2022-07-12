@@ -6,41 +6,36 @@
   border-radius: 5px;
   display: grid;
   grid-gap: 10px;
-  padding: $padding-xs;
+
   overflow: hidden;
   cursor: pointer;
   box-sizing: content-box;
-  //margin: 10px;
-
-  grid-template-rows: 6fr 4fr;
+  grid-template-rows: 6fr min-content;
   @include size();
-
   * {
     letter-spacing: 0.02em !important;
   }
 
   @include for-xxl {
     border-radius: 10.2699px;
+
   }
-  @include for-fxl {
-    padding: $padding-xxl;
-  }
+
 
   .cover {
     overflow: hidden;
     width: 100%;
     height: 100%;
-    z-index: -1;
+    z-index: 0;
     position: absolute;
     top: 0;
     left: 0;
+
     .bg {
-      filter: brightness(50%);
       @include zoom-effect-on-leave();
     }
 
     &.noImg {
-      filter: brightness(70%);
       @include lubimka-bg-gradient-2();
     }
   }
@@ -49,7 +44,7 @@
     display: flex;
     justify-content: space-between;
     z-index: 1;
-
+    padding: $padding-xs $padding-xs 0 $padding-xs;
     .avatar {
       border-radius: 50%;
       width: $avatar-size-xs;
@@ -87,11 +82,20 @@
 
   .body {
     display: grid;
-    grid-gap: 5px;
+    grid-gap: 15px;
     z-index: 1;
-    grid-template-rows: 30px auto;
+    grid-template-rows: min-content min-content;
+    background: linear-gradient(rgba(#000, 0.001), rgba(#000, 0.08), rgba(#000, 0.16), rgba(#000, 0.2) , rgba(#000, 0.3));
+    //backdrop-filter: blur(0px);
+    padding: $padding-xs;
+    @include for-xxl {
+      backdrop-filter: blur(2px);
+      grid-gap: 20px;
+      padding: $padding-xxl;
+    }
 
     h3 {
+      align-items: center;
       @include f7 {
         width: 100%;
         font-weight: 800;
@@ -106,18 +110,16 @@
     }
 
     .addressContainer {
-      @include f8();
-      width: 100%;
-      line-height: 140% !important;
+      display: none;
+      @include for-md {
+        display: flex;
+        @include f8();
+        width: 100%;
+        line-height: 140% !important;
 
-      &.longAddr {
-        span {
-          white-space: pre-wrap;
+        @include for-xxl {
+          @include f6();
         }
-      }
-
-      @include for-xxl {
-        @include f6();
       }
     }
   }
@@ -132,5 +134,7 @@
 
   &.res {
     width: 100%;
+    position: relative;
+    box-sizing: border-box;
   }
 }

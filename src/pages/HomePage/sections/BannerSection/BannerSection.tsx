@@ -4,6 +4,7 @@ import cn from 'classnames';
 import FullPageSection from '../../../../layouts/DefaultLayout/components/FullPageSectionWrapper';
 import DynamicChannelTitle from '../../../../components/DynamicChannelTitle';
 import BroadcastPlayer from 'components/BroadcastPlayer';
+import ScrollDownMouse from 'components/ScrollDownMouse';
 
 export default function BannerSection() {
   return (
@@ -12,6 +13,7 @@ export default function BannerSection() {
         <DynamicChannelTitle />
         <h2>Мир любимой музыки в твоём кармане</h2>
         <BroadcastPlayer />
+        <ScrollDownMouse />
       </FullPageSection.Inner>
     </FullPageSection.Wrapper>
   );

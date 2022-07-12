@@ -42,26 +42,15 @@
     }
 
     &.leftArrow {
-      left: 0;
-
-      :local {
-        .hidden {
-          background-color: red;
-        }
-      }
+      left: -1px;
     }
 
     &.rightArrow {
-      right: 0;
+      right: -1px;
     }
   }
 
   .slider {
-    //:global {
-    //  .slick-list {
-    //    padding: 0 30px;
-    //  }
-    //}
 
     @include for-sm {
       :global {
@@ -103,5 +92,9 @@
 
   .inner {
     padding-top: 0 !important;
+    margin-bottom: 35px;
+    @include for-lg{
+      margin-bottom: 0;
+    }
   }
 }
