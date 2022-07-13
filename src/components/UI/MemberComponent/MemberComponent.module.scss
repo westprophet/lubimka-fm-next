@@ -62,15 +62,11 @@
       }
     }
 
-    @include f7 {
+    @include f6 {
       font-weight: 400;
-      //letter-spacing: 0.1em;
+      line-height: 150%;
       text-wrap: avoid;
-    }
-    @include for-xl {
-      @include f6() {
-        line-height: 140%;
-      }
+
     }
     @include for-xxl {
       @include f4();

@@ -8,16 +8,6 @@ import cn from 'classnames';
 import { MChannelTitleSlider as ChannelTitleSlider } from '@pages/HomePage/sections/BannerSection/components/ChannelTitleSlider';
 import IChannel from 'interfaces/IChannel';
 
-const variants2 = {
-  show: {
-    opacity: 1,
-    transition: { duration: 1, delay: 1 },
-  },
-  hidden: {
-    opacity: 0,
-  },
-};
-
 export default function DynamicChannelTitle({
   className,
   title,
@@ -26,7 +16,7 @@ export default function DynamicChannelTitle({
   return (
     <div className={cn(s.DynamicChannelTitle, 'fire-text-effect ', className)}>
       <h1>{title}</h1>
-      <ChannelTitleSlider variants={variants2} initial="hidden" animate="show" channel={channel} />
+      <ChannelTitleSlider channel={channel} />
     </div>
   );
 }

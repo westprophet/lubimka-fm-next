@@ -5,10 +5,20 @@ import api from 'src/api';
 import { IChannel } from 'interfaces/IChannel';
 import OrderTrackPage from '@pages/OrderTrackPage';
 import getGlobalStaticProps, { IGetGlobalStaticProps } from 'functions/getGlobalStaticProps';
+import { NextSeo } from 'next-seo';
+import React from 'react';
 
 //Заказ трека
 const Track: NextPage<ITrackProps> = ({ channel }) => {
-  return <OrderTrackPage channel={channel} />;
+  return (
+    <>
+      <NextSeo
+        title={`Заказ треков:${channel.attributes.title}`}
+        description={`Тут можно заказать треки на канале: ${channel.attributes.title}`}
+      />
+      <OrderTrackPage channel={channel} />
+    </>
+  );
 };
 
 export const getStaticProps: GetStaticProps = async ({

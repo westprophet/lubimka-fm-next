@@ -1,15 +1,15 @@
 import type { NextPage } from 'next';
 import { GetStaticProps } from 'next';
-import OrderAdvertisingPage from 'src/pages/OrderAdvertisingPage';
 import getGlobalStaticProps from 'functions/getGlobalStaticProps';
 import { NextSeo } from 'next-seo';
 import React from 'react';
+import SupportOrderPage from '@pages/SupportOrderPage';
 
-const OrderAdvertising: NextPage = () => {
+const SupportOrder: NextPage = () => {
   return (
     <>
-      <NextSeo title="Заказать рекламу" description={'Заказ рекламы на Lubimka.FM'} />
-      <OrderAdvertisingPage />
+      <NextSeo title="Заявка на исправление ошибки" description={'Заявка на исправление ошибки'} />
+      <SupportOrderPage />
     </>
   );
 };
@@ -18,4 +18,4 @@ export const getStaticProps: GetStaticProps = async () => {
   return await getGlobalStaticProps();
 };
 
-export default OrderAdvertising;
+export default SupportOrder;

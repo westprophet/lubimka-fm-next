@@ -6,9 +6,19 @@ import { ITrackRadioheart } from 'interfaces/ITrackRadioheart';
 import { IChannel } from 'interfaces/index';
 import ListOrderPage from 'src/pages/ListOrderPage';
 import getGlobalStaticProps, { IGetGlobalStaticProps } from 'functions/getGlobalStaticProps';
+import { NextSeo } from 'next-seo';
+import React from 'react';
 
 const TrackList: NextPage<ITrackListProps> = ({ tracks, channel }) => {
-  return <ListOrderPage tracks={tracks} channel={channel} />;
+  return (
+    <>
+      <NextSeo
+        title={`Список треков для заказа:${channel.attributes.title}`}
+        description={`Тут отображается список треков для заказа на канале: ${channel.attributes.title}`}
+      />
+      <ListOrderPage tracks={tracks} channel={channel} />
+    </>
+  );
 };
 
 export const getStaticProps: GetStaticProps = async ({

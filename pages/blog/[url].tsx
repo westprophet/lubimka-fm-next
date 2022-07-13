@@ -5,9 +5,16 @@ import api from '../../src/api';
 import getGlobalStaticProps, { IGetGlobalStaticProps } from '../../functions/getGlobalStaticProps';
 import { IPost, IPostDetail } from 'interfaces/IPost';
 import PostAltPage from '@pages/PostAltPage';
+import { NextSeo } from 'next-seo';
+import React from 'react';
 
 const Blog: NextPage<IBlogProps> = ({ post }) => {
-  return <PostAltPage post={post} />;
+  return (
+    <>
+      <NextSeo title={post.attributes.title} description={post.attributes.content.slice(0, 100)} />
+      <PostAltPage post={post} />
+    </>
+  );
 };
 
 export const getStaticProps: GetStaticProps = async ({

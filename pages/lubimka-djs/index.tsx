@@ -6,9 +6,16 @@ import LubimkaDJsPage from '../../src/pages/LubimkaDJsPage';
 import { IStrapiRequestPagination } from 'api/strapi/types/IStrapiRequestBaseParams';
 import { IGetAuthorsReturn } from 'api/strapi/routes/authors/getAuthors/getAuthors';
 import getGlobalStaticProps, { IGetGlobalStaticProps } from '../../functions/getGlobalStaticProps';
+import { NextSeo } from 'next-seo';
+import React from 'react';
 
 const Authors: NextPage<IAuthorsProps> = ({ authors }) => {
-  return <LubimkaDJsPage authors={authors} />;
+  return (
+    <>
+      <NextSeo title="Lubimka DJ's" description={'Диджеи Lubimka.FM'} />
+      <LubimkaDJsPage authors={authors} />
+    </>
+  );
 };
 
 export const getStaticProps: GetStaticProps = async (context: GetStaticPropsContext) => {

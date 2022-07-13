@@ -6,10 +6,11 @@ import React from 'react';
 import s from './ScrollDownMouse.module.scss';
 import cn from 'classnames';
 import { motion } from 'framer-motion';
+import animateScrollTo from 'animated-scroll-to';
 
 const variants = {
   show: {
-    opacity: 0.2,
+    opacity: 0.02,
     transition: {
       delay: 2,
     },
@@ -20,8 +21,14 @@ const variants = {
 };
 
 export default function ScrollDownMouse({ className }: IScrollDownMouseProps) {
+  const pushDownHandler = () => {
+    if (window) {
+      animateScrollTo(window.innerHeight);
+    }
+  };
   return (
     <motion.svg
+      onClick={pushDownHandler}
       className={cn(s.ScrollDownMouse, className)}
       viewBox="0 0 247 390"
       version="1.1"

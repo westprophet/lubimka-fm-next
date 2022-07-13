@@ -16,10 +16,6 @@ import { motion } from 'framer-motion';
 const variants = {
   visible: {
     opacity: 1,
-    transition: {
-      duration: 0.5,
-      staggerChildren: 0.2,
-    },
   },
   hidden: {
     opacity: 0,
@@ -33,6 +29,7 @@ const variantsChildren = {
     opacity: 0,
   },
 };
+
 const variantsButton = {
   visible: {
     opacity: 1,
@@ -52,7 +49,7 @@ export default function PromoDownloadSection({ className }: IPromoDownloadSectio
       initial="hidden"
       whileInView="visible"
       viewport={{
-        amount: 0.6,
+        amount: 0.8,
         once: true,
       }}
     >

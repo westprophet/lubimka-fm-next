@@ -4,9 +4,16 @@ import { GetStaticProps } from 'next';
 import api from 'api/index';
 import getGlobalStaticProps, { IGetGlobalStaticProps } from '../functions/getGlobalStaticProps';
 import { IFAQItem } from 'interfaces/IFAQItem';
+import { NextSeo } from 'next-seo';
+import React from 'react';
 
 const FAQ: NextPage<IFAQProps> = ({ faqItems }) => {
-  return <FAQPage faqItems={faqItems} />;
+  return (
+    <>
+      <NextSeo title="FAQ" description="Вопросы и ответы" />
+      <FAQPage faqItems={faqItems} />
+    </>
+  );
 };
 
 export const getStaticProps: GetStaticProps = async () => {

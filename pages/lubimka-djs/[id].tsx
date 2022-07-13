@@ -5,9 +5,16 @@ import api from '../../src/api';
 import { IAuthor } from 'interfaces/IAuthor';
 import AuthorPage from '@pages/AuthorPage';
 import getGlobalStaticProps, { IGetGlobalStaticProps } from '../../functions/getGlobalStaticProps';
+import { NextSeo } from 'next-seo';
+import React from 'react';
 
 const Authors: NextPage<IAuthorProps> = ({ author }) => {
-  return <AuthorPage author={author} />;
+  return (
+    <>
+      <NextSeo title={author.attributes.name} description={author.attributes.description} />
+      <AuthorPage author={author} />
+    </>
+  );
 };
 
 export const getStaticProps: GetStaticProps = async ({

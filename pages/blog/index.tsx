@@ -6,9 +6,16 @@ import getGlobalStaticProps, { IGetGlobalStaticProps } from '../../functions/get
 import BlogPage from '@pages/BlogPage';
 import { IBlogCategory } from 'interfaces/IBlogCategory';
 import { IStrapiRequestPagination } from 'api/strapi/types/IStrapiRequestBaseParams';
+import { NextSeo } from 'next-seo';
+import React from 'react';
 
 const Blog: NextPage<IBlogProps> = ({ categories }) => {
-  return <BlogPage categories={categories} />;
+  return (
+    <>
+      <NextSeo title="Блог" description={'Блог на Lubimka.FM'} />
+      <BlogPage categories={categories} />
+    </>
+  );
 };
 
 export const getStaticProps: GetStaticProps = async (context: GetStaticPropsContext) => {

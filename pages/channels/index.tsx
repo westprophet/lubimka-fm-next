@@ -4,9 +4,16 @@ import api from '../../src/api';
 import { IChannel } from 'src/interfaces';
 import ChannelsPage from '../../src/pages/ChannelsPage';
 import getGlobalStaticProps, { IGetGlobalStaticProps } from '../../functions/getGlobalStaticProps';
+import { NextSeo } from 'next-seo';
+import React from 'react';
 
 const Channels: NextPage<IChannelsProps> = ({ channels }) => {
-  return <ChannelsPage channels={channels} />;
+  return (
+    <>
+      <NextSeo title="Радиоканалы" description={'Радиоканалы Lubimka.FM'} />
+      <ChannelsPage channels={channels} />
+    </>
+  );
 };
 
 export const getStaticProps: GetStaticProps = async () => {

@@ -25,24 +25,8 @@ export default function PageTitle({
     if (backURL) r.prefetch(backURL);
   }, [backURL, r]);
 
-  // const onClickHandler = () => {
-  //   if (onClick) onClick(); // Исполняем функциюю если такая указана
-  //   else if (backURL) r.push(backURL);
-  //   else r.back();
-  // };
-
   return (
     <div className={cn(s.PageTitle, { [s.wP]: withPadding, [s.lM]: leftMargin }, className)}>
-      {/*<LoadingButton*/}
-      {/*  onClick={onClickHandler}*/}
-      {/*  className={cn(s.back)}*/}
-      {/*  loading={loading}*/}
-      {/*  loadingPosition="start"*/}
-      {/*  size="small"*/}
-      {/*  startIcon={<ChevronLeft fontSize="small" />}*/}
-      {/*>*/}
-      {/*  Назад*/}
-      {/*</LoadingButton>*/}
       {title ? <h1>{title}</h1> : null}
       {breadcrumbs ? (
         <Breadcrumbs aria-label="breadcrumb" className={cn(s.breadcrumbs)}>

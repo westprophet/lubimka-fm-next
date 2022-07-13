@@ -5,9 +5,16 @@ import EventsPage from '../../../src/pages/EventsPage';
 import { IGetEventsReturn } from 'api/strapi/routes/events/getEvents/getEvents';
 import { IStrapiRequestPagination } from 'api/strapi/types/IStrapiRequestBaseParams';
 import getGlobalStaticProps, { IGetGlobalStaticProps } from 'functions/getGlobalStaticProps';
+import { NextSeo } from 'next-seo';
+import React from 'react';
 
 const Events: NextPage<IEventsProps> = ({ events }) => {
-  return <EventsPage events={events} />;
+  return (
+    <>
+      <NextSeo title="Мероприятия" description={'Мероприятия на Lubimka.FM'} />
+      <EventsPage events={events} />
+    </>
+  );
 };
 
 export const getStaticProps: GetStaticProps = async () => {

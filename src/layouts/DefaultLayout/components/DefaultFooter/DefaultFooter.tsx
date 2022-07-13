@@ -10,6 +10,7 @@ import GooglePlayButton from 'components/buttons/GooglePlayButton';
 import AppStoreButton from 'components/buttons/AppStoreButton';
 import SubscribeEmailInput from 'components/SubscribeEmailInput';
 import CustomLink from 'layouts/DefaultLayout/components/DefaultFooter/components/CustomLink';
+import Link from 'next/link';
 
 export default function DefaultFooter({ className }: IDefaultFooterProps) {
   return (
@@ -37,6 +38,9 @@ export default function DefaultFooter({ className }: IDefaultFooterProps) {
             <GooglePlayButton />
           </div>
           <SubscribeEmailInput />
+          <Link href="support-order">
+            <a className={cn(s.sup)}>Нашли ошибку?</a>
+          </Link>
         </div>
       </footer>
     </>

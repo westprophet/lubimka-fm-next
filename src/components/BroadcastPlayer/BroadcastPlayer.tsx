@@ -15,6 +15,32 @@ import { IChannel } from 'interfaces/IChannel';
 // import Link from 'next/link';
 import { CircularProgress } from '@mui/material';
 import { useRouter } from 'next/router';
+import { motion } from 'framer-motion';
+
+// const variants = {
+//   show: {
+//     transition: {
+//       delay: 1,
+//     },
+//   },
+//   hidden: {
+//     opacity: 1,
+//   },
+// };
+
+const variantsItem = {
+  show: (custom: { index: number; side: 'left' | 'right' }) => ({
+    x: 0,
+    opacity: 1,
+    transition: {
+      delay: custom.index * 0.4,
+    },
+  }),
+  hidden: (custom: { index: number; side: 'left' | 'right' }) => ({
+    x: custom.side === 'right' ? '-100%' : '100%',
+    opacity: 0,
+  }),
+};
 
 export default function BroadcastPlayer({ className, channel }: IBroadcastPlayerProps) {
   const r = useRouter();
@@ -60,11 +86,34 @@ export default function BroadcastPlayer({ className, channel }: IBroadcastPlayer
 
   if (!_channel || isLoadingChannels) return null;
   return (
-    <div className={cn(s.BroadcastPlayer, { [s.error]: isError }, className)}>
-      <IconButton className={cn(s.order)} onClick={pushOrderPageHandler}>
+    <motion.div
+      className={cn(s.BroadcastPlayer, { [s.error]: isError }, className)}
+      // variants={variants}
+      animate="show"
+      initial="hidden"
+    >
+      <IconButton
+        className={cn(s.order)}
+        onClick={pushOrderPageHandler}
+        component={motion.button}
+        variants={variantsItem}
+        custom={{
+          index: 1,
+          side: 'left',
+        }}
+      >
         {loading !== 'order' ? <FactCheck /> : <CircularProgress />}
       </IconButton>
-      <IconButton className={cn(s.prev)} onClick={prevHandler}>
+      <IconButton
+        component={motion.button}
+        variants={variantsItem}
+        className={cn(s.prev)}
+        onClick={prevHandler}
+        custom={{
+          index: 2,
+          side: 'left',
+        }}
+      >
         <ChevronLeft />
       </IconButton>
       <PlayButton
@@ -75,13 +124,30 @@ export default function BroadcastPlayer({ className, channel }: IBroadcastPlayer
           if (_channel) set(_channel, true);
         }}
       />
-      <IconButton className={cn(s.next)} onClick={nextHandler}>
+      <IconButton
+        className={cn(s.next)}
+        onClick={nextHandler}
+        component={motion.button}
+        variants={variantsItem}
+        custom={{
+          index: 2,
+          side: 'right',
+        }}
+      >
         <ChevronRight />
       </IconButton>
-      <IconButton className={cn(s.share)}>
+      <IconButton
+        className={cn(s.share)}
+        component={motion.button}
+        variants={variantsItem}
+        custom={{
+          index: 1,
+          side: 'right',
+        }}
+      >
         <Share />
       </IconButton>
-    </div>
+    </motion.div>
   );
 }
 

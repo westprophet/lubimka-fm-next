@@ -7,10 +7,16 @@ import ClubPage from '../../../src/pages/ClubPage';
 import getGlobalStaticProps, {
   IGetGlobalStaticProps,
 } from '../../../functions/getGlobalStaticProps';
-// import ClubsPage from '../../../src/pages/ClubsPage';
+import { NextSeo } from 'next-seo';
+import React from 'react';
 
 const ClubDetail: NextPage<IClubDetailProps> = ({ club, nearbyEvents, recomendedEvents }) => {
-  return <ClubPage club={club} nearbyEvents={nearbyEvents} recomendedEvents={recomendedEvents} />;
+  return (
+    <>
+      <NextSeo title={club.attributes.title} description={club.attributes.description} />
+      <ClubPage club={club} nearbyEvents={nearbyEvents} recomendedEvents={recomendedEvents} />
+    </>
+  );
 };
 
 export const getStaticProps: GetStaticProps = async (context: GetStaticPropsContext) => {

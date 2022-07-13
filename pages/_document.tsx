@@ -13,9 +13,6 @@ export default function Document() {
           rel="stylesheet"
         />
         <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons" />
-
-        {/*<link rel="stylesheet" media="screen" href="https://fontlibrary.org//face/copyright-house-industries" type="text/css"/>*/}
-        {/*<script src="https://kit.fontawesome.com/a191f5bc72.js" crossOrigin="anonymous"></script>*/}
       </Head>
       <body>
         <Main />

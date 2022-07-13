@@ -11,6 +11,8 @@ import 'slick-carousel/slick/slick.css';
 import 'slick-carousel/slick/slick-theme.css';
 import 'src/scss/index.scss'; //Коренной файл стилей (общий)
 import 'moment/locale/ru';
+import { DefaultSeo } from 'next-seo';
+import SEO from '../next-seo.config';
 
 import { CookiesProvider } from 'react-cookie';
 
@@ -18,6 +20,7 @@ function App({ Component, pageProps }: AppProps) {
   const [queryClient] = useState(() => new QueryClient());
   return (
     <QueryClientProvider client={queryClient}>
+      <DefaultSeo {...SEO} />
       <Hydrate state={pageProps.dehydratedState}>
         <ThemeProvider theme={theme}>
           <CookiesProvider>

@@ -55,6 +55,12 @@
       grid-template-rows: $head-height-lg;
       grid-area: 1/2/3/2;
     }
+    .sup{
+      @include f7() {
+        font-weight: 400;
+        line-height: 126.1%;
+      }
+    }
 
     .buttons {
       @include for-md {

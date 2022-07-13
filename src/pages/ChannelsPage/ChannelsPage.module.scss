@@ -9,15 +9,21 @@
     @include for-sm{
       grid-template-columns: repeat(3, 1fr);
     }
+    @include for-md{
+      grid-template-columns: repeat(3, 1fr);
+    }
     @include for-fxl{
-      grid-template-columns: repeat(4, 1fr);
+      grid-template-columns: repeat(3, 1fr);
       gap: 30px;
     }
     @include for-qxl{
-      grid-template-columns: repeat(5, 1fr);
+      grid-template-columns: repeat(4, 1fr);
     }
     @include for-uxl{
-      grid-template-columns: repeat(6, 1fr);
+      grid-template-columns: repeat(5, 1fr);
     }
+  }
+  .CallbackSection{
+    max-width: 1200px;
   }
 }

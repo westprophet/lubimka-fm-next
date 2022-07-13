@@ -5,9 +5,16 @@ import api from '../../../src/api';
 import { IClub, IEvent } from 'src/interfaces';
 import EventPage from '../../../src/pages/EventPage';
 import getGlobalStaticProps, { IGetGlobalStaticProps } from 'functions/getGlobalStaticProps';
+import { NextSeo } from 'next-seo';
+import React from 'react';
 
 const EventDetail: NextPage<IEventDetailProps> = ({ event, club }) => {
-  return <EventPage event={event} club={club} />;
+  return (
+    <>
+      <NextSeo title={event.attributes.title} description={event.attributes.description} />
+      <EventPage event={event} club={club} />
+    </>
+  );
 };
 
 export const getStaticProps: GetStaticProps = async (context: GetStaticPropsContext) => {

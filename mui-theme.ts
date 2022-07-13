@@ -1,4 +1,4 @@
-import { createTheme, Theme } from '@mui/material';
+import { createTheme } from '@mui/material';
 import type {} from '@mui/lab/themeAugmentation';
 
 // let theme: Theme = createTheme({
@@ -43,7 +43,9 @@ const theme = createTheme({
         root: {
           background: '#2B2C32',
           color: '#99D3FB',
-
+          input: {
+            padding: '12.5px 14px',
+          },
           '& .MuiInputAdornment-root': {
             '& .MuiButtonBase-root': {
               color: '#99D3FB',
@@ -65,9 +67,6 @@ const theme = createTheme({
         },
         input: {
           color: '#99D3FB',
-          // [theme.breakpoints.down('md')]: {
-          //   padding: '12.5px 14px',
-          // },
         },
         notchedOutline: {
           color: '#4F4F4F',
@@ -88,13 +87,22 @@ const theme = createTheme({
         },
       },
     },
-
+    MuiInputLabel: {
+      styleOverrides: {
+        root: {
+          fontSize: '12px',
+        },
+      },
+    },
     MuiButton: {
       styleOverrides: {
+        root: {
+          fontSize: '14px',
+        },
         outlined: {
-          background: '#2B2C32',
           color: '#99D3FB',
-          borderColor: 'transparent',
+          borderColor: '#99D3FB',
+
           '&:hover': {
             borderColor: '#99D3FB',
           },

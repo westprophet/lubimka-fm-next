@@ -8,6 +8,7 @@ import cn from 'classnames';
 import DefaultLayout from 'layouts/DefaultLayout';
 import { useRouter } from 'next/router';
 import LoadingButton from '@mui/lab/LoadingButton';
+import { NextSeo } from 'next-seo';
 
 export default function ErrorPage({ className, code, title }: IErrorPageProps) {
   const r = useRouter();

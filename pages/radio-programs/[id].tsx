@@ -5,9 +5,16 @@ import { IRadioProgram } from 'src/interfaces';
 import getGlobalStaticProps, { IGetGlobalStaticProps } from '../../functions/getGlobalStaticProps';
 import RadioProgramPage from '@pages/RadioProgramPage';
 import { GetStaticPropsContext } from 'next/types';
+import { NextSeo } from 'next-seo';
+import React from 'react';
 
 const RadioPrograms: NextPage<IRadioProgramsProps> = ({ program }) => {
-  return <RadioProgramPage program={program} />;
+  return (
+    <>
+      <NextSeo title={program.attributes.title} description={program.attributes.description} />
+      <RadioProgramPage program={program} />
+    </>
+  );
 };
 
 export const getStaticProps: GetStaticProps = async ({

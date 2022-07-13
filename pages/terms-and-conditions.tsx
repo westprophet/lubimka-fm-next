@@ -4,9 +4,16 @@ import { GetStaticProps } from 'next';
 import api from '../src/api';
 import PostPage from '@pages/PostPage';
 import getGlobalStaticProps, { IGetGlobalStaticProps } from '../functions/getGlobalStaticProps';
+import { NextSeo } from 'next-seo';
+import React from 'react';
 
 const TermsAndConditions: NextPage<ITermsAndConditionsProps> = ({ content, title }) => {
-  return <PostPage title={title}>{content}</PostPage>;
+  return (
+    <>
+      <NextSeo title={title} description="Правовая информация" />
+      <PostPage title={title}>{content}</PostPage>
+    </>
+  );
 };
 
 export const getStaticProps: GetStaticProps = async () => {

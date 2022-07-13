@@ -5,10 +5,17 @@ import api from '../../src/api';
 import { IChannel } from 'src/interfaces';
 import ChannelPage from '../../src/pages/ChannelPage';
 import getGlobalStaticProps, { IGetGlobalStaticProps } from 'functions/getGlobalStaticProps';
+import { NextSeo } from 'next-seo';
+import React from 'react';
 
 //Подробнее о канале
 const Channel: NextPage<IChannelPageProps> = ({ channel }) => {
-  return <ChannelPage channel={channel} />;
+  return (
+    <>
+      <NextSeo title={channel.attributes.title} description={channel.attributes.description} />
+      <ChannelPage channel={channel} />
+    </>
+  );
 };
 
 //https://nextjs.org/docs/api-reference/data-fetching/get-static-paths

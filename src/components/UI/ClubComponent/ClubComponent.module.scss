@@ -96,13 +96,10 @@
 
     h3 {
       align-items: center;
-      @include f7 {
+      @include f6 {
         width: 100%;
         font-weight: 800;
         white-space: nowrap;
-      }
-      @include for-lg {
-        @include f6();
       }
       @include for-xxl {
         @include f4();
