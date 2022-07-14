@@ -17,11 +17,12 @@ import { motion } from 'framer-motion';
 import IconString from 'components/UI/others/IconString';
 import PlaceIcon from '@mui/icons-material/Place';
 import isEmptyArray from 'utils/isEmptyArray';
-import MiniMap from '@pages/ClubPage/sections/MiniMap';
+
 import ClubMapMarker from 'components/ClubMapMarker';
 import IPhone from '../../interfaces/others/IPhone';
 import LocalPhoneIcon from '@mui/icons-material/LocalPhone';
 import IEmail from '../../interfaces/others/IEmail';
+import MiniMap from 'components/MiniMap';
 
 const variantsImage = {
   show: (i: number) => ({

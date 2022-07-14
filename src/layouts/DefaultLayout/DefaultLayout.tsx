@@ -57,7 +57,7 @@ function DefaultLayout({
             setIsOpenChannelMenu={player.openChannelMenu}
           />
         )}
-        <DefaultRightSide showPlayer={right.state?.isShowPlayer || player.state?.isDisable} />
+        <DefaultRightSide showPlayer={!player.state?.isPinned || player.state?.isDisable} />
         <DefaultFooter />
         <PostFooter />
       </DefaultLayoutManagerContext.Provider>

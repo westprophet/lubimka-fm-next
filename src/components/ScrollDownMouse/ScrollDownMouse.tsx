@@ -10,13 +10,14 @@ import animateScrollTo from 'animated-scroll-to';
 
 const variants = {
   show: {
-    opacity: 0.02,
+    opacity: [0.03, 0.1, 0.03],
     transition: {
-      delay: 2,
+      duration: 4,
+      repeat: Infinity,
     },
   },
   hidden: {
-    opacity: 0,
+    opacity: 0.0,
   },
 };
 

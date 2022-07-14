@@ -6,7 +6,8 @@ import React, { useState } from 'react';
 import s from './DesktopHeaderMenuItem.module.scss';
 import cn from 'classnames';
 import { useRouter } from 'next/router';
-import LoadingButton from '@mui/lab/LoadingButton';
+import { Button } from '@mui/material';
+import DotsLoaderAlt from 'components/DotsLoaderAlt';
 
 export default function DesktopHeaderMenuItem({
   className,
@@ -20,9 +21,15 @@ export default function DesktopHeaderMenuItem({
     r.push(link).finally(() => setLoad(false));
   };
   return (
-    <LoadingButton className={cn(s.item, className)} loading={load} onClick={onClickHandler}>
+    <Button
+      className={cn(s.item, className)}
+      // loading={load}
+      onClick={onClickHandler}
+      // loadingPosition="start"
+    >
       {title}
-    </LoadingButton>
+      {load && <DotsLoaderAlt className={cn(s.loader)} />}
+    </Button>
   );
 }
 

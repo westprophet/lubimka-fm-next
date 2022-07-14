@@ -18,10 +18,15 @@ import FmdGoodIcon from '@mui/icons-material/FmdGood';
 import { motion } from 'framer-motion';
 import Image from 'next/image';
 import DATA_FOR_BLUR from '../../constants/DATA_FOR_BLUR';
+import PlaceIcon from '@mui/icons-material/Place';
+import MiniMap from 'components/MiniMap';
+import ClubMapMarker from 'components/ClubMapMarker';
 
 export default function EventPage({ event, club }: IEventPageProps) {
   const cover = getImageUrl(event.attributes.preview ?? club?.attributes.cover);
   const date = useGetEventDate(event.attributes.startDate, event.attributes.endDate);
+  const lat = club.attributes.coords.lat,
+    lng = club.attributes.coords.lng;
   return (
     <DefaultLayout.Layout
       className={cn(s.EventPage)}
@@ -31,6 +36,7 @@ export default function EventPage({ event, club }: IEventPageProps) {
       <DSection.Wrapper>
         <DSection.Preview.Wrapper cover={cover} className={cn(s.previewContainer)}>
           <DefaultLayout.PageTitle
+            className={cn(s.bread)}
             breadcrumbs={[
               {
                 title: 'Мероприятия',
@@ -63,6 +69,31 @@ export default function EventPage({ event, club }: IEventPageProps) {
             </DSection.Content.Container>
           )}
 
+          <DSection.Content.Container
+            colorType={2}
+            className={cn(s.address)}
+            title="Адрес"
+            index={1}
+          >
+            <a
+              href={`https://www.google.com/maps/search/?api=1&query=${club.attributes.address}`}
+              target="_blank"
+              rel="noreferrer"
+            >
+              <IconString icon={<PlaceIcon />} delay={100} className={cn(s.iconLine)}>
+                {club.attributes.address}
+              </IconString>
+            </a>
+
+            <MiniMap
+              coords={{
+                lat,
+                lng,
+              }}
+            >
+              <ClubMapMarker club={club} lat={lat} lng={lng} />
+            </MiniMap>
+          </DSection.Content.Container>
           {event.attributes.description && (
             <DSection.Content.Container
               colorType={1}
@@ -74,15 +105,15 @@ export default function EventPage({ event, club }: IEventPageProps) {
           )}
           <DSection.Content.Container colorType={2} className={cn(s.additional)} title="Информация">
             <div className={cn(s.additionalInner)}>
-              <a
-                href={`https://www.google.com/maps/search/?api=1&query=${club.attributes.address}`}
-                target="_blank"
-                rel="noreferrer"
-              >
-                <IconString className={cn(s.address)} icon={<FmdGoodIcon />}>
-                  {event.attributes.address}
-                </IconString>
-              </a>
+              {/*<a*/}
+              {/*  href={`https://www.google.com/maps/search/?api=1&query=${club.attributes.address}`}*/}
+              {/*  target="_blank"*/}
+              {/*  rel="noreferrer"*/}
+              {/*>*/}
+              {/*  <IconString className={cn(s.address)} icon={<FmdGoodIcon />}>*/}
+              {/*    {event.attributes.address}*/}
+              {/*  </IconString>*/}
+              {/*</a>*/}
               <IconString className={cn(s.date)} icon={<AccessTimeIcon />}>
                 {date}
               </IconString>

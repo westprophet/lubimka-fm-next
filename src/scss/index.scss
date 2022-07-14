@@ -22,14 +22,19 @@ a {
   color: inherit;
   text-decoration: none;
   cursor: pointer;
-  line-height: 130%;
+
 }
 
 * {
   box-sizing: border-box;
   min-height: 0;
   min-width: 0;
+  //line-height: 130%;
+
 }
+//h1{
+//  line-height: 130%;
+//}
 
 ::selection {
   background: var(--primary-color);

@@ -1,6 +1,12 @@
 .item {
   color: inherit!important;
+  position: relative;
   text-transform: capitalize!important;
+  .loader{
+    position: absolute;
+    bottom: -2px;
+    width: 20px;
+  }
   @include f7(){
     font-weight: 700;
     letter-spacing: 0.05em;
@@ -9,6 +15,7 @@
     @include f6();
   }
   &:disabled{
+    background: transparent!important;
     color: transparent!important;
   }
 }

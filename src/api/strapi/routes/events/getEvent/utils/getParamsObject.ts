@@ -14,6 +14,8 @@ export default function getParamsObject(p: IGetEventRequestParams | undefined) {
           avatar: '*',
           Emails: '*',
           PhoneNumbers: '*',
+          // schedule: '*',
+          coords: '*',
           Socials: {
             populate: {
               icon: {
@@ -23,9 +25,6 @@ export default function getParamsObject(p: IGetEventRequestParams | undefined) {
           },
         },
       },
-      // preview: {
-      //   fields: ['url'],
-      // },
     },
   };
 

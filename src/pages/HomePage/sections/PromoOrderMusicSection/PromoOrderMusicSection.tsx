@@ -58,8 +58,8 @@ export default function PromoOrderMusicSection() {
       initial="hidden"
       whileInView="visible"
       viewport={{
-        amount: 0.8,
-        // once: true,
+        amount: 1,
+        once: true,
       }}
     >
       <motion.div className={cn(s.disk)} variants={variantsImage}>
