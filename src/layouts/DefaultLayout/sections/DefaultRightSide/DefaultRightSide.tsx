@@ -8,6 +8,7 @@ import cn from 'classnames';
 import AsideBar from '../../components/AsideBar';
 import SocialsSection from './sections/SocialsSection';
 import AsideMiniPlayer from '../../components/AsideBar/components/AsideMiniPlayer';
+
 export const variants = {
   visible: {
     opacity: 1,

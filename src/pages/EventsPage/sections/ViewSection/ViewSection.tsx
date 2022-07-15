@@ -5,7 +5,7 @@
 import React from 'react';
 import s from './ViewSection.module.scss';
 import cn from 'classnames';
-import { IEvent } from '../../../../interfaces';
+import { IEvent } from 'interfaces/IEvent';
 // import Club from 'components/Club';
 
 import { SectionWrapper as Section } from '../../../../layouts/DefaultLayout/components';
@@ -17,14 +17,16 @@ export default function ViewSection({ className, events }: IViewSectionProps) {
   const isEmpty = isEmptyArray(events) || !events;
   if (isEmpty)
     return (
-      <DefaultLayout.Section.Inner>
-        <h2>По данному запросу ничего не найдено</h2>
-      </DefaultLayout.Section.Inner>
+      <Section.Wrapper>
+        <DefaultLayout.Section.Inner>
+          <h2>По данному запросу ничего не найдено</h2>
+        </DefaultLayout.Section.Inner>
+      </Section.Wrapper>
     );
   else
     return (
       <Section.Wrapper>
-        <Section.Inner className={cn(s.ViewSection, className)} disableHorizontalPadding>
+        <Section.Inner className={cn(s.ViewSection, className)}>
           {events.map((e: IEvent, i: number) => (
             <Event event={e} key={`event-${e.id}-${i}`} resizable />
           ))}

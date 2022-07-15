@@ -42,7 +42,6 @@ export default function FilterSection({
       setSearch(e.target.value);
     });
   };
-
   const handleChangeRange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const range = e.target.value;
     let to: moment.Moment | null = null;
@@ -74,10 +73,7 @@ export default function FilterSection({
   };
   return (
     <DefaultLayout.Section.Wrapper>
-      <DefaultLayout.Section.Inner
-        disableHorizontalPadding
-        className={cn(s.FilterSection, className)}
-      >
+      <DefaultLayout.Section.Inner className={cn(s.FilterSection, className)}>
         <div className={cn(s.searchContainer)}>
           <SearchInput onChange={handleChangeSearch} className={cn(s.searchInput)} />
         </div>

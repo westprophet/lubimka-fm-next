@@ -14,7 +14,6 @@ import SimpleClubComponent from './components/SimpleClubComponent';
 import useGetEventDate from '../../hooks/others/useGetEventDate';
 import IconString from 'components/UI/others/IconString';
 import AccessTimeIcon from '@mui/icons-material/AccessTime';
-import FmdGoodIcon from '@mui/icons-material/FmdGood';
 import { motion } from 'framer-motion';
 import Image from 'next/image';
 import DATA_FOR_BLUR from '../../constants/DATA_FOR_BLUR';
@@ -68,7 +67,13 @@ export default function EventPage({ event, club }: IEventPageProps) {
               <SimpleClubComponent club={club} />
             </DSection.Content.Container>
           )}
-
+          <DSection.Content.Container colorType={2} className={cn(s.additional)} title="Информация">
+            <div className={cn(s.additionalInner)}>
+              <IconString className={cn(s.date)} icon={<AccessTimeIcon />}>
+                {date}
+              </IconString>
+            </div>
+          </DSection.Content.Container>
           <DSection.Content.Container
             colorType={2}
             className={cn(s.address)}
@@ -103,23 +108,6 @@ export default function EventPage({ event, club }: IEventPageProps) {
               <ReactMarkdown>{event.attributes.description}</ReactMarkdown>
             </DSection.Content.Container>
           )}
-          <DSection.Content.Container colorType={2} className={cn(s.additional)} title="Информация">
-            <div className={cn(s.additionalInner)}>
-              {/*<a*/}
-              {/*  href={`https://www.google.com/maps/search/?api=1&query=${club.attributes.address}`}*/}
-              {/*  target="_blank"*/}
-              {/*  rel="noreferrer"*/}
-              {/*>*/}
-              {/*  <IconString className={cn(s.address)} icon={<FmdGoodIcon />}>*/}
-              {/*    {event.attributes.address}*/}
-              {/*  </IconString>*/}
-              {/*</a>*/}
-              <IconString className={cn(s.date)} icon={<AccessTimeIcon />}>
-                {date}
-              </IconString>
-            </div>
-            <div className={cn(s.map)}></div>
-          </DSection.Content.Container>
         </DSection.Content.Wrapper>
       </DSection.Wrapper>
     </DefaultLayout.Layout>

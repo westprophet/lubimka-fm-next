@@ -52,30 +52,29 @@ export default function EventsPage({ events }: IEventsPageProps) {
           breadcrumbs={[
             {
               title: 'Club Life',
-              link: '/club-life',
+              link: '/#club-life',
             },
             {
               title: 'Мероприятия',
             },
           ]}
         />
-        {/*<Suspense fallback={`Loading...`}>*/}
-        {/*// @ts-ignore*/}
-        <FilterSection setSearch={setSearch} setFrom={setFrom} from={from} setTo={setTo} to={to} />
-        {/*</Suspense>*/}
 
+        <FilterSection setSearch={setSearch} setFrom={setFrom} from={from} setTo={setTo} to={to} />
         <ViewSection events={data?.data} />
         <DefaultLayout.Section.Wrapper>
-          <TablePagination
-            component="div"
-            count={total}
-            labelRowsPerPage="Показать"
-            rowsPerPageOptions={[25, 50, 100]}
-            page={page - 1}
-            onPageChange={handleChangePage}
-            rowsPerPage={rowsPerPage}
-            onRowsPerPageChange={handleChangeRowsPerPage}
-          />
+          <DefaultLayout.Section.Inner>
+            <TablePagination
+              component="div"
+              count={total}
+              labelRowsPerPage="Показать"
+              rowsPerPageOptions={[25, 50, 100]}
+              page={page - 1}
+              onPageChange={handleChangePage}
+              rowsPerPage={rowsPerPage}
+              onRowsPerPageChange={handleChangeRowsPerPage}
+            />
+          </DefaultLayout.Section.Inner>
         </DefaultLayout.Section.Wrapper>
       </DefaultLayout.PageWrapper>
     </DefaultLayout.Layout>
