@@ -96,7 +96,7 @@ export default function EventPage({ event, club }: IEventPageProps) {
                 lng,
               }}
             >
-              <ClubMapMarker club={club} lat={lat} lng={lng} />
+              <ClubMapMarker club={club} isDestination />
             </MiniMap>
           </DSection.Content.Container>
           {event.attributes.description && (

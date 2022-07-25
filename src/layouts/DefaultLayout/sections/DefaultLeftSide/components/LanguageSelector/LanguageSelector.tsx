@@ -11,8 +11,6 @@ export default function LanguageSelector({ className }: ILanguageSelectorProps) 
   return (
     <div className={cn(s.LanguageSelector, className)}>
       <LanguageSelectorItem title="Ru" active />
-      <LanguageSelectorItem title="De" />
-      <LanguageSelectorItem title="En" />
     </div>
   );
 }

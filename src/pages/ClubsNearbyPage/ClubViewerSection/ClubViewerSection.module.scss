@@ -1,0 +1,16 @@
+.ClubViewerSection {
+  width: 100%;
+  display: grid;
+  flex-wrap: wrap;
+  gap: 15px;
+  grid-template-columns: 1fr 1fr;
+  @include for-lg{
+    gap: 30px;
+  }
+  .empty{
+    @include f7();
+    @include for-lg{
+      @include f6();
+    }
+  }
+}

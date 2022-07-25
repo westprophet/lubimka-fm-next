@@ -1,0 +1,15 @@
+@import "src/layouts/DefaultLayout/scss/data";
+@import "src/layouts/DefaultLayout/scss/mixins";
+.ClubsNearbyPage {
+
+  .mapContainer{
+    min-height: 75vh;
+    position: relative;
+    .map{
+      position: absolute;
+      top: 0;
+      width: 100%;
+      height: 100%;
+    }
+  }
+}

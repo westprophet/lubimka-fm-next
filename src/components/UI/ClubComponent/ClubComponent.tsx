@@ -23,7 +23,7 @@ export default function ClubComponent({
   link,
   resizable,
   resizableHeight,
-}: IClubComponentProps) {
+}: IClubComponent) {
   const { onMouseOverHandler, onMouseLeaveHandler, hover } = useHover();
   return (
     <div
@@ -63,7 +63,6 @@ export default function ClubComponent({
         </div>
         <div className={cn(s.schedule)}>
           <div className={cn(s.scheduleItem)}>Пн с 10:00 до 03:00</div>
-          <div className={cn(s.scheduleItem)}>Пн с 10:00 до 03:00</div>
         </div>
       </div>
       <div className={cn(s.body)}>
@@ -97,14 +96,16 @@ ClubComponent.defaultProps = {
   isLongType: false,
   resizable: false,
 };
+export interface IClubComponentProps {
+  resizable?: boolean;
+  resizableHeight?: boolean;
+}
 
-interface IClubComponentProps {
+export interface IClubComponent extends IClubComponentProps {
   className?: string;
   title: string;
   link: string;
   address: string;
   cover: string | null;
   avatar?: string | null;
-  resizable?: boolean;
-  resizableHeight?: boolean;
 }

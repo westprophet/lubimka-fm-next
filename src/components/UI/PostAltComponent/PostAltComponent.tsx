@@ -54,7 +54,7 @@ export default function PostAltComponent({
   }, [b.lg, createdAt, timeRead]);
 
   return (
-    <div className={cn(s.PostComponent, { [s.resizable]: resizable }, className)}>
+    <div className={cn(s.PostComponent, { [s.res]: resizable }, className)}>
       <div className={cn(s.coverContainer)}>
         {cover ? (
           <Image

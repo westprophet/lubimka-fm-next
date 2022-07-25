@@ -19,7 +19,7 @@ export default function SocialsSection({ className }: ISocialsSectionProps) {
       </div>
       <div className={cn(s.labelContainer)}>
         <div className={cn(s.line)} />
-        <span className={cn(s.label)}>Подпишись</span>
+        <span className={cn(s.label)}>Приложение</span>
       </div>
     </div>
   );

@@ -5,6 +5,5 @@ export default interface ISocial {
   key?: string;
   title: string; // название
   url: string; //Путь куда ссылается соц сеть
-  appkey?: 'telegramm://';
   icon: IIcon; //Иконка
 }

@@ -1,3 +1,4 @@
 import getClubs from './getClubs';
 import getClub from './getClub';
-export { getClubs, getClub };
+import getClubsNearby from './getClubsNearby';
+export { getClubs, getClub, getClubsNearby };

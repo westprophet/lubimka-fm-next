@@ -19,27 +19,27 @@ $sides: (
   ),
 );
 
-@mixin layout-padding-template($sides: $sides, $property: padding, $char: ''){
+@mixin layout-padding-template($sides: $sides, $property: padding, $char: '', $last: ''){
   @if (map-get(map-get($sides,'t'),enable)) {
     $map: map-get($sides,t);
-    #{$property}-top: #{$char}#{map-get($map,value)};
+    #{$property}-top: #{$char}#{map-get($map,value)}#{$last};
   }
   @if map-get(map-get($sides,'r'),enable)  {
     $map: map-get($sides,'r');
-    #{$property}-right: #{$char}#{map-get($map,value)};
+    #{$property}-right: #{$char}#{map-get($map,value)}#{$last};
   }
   @if map-get(map-get($sides,'b'),'enable')  {
     $map: map-get($sides,'b');
-    #{$property}-bottom: #{$char}#{map-get($map,'value')};
+    #{$property}-bottom: #{$char}#{map-get($map,'value')}#{$last};
   }
   @if map-get(map-get($sides,'l'),'enable')  {
     $map: map-get($sides,'l');
-    #{$property}-left: #{$char}#{map-get($map,'value')};
+    #{$property}-left: #{$char}#{map-get($map,'value')}#{$last};
   }
 }
 
 //Отступы шаблона
-@mixin layout-padding-xs($t: true, $r: true,$b: true, $l: true, $property: padding, $char: ''){
+@mixin layout-padding-xs($t: true, $r: true,$b: true, $l: true, $property: padding, $char: '', $last:''){
   $sides: (
     't': (
       enable: $t,
@@ -58,11 +58,11 @@ $sides: (
       value: $aside-width-xs
     ),
   );
-  @include layout-padding-template($sides, $property, $char);
+  @include layout-padding-template($sides, $property, $char, $last);
 
 }
 
-@mixin layout-padding-sm($t: true, $r: true,$b: true, $l: true, $property: padding, $char: ''){
+@mixin layout-padding-sm($t: true, $r: true,$b: true, $l: true, $property: padding, $char: '', $last:''){
   $sides: (
     't': (
       enable: $t,
@@ -81,11 +81,11 @@ $sides: (
       value: $aside-width-sm
     ),
   );
-  @include layout-padding-template($sides, $property, $char);
+  @include layout-padding-template($sides, $property, $char, $last);
 
 }
 
-@mixin layout-padding-md($t: true, $r: true,$b: true, $l: true, $property: padding,  $char: ''){
+@mixin layout-padding-md($t: true, $r: true,$b: true, $l: true, $property: padding,  $char: '', $last:''){
   $sides: (
     't': (
       enable: $t,
@@ -104,10 +104,10 @@ $sides: (
       value: $aside-width-md
     ),
   );
-  @include layout-padding-template($sides, $property, $char);
+  @include layout-padding-template($sides, $property, $char, $last);
 }
 
-@mixin layout-padding-lg($t: true, $r: true,$b: true, $l: true, $property: padding,  $char: ''){
+@mixin layout-padding-lg($t: true, $r: true,$b: true, $l: true, $property: padding,  $char: '', $last:''){
   $sides: (
     't': (
       enable: $t,
@@ -126,11 +126,11 @@ $sides: (
       value: $aside-width-lg
     ),
   );
-  @include layout-padding-template($sides, $property, $char);
+  @include layout-padding-template($sides, $property, $char, $last);
 
 }
 
-@mixin layout-padding-xl($t: true, $r: true,$b: true, $l: true, $property: padding,  $char: ''){
+@mixin layout-padding-xl($t: true, $r: true,$b: true, $l: true, $property: padding,  $char: '', $last:''){
   $sides: (
     't': (
       enable: $t,
@@ -149,10 +149,10 @@ $sides: (
       value: $aside-width-xxl
     ),
   );
-  @include layout-padding-template($sides, $property, $char);
+  @include layout-padding-template($sides, $property, $char, $last);
 }
 
-@mixin layout-padding-xxl($t: true, $r: true,$b: true, $l: true, $property: padding,  $char: ''){
+@mixin layout-padding-xxl($t: true, $r: true,$b: true, $l: true, $property: padding,  $char: '', $last:''){
   $sides: (
     't': (
       enable: $t,
@@ -171,11 +171,11 @@ $sides: (
       value: $aside-width-xxl
     ),
   );
-  @include layout-padding-template($sides, $property, $char);
+  @include layout-padding-template($sides, $property, $char, $last);
 
 }
 
-@mixin layout-padding-xxxl($t: true, $r: true,$b: true, $l: true, $property: padding,  $char: ''){
+@mixin layout-padding-xxxl($t: true, $r: true,$b: true, $l: true, $property: padding,  $char: '', $last:''){
   $sides: (
     't': (
       enable: $t,
@@ -194,26 +194,26 @@ $sides: (
       value: $aside-width-xxxl
     ),
   );
-  @include layout-padding-template($sides, $property, $char);
+  @include layout-padding-template($sides, $property, $char, $last);
 }
 
 
-@mixin layout-padding($t: true, $r: true, $b: true, $l: true, $property: padding,  $char: ''){
-  @include layout-padding-xs($t,$r,$b,$l, $property, $char);
+@mixin layout-padding($t: true, $r: true, $b: true, $l: true, $property: padding,  $char: '', $last: ''){
+  @include layout-padding-xs($t,$r,$b,$l, $property, $char, $last);
   @include for-sm{
-    @include layout-padding-sm($t,$r,$b,$l, $property, $char);
+    @include layout-padding-sm($t,$r,$b,$l, $property, $char, $last);
   }
   @include for-md{
-    @include layout-padding-md($t,$r,$b,$l, $property, $char);
+    @include layout-padding-md($t,$r,$b,$l, $property, $char, $last);
   }
   @include for-xl{
-    @include layout-padding-xl($t,$r,$b,$l, $property, $char);
+    @include layout-padding-xl($t,$r,$b,$l, $property, $char, $last);
   }
   @include for-xxl{
-    @include layout-padding-xxl($t,$r,$b,$l, $property, $char);
+    @include layout-padding-xxl($t,$r,$b,$l, $property, $char, $last);
   }
   @include for-qxl{
-    @include layout-padding-xxxl($t,$r,$b,$l, $property, $char);
+    @include layout-padding-xxxl($t,$r,$b,$l, $property, $char, $last);
   }
 }
 

@@ -108,7 +108,7 @@ export default function ClubPage({ club, nearbyEvents, recomendedEvents }: IClub
                 lng,
               }}
             >
-              <ClubMapMarker club={club} lat={lat} lng={lng} />
+              <ClubMapMarker club={club} isDestination />
             </MiniMap>
           </DSection.Content.Container>
 

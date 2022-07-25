@@ -21,13 +21,18 @@ const variants = {
     y: !direction ? '100%' : 0,
   }),
 };
-export default function ContentSection({ className, children, resizable }: IContentSectionProps) {
+export default function ContentSection({
+  className,
+  children,
+  resizable,
+  disableAnimation,
+}: IContentSectionProps) {
   const b = useBreakpoint();
   return (
     <motion.section
       variants={variants}
       animate="show"
-      initial="hidden"
+      initial={disableAnimation ? 'show' : 'hidden'}
       custom={b.lg}
       className={cn(s.ContentSectionContainer, { [s.resizable]: resizable }, className)}
     >
@@ -46,4 +51,5 @@ interface IContentSectionProps {
   className?: string;
   children: any;
   resizable?: boolean;
+  disableAnimation?: boolean;
 }

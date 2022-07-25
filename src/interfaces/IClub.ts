@@ -6,6 +6,7 @@ import { IWrappedStrapiImage } from 'api/strapi/types';
 import { IEvent } from './IEvent';
 import TWrappedData from '../types/TWrappedData';
 import TCoords from 'types/TCoords';
+import { DayScheduleType } from 'types/DaySchedule';
 
 export default interface IClubInner {
   title: string;
@@ -21,7 +22,9 @@ export default interface IClubInner {
   locale: string;
   updatedAt: string;
   coords: TCoords;
-  schedule: string[];
+  schedule: {
+    [key in DayScheduleType]: string; //monday : date
+  };
   recomendedEvents?: TWrappedData<IEvent[]>;
 }
 

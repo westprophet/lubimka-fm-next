@@ -1,10 +1,10 @@
 @font-face {
   font-family: 'icomoon';
-  src:  url('fonts/icomoon.eot?bz3bm4');
-  src:  url('fonts/icomoon.eot?bz3bm4#iefix') format('embedded-opentype'),
-    url('fonts/icomoon.ttf?bz3bm4') format('truetype'),
-    url('fonts/icomoon.woff?bz3bm4') format('woff'),
-    url('fonts/icomoon.svg?bz3bm4#icomoon') format('svg');
+  src:  url('fonts/icomoon.eot?b47syu');
+  src:  url('fonts/icomoon.eot?b47syu#iefix') format('embedded-opentype'),
+    url('fonts/icomoon.ttf?b47syu') format('truetype'),
+    url('fonts/icomoon.woff?b47syu') format('woff'),
+    url('fonts/icomoon.svg?b47syu#icomoon') format('svg');
   font-weight: normal;
   font-style: normal;
   font-display: block;
@@ -12,7 +12,7 @@
 
 [class^="icon-"], [class*=" icon-"] {
   /* use !important to prevent issues with browser extensions that change fonts */
-  font-family: 'icomoon', serif !important;
+  font-family: 'icomoon' !important;
   speak: never;
   font-style: normal;
   font-weight: normal;
@@ -33,4 +33,10 @@
 }
 .icon-twitter1:before {
   content: "\e902";
+}
+.icon-appleinc:before {
+  content: "\eabe";
+}
+.icon-android:before {
+  content: "\eac0";
 }

@@ -3,29 +3,20 @@ import ISocial from '../interfaces/others/ISocial';
 const DEFAULT_SOCIALS: ISocial[] = [
   {
     id: 0,
-    title: 'twitter',
-    url: 'https://twitter.com',
+    title: 'App Store',
+    url: '#',
     icon: {
       type: 'icon-moon',
-      className: 'icon-twitter1',
+      className: 'icon-appleinc',
     },
   },
   {
     id: 1,
-    title: 'instagram',
-    url: 'https://instagram.com',
+    title: 'Play Market',
+    url: '#',
     icon: {
       type: 'icon-moon',
-      className: 'icon-instagram',
-    },
-  },
-  {
-    id: 1,
-    title: 'facebook',
-    url: 'https://facebook.com',
-    icon: {
-      type: 'icon-moon',
-      className: 'icon-facebook',
+      className: 'icon-android',
     },
   },
 ];

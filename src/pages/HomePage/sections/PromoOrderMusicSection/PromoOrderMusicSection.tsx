@@ -54,7 +54,6 @@ export default function PromoOrderMusicSection() {
   return (
     <SectionWrapper.MWrapper
       className={cn(s.PromoOrderMusicSection)}
-      // variants={variants}
       initial="hidden"
       whileInView="visible"
       viewport={{

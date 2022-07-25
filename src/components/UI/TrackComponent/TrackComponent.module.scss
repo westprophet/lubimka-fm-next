@@ -50,6 +50,7 @@
     justify-self: left;
     height: 100%;
     letter-spacing: 0.08em;
+    line-height: 130%;
     @include for-xl {
       padding: 5px 0;
     }
@@ -72,6 +73,7 @@
     :local{
       .name,
       .artist{
+        line-height: 130%;
         overflow: hidden;
         white-space: nowrap;
         overflow-wrap: break-word;

@@ -27,7 +27,9 @@ export default function PostPage({ children, title }: IPostPageProps) {
           ]}
         />
         <DefaultLayout.Section.Wrapper>
-          <ReactMarkdown>{children}</ReactMarkdown>
+          <DefaultLayout.Section.Inner>
+            <ReactMarkdown>{children}</ReactMarkdown>
+          </DefaultLayout.Section.Inner>
         </DefaultLayout.Section.Wrapper>
       </DefaultLayout.PageWrapper>
     </DefaultLayout.Layout>
