@@ -23,7 +23,7 @@ export default function ClubsPage({ clubs }: IClubsPageProps) {
     });
   };
 
-  let _clubs = [...clubs, ...clubs, ...clubs, ...clubs, ...clubs];
+  let _clubs = clubs;
 
   if (!isEmptyString(search))
     _clubs = _clubs?.filter((c: IClub) =>

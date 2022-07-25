@@ -34,7 +34,7 @@ export default function HiddenSideITrackList({
           <Track
             album={data[index].attributes.album}
             author={author}
-            key={`strapi-track-${data[index].id}`}
+            key={`authors-track-${data[index].id}-${data[index].attributes.title}`}
             track={data[index]}
             className={cn(s.track)}
             style={style}

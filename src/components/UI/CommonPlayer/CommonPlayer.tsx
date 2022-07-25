@@ -22,6 +22,7 @@ import PlayerControlComponent from 'components/UI/buttons/PlayerControlComponent
 import { TAudioManagerStatus } from 'types/TAudioManagerStatus';
 import { IChannel } from '../../../interfaces';
 import { motion } from 'framer-motion';
+import Link from 'next/link';
 
 export const variants = {
   show: {
@@ -65,16 +66,24 @@ export default function CommonPlayer({
         className
       )}
     >
-      <CommonPlayerCover className={cn(s.cover)} image={cover.url} />
+      <Link href="/broadcast">
+        <a>
+          <CommonPlayerCover className={cn(s.cover)} image={cover.url} />
+        </a>
+      </Link>
       <PlayerControlComponent
         className={cn(s.control)}
         status={control.status}
         onClick={control.onClick}
       />
-      <CommonPlayerTitle
-        className={cn(s.title)}
-        ft={control.status === 'paused' || control.status === 'error' ? null : title}
-      />
+      <Link href="/broadcast">
+        <a>
+          <CommonPlayerTitle
+            className={cn(s.title)}
+            ft={control.status === 'paused' || control.status === 'error' ? null : title}
+          />
+        </a>
+      </Link>
       <CommonPlayerAction
         channel={channels.current}
         className={cn(s.actions)}

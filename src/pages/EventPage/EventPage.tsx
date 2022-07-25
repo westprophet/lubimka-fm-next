@@ -24,8 +24,8 @@ import ClubMapMarker from 'components/ClubMapMarker';
 export default function EventPage({ event, club }: IEventPageProps) {
   const cover = getImageUrl(event.attributes.preview ?? club?.attributes.cover);
   const date = useGetEventDate(event.attributes.startDate, event.attributes.endDate);
-  const lat = club.attributes.coords.lat,
-    lng = club.attributes.coords.lng;
+  const lat = club.attributes.coords?.lat,
+    lng = club.attributes.coords?.lng;
   return (
     <DefaultLayout.Layout
       className={cn(s.EventPage)}
@@ -89,15 +89,16 @@ export default function EventPage({ event, club }: IEventPageProps) {
                 {club.attributes.address}
               </IconString>
             </a>
-
-            <MiniMap
-              coords={{
-                lat,
-                lng,
-              }}
-            >
-              <ClubMapMarker club={club} isDestination />
-            </MiniMap>
+            {lat && lng ? (
+              <MiniMap
+                coords={{
+                  lat,
+                  lng,
+                }}
+              >
+                <ClubMapMarker club={club} isDestination />
+              </MiniMap>
+            ) : null}
           </DSection.Content.Container>
           {event.attributes.description && (
             <DSection.Content.Container

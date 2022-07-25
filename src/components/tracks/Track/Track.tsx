@@ -20,6 +20,7 @@ export default function Track({
   className,
   isCanFetchImage,
   isShowCover,
+  style,
 }: ITrackProps) {
   const title: TAudioTitle = {
     artist: track.attributes.author ?? album?.attributes.creators ?? author?.attributes.name,
@@ -27,7 +28,14 @@ export default function Track({
   };
   const cover = tools.IAlbum.getCover(album, 'small');
   const { image } = useImageState(title, isCanFetchImage && isShowCover && !cover);
-  return <TrackComponent title={title} className={cn(s.Track, className)} cover={cover ?? image} />;
+  return (
+    <TrackComponent
+      title={title}
+      className={cn(s.Track, className)}
+      cover={cover ?? image}
+      style={style}
+    />
+  );
 }
 
 Track.defaultProps = {

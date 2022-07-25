@@ -2,6 +2,8 @@
 
 .TrackList {
   .inner {
+    position: relative;
+    z-index:4;
     ::-webkit-scrollbar{
       display: none;
     }

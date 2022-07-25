@@ -1,5 +1,5 @@
 import TStrapiResponseContainer from '../api/strapi/types/TStrapiResponseContainer';
-import { IWrappedStrapiImage } from '../api/strapi/types';
+import { IWrappedStrapiImage } from 'api/strapi/types';
 import { IClub } from './IClub';
 import TWrappedData from '../types/TWrappedData';
 

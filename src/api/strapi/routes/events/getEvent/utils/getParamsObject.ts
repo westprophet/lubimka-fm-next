@@ -14,7 +14,7 @@ export default function getParamsObject(p: IGetEventRequestParams | undefined) {
           avatar: '*',
           Emails: '*',
           PhoneNumbers: '*',
-          // schedule: '*',
+          schedule: '*',
           coords: '*',
           Socials: {
             populate: {

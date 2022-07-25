@@ -39,8 +39,8 @@ const variantsImage = {
 
 export default function ClubPage({ club, nearbyEvents, recomendedEvents }: IClubPageProps) {
   const cover = getImageUrl(club.attributes.cover);
-  const lat = club.attributes.coords.lat,
-    lng = club.attributes.coords.lng;
+  const lat = club.attributes.coords?.lat,
+    lng = club.attributes.coords?.lng;
   return (
     <DefaultLayout.Layout
       className={cn(s.ClubPage)}
@@ -101,15 +101,16 @@ export default function ClubPage({ club, nearbyEvents, recomendedEvents }: IClub
                 {club.attributes.address}
               </IconString>
             </a>
-
-            <MiniMap
-              coords={{
-                lat,
-                lng,
-              }}
-            >
-              <ClubMapMarker club={club} isDestination />
-            </MiniMap>
+            {lat && lng ? (
+              <MiniMap
+                coords={{
+                  lat,
+                  lng,
+                }}
+              >
+                <ClubMapMarker club={club} isDestination />
+              </MiniMap>
+            ) : null}
           </DSection.Content.Container>
 
           {recomendedEvents && !isEmptyArray(recomendedEvents) && (

@@ -2,6 +2,7 @@
 
 .HiddenAsideScroller {
   //overflow: scroll;
+  z-index: 3;
   height: 100%;
   &::-webkit-scrollbar {
     display: none;

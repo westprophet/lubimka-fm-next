@@ -8,12 +8,8 @@ import { IGetClubRequestParams } from '../types/IGetClubRequestParams';
 export default function getParamsObject(p: IGetClubRequestParams | undefined) {
   const obj: any = {
     populate: {
-      avatar: {
-        fields: ['url'],
-      },
-      cover: {
-        fields: ['url'],
-      },
+      cover: '*',
+      avatar: '*',
       schedule: '*',
       coords: '*',
       Emails: '*',

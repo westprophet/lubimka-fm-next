@@ -46,6 +46,10 @@ export default function PromoComeSection() {
       className={cn(s.PromoComeSection)}
       initial="hidden"
       whileInView="visible"
+      viewport={{
+        amount: 0.8,
+        once: true,
+      }}
     >
       <Image
         src={bg}
