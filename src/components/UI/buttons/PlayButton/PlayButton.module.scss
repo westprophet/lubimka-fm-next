@@ -77,12 +77,6 @@
         background-color: var(--error-color);
         color: var(--text-color);
       }
-      //:local(.circular) {
-      //  color: var(--error-color);
-      //  &:global(.MuiCircularProgress-indeterminate) {
-      //    color: var(--text-color);
-      //  }
-      //}
     }
   }
 }
