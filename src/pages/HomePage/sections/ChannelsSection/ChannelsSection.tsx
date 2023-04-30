@@ -7,11 +7,11 @@ import s from './ChannelsSection.module.scss';
 import cn from 'classnames';
 import SectionSlider from 'src/layouts/DefaultLayout/components/SectionSliderWrapper';
 import Channel from 'components/Channel';
-// import { ChannelManagerContext } from '../../../../contexts/ChannelManager';
 import { IChannel } from 'interfaces/IChannel';
+import isEmptyArray from 'utils/isEmptyArray';
 
 export default function ChannelsSection({ className, channels }: IChannelsSectionsProps) {
-  // const cm = useContext(ChannelManagerContext);
+  if (isEmptyArray(channels)) return null;
   return (
     <SectionSlider.Wrapper
       className={cn(s.ChannelsSections, className)}
@@ -22,7 +22,7 @@ export default function ChannelsSection({ className, channels }: IChannelsSectio
       }}
       link="/channels"
     >
-      {channels?.map((c: IChannel, index: number) => (
+      {channels?.map((c: IChannel) => (
         <SectionSlider.Slide key={`channel-${c.id}`}>
           <Channel channel={c} />
         </SectionSlider.Slide>

@@ -29,7 +29,7 @@ export default function Post({ post, className, resizable }: IPostProps) {
       title={title}
       timeRead={timeRead}
       cover={_cover}
-      authors={authors.data}
+      authors={authors?.data ?? []}
       resizable={resizable}
       link={`/blog/${post.attributes.url}`}
     />

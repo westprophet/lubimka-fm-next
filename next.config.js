@@ -1,5 +1,4 @@
 const withPlugins = require('next-compose-plugins');
-const withOptimizedImages = require('next-optimized-images');
 // const withImages = require('next-images');
 const path = require('path');
 
@@ -27,7 +26,7 @@ const nextConfig = {
     server: !isProduction ? 'http://localhost:1338' : 'https://lubimka-fm.redw.me',
     isProd: isProduction,
   },
-  webpack: (config, { buildId, dev, isServer, defaultLoaders, webpack }) => {
+  webpack: (config) => {
     config.resolve.modules.push(path.resolve('./src/'));
 
     config.module.rules.push({
@@ -45,13 +44,7 @@ const imagesPluginSetting = {
     formats: ['image/avif', 'image/webp'],
     dangerouslyAllowSVG: true,
     contentSecurityPolicy: "default-src 'self'; script-src 'none'; sandbox;",
-    domains: [
-      'lubimka-fm.redw.me',
-      'localhost',
-      'image-fetcher.radioheart.ru',
-      'i.scdn.co',
-      'lubimka-media.s3.eu-central-1.amazonaws.com',
-    ],
+    domains: ['storage.googleapis.com', 'localhost', 'image-fetcher.radioheart.ru', 'i.scdn.co'],
   },
 };
 

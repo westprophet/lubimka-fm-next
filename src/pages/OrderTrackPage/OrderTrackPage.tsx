@@ -45,7 +45,7 @@ export default function OrderTrackPage({ channel }: ITrackPageProps) {
       <DefaultLayout.PageWrapper>
         <DefaultLayout.PageTitle
           className={cn(s.title)}
-          title={`Заказ на канале: <b>{channel.attributes.title}</b>`}
+          title={`Заказ на канале: ${channel.attributes.title}`}
         />
 
         <DefaultLayout.Section.Wrapper>

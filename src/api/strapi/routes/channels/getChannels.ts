@@ -5,6 +5,7 @@ export default async function getChannels(): Promise<IChannel[]> {
   try {
     const { data } = await StrapiAxios.get('/radio-shannels', {
       params: {
+        sort: 'order:asc',
         populate: {
           // programs: {
           //   populate: {

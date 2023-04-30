@@ -71,7 +71,9 @@ export default function PostAltComponent({
           <NoImage />
         )}
       </div>
-      <div className={cn(s.member)}>{authors ? <SmallMember member={authors} /> : null}</div>
+      <div className={cn(s.member)}>
+        {authors !== undefined ? <SmallMember member={authors} /> : null}
+      </div>
       <div className={cn(s.inner)}>
         <div className={cn(s.other)}>{other}</div>
         <div className={cn(s.title)}>{_title}</div>
