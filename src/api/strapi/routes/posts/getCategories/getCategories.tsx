@@ -7,12 +7,14 @@
 
 import StrapiAxios from '../../../global';
 
-import { IGetCategoriesResponse } from './types';
+import { IGetCategoriesResponse, IGetCategoriesRequestParams } from './types';
 import { IBlogCategory } from 'interfaces/IBlogCategory';
 
 import getParamsObject from './utils/getParamsObject';
 
-export default async function getCategories(): Promise<IGetCategoriesReturn> {
+export default async function getCategories(
+  p: IGetCategoriesRequestParams
+): Promise<IGetCategoriesReturn> {
   try {
     const { data }: { data: IGetCategoriesResponse } = await StrapiAxios.get('/blog-categories', {
       params: getParamsObject(p),

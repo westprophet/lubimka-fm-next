@@ -1,3 +1,4 @@
+import { IGetCategoriesRequestParams } from './IGetCategoriesRequestParams';
 import { IGetCategoriesResponse } from './IGetCategoriesResponse';
 
-export type { IGetCategoriesResponse };
+export type { IGetCategoriesRequestParams, IGetCategoriesResponse };
