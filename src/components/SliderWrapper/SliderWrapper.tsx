@@ -9,9 +9,15 @@ import useSliderData from './hooks/useSliderData';
 
 import Slider from 'react-slick';
 //Это обертка над слайдером, нужно обернуть в контекст
-export default function SliderWrapper({ className, children, swipe }: ISliderWrapperProps) {
+export default function SliderWrapper({
+  className,
+  children,
+  swipe,
+  infinite,
+  autoplay,
+}: ISliderWrapperProps) {
   const count = Children.count(children);
-  const { settings, ref } = useSliderData(count, swipe); //Прячем настройки и прочую штуку сюда
+  const { settings, ref } = useSliderData(count, swipe, infinite, autoplay); //Прячем настройки и прочую штуку сюда
   if (!children) return null;
   return (
     <Slider ref={ref} {...settings} className={cn(s.SliderWrapper, className)}>
@@ -26,6 +32,8 @@ SliderWrapper.defaultProps = {
 
 interface ISliderWrapperProps {
   className?: string;
+  infinite?: boolean;
+  autoplay?: boolean;
   children: any;
   swipe?: boolean;
 }

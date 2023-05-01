@@ -10,7 +10,7 @@ import IStrapiReturn from '../../../types/IStrapiReturn';
 // import isValidGetPartnersResponse from './validators/isValidGetPartnersResponse';
 import { IGetPartnersResponse } from './types/IGetPartnersResponse';
 import { IGetPartnersRequestParams } from './types/IGetPartnersRequestParams';
-import { IPartner } from '../../../../../interfaces';
+import { IPartner } from 'interfaces/IPartner';
 import getParamsObject from './utils/getParamsObject';
 
 //Получить партнеров

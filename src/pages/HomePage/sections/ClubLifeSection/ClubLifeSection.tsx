@@ -16,6 +16,8 @@ export default function ClubLifeSection({ clubs, events }: IClubLifeSectionProps
   return (
     <>
       <SectionSlider.Wrapper
+        infinite
+        autoplay
         className={cn(s.ClubLifeSection)}
         title="Club Life"
         id="club-life"
@@ -33,7 +35,7 @@ export default function ClubLifeSection({ clubs, events }: IClubLifeSectionProps
         })}
       </SectionSlider.Wrapper>
       {!isEmptyArray(events) ? (
-        <SectionSlider.Wrapper className={cn(s.EventSection)}>
+        <SectionSlider.Wrapper className={cn(s.EventSection)} infinite autoplay>
           {events?.map((event: IEvent) => {
             return (
               <SectionSlider.Slide key={`event-${event.id}`}>

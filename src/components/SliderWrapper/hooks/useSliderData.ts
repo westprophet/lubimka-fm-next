@@ -1,7 +1,12 @@
 import { useContext, useEffect } from 'react';
 import { SliderWrapperManagerContext } from 'components/SliderWrapper/contexts/SliderWrapperManager/SliderWrapperManager';
 
-export default function useSliderData(count: number, swipe = false) {
+export default function useSliderData(
+  count: number,
+  swipe = false,
+  infinite = false,
+  autoplay = false
+) {
   const sm = useContext(SliderWrapperManagerContext);
 
   useEffect(() => {
@@ -13,12 +18,12 @@ export default function useSliderData(count: number, swipe = false) {
     variableWidth: true,
     initialSlide: 0,
     slidesToScroll: 1,
-    infinite: true,
+    infinite: infinite,
     dots: true,
     arrows: false,
     swipe: swipe,
     pauseOnHover: true,
-    autoplay: true,
+    autoplay: autoplay,
     autoplaySpeed: 5000,
     allowTouchMove: swipe,
     afterChange: (cs: number) => sm.setCurrentSlideIndex(Number(cs) + 1),

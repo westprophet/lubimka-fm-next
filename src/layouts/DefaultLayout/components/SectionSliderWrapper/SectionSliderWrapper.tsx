@@ -33,6 +33,8 @@ function SectionSliderWrapper({
   link,
   detail,
   id,
+  infinite,
+  autoplay,
 }: ISectionSliderWrapperProps) {
   if (!children) {
     console.warn('SectionSliderWrapper: slide none', title);
@@ -65,7 +67,7 @@ function SectionSliderWrapper({
       </motion.div>
       <SectionWrapper.Inner className={cn(s.inner)}>
         <Slider.SideBar className={cn(s.arrow, s.leftArrow)} side="left" />
-        <Slider.Wrapper swipe className={cn(s.slider)}>
+        <Slider.Wrapper swipe infinite={infinite} autoplay={autoplay} className={cn(s.slider)}>
           {children}
         </Slider.Wrapper>
         <Slider.SideBar className={cn(s.arrow, s.rightArrow)} side="right" />
@@ -88,5 +90,7 @@ interface ISectionSliderWrapperProps {
     title: string;
     link: string;
   };
+  infinite?: boolean;
+  autoplay?: boolean;
 }
 export default withSliderWrapperManager(SectionSliderWrapper);
